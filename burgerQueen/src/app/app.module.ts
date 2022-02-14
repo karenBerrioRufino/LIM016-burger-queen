@@ -17,6 +17,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     WelcomeComponent,
     PgeNotFoundComponent,
     SignUpComponent
+
   ],
   imports: [
     BrowserModule,
