@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PgeNotFoundComponent } from './pge-not-found/pge-not-found.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     LoginComponent,
     WelcomeComponent,
     PgeNotFoundComponent,
-    SignUpComponent
+    SignUpComponent,
+    MenuComponent
+
   ],
   imports: [
     BrowserModule,
