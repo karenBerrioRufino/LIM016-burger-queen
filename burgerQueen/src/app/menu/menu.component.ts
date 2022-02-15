@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from './models/item';
+import Data from '../../assets/json/menu.json'
 
 @Component({
   selector: 'app-menu',
@@ -7,7 +8,7 @@ import { Item } from './models/item';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-
+  menu: any = Data.menu;
   items: Item[] = [];
 
   constructor() { }
