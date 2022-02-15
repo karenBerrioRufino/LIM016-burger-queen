@@ -1,0 +1,37 @@
+<div> 
+    <h2>Platos</h2>
+    <div *ngFor="let item of menu.platos">
+        <div>
+            <div>
+                <h4> {{ item.title }} </h4>
+                <h3>{{ '$' + item.price }} </h3>
+            </div>
+            <img src="../../assets/img-menu/{{ item.img }}" width="115px" height="115px">
+            <input type="button" value="{{ item.btnValue }}">
+        </div>
+    </div>
+
+    <h2>Aperitivos</h2>
+    <div *ngFor="let item of menu.aperitivos">
+        <div>
+            <div>
+                <h4> {{ item.title }} </h4>
+                <h3>{{ '$' + item.price }} </h3>
+            </div>
+            <img src="../../assets/img-menu/{{ item.img }}" width="115px" height="115px">
+            <input type="button" value="{{ item.btnValue }}">
+        </div>
+    </div>
+
+    <h2>Bebidas</h2>
+    <div *ngFor="let item of menu.bebidas">
+        <div>
+            <div>
+                <h4> {{ item.title }} </h4>
+                <h3>{{ '$' + item.price }} </h3>
+            </div>  
+            <img src="../../assets/img-menu/{{ item.img }}" width="115px" height="115px">
+            <input type="button" value="{{ item.btnValue }}">
+        </div>
+    </div>
+</div>
