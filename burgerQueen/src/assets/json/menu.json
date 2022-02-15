@@ -1,0 +1,136 @@
+{ "restaurante": "Burguer Queen",
+  "ubicación":"Av. Los girasoles 999",
+  "reservaciones": 962348301,
+  "menu": 
+    {
+    "platos": [
+      {
+        "title": "Hamburguesa simple",
+        "price": 10,
+        "tipe": ["Carne", "Pollo", "Vegetariana"],
+        "extra": ["Huevo", "Queso", "Ninguno"],
+        "img": "simple.jpg",
+        "btnValue": "Ver Opciones"
+      },
+      {
+        "title": "Hamburguesa doble",
+        "price": 15,
+        "tipe": ["Carne", "Pollo", "Vegetariana"],
+        "extra": ["Huevo", "Queso", "Ninguno"],
+        "img": "doble.jpg",
+        "btnValue": "Ver Opciones"
+      },
+      {
+        "title": "Sandwich de jamón y queso",
+        "price": 10,
+        "img": "sandwich1.jpg",
+        "btnValue": "Añadir"
+      },
+      {
+        "title": "Sandwich de pollo",
+        "price": 12,
+        "img": "sandwich2.jpg",
+        "btnValue": "Añadir"
+      }
+    ],
+    "aperitivos": [
+      {
+        "title": "Papas fritas",
+        "price": 5,
+        "img": "papasFritas.jpg",
+        "btnValue": "Añadir"
+      },
+      {
+        "title": "Aros de cebolla",
+        "price": 5 ,
+        "img": "arosDeCebolla.jpg",
+        "btnValue": "Añadir"
+      },
+      {
+        "title": "Nuggets",
+        "price": 8,
+        "img": "nuggets.jpg",
+        "btnValue": "Añadir"
+      },
+      {
+        "title": "Ensalada",
+        "price": 5,
+        "img": "ensalada.jpg",
+        "btnValue": "Añadir"
+      }
+    ],
+    "bebidas": [
+    {
+      "title": "Café americano",
+      "price": 5,
+      "img": "cafeAmericano.jpg",
+      "btnValue": "Añadir"
+    },
+    {
+      "title": "Café con leche",
+      "price": 7,
+      "img": "cafeConLeche.jpg",
+      "btnValue": "Añadir"
+    },
+    {
+      "title": "Chocolate caliente",
+      "price": 5,
+      "img": "chocolate.jpg",
+      "btnValue": "Añadir"
+    },
+    {
+      "title": "Jugo de fresa",
+      "price": 7,
+      "img": "jugoFresa.jpg",
+      "btnValue": "Añadir"
+    },
+    {
+      "title": "Jugo de naranja",
+      "price": 5,
+      "img": "jugoNaranja.jpg",
+      "btnValue": "Añadir"
+    },
+    {
+      "title": "Jugo de papaya",
+      "price": 7,
+      "img": "jugoPapaya.jpg",
+      "btnValue": "Añadir"
+    },
+    {
+      "title": "Agua mineral 500ml",
+      "price": 5,
+      "img": "agua1.jpg",
+      "btnValue": "Añadir"
+    },
+    {
+      "title": "Agua mineral 750ml",
+      "price": 7,
+      "img": "agua2.jpg",
+      "btnValue": "Añadir"
+    },
+    {
+      "title": "Gaseosa Inca Kola 500ml",
+      "price": 7,
+      "img": "incaKola1.jpg",
+      "btnValue": "Añadir"
+    },
+    {
+      "title": "Gaseosa Inca Kola 750ml",
+      "price": 10,
+      "img": "incaKola2.png",
+      "btnValue": "Añadir"
+    },
+    {
+      "title": "Gaseosa Coca Cola 500ml",
+      "price": 7,
+      "img": "cocaCola1.jpg",
+      "btnValue": "Añadir"
+    },
+    {
+      "title": "Gaseosa Coca Cola 750ml",
+      "price": 10,
+      "img": "cocaCola2.jpg",
+      "btnValue": "Añadir"
+    }]
+  }
+}
