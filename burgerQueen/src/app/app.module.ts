@@ -3,27 +3,28 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PedidosComponent } from './pedidos/pedidos.component';
-import { LoginComponent } from './login/login.component';
-import { WelcomeComponent } from './welcome/welcome.component';
+/* import { LoginComponent } from './ingreso/login/login.component';
+import { WelcomeComponent } from './ingreso/welcome/welcome.component';
 import { PgeNotFoundComponent } from './pge-not-found/pge-not-found.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { MenuComponent } from './menu/menu.component';
+import { MenuComponent } from './atencion/menu/menu.component';*/
 
+import { IngresoModule } from './ingreso/ingreso.module'
+import { AtencionModule } from './atencion/atencion.module';
+import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
-    PedidosComponent,
-    LoginComponent,
+    /* LoginComponent,
     WelcomeComponent,
     PgeNotFoundComponent,
-    SignUpComponent,
-    MenuComponent
-
+    MenuComponent, */
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AtencionModule,
+    IngresoModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
