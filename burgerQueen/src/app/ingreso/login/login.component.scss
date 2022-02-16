@@ -1,0 +1,31 @@
+// variables 
+  $color-melon: #F1D5BB;
+  $color-marron: #3C2213;
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .divLogin{
+    background: $color-melon;
+    border: none !important;
+    }
+  .containerLogin{
+    height: 100%;
+  }
+  h2{
+    color: $color-marron;
+    }
+  .emailLogin,
+  .passLogin{
+    border: 1px solid #fff;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 15rem;
+    height: 1rem;
+    }
+  .emailLogin{
+    background-image: url();
+    }
+      
