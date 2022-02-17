@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { Routes, RouterModule } from '@angular/router';
+
 import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -10,7 +13,8 @@ const routes: Routes = [
     children: [
       { path: '', component: WelcomeComponent },
       { path: 'login', component: LoginComponent },
-      // { path: '**', redirectTo: 'welcome', pathMatch: 'full'},
+      { path: 'notFound', component: PageNotFoundComponent },
+      { path: '**', redirectTo: 'notFound', pathMatch: 'full' },
     ]
   }
 ]

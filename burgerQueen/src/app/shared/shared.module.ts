@@ -18,6 +18,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    NavegadorComponent,
+    ListaPedidosComponent,
+    DatosPedidoComponent,
+    TotalPedidosComponent,
+    PageNotFoundComponent
   ]
 })
 export class SharedModule { }
