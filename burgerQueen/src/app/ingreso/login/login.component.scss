@@ -1,31 +1,44 @@
 // variables 
-  $color-melon: #F1D5BB;
-  $color-marron: #3C2213;
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+$color-melon: #f1d5bb;
+$color-marron: #3C2213;
+
+.divLogin{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: $color-melon;
+  border: none !important;
+  border-radius: 5px;
+  padding: 1rem;
   }
 
-  .divLogin{
-    background: $color-melon;
-    border: none !important;
-    }
-  .containerLogin{
-    height: 100%;
-  }
-  h2{
-    color: $color-marron;
-    }
-  .emailLogin,
-  .passLogin{
-    border: 1px solid #fff;
-    border-radius: 1rem;
-    padding: 1rem;
-    width: 15rem;
-    height: 1rem;
-    }
-  .emailLogin{
-    background-image: url();
-    }
-      
+.containerLogin{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height:100vh;
+  margin: 0 auto;
+  background-image: url(../../../assets/imagenes/img-login-welcome/fondo-body.jpg);
+  background-size: 100% 100vh;
+  overflow: hidden;
+}
+
+h2{
+  color: $color-marron;
+}
+.emailLogin,
+.passLogin{
+  border: 1px solid #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 15rem;
+  height: 1rem;
+}
+.emailLogin{
+  text-align: left;
+}
+    

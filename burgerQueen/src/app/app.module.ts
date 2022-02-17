@@ -9,9 +9,11 @@ import { AtencionModule } from './atencion/atencion.module';
 import { SharedModule } from './shared/shared.module';
 import { MeseroModule } from './mesero/mesero.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -19,7 +21,8 @@ import { MeseroModule } from './mesero/mesero.module';
     AtencionModule,
     IngresoModule,
     SharedModule,
-    MeseroModule
+    MeseroModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
