@@ -1,18 +1,22 @@
-*{
-  margin: 0;
- padding: 0;
- box-sizing: border-box;
-}
-html, body{
-  height: 100vh;
-
-  
-}
+// variables 
+$color-melon: #f1d5bb;
+$color-marron: #3C2213;
+$color-blanco: #fff;
 .mainContainer{
   background-image: url(../../../assets/imagenes/img-login-welcome/fondo-body.jpg);
+  background-size:100% 100%;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.mainContainer>h1{
+  color: $color-blanco;
+}
+
+.mainContainer>h2{
+  color: $color-blanco;
 }
