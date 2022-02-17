@@ -3,134 +3,116 @@
   "reservaciones": 962348301,
   "menu": 
     {
-    "platos": [
+    "hamburguesas": [
       {
         "title": "Hamburguesa simple",
         "price": 10,
         "tipe": ["Carne", "Pollo", "Vegetariana"],
         "extra": ["Huevo", "Queso", "Ninguno"],
-        "img": "simple.jpg",
-        "btnValue": "Ver Opciones"
+        "img": "simple.jpg"
       },
       {
         "title": "Hamburguesa doble",
         "price": 15,
         "tipe": ["Carne", "Pollo", "Vegetariana"],
         "extra": ["Huevo", "Queso", "Ninguno"],
-        "img": "doble.jpg",
-        "btnValue": "Ver Opciones"
-      },
-      {
+        "img": "doble.jpg"
+      }
+    ],
+    "sandwiches": [
+     {
         "title": "Sandwich de jamón y queso",
         "price": 10,
-        "img": "sandwich1.jpg",
-        "btnValue": "Añadir"
+        "img": "sandwich1.jpg"
       },
       {
         "title": "Sandwich de pollo",
         "price": 12,
-        "img": "sandwich2.jpg",
-        "btnValue": "Añadir"
+        "img": "sandwich2.jpg"
       }
     ],
     "aperitivos": [
       {
         "title": "Papas fritas",
         "price": 5,
-        "img": "papasFritas.jpg",
-        "btnValue": "Añadir"
+        "img": "papasFritas.jpg"
       },
       {
         "title": "Aros de cebolla",
         "price": 5 ,
-        "img": "arosDeCebolla.jpg",
-        "btnValue": "Añadir"
+        "img": "arosDeCebolla.jpg"
       },
       {
         "title": "Nuggets",
         "price": 8,
-        "img": "nuggets.jpg",
-        "btnValue": "Añadir"
+        "img": "nuggets.jpg"
       },
       {
         "title": "Ensalada",
         "price": 5,
-        "img": "ensalada.jpg",
-        "btnValue": "Añadir"
+        "img": "ensalada.jpg"
       }
     ],
     "bebidas": [
     {
       "title": "Café americano",
       "price": 5,
-      "img": "cafeAmericano.jpg",
-      "btnValue": "Añadir"
+      "img": "cafeAmericano.jpg"
     },
     {
       "title": "Café con leche",
       "price": 7,
-      "img": "cafeConLeche.jpg",
-      "btnValue": "Añadir"
+      "img": "cafeConLeche.jpg"
     },
     {
       "title": "Chocolate caliente",
       "price": 5,
-      "img": "chocolate.jpg",
-      "btnValue": "Añadir"
+      "img": "chocolate.jpg"
     },
     {
       "title": "Jugo de fresa",
       "price": 7,
-      "img": "jugoFresa.jpg",
-      "btnValue": "Añadir"
+      "img": "jugoFresa.jpg"
     },
     {
       "title": "Jugo de naranja",
       "price": 5,
-      "img": "jugoNaranja.jpg",
-      "btnValue": "Añadir"
+      "img": "jugoNaranja.jpg"
     },
     {
       "title": "Jugo de papaya",
       "price": 7,
-      "img": "jugoPapaya.jpg",
-      "btnValue": "Añadir"
+      "img": "jugoPapaya.jpg"
     },
     {
       "title": "Agua mineral 500ml",
       "price": 5,
-      "img": "agua1.jpg",
-      "btnValue": "Añadir"
+      "img": "agua1.jpg"
     },
     {
       "title": "Agua mineral 750ml",
       "price": 7,
-      "img": "agua2.jpg",
-      "btnValue": "Añadir"
+      "img": "agua2.jpg"
     },
     {
       "title": "Gaseosa Inca Kola 500ml",
       "price": 7,
-      "img": "incaKola1.jpg",
-      "btnValue": "Añadir"
+      "img": "incaKola1.jpg"
     },
     {
       "title": "Gaseosa Inca Kola 750ml",
       "price": 10,
-      "img": "incaKola2.png",
-      "btnValue": "Añadir"
+      "img": "incaKola2.png"
     },
     {
       "title": "Gaseosa Coca Cola 500ml",
       "price": 7,
-      "img": "cocaCola1.jpg",
-      "btnValue": "Añadir"
+      "img": "cocaCola1.jpg"
     },
     {
       "title": "Gaseosa Coca Cola 750ml",
       "price": 10,
-      "img": "cocaCola2.jpg",
-      "btnValue": "Añadir"
+      "img": "cocaCola2.jpg"
     }]
   }
 }

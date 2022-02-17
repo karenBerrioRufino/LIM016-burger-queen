@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
 import { IngresoRoutingModule } from './ingreso-routing.module'
+import { SharedModule } from '../shared/shared.module';
 
 import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -16,7 +17,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
   imports: [
     CommonModule,
     RouterModule,
-    IngresoRoutingModule
+    IngresoRoutingModule,
+    SharedModule
   ],
   exports:[
     LoginComponent,

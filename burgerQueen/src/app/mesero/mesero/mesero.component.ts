@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './mesero.component.html',
   styleUrls: ['./mesero.component.scss']
 })
+
 export class MeseroComponent implements OnInit {
 
   constructor() { }
