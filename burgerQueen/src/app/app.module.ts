@@ -10,9 +10,11 @@ import { SharedModule } from './shared/shared.module';
 import { MeseroModule } from './mesero/mesero.module';
 import { CocineroModule } from './cocinero/cocinero.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     BrowserModule,

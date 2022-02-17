@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [
       { path: '', component: WelcomeComponent },
       { path: 'login', component: LoginComponent },
-      { path:  'notFound', component: PageNotFoundComponent },
+      { path: 'notFound', component: PageNotFoundComponent },
       { path: '**', redirectTo: 'notFound', pathMatch: 'full' },
     ]
   }
