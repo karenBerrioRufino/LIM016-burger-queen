@@ -4,6 +4,7 @@ import { NavegadorComponent } from './navegador/navegador.component';
 import { ListaPedidosComponent } from './lista-pedidos/lista-pedidos.component';
 import { DatosPedidoComponent } from './datos-pedido/datos-pedido.component';
 import { TotalPedidosComponent } from './total-pedidos/total-pedidos.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -12,7 +13,8 @@ import { TotalPedidosComponent } from './total-pedidos/total-pedidos.component';
     NavegadorComponent,
     ListaPedidosComponent,
     DatosPedidoComponent,
-    TotalPedidosComponent
+    TotalPedidosComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule

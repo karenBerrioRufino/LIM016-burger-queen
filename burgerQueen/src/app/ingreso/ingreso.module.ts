@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { IngresoRoutingModule } from './ingreso-routing.module'
+
 import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
@@ -10,8 +13,12 @@ import { WelcomeComponent } from './welcome/welcome.component';
     WelcomeComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    IngresoRoutingModule
   ],
-  exports:[LoginComponent, WelcomeComponent]
+  exports:[
+    LoginComponent,
+    WelcomeComponent
+  ]
 })
 export class IngresoModule { }
