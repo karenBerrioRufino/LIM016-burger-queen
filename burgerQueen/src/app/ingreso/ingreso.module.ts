@@ -12,6 +12,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
   imports: [
     CommonModule
   ],
-  exports:[LoginComponent, WelcomeComponent]
+  exports:[
+    LoginComponent,
+    WelcomeComponent
+  ]
 })
 export class IngresoModule { }

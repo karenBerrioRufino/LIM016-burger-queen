@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PedidosPorHacerComponent } from './pedidos-por-hacer/pedidos-por-hacer.component';
 import { CocineroComponent } from './cocinero/cocinero.component';
-
-
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
-    PedidosPorHacerComponent,
     CocineroComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ]
 })
 export class CocineroModule { }

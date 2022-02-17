@@ -11,6 +11,9 @@ import { OpcionesComponent } from './opciones/opciones.component';
   imports: [
     CommonModule
   ],
-  exports:[MenuComponent, OpcionesComponent]
+  exports:[
+    MenuComponent,
+    OpcionesComponent
+  ]
 })
 export class AtencionModule { }
