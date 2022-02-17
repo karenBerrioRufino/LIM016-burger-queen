@@ -8,6 +8,7 @@ import { IngresoModule } from './ingreso/ingreso.module'
 import { AtencionModule } from './atencion/atencion.module';
 import { SharedModule } from './shared/shared.module';
 import { MeseroModule } from './mesero/mesero.module';
+import { CocineroModule } from './cocinero/cocinero.module';
 
 @NgModule({
   declarations: [
@@ -15,11 +16,12 @@ import { MeseroModule } from './mesero/mesero.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     AtencionModule,
     IngresoModule,
     SharedModule,
-    MeseroModule
+    MeseroModule,
+    CocineroModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
