@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CocineroComponent } from './cocinero/cocinero.component';
 import { SharedModule } from '../shared/shared.module';
+import { PedidosCocineroComponent } from './pedidos-cocinero/pedidos-cocinero.component';
+import { TotalPedidosCocineroComponent } from './total-pedidos-cocinero/total-pedidos-cocinero.component';
 
 @NgModule({
   declarations: [
-    CocineroComponent
+    PedidosCocineroComponent,
+    TotalPedidosCocineroComponent,
   ],
   imports: [
     CommonModule,
