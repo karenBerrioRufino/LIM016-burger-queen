@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { IngresoModule } from './ingreso/ingreso.module'
-import { AtencionModule } from './atencion/atencion.module';
 import { SharedModule } from './shared/shared.module';
 import { MeseroModule } from './mesero/mesero.module';
 import { CocineroModule } from './cocinero/cocinero.module';
@@ -18,12 +17,11 @@ import { CocineroModule } from './cocinero/cocinero.module';
   ],
   imports: [
     BrowserModule,
-    AtencionModule,
     IngresoModule,
     SharedModule,
     MeseroModule,
     CocineroModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

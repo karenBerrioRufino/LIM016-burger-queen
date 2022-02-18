@@ -1,14 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { MeseroComponent } from './mesero/mesero.component';
+import { CartaComponent } from './carta/carta.component';
+import { CartaOpcionesComponent } from './carta-opciones/carta-opciones.component';
+import { PedidosMeseroComponent } from './pedidos-mesero/pedidos-mesero.component';
+import { TotalPedidosMeseroComponent } from './total-pedidos-mesero/total-pedidos-mesero.component';
+import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path:'',
     children: [
-      { path: 'mesero', component: MeseroComponent },
-      {path: '**', redirectTo: 'mesero', pathMatch: 'full'},
+      {path: 'carta', component: CartaComponent},
+      {path: 'cartaOpciones', component:CartaOpcionesComponent},
+      {path: 'pedidosMesero', component: PedidosMeseroComponent},
+      {path: 'totalPedidosMesero', component:TotalPedidosMeseroComponent},
+      {path: 'notFound', component:PageNotFoundComponent},
+      { path: '**', redirectTo: 'notFound', pathMatch: 'full'}
     ]
   }
 ]
@@ -17,7 +25,7 @@ const routes: Routes = [
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forChild( routes )
+    RouterModule.forChild(routes)
   ]
 })
 export class MeseroRoutingModule { }
