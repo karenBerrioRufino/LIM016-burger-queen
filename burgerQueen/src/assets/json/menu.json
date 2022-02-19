@@ -1,7 +1,7 @@
 { "restaurante": "Burguer Queen",
   "ubicación":"Av. Los girasoles 999",
   "reservaciones": 962348301,
-  "menu": 
+  "carta": 
     {
     "hamburguesas": [
       {
