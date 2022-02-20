@@ -5,8 +5,10 @@ $color-blanco: #fff;
 
 .mainContainer{
   background-image: url(../../../assets/imagenes/img-login-welcome/fondo-body.jpg);
-  background-size:100% 100%;
-  background-repeat: no-repeat;
+  // background-size:100% 100%;
+  // background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
   display: flex;
   align-items: center;
   justify-content: center;

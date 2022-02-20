@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
+import { CartaComponent } from '../mesero/carta/carta.component'; 
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
     children: [
       { path: '', component: WelcomeComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'carta', component: CartaComponent },
       { path: 'notFound', component: PageNotFoundComponent },
       { path: '**', redirectTo: 'notFound', pathMatch: 'full' },
     ]

@@ -1,54 +1,63 @@
-<div>
-  <section>
-  <h2>Platos</h2>
-      <div *ngFor="let hamburguesa of carta.hamburguesas">
-          <div>
-              <div>
-                  <h4> {{ hamburguesa.title }} </h4>
-                  <h3>{{ 's/.' + hamburguesa.price }} </h3>
-              </div>
-              <img src="../../assets/img-carta/{{ hamburguesa.img }}" width="115px" height="115px">
-              <input type="button" value="Ver opciones" routerLink="" routerLinkActive="activebutton">
-          </div>
-      </div>
+<div class="carta">
+    <div class="subtitle">
+        <h2>PLATOS</h2>
+        <hr>
+    </div>
+    <section>
+        <div *ngFor="let hamburguesa of carta.hamburguesas">
+            <div class="item">
+                <div class="nameAndPrice">
+                    <h4> {{ hamburguesa.title }} </h4>
+                    <h3>{{ 's/.' + hamburguesa.price }} </h3>
+                </div>
+                <img src="../../../assets/imagenes/img-carta/{{ hamburguesa.img }}">
+                <input type="button" value="Ver opciones" routerLink="" routerLinkActive="activebutton">
+            </div>
+        </div>
 
-      <div *ngFor="let sandwich of carta.sandwiches">
-          <div>
-              <div>
-                  <h4> {{ sandwich.title }} </h4>
-                  <h3>{{ 's/.' + sandwich.price }} </h3>
-              </div>
-              <img src="../../assets/img-carta/{{ sandwich.img }}" width="115px" height="115px">
-              <input type="button" value="Añadir">
-          </div>
-      </div>
-  </section>
+        <div *ngFor="let sandwich of carta.sandwiches">
+            <div class="item">
+                <div class="nameAndPrice">
+                    <h4> {{ sandwich.title }} </h4>
+                    <h3>{{ 's/.' + sandwich.price }} </h3>
+                </div>
+                <img src="../../../assets/imagenes/img-carta/{{ sandwich.img }}">
+                <input type="button" value="Añadir">
+            </div>
+        </div>
+    </section>
 
- <section> 
-      <h2>Aperitivos</h2>
-      <div *ngFor="let aperitivo of carta.aperitivos">
-          <div>
-              <div>
-                  <h4> {{ aperitivo.title }} </h4>
-                  <h3>{{ 's/.' + aperitivo.price }} </h3>
-              </div>
-              <img src="../../assets/img-carta/{{ aperitivo.img }}" width="115px" height="115px">
-              <input type="button" value="Añadir">
-          </div>
-      </div>
-  </section>
+    <div class="subtitle">
+        <h2>APERITIVOS</h2>
+        <hr>
+    </div>
+    <section>
+        <div *ngFor="let aperitivo of carta.aperitivos">
+            <div class="item">
+                <div class="nameAndPrice">
+                    <h4> {{ aperitivo.title }} </h4>
+                    <h3>{{ 's/.' + aperitivo.price }} </h3>
+                </div>
+                <img src="../../../assets/imagenes/img-carta/{{ aperitivo.img }}">
+                <input type="button" value="Añadir">
+            </div>
+        </div>
+    </section>
 
-  <section>
-      <h2>Bebidas</h2>
-      <div *ngFor="let bebida of carta.bebidas">
-          <div>
-              <div>
-                  <h4> {{ bebida.title }} </h4>
-                  <h3>{{ 's/.' + bebida.price }} </h3>
-              </div>
-              <img src="../../assets/img-carta/{{ bebida.img }}" width="115px" height="115px">
-              <input type="button" value="Añadir">
-          </div>
-      </div>
-  </section>
+    <div class="subtitle">
+        <h2>BEBIDAS</h2>
+        <hr>
+    </div>
+    <section>
+        <div *ngFor="let bebida of carta.bebidas">
+            <div class="item">
+                <div class="nameAndPrice">
+                    <h4> {{ bebida.title }} </h4>
+                    <h3>{{ 's/.' + bebida.price }} </h3>
+                </div>
+                <img src="../../../assets/imagenes/img-carta/{{ bebida.img }}">
+                <input type="button" value="Añadir">
+            </div>
+        </div>
+    </section>
 </div>

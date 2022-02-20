@@ -7,12 +7,12 @@ const routes: Routes = [
     loadChildren: () => import('./ingreso/ingreso.module').then(m => m.IngresoModule)
   },
   {
-    path: 'cocinero',
-    loadChildren: () => import('./cocinero/cocinero.module').then(m => m.CocineroModule)
-  },
-  {
     path: 'mesero',
     loadChildren: () => import('./mesero/mesero.module').then(m => m.MeseroModule)
+  },
+  {
+    path: 'cocinero',
+    loadChildren: () => import('./cocinero/cocinero.module').then(m => m.CocineroModule)
   }
 ];
 

@@ -23,8 +23,10 @@ $color-marron: #3C2213;
   height:100vh;
   margin: 0 auto;
   background-image: url(../../../assets/imagenes/img-login-welcome/fondo-body.jpg);
-  background-size: 100% 100vh;
+  // background-size: 100% 100vh;
   overflow: hidden;
+  background-size: cover;
+  background-position: center center;
 }
 
 h2{
