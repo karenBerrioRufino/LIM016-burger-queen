@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { MeseroModule } from '../mesero/mesero.module';
 
 
 @NgModule({
@@ -16,9 +17,10 @@ import { WelcomeComponent } from './welcome/welcome.component';
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    SharedModule,
     IngresoRoutingModule,
-    SharedModule
+    MeseroModule,
+    RouterModule,
   ],
   exports:[
     LoginComponent,

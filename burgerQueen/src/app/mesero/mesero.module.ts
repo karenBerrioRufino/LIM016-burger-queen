@@ -5,6 +5,8 @@ import { CartaOpcionesComponent } from './carta-opciones/carta-opciones.componen
 import { TotalPedidosMeseroComponent } from './total-pedidos-mesero/total-pedidos-mesero.component';
 import { PedidosMeseroComponent } from './pedidos-mesero/pedidos-mesero.component';
 import { SharedModule } from '../shared/shared.module';
+import { RouterModule } from '@angular/router';
+import { MeseroRoutingModule } from './mesero-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,15 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule,
+    MeseroRoutingModule
+  ],
+  exports:[
+    CartaComponent,
+    CartaOpcionesComponent,
+    TotalPedidosMeseroComponent,
+    PedidosMeseroComponent
   ]
 })
 export class MeseroModule { }

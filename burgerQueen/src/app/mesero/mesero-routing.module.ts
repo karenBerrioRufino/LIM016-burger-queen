@@ -16,11 +16,10 @@ const routes: Routes = [
       {path: 'pedidosMesero', component: PedidosMeseroComponent},
       {path: 'totalPedidosMesero', component:TotalPedidosMeseroComponent},
       {path: 'notFound', component:PageNotFoundComponent},
-      { path: '**', redirectTo: 'notFound', pathMatch: 'full'}
+      {path: '**', redirectTo: 'notFound', pathMatch: 'full'}
     ]
   }
 ]
-
 @NgModule({
   declarations: [],
   imports: [

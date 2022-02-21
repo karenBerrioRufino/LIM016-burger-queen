@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { Routes, RouterModule } from '@angular/router';
-
 import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
+import { CartaComponent } from '../mesero/carta/carta.component';
+import { CartaOpcionesComponent } from '../mesero/carta-opciones/carta-opciones.component';
 
 const routes: Routes = [
   {
@@ -14,6 +14,8 @@ const routes: Routes = [
       { path: '', component: WelcomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'notFound', component: PageNotFoundComponent },
+      { path: 'carta', component:CartaComponent},
+      { path: 'cartaOpciones', component:CartaOpcionesComponent },
       { path: '**', redirectTo: 'notFound', pathMatch: 'full' },
     ]
   }
