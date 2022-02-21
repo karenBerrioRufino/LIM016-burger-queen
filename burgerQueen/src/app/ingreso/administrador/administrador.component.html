@@ -1,0 +1,59 @@
+<p routerLink="/login" routerLinkActive="activebutton">administrador works!</p>
+<section>
+  <h2>Creación de usuarios</h2>
+  <button onclick="document.getElementById('btnModal').style.display='block'" >Nuevo usuario</button>
+</section>
+
+<div class="modal" id="btnModal">
+  <div class="modal-content">
+    <header class="header-container">Crear usuario
+      <span onclick="document.getElementById('btnModal').style.display='none'" [class]="['btn','display-topright']">&times;
+      </span>
+    </header>
+    
+    <form [formGroup]="form" (ngSubmit)="crearUsuario()" [class]="['formRegisterUser']">
+      <div class="modal-contenido">
+        <div class="column">
+          <div [class]="['column1']">
+            <label for="">Nombres</label>
+            <input type="text" name="" formControlName="nombres" placeholder="Pedro Julian"> 
+            <label for="">Apellido Paterno</label>
+            <input type="text" formControlName="apellidoPaterno">
+            <label for="">Apellido Materno</label>
+            <input type="text" formControlName="apellidoMaterno">
+          </div>
+          <div [class]="['column2']">
+              <Label>Tipo de usuario</Label>
+              <div [class]="['rol']">
+                <input type="radio" name="" id="">
+                <label for="">Cocinero</label>
+                <input type="radio" name="" id="">
+                <label for="">Mesero</label>
+              </div>
+              <label for="">Usuario</label>
+              <input type="text" name="" id="">
+              <label for="">Password</label>
+              <input type="password" name="" id="">
+          </div>
+        </div>
+        <div class="botones" >
+          <button type="submit">Crear</button>
+        </div>      
+      </div>
+    
+    </form>
+</div>
+
+
+<table>
+  <thead>
+    <th>N°</th>
+    <th>Apellidos y Nombres</th>
+    <th>Telefono</th>
+    <th>Rol</th>
+    <th>Usuario</th>
+    <th>Correo</th>
+    <th>Contraseña</th>
+    <th>Opciones</th>
+  </thead>
+</table>
