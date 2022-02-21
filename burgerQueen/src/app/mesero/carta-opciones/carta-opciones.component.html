@@ -1,24 +1,26 @@
-<h2>OPCIONES</h2>
-<div class="containerOptions">
-  <h2>{{ nombreProducto }}</h2>
-  <img src="" alt="">
-  <p>Tipo</p>
-  <select name="type" class="type">
-    <option value="Carne">Carne</option>
-    <option value="Pollo">Pollo</option>
-    <option value="Vegetariano">Vegetariano</option>
-  </select>
-  <p>Adicional</p>
-  <select name="additional" class="additional">
-    <option value="Ambos">Ambos</option>
-    <option value="Huevo">Huevo</option>
-    <option value="Ninguno">Ninguno</option>
-    <option value="Queso">Queso</option>
-  </select>
-</div>
-<div class="containerSubTotal">
-  <p>Subtotal</p>
-  <p></p>
-  <input type="submit" class="buttonAddOptions" id="buttonAddOptions" value="Añadir" 
-      routerLink="/" routerLinkActive="activebutton">
+<div class="containerOptionsLetter">
+  <h2>OPCIONES</h2>
+  <div class="containerOptions">
+    <p></p>
+    <img src="" alt="">
+    <p>Tipo</p>
+    <select name="type" class="type">
+      <option value="Carne">Carne</option>
+      <option value="Pollo">Pollo</option>
+      <option value="Vegetariano">Vegetariano</option>
+    </select>
+    <p>Adicional</p>
+    <select name="additional" class="additional">
+      <option value="Ambos">Ambos</option>
+      <option value="Huevo">Huevo</option>
+      <option value="Ninguno">Ninguno</option>
+      <option value="Queso">Queso</option>
+    </select>
+  </div>
+  <div class="containerSubTotal">
+    <p>Subtotal</p>
+    <p></p>
+    <input type="submit" class="buttonAddOptions" id="buttonAddOptions" value="Añadir" 
+        routerLink="/carta" routerLinkActive="activebutton">
+  </div>
 </div>

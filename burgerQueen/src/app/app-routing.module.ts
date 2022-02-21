@@ -3,16 +3,24 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'ingreso',
-    loadChildren: () => import('./ingreso/ingreso.module').then(m => m.IngresoModule)
-  },
-  {
-    path: 'mesero',
-    loadChildren: () => import('./mesero/mesero.module').then(m => m.MeseroModule)
-  },
-  {
-    path: 'cocinero',
-    loadChildren: () => import('./cocinero/cocinero.module').then(m => m.CocineroModule)
+    path:'',
+    children:[
+      {
+        path:'', redirectTo:'/ingreso', pathMatch:'full',
+      },
+      {
+        path: 'ingreso',
+        loadChildren: () => import('./ingreso/ingreso.module').then(m => m.IngresoModule)
+      },
+      {
+        path: 'cocinero',
+        loadChildren: () => import('./cocinero/cocinero.module').then(m => m.CocineroModule)
+      },
+      {
+        path: 'mesero',
+        loadChildren: () => import('./mesero/mesero.module').then(m => m.MeseroModule)
+      }
+    ]
   }
 ];
 

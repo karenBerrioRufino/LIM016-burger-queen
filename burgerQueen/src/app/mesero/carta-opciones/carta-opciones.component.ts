@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./carta-opciones.component.scss']
 })
 export class CartaOpcionesComponent implements OnInit {
-  @Input() nombreProducto: string = 'Hamburguesa simple';
+  // @Input() 
   constructor() { }
 
   ngOnInit(): void {
