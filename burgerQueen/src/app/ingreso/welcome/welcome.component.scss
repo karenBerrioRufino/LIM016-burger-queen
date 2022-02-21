@@ -4,9 +4,17 @@ $color-marron: #3C2213;
 $color-blanco: #fff;
 
 .mainContainer{
+<<<<<<< HEAD
+  background-image: url(../../../assets/imagenes/img-login-welcome/fondo-body.jpg);
+  // background-size:100% 100%;
+  // background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+=======
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url(../../../assets/imagenes/img-login-welcome/fondo-body.jpg);
   background-size:100% 100%;
   background-repeat: no-repeat;
+>>>>>>> 44b0e5673fa323120685804b887900d4d2e33e91
   display: flex;
   align-items: center;
   justify-content: center;

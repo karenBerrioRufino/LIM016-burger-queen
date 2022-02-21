@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
-import { IngresoRoutingModule } from './ingreso-routing.module';
+import { IngresoRoutingModule } from './ingreso-routing.module'
+
+import { MeseroModule } from '../mesero/mesero.module';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule} from '@angular/forms';
@@ -39,6 +41,7 @@ import { AdministradorComponent } from './administrador/administrador.component'
     AngularFireModule.initializeApp(environment.firebaseConfig),
     IngresoRoutingModule,
     SharedModule,
+    MeseroModule,
     FormsModule,
     ReactiveFormsModule,
 >>>>>>> bd93e332c45284a61cc99798bf7222f5bacfaf25
