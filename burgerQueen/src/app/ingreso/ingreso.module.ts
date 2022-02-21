@@ -11,16 +11,12 @@ import { ReactiveFormsModule} from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire/compat';
 
-
 import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-<<<<<<< HEAD
-import { MeseroModule } from '../mesero/mesero.module';
-=======
+
 import { environment } from 'src/environments/environment';
 import { AdministradorComponent } from './administrador/administrador.component';
 
->>>>>>> bd93e332c45284a61cc99798bf7222f5bacfaf25
 
 
 @NgModule({
@@ -31,12 +27,6 @@ import { AdministradorComponent } from './administrador/administrador.component'
   ],
   imports: [
     CommonModule,
-<<<<<<< HEAD
-    SharedModule,
-    IngresoRoutingModule,
-    MeseroModule,
-    RouterModule,
-=======
     RouterModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     IngresoRoutingModule,
@@ -44,7 +34,6 @@ import { AdministradorComponent } from './administrador/administrador.component'
     MeseroModule,
     FormsModule,
     ReactiveFormsModule,
->>>>>>> bd93e332c45284a61cc99798bf7222f5bacfaf25
   ],
   exports:[
     LoginComponent,

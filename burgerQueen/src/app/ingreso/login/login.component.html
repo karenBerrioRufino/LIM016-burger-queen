@@ -1,34 +1,18 @@
 <div class="containerLogin" id="containerLogin">
   <div class="divLogin" id="divLogin">
     <h2>Inicia Sesión</h2>
-<<<<<<< HEAD
     <input type="text" placeholder="Correo Electrónico" id="emailLogin" class="emailLogin">
     <select name="" id="selectLogin" [(ngModel)]="rol">
       <option value="Cocinero">Cocinero</option>
       <option value="Mesero">Mesero</option>
       <option value="Admin">Admin</option>
     </select>
-=======
-    <select name="typeUser" id="" placeholder="tipo" autofocus>
-      <option value="t" selected disabled
-      >Seleccione tipo de usuario</option>
-      <option value="A"> Administrador</option>
-      <option value="C">Cocinero</option>
-      <option value="M">Mesero</option>
-    </select>
-    <input type="email" placeholder="Correo Electrónico" id="emailLogin" class="emailLogin" [(ngModel)]="usuario.email">
->>>>>>> bd93e332c45284a61cc99798bf7222f5bacfaf25
     <div>
       <span class='iconEye'><i class="fas fa-eye-slash"></i></span>
       <input type="password" placeholder="Contraseña" id="passLogin" class="passLogin" [(ngModel)]="usuario.password">
     </div>
-<<<<<<< HEAD
-    <input type="submit" class="buttonLogin" id="buttonLogin" value="Ingresar" 
-     routerLinkActive="activebutton" (click)="multiple()">
-=======
     <a [class]="'forgetPassword'">Olvide mi contraseña</a>
     <input type="submit" [class]="['buttonLogin']" routerLink="/administrador" routerLinkActive="activebutton"  value="Ingresar" (click)="ingresar()">
     <input type="submit" [class]="['buttonLoginWithGoogle']" routerLink="/administrador" routerLinkActive="activebutton"  value="Google" (click)="ingresar()">
->>>>>>> bd93e332c45284a61cc99798bf7222f5bacfaf25
   </div>
 </div>
