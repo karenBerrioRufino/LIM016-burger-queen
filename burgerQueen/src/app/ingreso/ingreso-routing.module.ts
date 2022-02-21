@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
 import { CartaComponent } from '../mesero/carta/carta.component'; 
+import { CartaOpcionesComponent } from '../mesero/carta-opciones/carta-opciones.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: '', component: WelcomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'carta', component: CartaComponent },
+      { path: 'carta/opciones', component: CartaOpcionesComponent },
       { path: 'notFound', component: PageNotFoundComponent },
       { path: '**', redirectTo: 'notFound', pathMatch: 'full' },
     ]

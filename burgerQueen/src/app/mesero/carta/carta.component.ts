@@ -8,7 +8,9 @@ import Data from '../../../assets/json/menu.json'
 })
 export class CartaComponent implements OnInit {
   carta: any = Data.carta;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
