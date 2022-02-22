@@ -10,7 +10,6 @@
       <span onclick="document.getElementById('btnModal').style.display='none'" [class]="['btn','display-topright']">&times;
       </span>
     </header>
-    
     <form [formGroup]="form" (ngSubmit)="crearUsuario()" [class]="['formRegisterUser']">
       <div class="modal-contenido">
         <div class="column">
@@ -18,9 +17,9 @@
             <label for="">Nombres</label>
             <input type="text" name="" formControlName="nombres" placeholder="Pedro Julian"> 
             <label for="">Apellido Paterno</label>
-            <input type="text" formControlName="apellidoPaterno">
+            <input type="text" formControlName="apellidoPaterno" placeholder="Flores">
             <label for="">Apellido Materno</label>
-            <input type="text" formControlName="apellidoMaterno">
+            <input type="text" formControlName="apellidoMaterno" placeholder="Ricse">
           </div>
           <div [class]="['column2']">
               <Label>Tipo de usuario</Label>
@@ -28,10 +27,10 @@
                 <input type="radio" name="" id="">
                 <label for="">Cocinero</label>
                 <input type="radio" name="" id="">
-                <label for="">Mesero</label>
+                <label for="" aria-checked="true">Mesero</label>
               </div>
-              <label for="">Usuario</label>
-              <input type="text" name="" id="">
+              <label for="">Email</label>
+              <input type="email" name="" id="">
               <label for="">Password</label>
               <input type="password" name="" id="">
           </div>
@@ -40,11 +39,9 @@
           <button type="submit">Crear</button>
         </div>      
       </div>
-    
     </form>
+  </div>
 </div>
-
-
 <table>
   <thead>
     <th>N°</th>
