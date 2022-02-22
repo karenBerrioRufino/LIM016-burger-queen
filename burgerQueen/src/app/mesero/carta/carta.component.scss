@@ -1,0 +1,126 @@
+$color-melon: #f1d5bb;
+$color-marron: #3B2213;
+$color-rosa: #FF8087;
+
+.carta{ 
+    display: flex;
+    flex-direction: column;
+    width: 83vw;
+    height: 90vh;
+    position: absolute;
+    left: 15vw;
+    right: 2vw;
+    margin: 5vh 0vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/*---------------------*/
+
+section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around flex-start;
+    width: 90%;
+    margin: auto;
+}
+
+
+/*SUBTITLE*/
+.subtitle{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 2px 5px 2px;
+}
+.subtitle > h2 {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 24px;
+    font-weight: 100;
+}
+
+/*---------------------*/
+
+hr{
+    width: 160px;
+    margin: 2px;
+    height: 4px;
+    background-color: $color-melon;
+    border-style: none;
+}
+
+
+/*DISHES AND DRINKS*/
+.item{
+    display: flex;
+    flex-direction: column;
+    width: 160px;
+    margin: 5px 5px 0px 5px;
+}
+
+/*---------------------*/
+
+.nameAndPrice{
+    display: flex;
+    flex-direction: column !important;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    border-width: 1.5px;
+    border-style: solid;
+    border-color: $color-melon;
+    margin: 10px 0;
+}
+h3, h4{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+}
+h4{
+    font-size: 14px;
+    padding: 4px 4px 0px 4px;
+}
+h3{
+    font-size: 20px;
+    font-weight: 700;
+    color: $color-rosa;
+    align-self: flex-end;
+    padding: 0px 4px 1px 4px;
+}
+
+/*---------------------*/
+
+img{
+    width: 100%;
+    height: 160px;
+}
+
+/*---------------------*/
+
+input{
+    width: 100%;
+    height: 40px;
+    margin: 10px 0px 15px 0px;
+    border-style: none;
+    background-color: $color-marron;
+    color: whitesmoke;
+    font-size: 14px;
+}
+input:hover{
+    background-color: $color-rosa;
+}
+
+@media (max-width: 500px) {
+    .carta{ 
+        width: 95vw;
+        height: 85vh;
+        position: initial;
+        margin: 12px auto;
+    }
+    section{
+        width: 95%;
+        justify-content: center !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+  }
