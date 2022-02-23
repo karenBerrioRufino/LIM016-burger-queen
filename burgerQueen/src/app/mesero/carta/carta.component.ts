@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import Data from '../../../assets/json/menu.json'
+import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
+import Data from '../../../assets/json/menu.json';
 
 @Component({
   selector: 'app-carta',
@@ -8,7 +8,12 @@ import Data from '../../../assets/json/menu.json'
 })
 export class CartaComponent implements OnInit {
   carta: any = Data.carta;
-  prueba: string = '';
+  @ViewChild('name') name!: ElementRef<HTMLElement>;
+
+  @HostListener('document:click', ['$event.target'])
+  clicked($event: HTMLElement): void{
+    console.log($event.classList.toString())
+  }
 
   constructor() {
   }
@@ -17,17 +22,9 @@ export class CartaComponent implements OnInit {
   }
 
   getTitleHamburger() {
-    //const titles: any = document.querySelectorAll('.hamb')! as NodeListOf<HTMLDivElement>;
     const btns: any = document.querySelectorAll('.btnOptions')! as NodeListOf<HTMLButtonElement>;
-    
-    Array.from(btns).forEach((btn: any) => {
-      btn.addEventListener('click', () => {
-        return console.log(btn.parentNode.firstChild.innerText);
-      });
+    Array.from(btns).map((btn: any) => {
+        //return console.log(btn.parentNode.firstChild.innerText);
     });
-
-    //console.log('2. button: ', Array.from(btns));
-    //this.prueba = Array.from(titles).map((t: any) => t.innerText)[1];
-    //console.log('1. title: ', Array.from(title).map((t: any) => t.innerText));
   }
 }
