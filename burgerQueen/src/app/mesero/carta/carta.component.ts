@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, /*HostListener, ViewChild, ElementRef*/ } from '@angular/core';
 import Data from '../../../assets/json/menu.json';
 
 @Component({
@@ -8,12 +8,12 @@ import Data from '../../../assets/json/menu.json';
 })
 export class CartaComponent implements OnInit {
   carta: any = Data.carta;
-  @ViewChild('name') name!: ElementRef<HTMLElement>;
+/*   @ViewChild('name') name!: ElementRef<HTMLElement>;
 
   @HostListener('document:click', ['$event.target'])
   clicked($event: HTMLElement): void{
     console.log($event.classList.toString())
-  }
+  } */
 
   constructor() {
   }
@@ -21,10 +21,11 @@ export class CartaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getTitleHamburger() {
-    const btns: any = document.querySelectorAll('.btnOptions')! as NodeListOf<HTMLButtonElement>;
-    Array.from(btns).map((btn: any) => {
+  getTitleHamburger(itemCarta: any) {
+    console.log(itemCarta);
+    //const btns: any = document.querySelectorAll('.btnOptions')! as NodeListOf<HTMLButtonElement>;
+    //Array.from(btns).map((btn: any) => {
         //return console.log(btn.parentNode.firstChild.innerText);
-    });
+    //});
   }
 }

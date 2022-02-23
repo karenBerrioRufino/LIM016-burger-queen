@@ -5,13 +5,13 @@
     </div>
     <section>
         <div *ngFor="let hamburguesa of carta.hamburguesas">
-            <div class="item hamb">
+            <div class="item">
                 <div class="nameAndPrice">
-                    <h4 class="title" #name> {{ hamburguesa.title }} </h4>
+                    <h4 class="title"> {{ hamburguesa.title }} </h4>
                     <h3>{{ 'S/.' + hamburguesa.price }} </h3>
                 </div>
                 <img src="../../../assets/imagenes/img-carta/{{ hamburguesa.img }}">
-                <input class="btnOptions" type="button" value="Ver opciones" (click) = "getTitleHamburger()" routerLink="/carta/opciones" routerLinkActive="activebutton">
+                <input class="btnOptions" type="button" value="Ver opciones" (click) = "getTitleHamburger(hamburguesa)" routerLink="/carta/opciones" routerLinkActive="activebutton">
             </div>
         </div>
 

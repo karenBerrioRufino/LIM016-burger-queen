@@ -5,6 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './carta-opciones.component.html',
   styleUrls: ['./carta-opciones.component.scss']
 })
+
 export class CartaOpcionesComponent implements OnInit {
   // @Input() 
 
