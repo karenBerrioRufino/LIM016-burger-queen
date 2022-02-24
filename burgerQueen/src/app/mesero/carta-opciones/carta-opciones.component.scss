@@ -12,7 +12,9 @@ h2{
 .containerOptions{
   border-style: 3px solid #F1D5BB;
   display: flex;
-  flex-direction: column;
+  flex-direction: column !important;
+  align-items: center;
+  justify-content: center;
 }
 .containerOptions p{
   font-size: 20px;
@@ -46,4 +48,19 @@ h2{
   padding: 5px;
   margin: 10px 0px;
   font-size: 20px;
+}
+.divOptions{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.selects{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.imgHamburger{
+  width: 180px;
+  height: 180px;
 }
