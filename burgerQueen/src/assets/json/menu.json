@@ -7,14 +7,14 @@
       {
         "title": "Hamburguesa simple",
         "price": 10,
-        "tipe": ["Carne", "Pollo", "Vegetariana"],
+        "type": ["Carne", "Pollo", "Vegetariana"],
         "extra": ["Huevo", "Queso", "Jamon", "Ninguno", "Todo"],
         "img": "simple.jpg"
       },
       {
         "title": "Hamburguesa doble",
         "price": 15,
-        "tipe": ["Carne", "Pollo", "Vegetariana"],
+        "type": ["Carne", "Pollo", "Vegetariana"],
         "extra": ["Huevo", "Queso", "Jamon", "Ninguno", "Ambos"],
         "img": "doble.jpg"
       }
