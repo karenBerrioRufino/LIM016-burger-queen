@@ -1,4 +1,5 @@
 import { Component, OnInit, /*EventEmitter, Output*/} from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
 import Data from '../../../assets/json/menu.json';
 
 @Component({
@@ -10,17 +11,13 @@ import Data from '../../../assets/json/menu.json';
 export class CartaComponent implements OnInit {
   carta: any = Data.carta;
 
-  // @Output()
-  // itemCartaData: EventEmitter<object> = new EventEmitter<object>();
-
-  constructor() {
+  constructor(public productService: ProductService) {
   }
 
   ngOnInit(): void {
   }
 
   getHamburgerData(dataHamburguesa: any) {
-    // this.itemCartaData.emit(dataHamburguesa);
-    console.log(dataHamburguesa);
+    this.productService.disparador.next(dataHamburguesa);
   }
 }
