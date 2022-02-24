@@ -2,20 +2,19 @@
   <h2>OPCIONES</h2>
   <div class="containerOptions">
     <p>{{ title }}</p>
-    <img src="" alt="">
-    <p>Tipo</p>
-    <select name="type" class="type">
-      <option value="Carne">Carne</option>
-      <option value="Pollo">Pollo</option>
-      <option value="Vegetariano">Vegetariano</option>
-    </select>
-    <p>Adicional</p>
-    <select name="additional" class="additional">
-      <option value="Ambos">Ambos</option>
-      <option value="Huevo">Huevo</option>
-      <option value="Ninguno">Ninguno</option>
-      <option value="Queso">Queso</option>
-    </select>
+    <div class="divOptions">
+      <img src="../../../assets/imagenes/img-carta/{{imgHamburger}}" alt="Hamburguesa" class="imgHamburger">
+      <div class="selects">
+          <p>Tipo</p>
+        <select name="type" class="type">
+          <option *ngFor="let type of typeHamburger"> {{type}}</option>
+        </select>
+        <p>Adicional</p>
+        <select name="additional" class="additional">
+          <option *ngFor="let aditional of aditionalHamburger">{{aditional}}</option>
+        </select>
+      </div>
+    </div>
   </div>
   <div class="containerSubTotal">
     <p>Subtotal</p>
