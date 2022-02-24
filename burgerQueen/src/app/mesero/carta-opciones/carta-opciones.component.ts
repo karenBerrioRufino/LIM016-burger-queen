@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-carta-opciones',
@@ -7,11 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class CartaOpcionesComponent implements OnInit {
-  @Input() hamburgerData: string = '';
-
-  constructor() { }
+  public title: any;
+  public price: any;
+  
+  constructor(public productService: ProductService) { }
 
   ngOnInit(): void {
+    this.title = this.productService.disparador.getValue().title;
+    this.price = this.productService.disparador.getValue().price;
   }
 
 }
