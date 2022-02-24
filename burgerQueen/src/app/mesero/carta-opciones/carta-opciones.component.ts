@@ -7,9 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class CartaOpcionesComponent implements OnInit {
-  // @Input() 
-
-  nombre_producto: string = 'Hamburguesa simple';
+  @Input() hamburgerData: string = '';
 
   constructor() { }
 
