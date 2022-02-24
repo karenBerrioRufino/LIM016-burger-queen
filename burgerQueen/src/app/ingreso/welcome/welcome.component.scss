@@ -7,6 +7,8 @@ $color-blanco: #fff;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url(../../../assets/imagenes/img-login-welcome/fondo-body.jpg);
   background-size:100% 100%;
   background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
