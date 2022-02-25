@@ -1,3 +1,4 @@
+<i class="icon-button fa-light fa-circle-xmark"></i>
 <div class="carta">
     <div class="subtitle">
         <h2>PLATOS</h2>
@@ -8,7 +9,7 @@
             <div class="item">
                 <div class="nameAndPrice">
                     <h4 class="title"> {{ hamburguesa.title }} </h4>
-                    <h3>{{ 'S/.' + hamburguesa.price }} </h3>
+                    <h3>S/.{{ hamburguesa.price }} </h3>
                 </div>
                 <img src="../../../assets/imagenes/img-carta/{{ hamburguesa.img }}">
                 <input class="btnOptions" type="button" value="Ver opciones" (click) = "getHamburgerData(hamburguesa)" routerLink="/carta/opciones" routerLinkActive="activebutton">
@@ -19,7 +20,7 @@
             <div class="item">
                 <div class="nameAndPrice">
                     <h4> {{ sandwich.title }} </h4>
-                    <h3>{{ 'S/.' + sandwich.price }} </h3>
+                    <h3>S/.{{ sandwich.price }} </h3>
                 </div>
                 <img src="../../../assets/imagenes/img-carta/{{ sandwich.img }}">
                 <input type="button" value="Añadir">
@@ -36,7 +37,7 @@
             <div class="item">
                 <div class="nameAndPrice">
                     <h4> {{ aperitivo.title }} </h4>
-                    <h3>{{ 'S/.' + aperitivo.price }} </h3>
+                    <h3>S/.{{ aperitivo.price }} </h3>
                 </div>
                 <img src="../../../assets/imagenes/img-carta/{{ aperitivo.img }}">
                 <input type="button" value="Añadir">
@@ -53,7 +54,7 @@
             <div class="item">
                 <div class="nameAndPrice">
                     <h4> {{ bebida.title }} </h4>
-                    <h3>{{ 'S/.' + bebida.price }} </h3>
+                    <h3>S/.{{ bebida.price }} </h3>
                 </div>
                 <img src="../../../assets/imagenes/img-carta/{{ bebida.img }}">
                 <input type="button" value="Añadir">
