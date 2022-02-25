@@ -24,15 +24,15 @@
           <div [class]="['column2']">
               <Label>Tipo de usuario</Label>
               <div [class]="['rol']">
-                <input type="radio" name="" id="">
+                <input type="radio" name="rol" id="" formControlName="rol" value="Cocinero">
                 <label for="">Cocinero</label>
-                <input type="radio" name="" id="">
+                <input type="radio" name="rol" id="" formControlName="rol" value="Mesero">
                 <label for="" aria-checked="true">Mesero</label>
               </div>
               <label for="">Email</label>
-              <input type="email" name="" id="">
+              <input type="email" id="" formControlName="correo">
               <label for="">Password</label>
-              <input type="password" name="" id="">
+              <input type="password" id="" formControlName="password">
           </div>
         </div>
         <div class="botones" >
@@ -48,7 +48,6 @@
     <th>Apellidos y Nombres</th>
     <th>Telefono</th>
     <th>Rol</th>
-    <th>Usuario</th>
     <th>Correo</th>
     <th>Contraseña</th>
     <th>Opciones</th>
