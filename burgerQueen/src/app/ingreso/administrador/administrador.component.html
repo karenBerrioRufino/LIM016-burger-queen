@@ -20,36 +20,72 @@
             <input type="text" formControlName="apellidoPaterno" placeholder="Flores">
             <label for="">Apellido Materno</label>
             <input type="text" formControlName="apellidoMaterno" placeholder="Ricse">
+            <label for="">Telefono</label>
+            <input type="text" formControlName="telefono" placeholder="994427826">
           </div>
           <div [class]="['column2']">
-              <Label>Tipo de usuario</Label>
-              <div [class]="['rol']">
-                <input type="radio" name="rol" id="" formControlName="rol" value="Cocinero">
-                <label for="">Cocinero</label>
-                <input type="radio" name="rol" id="" formControlName="rol" value="Mesero">
-                <label for="" aria-checked="true">Mesero</label>
+            <Label for="">Rol</Label>
+            <div [class]="['rol']">
+              <div class="inputRol">
+                <input type="radio" name="rol" id="" formControlName="rol" value="Administrador">
+                <label for=""> Administrador</label>
               </div>
-              <label for="">Email</label>
-              <input type="email" id="" formControlName="correo">
-              <label for="">Password</label>
-              <input type="password" id="" formControlName="password">
+              <div class="inputRol">
+                <input type="radio" name="rol" id="" formControlName="rol" value="Cocinero">
+                <label for=""> Cocinero</label>  
+              </div>
+              <div class="inputRol">
+                <input type="radio" name="rol" id="" formControlName="rol" value="Mesero">
+                <label for="" aria-checked="true"> Mesero</label>
+              </div>
+            </div>
+            <label for="">Email</label>
+            <input type="email" id="" formControlName="correo" placeholder="paquita@gmail.com">
+            <label for="">Password</label>
+            <input type="password" id="" formControlName="contraseña" placeholder=" betinaB06$">
+            <div [class]="'btnCreateUser'" >
+              <button type="submit" [class]="['btnModal' ,'btnCreate']">Crear</button>
+              <button type="button" [class]="['btnModal', 'btnClose']">Cancelar</button>
+            </div>
           </div>
+          
         </div>
-        <div class="botones" >
-          <button type="submit">Crear</button>
-        </div>      
+              
       </div>
     </form>
   </div>
 </div>
-<table>
+<table [class]="'table'">
   <thead>
     <th>N°</th>
-    <th>Apellidos y Nombres</th>
+    <th>Apellido Paterno</th>
+    <th>Apellido Materno</th>
     <th>Telefono</th>
     <th>Rol</th>
     <th>Correo</th>
     <th>Contraseña</th>
     <th>Opciones</th>
   </thead>
+  <tbody >
+    <tr>
+      <!-- <td>{{nombres}}</td>
+      <td>{{apellidoPaterno}}</td>
+      <td>{{apellidoMaterno}}</td>
+      <td>{{telefono}}</td>
+      <td>{{rol}}</td>
+      <td>{{correo}}</td>
+      <td>{{contraseña}}</td> -->
+      <td>
+
+      </td>
+      
+    </tr>
+    
+  </tbody>
 </table>
+
+<!-- <ul>
+  <li class="text" *ngFor="let item of items | async">
+    {{item.name}}
+  </li>
+</ul> -->
