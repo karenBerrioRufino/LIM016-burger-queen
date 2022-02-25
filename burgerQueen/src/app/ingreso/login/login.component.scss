@@ -3,7 +3,6 @@ $color-melon: #f1d5bb;
 $color-marron: #3B2213;
 $color-blanco: #ffffff;
 $color-pink: #FF8087;
-$color-primary:#007bff;
 $color-grisligth:#6c757d;
 $color-gris:#303438;
 $color-danger:#dc3545;
@@ -50,20 +49,9 @@ h2{
   background-color:$color-blanco;
   padding: 0.75rem;
   color: $color-gris;
+  box-shadow: 3px 3px 3px gray;
 }
-
-select, option{
-  border: 1px solid $color-blanco;
-  border-radius: 0.5rem;
-  width: 15rem;
-  height: 2rem;
-  background-color:$color-blanco;
-  color: $color-gris;
-  padding: 0.5rem;
-  
-}
-
-.buttonLogin,.buttonLoginWithGoogle{
+.buttonLogin{
   display: block;
   border: none;
   border-radius: 0.5rem;
@@ -71,16 +59,11 @@ select, option{
   height: 2rem;
   font-weight: 700;
   mix-blend-mode: darken;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.buttonLogin{
+  box-shadow: 3px 3px 3px gray;
   color: $color-melon;
   background-color: $color-marron;
 }
-.buttonLoginWithGoogle{
-  background-color:$color-primary;
-  color: $color-blanco;
-}
+
 .forgetPassword{
   display:block;
   color: $color-marron;
