@@ -16,12 +16,5 @@ export class AuthService {
       return null;
     }
   }
-  // async loginWithGoogle(rolUser: string, email:string, password:string) {
-  //   try {
-  //     return await this.authWithAngularFirebase.signInWithPopup(firebase.auth.GoogleProvider());
-  //   } catch (error) {
-  //     console.log("error de login",error);
-  //     return null;
-  //   }
-  // }
+
 }
