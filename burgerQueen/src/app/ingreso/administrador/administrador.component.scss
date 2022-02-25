@@ -12,7 +12,7 @@ $color-danger:#dc3545;
   justify-content: space-evenly;
   gap: 1rem;
   margin:auto;
-  padding: 1rem;
+  padding: 0.5rem;
   
 }
 .column{
@@ -22,10 +22,13 @@ $color-danger:#dc3545;
   margin:auto;
   padding: 1rem;
 }
-fieldset{
-  padding: 0.5rem;
+.rol{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.rol>label{
+
+.inputRol>label{
   padding: 0 0.5rem;
   font-size: 0.8rem;
 }
@@ -41,11 +44,35 @@ fieldset{
   font-size: 0.8rem;
   font-weight: 600;
 }
-input[type='text'], input[type='password']{
+input[type='text'],input[type='email'], input[type='password']{
   border: 1px solid $color-melon;
   border-radius: 0.5rem;
   padding: 0.5rem;
 }
+.btnCreateUser{
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+}
+.btnModal{
+  display: inline-block;
+  color: $color-melon;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 700;
+  mix-blend-mode: darken;
+  box-shadow: 3px 3px 3px gray;
+  
+}
+.btnCreate{
+  background-color: $color-primary;
+}
+.btnClose{
+  background-color: $color-danger;
+}
+
+
 // modal
 .modal{
   font-family: 'Mulish', sans-serif;
@@ -64,7 +91,6 @@ input[type='text'], input[type='password']{
   margin:auto;
   background-color:#fff;
   position:relative;
-  padding:0;
   outline:0;
   width:30rem;
 }
