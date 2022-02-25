@@ -2,17 +2,11 @@
   <div class="divLogin" id="divLogin">
     <h2>Inicia Sesión</h2>
     <input type="text" placeholder="Correo Electrónico" id="emailLogin" class="emailLogin">
-    <select name="" id="selectLogin" [(ngModel)]="rol">
-      <option value="Cocinero">Cocinero</option>
-      <option value="Mesero">Mesero</option>
-      <option value="Admin">Admin</option>
-    </select>
     <div>
       <span class='iconEye'><i class="fas fa-eye-slash"></i></span>
       <input type="password" placeholder="Contraseña" id="passLogin" class="passLogin" [(ngModel)]="usuario.password">
     </div>
     <a [class]="'forgetPassword'">Olvide mi contraseña</a>
     <input type="submit" [class]="['buttonLogin']" routerLink="/administrador" routerLinkActive="activebutton"  value="Ingresar" (click)="ingresar()">
-    <input type="submit" [class]="['buttonLoginWithGoogle']" routerLink="/administrador" routerLinkActive="activebutton"  value="Google" (click)="ingresar()">
   </div>
 </div>
