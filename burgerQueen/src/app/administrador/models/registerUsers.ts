@@ -6,7 +6,7 @@ export class RegisterUsers{
   telefono:number;
   rol:string;
   correo:string;
-  contraseña:string;
+  password:string;
   
   constructor(
     nombres:string,
@@ -15,7 +15,7 @@ export class RegisterUsers{
     telefono:number,
     rol:string,
     correo:string,
-    contraseña:string)
+    password:string)
     
   {
 
@@ -25,7 +25,7 @@ export class RegisterUsers{
     this.telefono = telefono;
     this.rol = rol;
     this.correo = correo;
-    this.contraseña = contraseña;
+    this.password = password;
   }
 
 }

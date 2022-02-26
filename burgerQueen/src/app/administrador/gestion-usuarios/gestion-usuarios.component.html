@@ -1,4 +1,3 @@
-<p>gestion-usuarios works!</p>
 <section>
   <h2>Creación de usuarios</h2>
   <button onclick="document.getElementById('btnModal').style.display='block'" >Nuevo usuario</button>
@@ -7,8 +6,8 @@
 <div class="modal" id="btnModal">
   <div class="modal-content">
     <header class="header-container">Crear usuario
-      <span onclick="document.getElementById('btnModal').style.display='none'" [class]="['btn','display-topright']">&times;
-      </span>
+      <span onclick="document.getElementById('btnModal').style.display='none'" 
+      [class]="['btn','display-topright']">&times;</span>
     </header>
     <form [formGroup]="form" (ngSubmit)="crearUsuario()" [class]="['formRegisterUser']">
       <div class="modal-contenido">
@@ -26,66 +25,57 @@
           <div [class]="['column2']">
             <Label for="">Rol</Label>
             <div [class]="['rol']">
-              <div class="inputRol">
-                <input type="radio" name="rol" id="" formControlName="rol" value="Administrador">
-                <label for=""> Administrador</label>
-              </div>
-              <div class="inputRol">
-                <input type="radio" name="rol" id="" formControlName="rol" value="Cocinero">
-                <label for=""> Cocinero</label>  
-              </div>
-              <div class="inputRol">
-                <input type="radio" name="rol" id="" formControlName="rol" value="Mesero">
-                <label for="" aria-checked="true"> Mesero</label>
-              </div>
+              <label><input type="radio" name="rol" formControlName="rol" value="Administrador">
+              Administrador</label>
+              <label><input type="radio" name="rol" formControlName="rol" value="Cocinero">
+              Cocinero</label>   
+              <label><input type="radio" name="rol" formControlName="rol" value="Mesero">
+              Mesero</label> 
             </div>
             <label for="">Email</label>
             <input type="email" id="" formControlName="correo" placeholder="paquita@gmail.com">
             <label for="">Password</label>
-            <input type="password" id="" formControlName="contraseña" placeholder=" betinaB06$">
+            <input type="password" id="" formControlName="password" placeholder=" betinaB06$">
             <div [class]="'btnCreateUser'" >
               <button type="submit" [class]="['btnModal' ,'btnCreate']">Crear</button>
               <button type="button" [class]="['btnModal', 'btnClose']">Cancelar</button>
             </div>
           </div>
-          
-        </div>
-              
+        </div>  
       </div>
     </form>
   </div>
 </div>
+
 <table [class]="'table'">
   <thead>
-    <th>N°</th>
+    <th>Nombres</th>
     <th>Apellido Paterno</th>
     <th>Apellido Materno</th>
     <th>Telefono</th>
     <th>Rol</th>
     <th>Correo</th>
-    <th>Contraseña</th>
+    <th>password</th>
     <th>Opciones</th>
   </thead>
   <tbody >
-    <tr>
-      <!-- <td>{{nombres}}</td>
-      <td>{{apellidoPaterno}}</td>
-      <td>{{apellidoMaterno}}</td>
-      <td>{{telefono}}</td>
-      <td>{{rol}}</td>
-      <td>{{correo}}</td>
-      <td>{{contraseña}}</td> -->
+    <tr *ngFor="let usuario of listarUsuarios">
+      <td>{{usuario.nombres}}</td>
+      <td>{{usuario.apellidoPaterno}}</td>
+      <td>{{usuario.apellidoMaterno}}</td>
+      <td>{{usuario.telefono}}</td>
+      <td>{{usuario.rol}}</td>
+      <td>{{usuario.correo}}</td>
+      <td>{{usuario.password}}</td>
       <td>
-
+        <span><i class="fa-solid fa-pen-to-square"></i></span>
       </td>
-      
+
     </tr>
-    
   </tbody>
 </table>
-
-<!-- <ul>
-  <li class="text" *ngFor="let item of items | async">
-    {{item.name}}
-  </li>
-</ul> -->
+<i class="fa-solid fa-trash-can"></i>
+<i class="fa-regular fa-circle-plus"></i>
+<i class="fa-solid fa-circle-plus"></i>
+<i class="fa-solid fa-user-plus"></i>
+<i class="fa-regular fa-user-plus"></i>
