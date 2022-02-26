@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 
 export class CartaOpcionesComponent implements OnInit {
+  //son las propiedades que vamos ajalar para imprimir en HTML
   public title: any;
   public price: any;
   public typeHamburger: any; //el array donde se va a buscar los datos

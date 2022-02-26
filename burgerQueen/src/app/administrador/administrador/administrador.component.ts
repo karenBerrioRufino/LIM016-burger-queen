@@ -3,9 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterUsers } from '../models/registerUsers';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { ProductService } from 'src/app/services/product.service';
-
-
+import { createUsersService } from 'src/app/services/create-users.service';
 
 @Component({
   selector: 'app-administrador',
@@ -17,7 +15,7 @@ export class AdministradorComponent implements OnInit {
   form:FormGroup;
   usuarios: Observable<any[]>;
 
-  constructor(firestore: AngularFirestore, private fb:FormBuilder, private userService: ProductService) {
+  constructor(firestore: AngularFirestore, private fb:FormBuilder, private userService: createUsersService) {
 
     this.usuarios = firestore.collection('usuarios').valueChanges();
 
@@ -34,6 +32,7 @@ export class AdministradorComponent implements OnInit {
   
   ngOnInit(): void {
   }
+  //para el btn Nuevo Uusario
   crearUsuario(){
     console.log(this.form);
     const USUARIO: RegisterUsers = {

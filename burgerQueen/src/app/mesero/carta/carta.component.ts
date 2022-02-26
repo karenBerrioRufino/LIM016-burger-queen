@@ -10,14 +10,12 @@ import Data from '../../../assets/json/menu.json';
 
 export class CartaComponent implements OnInit {
   carta: any = Data.carta;
-
   constructor(public productService: ProductService) {
   }
-
   ngOnInit(): void {
   }
-
   getHamburgerData(dataHamburguesa: any) {
+    //para enviar el dato a cartaOpciones
     this.productService.disparador.next(dataHamburguesa);
   }
 }
