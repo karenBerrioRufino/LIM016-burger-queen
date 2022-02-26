@@ -4,10 +4,15 @@ $color-rosa: #FF8087;
 
 .btnIcon{
     color: $color-marron;
-    font-size: 2em;
+    font-size: 2.4em;
     position: absolute;
-    right: 40px;
+    right: 60px;
     top: 15px;
+    z-index: 2;
+}
+
+.rotate{
+    transform: rotate(180deg);
 }
 
 .carta{ 
@@ -21,8 +26,13 @@ $color-rosa: #FF8087;
     margin: 5vh 0vh;
     overflow-y: scroll;
     overflow-x: hidden;
+    z-index: 1;
 
-    section{
+    #cartaSection2{
+        display: none;
+    }
+
+    .itemsSection{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -30,6 +40,13 @@ $color-rosa: #FF8087;
         width: 90%;
         margin: auto;
     }
+}
+
+.show{
+    display: block !important;
+}
+.hidden{
+    display: none !important;
 }
 
 /*---------------------*/

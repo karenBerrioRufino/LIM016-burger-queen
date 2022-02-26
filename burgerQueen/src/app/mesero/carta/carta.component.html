@@ -1,65 +1,72 @@
-<i class="btnIcon fa-solid fa-circle-arrow-right" (click) = "changeSection()"></i>
+<div class="btnIcon">
+    <i class="fa-solid fa-circle-arrow-right" [class.rotate]="booleanValue" (click)="changeSection()"></i>
+</div>
+
 <div class="carta">
-    <div class="subtitle">
-        <h2>PLATOS</h2>
-        <hr>
-    </div>
-    <section>
-        <div *ngFor="let hamburguesa of carta.hamburguesas">
-            <div class="item">
-                <div class="nameAndPrice">
-                    <h4 class="title"> {{ hamburguesa.title }} </h4>
-                    <h3>S/.{{ hamburguesa.price }} </h3>
-                </div>
-                <img src="../../../assets/imagenes/img-carta/{{ hamburguesa.img }}">
-                <input type="button" value="Ver opciones" class="btn" (click) = "getHamburgerData(hamburguesa)" 
-                routerLink="/carta/opciones" routerLinkActive="activebutton">
-            </div>
+    <section id="cartaSection1" [class.hidden]="booleanValue">
+        <div class="subtitle">
+            <h2>PLATOS</h2>
+            <hr>
         </div>
+        <section class="itemsSection">
+            <div *ngFor="let hamburguesa of carta.hamburguesas">
+                <div class="item">
+                    <div class="nameAndPrice">
+                        <h4 class="title"> {{ hamburguesa.title }} </h4>
+                        <h3>S/.{{ hamburguesa.price }} </h3>
+                    </div>
+                    <img src="../../../assets/imagenes/img-carta/{{ hamburguesa.img }}">
+                    <input type="button" value="Ver opciones" class="btn" (click)="getHamburgerData(hamburguesa)"
+                        routerLink="/carta/opciones" routerLinkActive="activebutton">
+                </div>
+            </div>
 
-        <div *ngFor="let sandwich of carta.sandwiches">
-            <div class="item">
-                <div class="nameAndPrice">
-                    <h4> {{ sandwich.title }} </h4>
-                    <h3>S/.{{ sandwich.price }} </h3>
+            <div *ngFor="let sandwich of carta.sandwiches">
+                <div class="item">
+                    <div class="nameAndPrice">
+                        <h4> {{ sandwich.title }} </h4>
+                        <h3>S/.{{ sandwich.price }} </h3>
+                    </div>
+                    <img src="../../../assets/imagenes/img-carta/{{ sandwich.img }}">
+                    <input type="button" value="Añadir" class="btn">
                 </div>
-                <img src="../../../assets/imagenes/img-carta/{{ sandwich.img }}">
-                <input type="button" value="Añadir" class="btn">
             </div>
+        </section>
+
+        <div class="subtitle">
+            <h2>APERITIVOS</h2>
+            <hr>
         </div>
+        <section class="itemsSection">
+            <div *ngFor="let aperitivo of carta.aperitivos">
+                <div class="item">
+                    <div class="nameAndPrice">
+                        <h4> {{ aperitivo.title }} </h4>
+                        <h3>S/.{{ aperitivo.price }} </h3>
+                    </div>
+                    <img src="../../../assets/imagenes/img-carta/{{ aperitivo.img }}">
+                    <input type="button" value="Añadir" class="btn">
+                </div>
+            </div>
+        </section>
     </section>
 
-    <div class="subtitle">
-        <h2>APERITIVOS</h2>
-        <hr>
-    </div>
-    <section>
-        <div *ngFor="let aperitivo of carta.aperitivos">
-            <div class="item">
-                <div class="nameAndPrice">
-                    <h4> {{ aperitivo.title }} </h4>
-                    <h3>S/.{{ aperitivo.price }} </h3>
-                </div>
-                <img src="../../../assets/imagenes/img-carta/{{ aperitivo.img }}">
-                <input type="button" value="Añadir" class="btn">
-            </div>
+    <section id="cartaSection2" [class.show]="booleanValue">
+        <div class="subtitle">
+            <h2>BEBIDAS</h2>
+            <hr>
         </div>
-    </section>
-
-    <div class="subtitle">
-        <h2>BEBIDAS</h2>
-        <hr>
-    </div>
-    <section>
-        <div *ngFor="let bebida of carta.bebidas">
-            <div class="item">
-                <div class="nameAndPrice">
-                    <h4> {{ bebida.title }} </h4>
-                    <h3>S/.{{ bebida.price }} </h3>
+        <section class="itemsSection">
+            <div *ngFor="let bebida of carta.bebidas">
+                <div class="item">
+                    <div class="nameAndPrice">
+                        <h4> {{ bebida.title }} </h4>
+                        <h3>S/.{{ bebida.price }} </h3>
+                    </div>
+                    <img src="../../../assets/imagenes/img-carta/{{ bebida.img }}">
+                    <input type="button" value="Añadir" class="btn">
                 </div>
-                <img src="../../../assets/imagenes/img-carta/{{ bebida.img }}">
-                <input type="button" value="Añadir" class="btn">
             </div>
-        </div>
+        </section>
     </section>
 </div>

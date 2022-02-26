@@ -9,6 +9,8 @@ import Data from '../../../assets/json/menu.json';
 })
 
 export class CartaComponent implements OnInit {
+  booleanValue: boolean = false;
+  numberOfClicks: number = 0;
   carta: any = Data.carta;
   constructor(public productService: ProductService) {
   }
@@ -16,7 +18,15 @@ export class CartaComponent implements OnInit {
   }
 
   changeSection(){
-    
+    if (this.numberOfClicks > 0) {
+      this.booleanValue = false;
+      this.numberOfClicks = 0;
+      console.log('derecha');
+    } else {
+      this.booleanValue = true;
+      this.numberOfClicks += 1;
+      console.log('izquierda');
+    }
   }
 
   getHamburgerData(dataHamburguesa: any) {
