@@ -1,23 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdministradorComponent } from './administrador/administrador.component';
-import { environment } from '../../environments/environment'
+import { RouterModule } from '@angular/router';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { RouterModule } from '@angular/router';
+import { environment } from 'src/environments/environment';
 //para hacer formularios reactivos
-import { ReactiveFormsModule} from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
+
+import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
 
 @NgModule({
-  declarations: [AdministradorComponent],
+  declarations: [
+    GestionUsuariosComponent
+  ],
   imports: [
     CommonModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig), //para inicializar la configuracion
-    AngularFirestoreModule,
-    ReactiveFormsModule,
+    RouterModule,
     FormsModule,
-    RouterModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
   ]
 })
 export class AdministradorModule { }

@@ -7,7 +7,7 @@ export class RegisterUsers{
   rol:string;
   correo:string;
   contraseña:string;
-
+  
   constructor(
     nombres:string,
     apellidoPaterno:string,
@@ -18,6 +18,7 @@ export class RegisterUsers{
     contraseña:string)
     
   {
+
     this.nombres = nombres;
     this.apellidoPaterno = apellidoPaterno;
     this.apellidoMaterno = apellidoMaterno;
@@ -26,4 +27,5 @@ export class RegisterUsers{
     this.correo = correo;
     this.contraseña = contraseña;
   }
+
 }
