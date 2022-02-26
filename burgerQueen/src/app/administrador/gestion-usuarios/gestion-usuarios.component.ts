@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { RegisterUsers } from '../models/registerUsers';
-import { CreateUsersService } from 'src/app/services/createUsers.service';
+import { createUsersService } from 'src/app/services/create-users.service';
 
 @Component({
   selector: 'app-gestion-usuarios',
@@ -14,8 +14,12 @@ import { CreateUsersService } from 'src/app/services/createUsers.service';
 export class GestionUsuariosComponent implements OnInit {
   form:FormGroup;
   usuarios: Observable<any[]>;
+  listarUsuarios: RegisterUsers[]=[];
+  constructor(
+    firestore: AngularFirestore,
+    private fb:FormBuilder,
+    private userService: createUsersService) {
 
-  constructor(firestore: AngularFirestore, private fb:FormBuilder, private userService: CreateUsersService) {
     this.usuarios = firestore.collection('usuarios').valueChanges();
 
     this.form = this.fb.group ({
@@ -25,15 +29,17 @@ export class GestionUsuariosComponent implements OnInit {
       telefono:['',Validators.required],
       rol:['',Validators.required],
       correo:['', Validators.required],
-      contraseña:['',Validators.required]
+      password:['',Validators.required]
     })
 
   }
 
   ngOnInit(): void {
+    this.obtenerUsuarios();
   }
 
   crearUsuario(){
+
     console.log(this.form);
     const USUARIO: RegisterUsers = {
       nombres: this.form.value.nombres,
@@ -42,7 +48,7 @@ export class GestionUsuariosComponent implements OnInit {
       telefono: this.form.value.telefono,
       rol: this.form.value.rol,
       correo: this.form.value.correo,
-      contraseña: this.form.value.contraseña,
+      password: this.form.value.password,
 
     }
     console.log(USUARIO);
@@ -54,6 +60,23 @@ export class GestionUsuariosComponent implements OnInit {
       console.log(error);
     })
      
+  }
+
+  obtenerUsuarios(){
+    this.userService.getUsers().subscribe(doc=>{
+      console.log(doc);
+      this.listarUsuarios=[];
+      doc.forEach((element: any) => {
+        this.listarUsuarios.push({
+          id:element.payload.doc.id,
+          ...element.payload.doc.data()
+        });
+        // console.log(element.payload.doc.id);
+        // console.log(element.payload.doc.data());
+        console.log(this.listarUsuarios);
+        
+      });
+    })
   }
 }
 

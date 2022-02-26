@@ -6,6 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { MeseroModule } from './mesero/mesero.module';
 import { CocineroModule } from './cocinero/cocinero.module';
 import { AppComponent } from './app.component';
+import { AdministradorModule } from './administrador/administrador.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AppComponent } from './app.component';
     SharedModule,
     MeseroModule,
     CocineroModule,
+    AdministradorModule,
     AppRoutingModule,
     
   ],
