@@ -17,6 +17,10 @@ export class CartaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  changeSection(){
+    
+  }
+
   getHamburgerData(dataHamburguesa: any) {
     this.productService.disparador.next(dataHamburguesa);
   }
