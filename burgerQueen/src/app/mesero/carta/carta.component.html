@@ -12,7 +12,7 @@
                 </div>
                 <img src="../../../assets/imagenes/img-carta/{{ hamburguesa.img }}">
                 <input class="btnOptions" type="button" value="Ver opciones" 
-                (click) = "getHamburgerData(hamburguesa)" routerLink="/carta/opciones" routerLinkActive="activebutton">
+                (click) = "getHamburgerData(hamburguesa)" routerLink="/cartaOpciones" routerLinkActive="activebutton">
             </div>
         </div>
 
@@ -23,7 +23,8 @@
                     <h3>{{ 'S/.' + sandwich.price }} </h3>
                 </div>
                 <img src="../../../assets/imagenes/img-carta/{{ sandwich.img }}">
-                <input type="button" value="Añadir">
+                <input type="button" value="Añadir" (click)="getSandwichData(sandwich)" 
+                routerLink="/pedidosMesero" routerLinkActive="activebutton">
             </div>
         </div>
     </section>
