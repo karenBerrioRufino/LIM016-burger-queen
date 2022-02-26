@@ -5,7 +5,6 @@ import { IngresoModule } from './ingreso/ingreso.module'
 import { SharedModule } from './shared/shared.module';
 import { MeseroModule } from './mesero/mesero.module';
 import { CocineroModule } from './cocinero/cocinero.module';
-
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -19,7 +18,9 @@ import { AppComponent } from './app.component';
     MeseroModule,
     CocineroModule,
     AppRoutingModule,
+    
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })

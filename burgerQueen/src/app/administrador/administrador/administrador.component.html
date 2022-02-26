@@ -1,4 +1,3 @@
-<p routerLink="/login" routerLinkActive="activebutton">administrador works!</p>
 <section>
   <h2>Creación de usuarios</h2>
   <button onclick="document.getElementById('btnModal').style.display='block'" >Nuevo usuario</button>
@@ -7,8 +6,8 @@
 <div class="modal" id="btnModal">
   <div class="modal-content">
     <header class="header-container">Crear usuario
-      <span onclick="document.getElementById('btnModal').style.display='none'" [class]="['btn','display-topright']">&times;
-      </span>
+      <span onclick="document.getElementById('btnModal').style.display='none'" 
+      [class]="['btn','display-topright']">&times;</span>
     </header>
     <form [formGroup]="form" (ngSubmit)="crearUsuario()" [class]="['formRegisterUser']">
       <div class="modal-contenido">
@@ -26,18 +25,12 @@
           <div [class]="['column2']">
             <Label for="">Rol</Label>
             <div [class]="['rol']">
-              <div class="inputRol">
-                <input type="radio" name="rol" id="" formControlName="rol" value="Administrador">
-                <label for=""> Administrador</label>
-              </div>
-              <div class="inputRol">
-                <input type="radio" name="rol" id="" formControlName="rol" value="Cocinero">
-                <label for=""> Cocinero</label>  
-              </div>
-              <div class="inputRol">
-                <input type="radio" name="rol" id="" formControlName="rol" value="Mesero">
-                <label for="" aria-checked="true"> Mesero</label>
-              </div>
+              <label><input type="radio" name="rol" formControlName="rol" value="Administrador">
+              Administrador</label>
+              <label><input type="radio" name="rol" formControlName="rol" value="Cocinero">
+              Cocinero</label>   
+              <label><input type="radio" name="rol" formControlName="rol" value="Mesero">
+              Mesero</label> 
             </div>
             <label for="">Email</label>
             <input type="email" id="" formControlName="correo" placeholder="paquita@gmail.com">
@@ -48,9 +41,7 @@
               <button type="button" [class]="['btnModal', 'btnClose']">Cancelar</button>
             </div>
           </div>
-          
-        </div>
-              
+        </div>  
       </div>
     </form>
   </div>
@@ -76,11 +67,8 @@
       <td>{{correo}}</td>
       <td>{{contraseña}}</td> -->
       <td>
-
       </td>
-      
     </tr>
-    
   </tbody>
 </table>
 
