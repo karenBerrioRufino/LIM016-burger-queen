@@ -1,24 +1,24 @@
 <div class="containerOptionsLetter">
   <h2>OPCIONES</h2>
   <div class="containerOptions">
-    <p>{{ title }}</p>
+    <p>{{ titleHamburger }}</p>
     <div class="divOptions">
-      <img src="../../../assets/imagenes/img-carta/{{imgHamburger}}" alt="Hamburguesa" class="imgHamburger">
+      <img src="../../../assets/imagenes/img-carta/{{ imgHamburger }}" alt="Hamburguesa" class="imgHamburger">
       <div class="selects">
           <p>Tipo</p>
         <select name="type" class="type">
-          <option *ngFor="let type of typeHamburger"> {{type}}</option>
+          <option *ngFor="let type of typeHamburger"> {{ type }}</option>
         </select>
         <p>Adicional</p>
         <select name="additional" class="additional">
-          <option *ngFor="let aditional of aditionalHamburger">{{aditional}}</option>
+          <option *ngFor="let aditional of aditionalHamburger">{{ aditional }}</option>
         </select>
       </div>
     </div>
   </div>
   <div class="containerSubTotal">
     <p>Subtotal</p>
-    <p>S/.{{ price }}</p>
+    <p>S/.{{ priceHamburger }}</p>
     <input type="submit" class="buttonAddOptions" id="buttonAddOptions" value="Añadir" 
         routerLink="/carta" routerLinkActive="activebutton">
   </div>
