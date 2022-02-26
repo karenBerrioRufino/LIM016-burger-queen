@@ -4,7 +4,8 @@
     <input type="text" placeholder="Correo Electrónico" id="emailLogin" class="emailLogin">
     <div>
       <span class='iconEye'><i class="fas fa-eye-slash"></i></span>
-      <input type="password" placeholder="Contraseña" id="passLogin" class="passLogin" [(ngModel)]="usuario.password">
+      <input type="password" placeholder="Contraseña" id="passLogin" class="passLogin" 
+      [(ngModel)]="usuario.password">
     </div>
     <a [class]="'forgetPassword'">Olvide mi contraseña</a>
     <input type="submit" [class]="['buttonLogin']" routerLink="/administrador" routerLinkActive="activebutton"  value="Ingresar" (click)="ingresar()">
