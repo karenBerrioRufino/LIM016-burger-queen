@@ -2,13 +2,24 @@ $color-melon: #f1d5bb;
 $color-marron: #3B2213;
 $color-rosa: #FF8087;
 
+#cartaView{
+    display: flex;
+    flex-direction: row;
+}
+
 .btnIcon{
     color: $color-marron;
-    font-size: 2.4em;
-    position: absolute;
+    font-size: 2em;
+    margin: 0.4em;
+    /*position: absolute;
     right: 60px;
     top: 15px;
-    z-index: 2;
+    z-index: 2;*/
+
+    i{
+        position: relative;
+        top: 18px;
+    }
 }
 
 .rotate{
@@ -18,11 +29,11 @@ $color-rosa: #FF8087;
 .carta{ 
     display: flex;
     flex-direction: column;
-    width: 83vw;
+    width: 78vw;
     height: 90vh;
-    position: absolute;
+    /*position: absolute;
     left: 15vw;
-    right: 2vw;
+    right: 2vw;*/
     margin: 5vh 0vh;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -36,8 +47,8 @@ $color-rosa: #FF8087;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-around flex-start;
-        width: 90%;
+        justify-content: space-between;
+        width: 95%;
         margin: auto;
     }
 }
@@ -80,7 +91,7 @@ $color-rosa: #FF8087;
 .item{
     display: flex;
     flex-direction: column;
-    width: 160px;
+    width: 130px;
     margin: 5px 5px 0px 5px;
 }
 
@@ -99,11 +110,11 @@ $color-rosa: #FF8087;
         font-weight: 100;
     }
     h4{
-        font-size: 14px;
+        font-size: 12px;
         padding: 4px 4px 0px 4px;
     }
     h3{
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 700;
         color: $color-rosa;
         align-self: flex-end;
@@ -116,7 +127,7 @@ $color-rosa: #FF8087;
 .picture{
     display: flex;
     width: 100%;
-    height: 160px;
+    height: 130px;
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
@@ -147,7 +158,7 @@ $color-rosa: #FF8087;
     border-style: none;
     background-color: $color-marron;
     color: whitesmoke;
-    font-size: 14px;
+    font-size: 13px;
 }
 .btn:hover{
     background-color: $color-rosa;

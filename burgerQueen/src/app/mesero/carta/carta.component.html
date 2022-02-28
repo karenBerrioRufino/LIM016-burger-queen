@@ -1,6 +1,6 @@
-<div class="btnIcon">
-    <i class="fa-solid fa-circle-arrow-right" [class.rotate]="booleanValue" (click)="changeSection()"></i>
-</div>
+<div id="cartaView">
+
+<app-navegador></app-navegador>
 
 <div class="carta">
     <section id="cartaSection1" [class.hidden]="booleanValue">
@@ -84,4 +84,10 @@
             </div>
         </section>
     </section>
+</div>
+
+<div class="btnIcon">
+    <i class="fa-solid fa-circle-arrow-right" [class.rotate]="booleanValue" (click)="changeSection()"></i>
+</div>
+
 </div>
