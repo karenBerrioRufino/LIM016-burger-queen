@@ -9,7 +9,6 @@ import { CartaOpcionesComponent } from '../mesero/carta-opciones/carta-opciones.
 import { GestionUsuariosComponent } from '../administrador/gestion-usuarios/gestion-usuarios.component';
 import { PedidosMeseroComponent } from '../mesero/pedidos-mesero/pedidos-mesero.component';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -19,7 +18,6 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'carta', component: CartaComponent },
       { path: 'cartaOpciones', component:CartaOpcionesComponent },
-      { path: 'pedidosMesero', component:PedidosMeseroComponent},
       { path: 'notFound', component: PageNotFoundComponent },
       { path: '**', redirectTo: 'notFound', pathMatch: 'full' },
     ]
