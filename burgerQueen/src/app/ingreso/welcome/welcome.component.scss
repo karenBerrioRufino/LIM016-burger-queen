@@ -22,9 +22,7 @@ $color-blanco: #fff;
   font-family: 'Mulish', sans-serif;
   font-weight: 400;
   font-size: 2.5rem;
-  
 }
-
 .mainContainer>h2{
   color: $color-blanco;
   font-family: 'Barlow Condensed', sans-serif;
@@ -32,13 +30,19 @@ $color-blanco: #fff;
   text-align: center;
 }
 .btnWelcomeLogin{
-  background-color: $color-melon;
-  color: #3c2213;
+  background-color: #f1d5bb;
+  color: #3C2213;
   border: none;
-  padding: 0.75rem;
-  border-radius: 5px;
-  font-family: 'Mulish', sans-serif;
-  font-weight: 400;
+  border-radius: 0.5rem;
+  font-family: "Mulish", sans-serif;
+  width: 9rem;
+  height: 2rem;
+  font-weight: 700;
+  box-shadow: 3px 3px 3px grey;
+  text-align: center;
+  margin: 1rem;
+  font-size: 0.95rem;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 700px) and (max-width: 1500px) {
