@@ -1,0 +1,20 @@
+$color-melon: #f1d5bb;
+$color-marron: #3B2213;
+$color-rosa: #FF8087;
+
+#navbar{
+    background-color: $color-marron;
+    width: 10vw;
+    height: 90vh;
+    margin: 1.6em 1.2em;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+
+    i{
+        color: white;
+        font-size: 30px;
+    }
+}

@@ -1,19 +1,37 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { RegisterUsers } from '../administrador/models/registerUsers';
 
 @Injectable({
   providedIn: 'root'
 })
 export class createUsersService {
-  constructor(private firebase:AngularFirestore) { }
+  private usuario$ = new Subject<any>();
+  
+  constructor(private firestore:AngularFirestore) { }
 
   saveUser(user: RegisterUsers):Promise<any>{
-    return this.firebase.collection('usuarios').add(user);
+    return this.firestore.collection('usuarios').add(user);
   }
 
   getUsers():Observable<any>{
-    return this.firebase.collection('usuarios').snapshotChanges();
+    return this.firestore.collection('usuarios', ref=>ref.orderBy('fechaCreacion', 'desc')).snapshotChanges();
+  }
+
+  deleteUser(id:string): Promise<any> {
+    return this.firestore.collection('usuarios').doc(id).delete();
+  }
+  
+  editarUsuario(id: string, usuario: any): Promise<any> {
+    return this.firestore.collection('usuarios').doc(id).update(usuario);
+  }
+
+  addUserEdit(usuario:RegisterUsers){
+    this.usuario$.next(usuario);
+  }
+
+  getUserEdit():Observable<RegisterUsers>{
+    return this.usuario$.asObservable();
   }
 }

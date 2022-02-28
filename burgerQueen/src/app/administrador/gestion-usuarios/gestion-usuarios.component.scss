@@ -2,40 +2,42 @@ $color-melon: #f1d5bb;
 $color-marron: #3B2213;
 $color-blanco: #ffffff;
 $color-pink: #FF8087;
-$color-primary:#007bff;
-$color-grisligth:#6c757d;
+$color-primary:#0080ff;
+$color-gris:#6c757d;
 $color-gris:#303438;
 $color-danger:#dc3545;
+$color-edit:#ffc107;
+$color-gris-ligth:#DDD;
+$color-naranja:#ff751a;
+$color-verde:#008080;
 
-.formRegisterUser{
+.modal-contenido{
   display: flex;
-  justify-content: space-evenly;
-  gap: 1rem;
-  margin:auto;
-  padding: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
   
 }
 .column{
   display: flex;
   justify-content: space-evenly;
   gap: 1rem;
-  margin:auto;
-  padding: 1rem;
+  padding: 0.5rem;
 }
-.rol{
+.rol,.estado{
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.inputRol>label{
-  padding: 0 0.5rem;
+.rol>label,.estado>label{
+  padding: 0 0.5rem 0 0;
   font-size: 0.8rem;
 }
 .column1,.column2{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.5rem;
   
 }
@@ -44,34 +46,25 @@ $color-danger:#dc3545;
   font-size: 0.8rem;
   font-weight: 600;
 }
-input[type='text'],input[type='email'], input[type='password']{
+input{
   border: 1px solid $color-melon;
   border-radius: 0.5rem;
   padding: 0.5rem;
 }
-.btnCreateUser{
-  display: flex;
-  justify-content: space-between;
-  justify-items: center;
-}
-.btnModal{
-  display: inline-block;
-  color: $color-melon;
+.btnCreate{
+  display: block;
+  text-align: center;
+  background-color: $color-verde;
+  color: $color-blanco;
   border: none;
-  padding: 0.5rem 1.5rem;
   border-radius: 5px;
-  font-weight: 700;
+  font-weight: 600;
   mix-blend-mode: darken;
   box-shadow: 3px 3px 3px gray;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
   
 }
-.btnCreate{
-  background-color: $color-primary;
-}
-.btnClose{
-  background-color: $color-danger;
-}
-
 
 // modal
 .modal{
@@ -94,16 +87,16 @@ input[type='text'],input[type='email'], input[type='password']{
   outline:0;
   width:30rem;
 }
-.header-container, .contenido, .footer-container{
+.header-container, .contenido{
   padding:1rem;
   color:$color-blanco;
   background-color: teal;
-  font-weight: 700;
+  font-weight: 600;
 }
 .btn{
   border:none;
   display:inline-block;
-  padding:8px 16px;
+  padding:1rem;
   vertical-align:middle;
   overflow:hidden;
   text-decoration:none;
@@ -122,4 +115,57 @@ input[type='text'],input[type='email'], input[type='password']{
   position:absolute;
   right:0;
   top:0;
+}
+
+// estilos de la tabla
+table {
+  border-collapse: collapse;
+  border: 1px solid $color-gris-ligth;
+  
+  margin: 0 auto;
+  font-family: 'Mulish', sans-serif;
+  font-size:13px;
+ 
+}
+thead{
+  border:1px solid $color-gris-ligth;
+  font-weight: 700;
+  background-color: $color-verde;
+}
+th{
+  padding: 1rem;
+  color: $color-blanco;
+}
+td {
+  padding: 0.4rem;
+  text-align: center;
+  border-bottom: 1px solid $color-gris-ligth;
+}
+tr:hover {
+  background-color: #eee;
+}
+
+.btnOpciones>i{
+  margin-left: 0.5rem;
+}
+.fa-pen-to-square{
+  border:1px solid $color-edit;
+  border-radius: 100%;
+  color:$color-edit;
+  padding: 6px;
+
+}
+.fa-trash-can{
+  border:1px solid $color-danger;
+  border-radius: 100%;
+  color: $color-danger;
+  padding: 6px;
+}
+.fa-pen-to-square:hover{
+  background-color: $color-edit;
+  color: $color-blanco;
+}
+.fa-trash-can:hover{
+  background-color: $color-danger;
+  color: $color-blanco;
 }
