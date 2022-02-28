@@ -8,6 +8,6 @@
       [(ngModel)]="usuario.password">
     </div>
     <a [class]="'forgetPassword'">Olvide mi password</a>
-    <input type="submit" [class]="['buttonLogin']" routerLink="/administrador" routerLinkActive="activebutton"  value="Ingresar" (click)="ingresar()">
+    <input type="submit" [class]="['buttonLogin']" routerLink="/administrador" routerLinkActive="activebutton"  value="Ingresar" (click)="multiple()" (click)="ingresar()">
   </div>
 </div>

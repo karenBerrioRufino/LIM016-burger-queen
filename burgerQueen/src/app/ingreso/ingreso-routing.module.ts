@@ -9,7 +9,6 @@ import { CartaOpcionesComponent } from '../mesero/carta-opciones/carta-opciones.
 import { GestionUsuariosComponent } from '../administrador/gestion-usuarios/gestion-usuarios.component';
 
 
-
 const routes: Routes = [
   {
     path: '',
@@ -18,10 +17,8 @@ const routes: Routes = [
       { path: 'administrador', component: GestionUsuariosComponent },
       { path: 'login', component: LoginComponent },
       { path: 'carta', component: CartaComponent },
-      { path: 'carta/opciones', component: CartaOpcionesComponent },
+      //{ path: 'cartaOpciones', component:CartaOpcionesComponent },
       { path: 'notFound', component: PageNotFoundComponent },
-      { path: 'carta', component:CartaComponent},
-      { path: 'cartaOpciones', component:CartaOpcionesComponent },
       { path: '**', redirectTo: 'notFound', pathMatch: 'full' },
     ]
   }

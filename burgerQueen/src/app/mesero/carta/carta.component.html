@@ -15,9 +15,12 @@
                         <h4 class="title"> {{ hamburguesa.title }} </h4>
                         <h3>S/.{{ hamburguesa.price }} </h3>
                     </div>
-                    <img src="../../../assets/imagenes/img-carta/{{ hamburguesa.img }}">
+                    <div class="picture">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <img src="../../../assets/imagenes/img-carta/{{ hamburguesa.img }}">
+                    </div>
                     <input type="button" value="Ver opciones" class="btn" (click)="getHamburgerData(hamburguesa)"
-                        routerLink="/carta/opciones" routerLinkActive="activebutton">
+                        routerLink="/cartaOpciones" routerLinkActive="activebutton">
                 </div>
             </div>
 
@@ -27,8 +30,12 @@
                         <h4> {{ sandwich.title }} </h4>
                         <h3>S/.{{ sandwich.price }} </h3>
                     </div>
-                    <img src="../../../assets/imagenes/img-carta/{{ sandwich.img }}">
-                    <input type="button" value="Añadir" class="btn">
+                    <div class="picture">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <img src="../../../assets/imagenes/img-carta/{{ sandwich.img }}">
+                    </div>
+                    <input type="button" value="Añadir" class="btn"
+                    routerLink="/pedidosMesero" routerLinkActive="activebutton">
                 </div>
             </div>
         </section>
@@ -44,8 +51,12 @@
                         <h4> {{ aperitivo.title }} </h4>
                         <h3>S/.{{ aperitivo.price }} </h3>
                     </div>
-                    <img src="../../../assets/imagenes/img-carta/{{ aperitivo.img }}">
-                    <input type="button" value="Añadir" class="btn">
+                    <div class="picture">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <img src="../../../assets/imagenes/img-carta/{{ aperitivo.img }}">
+                    </div>
+                    <input type="button" value="Añadir" class="btn"
+                    routerLink="/pedidosMesero" routerLinkActive="activebutton">
                 </div>
             </div>
         </section>
@@ -63,7 +74,11 @@
                         <h4> {{ bebida.title }} </h4>
                         <h3>S/.{{ bebida.price }} </h3>
                     </div>
-                    <img src="../../../assets/imagenes/img-carta/{{ bebida.img }}">
+                    <div class="picture">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <img src="../../../assets/imagenes/img-carta/{{ bebida.img }}"
+                        routerLink="/pedidosMesero" routerLinkActive="activebutton">
+                    </div>
                     <input type="button" value="Añadir" class="btn">
                 </div>
             </div>
