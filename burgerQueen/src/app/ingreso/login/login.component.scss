@@ -16,8 +16,10 @@ $color-danger:#dc3545;
   background: $color-melon;
   border: none;
   border-radius: 5px;
-  padding: 1.5rem;
+  padding: 2.5rem;
   font-family: 'Mulish', sans-serif;
+  width: 20rem;
+  height: 17rem;
   }
 
 .containerLogin{
@@ -28,7 +30,7 @@ $color-danger:#dc3545;
   width: 100%;
   height:100vh;
   margin: 0 auto;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../../../assets/imagenes/img-login-welcome/fondo-body.jpg);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url(../../../assets/imagenes/img-login-welcome/fondo-body.jpg);
   background-size: 100% 100%;
   background-position: center center;
   overflow: hidden;
@@ -62,6 +64,7 @@ h2{
   box-shadow: 3px 3px 3px gray;
   color: $color-melon;
   background-color: $color-marron;
+  padding: 0.5rem;
 }
 
 .forgetPassword{
@@ -69,4 +72,24 @@ h2{
   color: $color-marron;
   align-self:end;
   font-size: 0.8rem;
+}
+.eye{
+  display: flex;
+  align-items:center;
+  position: relative;
+  justify-content: center;
+}
+.iconEye{
+  color: $color-marron;
+  position: absolute;
+  right: 5px;
+  margin: 5px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+.emailLogin{
+  background-image: url(../../../assets/imagenes/img-login-welcome/icon-email.png);
+  background-position: 13.25rem;
+  background-size: 1.5rem;
+  margin-bottom: 0.8rem;
 }

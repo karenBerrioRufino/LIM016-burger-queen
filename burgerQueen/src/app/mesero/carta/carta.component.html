@@ -20,7 +20,7 @@
                         <img src="../../../assets/imagenes/img-carta/{{ hamburguesa.img }}">
                     </div>
                     <input type="button" value="Ver opciones" class="btn" (click)="getHamburgerData(hamburguesa)"
-                        routerLink="/cartaOpciones" routerLinkActive="activebutton">
+                        [routerLink]="['/cartaOpciones']" routerLinkActive="activebutton">
                 </div>
             </div>
 
@@ -34,7 +34,7 @@
                         <i class="fa-solid fa-circle-check"></i>
                         <img src="../../../assets/imagenes/img-carta/{{ sandwich.img }}">
                     </div>
-                    <input type="button" value="Añadir" class="btn"
+                    <input type="button" value="Añadir" class="btn" (click)="getSandwichData(sandwich)"
                     routerLink="/pedidosMesero" routerLinkActive="activebutton">
                 </div>
             </div>

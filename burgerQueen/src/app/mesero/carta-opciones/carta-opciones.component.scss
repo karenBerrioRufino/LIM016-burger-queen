@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@1,200&display=swap');
+<<<<<<< HEAD
 
+=======
+$color-melon: #f1d5bb;
+$color-marron: #3B2213;
+$color-blanco: #ffffff;
+>>>>>>> c634fac2b275b0fefdd2a955d6af136bc83a2184
 .containerOptionsLetter{
   display: flex;
   justify-content: center;
@@ -9,13 +15,24 @@
 }
 h2{
   color: black;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  align-self: flex-start;
+  margin-left: 19%;
+  font-size: 35px;
+  border-bottom: 5px solid $color-melon;
+  padding-bottom: 5px;
 }
 .containerOptions{
-  border-style: 3px solid #F1D5BB;
+  padding: 1.5rem;
+  border-style: 3px solid $color-melon;
   display: flex;
   flex-direction: column !important;
   align-items: center;
   justify-content: center;
+  border: 2px solid $color-melon;
+  margin: 1rem;
+  width: 63%;
 }
 .containerOptions p{
   font-size: 20px;
@@ -23,17 +40,26 @@ h2{
   padding: 5px;
   color: black;
 }
+.title{
+  font-size: 30px !important;
+  font-weight: bold;
+  padding: 5px;
+  color: black;
+}
 .containerOptions select{
   border-radius: 5px;
-  height: 33px;
-  width: 200px;
+  height: 35px;
+  width: 220px;
 }
 .containerSubTotal{
   background-color: #F1D5BB;
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 63%;
   margin: 20px;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
 }
 .containerSubTotal p{
   font-size: 25px;
@@ -45,7 +71,7 @@ h2{
   border-radius: 10px;
   background-color: #3C2213;
   color: #ffff;
-  width: 25%;
+  width: 40%;
   padding: 5px;
   margin: 10px 0px;
   font-size: 20px;
@@ -62,6 +88,6 @@ h2{
   padding: 10px;
 }
 .imgHamburger{
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
 }

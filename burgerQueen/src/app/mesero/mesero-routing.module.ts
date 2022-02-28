@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { Routes, RouterModule } from '@angular/router';
-
 import { CartaComponent } from './carta/carta.component';
 import { CartaOpcionesComponent } from './carta-opciones/carta-opciones.component';
 import { PedidosMeseroComponent } from './pedidos-mesero/pedidos-mesero.component';

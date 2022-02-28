@@ -2,12 +2,13 @@
   <div class="divLogin" id="divLogin">
     <h2>Inicia Sesión</h2>
     <input type="text" placeholder="Correo Electrónico" id="emailLogin" class="emailLogin">
-    <div>
+    <div class="eye">
       <span class='iconEye'><i class="fas fa-eye-slash"></i></span>
       <input type="password" placeholder="password" id="passLogin" class="passLogin" 
       [(ngModel)]="usuario.password">
     </div>
     <a [class]="'forgetPassword'">Olvide mi password</a>
-    <input type="submit" [class]="['buttonLogin']" routerLink="/administrador" routerLinkActive="activebutton"  value="Ingresar" (click)="ingresar()">
+    <input type="submit" [class]="['buttonLogin']" routerLink="/gestionUsarios" 
+    routerLinkActive="activebutton"  value="Ingresar" (click)="ingresar()">
   </div>
 </div>
