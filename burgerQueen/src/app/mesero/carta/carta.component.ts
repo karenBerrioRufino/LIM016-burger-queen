@@ -33,4 +33,7 @@ export class CartaComponent implements OnInit {
     //para enviar el dato a cartaOpciones
     this.productService.disparador.next(dataHamburguesa);
   }
+  getSandwichData(dataSandwich: any){
+    this.productService.disparador.next(dataSandwich);
+  }
 }
