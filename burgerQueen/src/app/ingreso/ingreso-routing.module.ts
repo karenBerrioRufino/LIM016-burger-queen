@@ -18,10 +18,6 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'carta', component: CartaComponent },
       { path: 'cartaOpciones', component:CartaOpcionesComponent },
-<<<<<<< HEAD
-=======
-      { path: 'pedidosMesero', component:PedidosMeseroComponent},
->>>>>>> c634fac2b275b0fefdd2a955d6af136bc83a2184
       { path: 'notFound', component: PageNotFoundComponent },
       { path: '**', redirectTo: 'notFound', pathMatch: 'full' },
     ]
