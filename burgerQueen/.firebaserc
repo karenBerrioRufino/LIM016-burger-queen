@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "burguerqueen-baebc": {
+      "hosting": {
+        "burgerQueen": [
+          "burguerqueen-baebc"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "burguerqueen-baebc"
+  }
+}

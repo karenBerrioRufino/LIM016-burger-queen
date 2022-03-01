@@ -7,14 +7,14 @@ import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.c
 import { CartaComponent } from '../mesero/carta/carta.component';
 import { CartaOpcionesComponent } from '../mesero/carta-opciones/carta-opciones.component';
 import { GestionUsuariosComponent } from '../administrador/gestion-usuarios/gestion-usuarios.component';
-import { PedidosMeseroComponent } from '../mesero/pedidos-mesero/pedidos-mesero.component';
+
 
 const routes: Routes = [
   {
     path: '',
     children: [
       { path: '', component: WelcomeComponent },
-      { path: 'gestionUsarios', component: GestionUsuariosComponent },
+      { path: 'gestionUsuarios', component: GestionUsuariosComponent },
       { path: 'login', component: LoginComponent },
       { path: 'carta', component: CartaComponent },
       { path: 'cartaOpciones', component:CartaOpcionesComponent },
