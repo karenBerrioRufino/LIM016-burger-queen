@@ -103,6 +103,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "burgerQueen:build:production",
+            "firebaseProject": "burguerqueen-baebc",
+            "firebaseHostingSite": "burguerqueen-baebc"
+          }
         }
       }
     }

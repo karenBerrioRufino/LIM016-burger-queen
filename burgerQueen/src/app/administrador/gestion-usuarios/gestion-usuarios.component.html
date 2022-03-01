@@ -1,20 +1,48 @@
-<section>
-  <h2>Gestión de Usuarios</h2>
-  <hr>
-  <button onclick="document.getElementById('btnModal').style.display='block'" >
-    <i class="fa-solid fa-user-plus"></i>
-    <h4> Nuevo usuario</h4>
-   
+<div class="gestionUsuarios">
+  <h2 class="titulo">Gestión de Usuarios</h2>
+  <button onclick="document.getElementById('btnModal').style.display='block'" class="btnNuevoUsuario">
+    <h4>Nuevo usuario  </h4>
+    <i class="fa-solid fa-circle-plus"></i>
   </button>
-  <i class="fa-solid fa-circle-plus"></i>
-</section>
-
-<div class="modal" id="btnModal">
+  
+  <div class="listarUsuario">
+    <h4 class="subtitulo">LISTAR USUARIOS</h4>
+    <table [class]="'table'">
+      <thead>
+        <th>Nombres</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>DNI</th>
+        <th>Telefono</th>
+        <th>Estado</th>
+        <th>Rol</th>
+        <th>Email</th>
+        <th>Opciones</th>
+      </thead>
+      <tbody >
+        <tr *ngFor="let usuario of listarUsuarios">
+          <td>{{usuario.nombres}}</td>
+          <td>{{usuario.apellidoPaterno}}</td>
+          <td>{{usuario.apellidoMaterno}}</td>
+          <td>{{usuario.dni}}</td>
+          <td>{{usuario.telefono}}</td>
+          <td>{{usuario.estado}}</td>
+          <td>{{usuario.rol}}</td>
+          <td>{{usuario.correo}}</td>
+          <td class="btnOpciones">
+            <i class="fa-solid fa-pen-to-square"(click)="editarUsuarioBtn(usuario)"></i>
+            <i class="fa-solid fa-trash-can" (click)="eliminarUsuario(usuario.id)"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="modal" id="btnModal">
   <div class="modal-content">
     <header class="header-container">
-      {{titulo | uppercase}}
-      <span onclick="document.getElementById('btnModal').style.display='none'" 
-      [class]="['btn','display-topright']">&times;</span>
+      {{ titulo | uppercase}}
+      <span [class]="['btn','display-topright']" (click)="btnCerrar()">&times;</span>
     </header>
     <div class="modal-contenido">
       <form [formGroup]="form" (ngSubmit)="guardarUsuario()" >
@@ -57,36 +85,9 @@
       </form>
     </div>
   </div>
+  </div>
 </div>
-<h5>LISTAR USUARIOS</h5>
-<table [class]="'table'">
-  <thead>
-    <th>Nombres</th>
-    <th>Apellido Paterno</th>
-    <th>Apellido Materno</th>
-    <th>DNI</th>
-    <th>Telefono</th>
-    <th>Estado</th>
-    <th>Rol</th>
-    <th>Email</th>
-    <th>Password</th>
-    <th>Opciones</th>
-  </thead>
-  <tbody >
-    <tr *ngFor="let usuario of listarUsuarios">
-      <td>{{usuario.nombres}}</td>
-      <td>{{usuario.apellidoPaterno}}</td>
-      <td>{{usuario.apellidoMaterno}}</td>
-      <td>{{usuario.dni}}</td>
-      <td>{{usuario.telefono}}</td>
-      <td>{{usuario.estado}}</td>
-      <td>{{usuario.rol}}</td>
-      <td>{{usuario.correo}}</td>
-      <td>{{usuario.password}}</td>
-      <td class="btnOpciones">
-        <i class="fa-solid fa-pen-to-square"(click)="editarUsuarioBtn(usuario)"></i>
-        <i class="fa-solid fa-trash-can" (click)="eliminarUsuario(usuario.id)"></i>
-      </td>
-    </tr>
-  </tbody>
-</table>
+
+
+
+

@@ -11,12 +11,50 @@ $color-gris-ligth:#DDD;
 $color-naranja:#ff751a;
 $color-verde:#008080;
 
+.gestionUsuarios{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0 auto;
+}
+.titulo{
+  padding: 1rem;
+  align-self: flex-start;
+}
+.btnNuevoUsuario{
+  align-self: flex-start;
+  display: flex;
+  margin: 0 1rem;
+  display: inline-flex;
+  margin: 0 1rem;
+  background-color: $color-primary;
+  color: $color-blanco;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+.fa-circle-plus{
+  margin: 0 0.5rem;
+}
+.listarUsuario{
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  // align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+}
+.listarUsuario>.subtitulo{
+  align-self: flex-start;
+}
 .modal-contenido{
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  
 }
 .column{
   display: flex;
@@ -118,14 +156,13 @@ input{
 }
 
 // estilos de la tabla
-table {
+.table {
+  align-self: start;
   border-collapse: collapse;
   border: 1px solid $color-gris-ligth;
-  
-  margin: 0 auto;
   font-family: 'Mulish', sans-serif;
-  font-size:13px;
- 
+  font-size:11px;
+  width: 50%;
 }
 thead{
   border:1px solid $color-gris-ligth;
@@ -168,4 +205,10 @@ tr:hover {
 .fa-trash-can:hover{
   background-color: $color-danger;
   color: $color-blanco;
+}
+@media only screen and (min-width: 700px) and (max-width: 1500px) {
+  .table{
+    width:70%;
+    font-size:13px;
+  }
 }

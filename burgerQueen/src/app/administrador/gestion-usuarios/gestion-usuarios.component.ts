@@ -12,19 +12,20 @@ import { createUsersService } from 'src/app/services/create-users.service';
 })
 
 export class GestionUsuariosComponent implements OnInit {
-  
+  titulo:string="Agregar usuario";
   form:FormGroup;
-  titulo:string = "Agregar usuario";
+  
   id: string | undefined;
 
   usuarios: Observable<any[]>;
   listarUsuarios: RegisterUsers[]=[];
   
   constructor(
+    
     private fb:FormBuilder,
     firestore: AngularFirestore,
     private _userService: createUsersService) {
-
+    
     this.usuarios = firestore.collection('usuarios').valueChanges();
 
     this.form = this.fb.group ({
@@ -46,7 +47,7 @@ export class GestionUsuariosComponent implements OnInit {
    
     this._userService.getUserEdit().subscribe(data=>{
       this.id =data.id;
-      this.titulo ="Editar usuario";
+      this.titulo="editar usuario";
       this.form.patchValue({
         nombres:data.nombres,
         apellidoPaterno:data.apellidoPaterno,
@@ -59,22 +60,31 @@ export class GestionUsuariosComponent implements OnInit {
         password:data.password,
       })
     })
+    
     this.obtenerUsuarios();
   }
 
+  btnCerrar(){
+    let modal:any = document.getElementById('btnModal');
+    modal.style.display='none';
+    this.form.reset();
+    this.titulo="agregar usuario";
+  }
   guardarUsuario() {
     console.log('clic en boton guardar usuario');
     let modal:any = document.getElementById('btnModal');
-    
+    this.titulo="agregar usuario";
     if(this.id === undefined) {
       // Creamos una nuevo usuario
       this.agregarUsuario();
       modal.style.display='none';
+      
 
     } else {
-      // Editamos un nuevo usuario
+      // Editamos un usuario
       this.editarUsuario(this.id);
       modal.style.display='none';
+      this.form.reset();
     }
   }
 
@@ -94,8 +104,6 @@ export class GestionUsuariosComponent implements OnInit {
     }
     
     this._userService.editarUsuario(id, USUARIO).then((res) =>{
-      this.titulo = 'Agregar Usuario';
-      this.form.reset();
       this.id = undefined;
       console.log('El usuario fue actualizada con exito!', 'Registro Actualizado',res);
       this.form.reset();
@@ -121,6 +129,7 @@ export class GestionUsuariosComponent implements OnInit {
     }
     
     this._userService.saveUser(USUARIO).then(()=>{
+      
       console.log('Usuario registrado');
       this.form.reset();
       
