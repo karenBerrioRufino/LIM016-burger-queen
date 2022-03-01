@@ -43,10 +43,8 @@ export class GestionUsuariosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
     this._userService.getUserEdit().subscribe(data=>{
       this.id =data.id;
-      this.titulo ="Editar usuario";
       this.form.patchValue({
         nombres:data.nombres,
         apellidoPaterno:data.apellidoPaterno,
@@ -105,7 +103,6 @@ export class GestionUsuariosComponent implements OnInit {
   }
 
   agregarUsuario(){
-
     const USUARIO: RegisterUsers = {
       dni:this.form.value.dni,
       nombres: this.form.value.nombres,
@@ -156,11 +153,11 @@ export class GestionUsuariosComponent implements OnInit {
   }
 
   editarUsuarioBtn(usuario:RegisterUsers){
+    this.titulo ="Editar usuario";
     console.log('Clic en el boton editar para editar');
     let modal:any = document.getElementById('btnModal');
     modal.style.display='block';
     this._userService.addUserEdit(usuario);
-    
   }
  
 }

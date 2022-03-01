@@ -5,33 +5,34 @@ $color-rosa: #FF8087;
 #cartaView{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+
+    main{
+        display: flex;
+        flex-direction: row;
+    }
 }
 
 .btnIcon{
     color: $color-marron;
     font-size: 2em;
     margin: 0.4em;
-    /*position: absolute;
-    right: 60px;
-    top: 15px;
-    z-index: 2;*/
 
     i{
         position: relative;
         top: 18px;
     }
 }
+
 .rotate{
     transform: rotate(180deg);
 }
+
 .carta{ 
     display: flex;
     flex-direction: column;
     width: 78vw;
     height: 90vh;
-    /*position: absolute;
-    left: 15vw;
-    right: 2vw;*/
     margin: 5vh 0vh;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -89,7 +90,7 @@ $color-rosa: #FF8087;
 .item{
     display: flex;
     flex-direction: column;
-    width: 130px;
+    width: 120px;
     margin: 5px 5px 0px 5px;
 }
 
@@ -125,7 +126,7 @@ $color-rosa: #FF8087;
 .picture{
     display: flex;
     width: 100%;
-    height: 130px;
+    height: 120px;
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
@@ -134,7 +135,7 @@ $color-rosa: #FF8087;
     i{
         display: none;
         position: absolute;
-        font-size: 1.5em;
+        font-size: 1.3em;
         color: $color-rosa;
         z-index: 2;
         top: 10px;
@@ -164,23 +165,46 @@ $color-rosa: #FF8087;
 
 /*---------------------*/
 
-@media (max-width: 500px) {
-    .btnIcon{
-        right: 15px;
-        top: 10px;
-    }
+@media (max-width: 700px) {
+    #cartaView{
+        display: flex;
+        flex-direction: column-reverse;
 
+        main{
+            display: flex;
+            height: 86vh;
+            justify-content: center;
+        }
+    }
+    
     .carta{ 
-        width: 95vw;
-        height: 85vh;
-        position: initial;
-        margin: 55px auto 20px auto;
-        
+        width: 76vw;
+        height: 80vh;
+                
         section{
             width: 95%;
-            justify-content: center !important;
+            justify-content: space-evenly !important;
             margin-left: auto;
             margin-right: auto;
+        }
+    }
+
+    .btnIcon{
+        margin: 0.3em;
+        font-size: 2em;
+
+        i{
+            position: fixed;
+            top: 20px;
+            right: 15px;
+        }
+    }
+
+    .item{
+        width: 150px;
+
+        .picture{
+            height: 150px;
         }
     }
 }
