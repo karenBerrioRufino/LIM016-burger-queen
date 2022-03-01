@@ -1,6 +1,32 @@
-<div clas = "containerPedido">
-<h2>PEDIDO</h2>
-<div class="lista">
-  <h2>{{title}}</h2>
-</div>
+<div class = "containerPedido">
+<h2 class="pedidos">PEDIDOS</h2>
+<table class="listaPedidos">
+  <tr>
+    <td><button (click)="eliminar()">x</button></td>
+    <td><img src="../../../assets/imagenes/img-carta/{{img}}"></td>
+    <td><div class="p">
+      <p>{{title}}</p>
+      <P>{{'S/.' + priceHamburger}}</P>
+    </div></td>
+    <td>
+      <button (click)="restar()">-</button>
+      <input type="number">
+      <button (click)="sumar()">+</button>
+    </td>
+  </tr>
+</table>
+
+  <!--
+    <div class="listaPedidos">
+    <button>x</button>
+    <img src="../../../assets/imagenes/img-carta/{{img}}">
+    <div class="p">
+      <p>{{title}}</p>
+      <P>{{'S/.' + priceHamburger}}</P>
+    </div>
+    <button (click)="restar()">-</button>
+    <input type="number">
+    <button (click)="sumar()">+</button>
+  </div>
+  -->
 </div>

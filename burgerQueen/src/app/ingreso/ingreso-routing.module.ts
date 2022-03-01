@@ -19,6 +19,7 @@ const routes: Routes = [
       { path: 'carta', component: CartaComponent },
       { path: 'cartaOpciones', component:CartaOpcionesComponent },
       { path: 'notFound', component: PageNotFoundComponent },
+      { path: 'pedidosMesero', component: PedidosMeseroComponent },
       { path: '**', redirectTo: 'notFound', pathMatch: 'full' },
     ]
   }

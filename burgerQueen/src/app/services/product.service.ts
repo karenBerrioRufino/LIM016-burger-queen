@@ -8,4 +8,5 @@ export class ProductService {
   // el disparador toma como valor el BehaviorSubject
   @Output() disparador:BehaviorSubject<any> = new BehaviorSubject({});
   constructor() { }
+  
 }
