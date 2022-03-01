@@ -4,17 +4,40 @@ $color-rosa: #FF8087;
 
 #navbar{
     background-color: $color-marron;
-    width: 10vw;
+    width: 8vw;
     height: 90vh;
-    margin: 1.6em 1.2em;
+    margin: 1.6em 1.4em;
     border-radius: 18px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     text-align: center;
+
+    img{
+        width: 50px;
+        margin: 0px auto;
+    }
 
     i{
         color: white;
-        font-size: 30px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 700px) {
+    #navbar{
+        width: 90vw;
+        height: 8vh;
+        flex-direction: row;
+        margin: 1em auto;
+        align-items: center;
+
+        i{
+            font-size: 20px;
+        }
+
+        img{
+            display: none;
+        }
     }
 }
