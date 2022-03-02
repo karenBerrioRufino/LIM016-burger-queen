@@ -11,10 +11,10 @@ const routes: Routes = [
   {
     path:'',
     children: [
-      {path: 'carta', component: CartaComponent},
-      {path: 'cartaOpciones', component:CartaOpcionesComponent},
-      {path: 'pedidosMesero', component: PedidosMeseroComponent},
-      {path: 'totalPedidosMesero', component:TotalPedidosMeseroComponent},
+      {path: 'mesero/carta', component: CartaComponent},
+      {path: 'mesero/cartaOpciones', component:CartaOpcionesComponent},
+      {path: 'mesero/pedidosMesero', component: PedidosMeseroComponent},
+      {path: 'mesero/totalPedidosMesero', component:TotalPedidosMeseroComponent},
       {path: 'notFound', component:PageNotFoundComponent},
       {path: '**', redirectTo: 'notFound', pathMatch: 'full'}
     ]
@@ -28,4 +28,5 @@ const routes: Routes = [
     RouterModule.forChild( routes )
   ]
 })
+
 export class MeseroRoutingModule { }

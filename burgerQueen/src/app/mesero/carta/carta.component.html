@@ -1,6 +1,6 @@
 <div id="cartaView">
 
-    <app-navegador></app-navegador>
+    <!-- <app-navegador></app-navegador> -->
 
     <main>
         <div class="carta">
@@ -21,7 +21,7 @@
                                 <img src="../../../assets/imagenes/img-carta/{{ hamburguesa.img }}">
                             </div>
                             <input type="button" value="Ver opciones" class="btn"
-                                (click)="getHamburgerData(hamburguesa)" [routerLink]="['/cartaOpciones']"
+                                (click)="getHamburgerData(hamburguesa)" [routerLink]="['/mesero/cartaOpciones']"
                                 routerLinkActive="activebutton">
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                                 <img src="../../../assets/imagenes/img-carta/{{ sandwich.img }}">
                             </div>
                             <input type="button" value="Añadir" class="btn" (click)="getSandwichData(sandwich)"
-                                routerLink="/pedidosMesero" routerLinkActive="activebutton">
+                                routerLink="/mesero/pedidosMesero" routerLinkActive="activebutton">
                         </div>
                     </div>
                 </section>
@@ -57,7 +57,7 @@
                                 <i class="fa-solid fa-circle-check"></i>
                                 <img src="../../../assets/imagenes/img-carta/{{ aperitivo.img }}">
                             </div>
-                            <input type="button" value="Añadir" class="btn" routerLink="/pedidosMesero"
+                            <input type="button" value="Añadir" class="btn" routerLink="/mesero/pedidosMesero"
                                 routerLinkActive="activebutton">
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                             <div class="picture">
                                 <i class="fa-solid fa-circle-check"></i>
                                 <img src="../../../assets/imagenes/img-carta/{{ bebida.img }}"
-                                    routerLink="/pedidosMesero" routerLinkActive="activebutton">
+                                    routerLink="/mesero/pedidosMesero" routerLinkActive="activebutton">
                             </div>
                             <input type="button" value="Añadir" class="btn">
                         </div>

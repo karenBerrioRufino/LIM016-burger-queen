@@ -9,10 +9,12 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule} from '@angular/forms';
 
 import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
+import { AdministradorComponent } from './administrador/administrador.component';
 
 @NgModule({
   declarations: [
-    GestionUsuariosComponent
+    GestionUsuariosComponent,
+    AdministradorComponent,
   ],
   imports: [
     CommonModule,
