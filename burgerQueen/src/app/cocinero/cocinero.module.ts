@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+//import { RouterModule } from '@angular/router';
+import { CocineroRoutingModule } from './cocinero-routing.module';
+
 import { SharedModule } from '../shared/shared.module';
 import { PedidosCocineroComponent } from './pedidos-cocinero/pedidos-cocinero.component';
 import { TotalPedidosCocineroComponent } from './total-pedidos-cocinero/total-pedidos-cocinero.component';
@@ -10,8 +14,14 @@ import { TotalPedidosCocineroComponent } from './total-pedidos-cocinero/total-pe
     TotalPedidosCocineroComponent,
   ],
   imports: [
+    //RouterModule,
     CommonModule,
-    SharedModule
+    SharedModule,
+    CocineroRoutingModule
+  ],
+  exports: [
+    PedidosCocineroComponent,
+    TotalPedidosCocineroComponent,
   ]
 })
 export class CocineroModule { }
