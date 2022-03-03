@@ -16,9 +16,7 @@ const routes: Routes = [
     path: '', loadChildren: () => import('./cocinero/cocinero.module').then(m => m.CocineroModule)
   },
   {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full'
+    path: '', redirectTo: '', pathMatch: 'full'
   }
 ]
 

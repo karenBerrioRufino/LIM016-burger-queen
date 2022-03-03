@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-//import { RouterModule } from '@angular/router';
 import { CocineroRoutingModule } from './cocinero-routing.module';
 
 import { SharedModule } from '../shared/shared.module';
@@ -14,7 +13,6 @@ import { TotalPedidosCocineroComponent } from './total-pedidos-cocinero/total-pe
     TotalPedidosCocineroComponent,
   ],
   imports: [
-    //RouterModule,
     CommonModule,
     SharedModule,
     CocineroRoutingModule

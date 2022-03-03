@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-//import { RouterModule } from '@angular/router';
 import { MeseroRoutingModule } from './mesero-routing.module';
 
 import { CartaComponent } from './carta/carta.component';
@@ -21,7 +20,6 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     MeseroRoutingModule,
     SharedModule,
-    //RouterModule,
     
   ],
   exports: [

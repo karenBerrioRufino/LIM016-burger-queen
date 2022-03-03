@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-//import { RouterModule } from '@angular/router';
 import { AdministradorRoutingModule } from './administrador-routing.module';
 
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
@@ -24,7 +23,6 @@ import { AdministradorComponent } from './administrador/administrador.component'
   ],
   imports: [
     CommonModule,
-    //RouterModule,
     AdministradorRoutingModule,
     FormsModule,
     ReactiveFormsModule,
