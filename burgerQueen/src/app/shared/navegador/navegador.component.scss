@@ -2,7 +2,7 @@ $color-melon: #f1d5bb;
 $color-marron: #3B2213;
 $color-rosa: #FF8087;
 
-#navbar{
+.navbar{
     background-color: $color-marron;
     width: 8vw;
     height: 90vh;
@@ -25,7 +25,7 @@ $color-rosa: #FF8087;
 }
 
 @media (max-width: 700px) {
-    #navbar{
+    .navbar{
         width: 90vw;
         height: 8vh;
         flex-direction: row;
