@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-import { ListaPedidosComponent } from 'src/app/shared/lista-pedidos/lista-pedidos.component';
 
 @Component({
   selector: 'app-pedidos-mesero',
