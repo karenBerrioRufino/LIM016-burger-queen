@@ -34,6 +34,7 @@ import { AdministradorComponent } from './administrador/administrador.component'
   exports: [
     GestionUsuariosComponent,
     AdministradorComponent,
+
   ]
 })
 export class AdministradorModule { }

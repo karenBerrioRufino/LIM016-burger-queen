@@ -39,51 +39,51 @@
   </div>
   
   <div class="modal" id="btnModal">
-  <div class="modal-content">
-    <header class="header-container">
-      {{ titulo | uppercase}}
-      <span [class]="['btn','display-topright']" (click)="btnCerrar()">&times;</span>
-    </header>
-    <div class="modal-contenido">
-      <form [formGroup]="form" (ngSubmit)="guardarUsuario()" >
-        <div class="column">
-          <div [class]="['column1']">
-            <label for="">Nombres</label>
-            <input type="text" name="" formControlName="nombres" placeholder="Pedro Julian"> 
-            <label for="">Apellido Paterno</label>
-            <input type="text" formControlName="apellidoPaterno" placeholder="Flores">
-            <label for="">Apellido Materno</label>
-            <input type="text" formControlName="apellidoMaterno" placeholder="Ricse">
-            <label for="">Documento Nacional de Identidad</label>
-            <input type="number" formControlName="dni" placeholder="82898766" maxlength="8">
-            <label for="">Telefono</label>
-            <input type="number" formControlName="telefono" placeholder="994427826" maxlength="9">
+    <div class="modal-content">
+      <header class="header-container">
+        {{ titulo  | uppercase }}
+        <span [class]="['btn','display-topright']" (click)="btnCerrar()">&times;</span>
+      </header>
+      <div class="modal-contenido">
+        <form [formGroup]="form" (ngSubmit)="guardarUsuario()" >
+          <div class="column">
+            <div [class]="['column1']">
+              <label for="">Nombres</label>
+              <input type="text" name="" formControlName="nombres" placeholder="Pedro Julian"> 
+              <label for="">Apellido Paterno</label>
+              <input type="text" formControlName="apellidoPaterno" placeholder="Flores">
+              <label for="">Apellido Materno</label>
+              <input type="text" formControlName="apellidoMaterno" placeholder="Ricse">
+              <label for="">Documento Nacional de Identidad</label>
+              <input type="number" formControlName="dni" placeholder="82898766" maxlength="8">
+              <label for="">Telefono</label>
+              <input type="number" formControlName="telefono" placeholder="994427826" maxlength="9">
+            </div>
+            <div [class]="['column2']">
+              <label for="">Estado</label>
+              <div class="estado">
+                <label for=""><input type="radio" name="estado" value="Activo" formControlName="estado"> Activo</label>
+                <label for=""><input type="radio" name="estado" value="Inactivo" formControlName="estado"> Inactivo</label>
+              </div>
+              <Label for="">Rol</Label>
+              <div [class]="['rol']">
+                <label><input type="radio" name="rol" formControlName="rol" value="Administrador">
+                Administrador</label>
+                <label><input type="radio" name="rol" formControlName="rol" value="Cocinero">
+                Cocinero</label>   
+                <label><input type="radio" name="rol" formControlName="rol" value="Mesero">
+                Mesero</label> 
+              </div>
+              <label for="">Email</label>
+              <input type="email" id="" formControlName="correo" placeholder="paquita@gmail.com">
+              <label for="">Password</label>
+              <input type="password" id="" formControlName="password" placeholder=" betinaB06$">
+              <button type="submit" [class]="['btnCreate']"> <i class="fas fa-database"></i> &nbsp;Aceptar</button>
+            </div>
           </div>
-          <div [class]="['column2']">
-            <label for="">Estado</label>
-            <div class="estado">
-              <label for=""><input type="radio" name="estado" value="Activo" formControlName="estado"> Activo</label>
-              <label for=""><input type="radio" name="estado" value="Inactivo" formControlName="estado"> Inactivo</label>
-            </div>
-            <Label for="">Rol</Label>
-            <div [class]="['rol']">
-              <label><input type="radio" name="rol" formControlName="rol" value="Administrador">
-              Administrador</label>
-              <label><input type="radio" name="rol" formControlName="rol" value="Cocinero">
-              Cocinero</label>   
-              <label><input type="radio" name="rol" formControlName="rol" value="Mesero">
-              Mesero</label> 
-            </div>
-            <label for="">Email</label>
-            <input type="email" id="" formControlName="correo" placeholder="paquita@gmail.com">
-            <label for="">Password</label>
-            <input type="password" id="" formControlName="password" placeholder=" betinaB06$">
-            <button type="submit" [class]="['btnCreate']"> <i class="fas fa-database"></i> &nbsp;Aceptar</button>
-            </div>
-        </div>
-        
-      </form>
+          
+        </form>
+      </div>
     </div>
-  </div>
   </div>
 </div>
