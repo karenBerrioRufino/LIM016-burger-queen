@@ -1,6 +1,6 @@
 import { Component, OnInit, /*EventEmitter, Output*/} from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-import Data from '../../../assets/json/menu.json';
+import Data from '../../../assets/json/carta/menu.json';
 
 @Component({
   selector: 'app-carta',
@@ -11,7 +11,7 @@ import Data from '../../../assets/json/menu.json';
 export class CartaComponent implements OnInit {
   booleanValue: boolean = false;
   numberOfClicks: number = 0;
-  carta: any = Data.carta;
+  carta: any = Data;
   constructor(public productService: ProductService) {
   }
   ngOnInit(): void {
