@@ -5,27 +5,31 @@
     {
     "hamburguesas": [
       {
+        "id": "HAMB-S001",
         "title": "Hamburguesa simple",
         "price": 10,
         "type": ["Carne", "Pollo", "Vegetariana"],
-        "extra": ["Huevo", "Queso", "Jamón", "Ninguno", "Todo"],
+        "additional": ["Huevo", "Queso", "Jamón", "Ninguno", "Todo"],
         "img": "simple.jpg"
       },
       {
+        "id": "HAMB-D002",
         "title": "Hamburguesa doble",
         "price": 15,
         "type": ["Carne", "Pollo", "Vegetariana"],
-        "extra": ["Huevo", "Queso", "Jamón", "Ninguno", "Ambos"],
+        "additional": ["Huevo", "Queso", "Jamón", "Ninguno", "Ambos"],
         "img": "doble.jpg"
       }
     ],
     "sandwiches": [
-     {
+     {  
+        "id": "SANDW-J001",
         "title": "Sandwich de jamón y queso",
         "price": 10,
         "img": "sandwich1.jpg"
       },
       {
+        "id": "SANDW-P002",
         "title": "Sandwich de pollo",
         "price": 12,
         "img": "sandwich2.jpg"
@@ -33,21 +37,25 @@
     ],
     "aperitivos": [
       {
+        "id": "PF-A001",
         "title": "Papas fritas",
         "price": 5,
         "img": "papasFritas.jpg"
       },
       {
+        "id": "AC-A002",
         "title": "Aros de cebolla",
         "price": 5 ,
         "img": "arosDeCebolla.jpg"
       },
       {
+        "id": "NG-A003",
         "title": "Nuggets",
         "price": 8,
         "img": "nuggets.jpg"
       },
       {
+        "id": "SA-A004",
         "title": "Ensalada",
         "price": 5,
         "img": "ensalada.jpg"
@@ -55,61 +63,73 @@
     ],
     "bebidas": [
     {
+      "id": "COFF-B001",
       "title": "Café americano",
       "price": 5,
       "img": "cafeAmericano.jpg"
     },
     {
+      "id": "COFF-B002",
       "title": "Café con leche",
       "price": 7,
       "img": "cafeConLeche.jpg"
     },
     {
+      "id": "CHOC-B003",
       "title": "Chocolate caliente",
       "price": 5,
       "img": "chocolate.jpg"
     },
     {
+      "id": "JUGO-B004",
       "title": "Jugo de fresa",
       "price": 7,
       "img": "jugoFresa.jpg"
     },
     {
+      "id": "JUGO-B005",
       "title": "Jugo de naranja",
       "price": 5,
       "img": "jugoNaranja.jpg"
     },
     {
+      "id": "JUGO-B006",
       "title": "Jugo de papaya",
       "price": 7,
       "img": "jugoPapaya.jpg"
     },
     {
+      "id": "AGUA-B007",
       "title": "Agua mineral 500ml",
       "price": 5,
       "img": "agua1.jpg"
     },
     {
+      "id": "AGUA-B008",
       "title": "Agua mineral 750ml",
       "price": 7,
       "img": "agua2.jpg"
     },
     {
+      "id": "INCA-B009",
       "title": "Gaseosa Inca Kola 500ml",
       "price": 7,
       "img": "incaKola1.jpg"
     },
     {
+      "id": "INCA-B010",
       "title": "Gaseosa Inca Kola 750ml",
       "price": 10,
       "img": "incaKola2.png"
     },
     {
+      "id": "COCA-B011",
       "title": "Gaseosa Coca Cola 500ml",
       "price": 7,
       "img": "cocaCola1.jpg"
     },
     {
+      "id": "COCA-B012",
       "title": "Gaseosa Coca Cola 750ml",
       "price": 10,
       "img": "cocaCola2.jpg"
