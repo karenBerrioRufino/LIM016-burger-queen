@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { RegisterUsers } from '../models/registerUsers';
-import { createUsersService } from 'src/app/services/create-users.service';
+import { createUsersService } from '../../../app/services/create-users.service';
 
 @Component({
   selector: 'app-gestion-usuarios',
@@ -12,8 +12,9 @@ import { createUsersService } from 'src/app/services/create-users.service';
 })
 
 export class GestionUsuariosComponent implements OnInit {
-  titulo:string="Agregar usuario";
-  form:FormGroup;
+  
+  form: FormGroup;
+  titulo = "Agregar usuario";
   
   id: string | undefined;
 
@@ -21,10 +22,10 @@ export class GestionUsuariosComponent implements OnInit {
   listarUsuarios: RegisterUsers[]=[];
   
   constructor(
-    
-    private fb:FormBuilder,
+    private fb: FormBuilder,
+    private _userService: createUsersService,
     firestore: AngularFirestore,
-    private _userService: createUsersService) {
+    ) {
     
     this.usuarios = firestore.collection('usuarios').valueChanges();
 
@@ -70,6 +71,7 @@ export class GestionUsuariosComponent implements OnInit {
     this.form.reset();
     this.titulo="agregar usuario";
   }
+
   guardarUsuario() {
     console.log('clic en boton guardar usuario');
     let modal:any = document.getElementById('btnModal');
@@ -103,9 +105,9 @@ export class GestionUsuariosComponent implements OnInit {
       
     }
     
-    this._userService.editarUsuario(id, USUARIO).then((res) =>{
+    this._userService.editarUsuario(id, USUARIO).then(() =>{
       this.id = undefined;
-      console.log('El usuario fue actualizada con exito!', 'Registro Actualizado',res);
+      console.log('El usuario fue actualizada con exito!', 'Registro Actualizado');
       this.form.reset();
     }, error => {
       console.log(error);
