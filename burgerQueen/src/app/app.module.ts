@@ -35,7 +35,7 @@ import { AdministradorModule } from './administrador/administrador.module';
     // MeseroModule,
     // CocineroModule,
     // AdministradorModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    
     AdministradorModule,
     AppRoutingModule,
     
