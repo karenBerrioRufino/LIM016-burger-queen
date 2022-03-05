@@ -1,67 +1,83 @@
-{ "restaurante": "Burguer Queen",
-  "ubicación":"Av. Los girasoles 999",
-  "reservaciones": 962348301,
-  "carta": 
+{
+  "hamburguesas": [
     {
-    "hamburguesas": [
-      {
-        "id": "HAMB-S001",
-        "title": "Hamburguesa simple",
-        "price": 10,
-        "type": ["Carne", "Pollo", "Vegetariana"],
-        "additional": ["Huevo", "Queso", "Jamón", "Ninguno", "Todo"],
-        "img": "simple.jpg"
-      },
-      {
-        "id": "HAMB-D002",
-        "title": "Hamburguesa doble",
-        "price": 15,
-        "type": ["Carne", "Pollo", "Vegetariana"],
-        "additional": ["Huevo", "Queso", "Jamón", "Ninguno", "Ambos"],
-        "img": "doble.jpg"
-      }
-    ],
-    "sandwiches": [
-     {  
-        "id": "SANDW-J001",
-        "title": "Sandwich de jamón y queso",
-        "price": 10,
-        "img": "sandwich1.jpg"
-      },
-      {
-        "id": "SANDW-P002",
-        "title": "Sandwich de pollo",
-        "price": 12,
-        "img": "sandwich2.jpg"
-      }
-    ],
-    "aperitivos": [
-      {
-        "id": "PF-A001",
-        "title": "Papas fritas",
-        "price": 5,
-        "img": "papasFritas.jpg"
-      },
-      {
-        "id": "AC-A002",
-        "title": "Aros de cebolla",
-        "price": 5 ,
-        "img": "arosDeCebolla.jpg"
-      },
-      {
-        "id": "NG-A003",
-        "title": "Nuggets",
-        "price": 8,
-        "img": "nuggets.jpg"
-      },
-      {
-        "id": "SA-A004",
-        "title": "Ensalada",
-        "price": 5,
-        "img": "ensalada.jpg"
-      }
-    ],
-    "bebidas": [
+      "id": "HAMB-S001",
+      "title": "Hamburguesa simple",
+      "price": 10,
+      "type": [
+        "Carne",
+        "Pollo",
+        "Vegetariana"
+      ],
+      "additional": [
+        "Huevo",
+        "Queso",
+        "Jamón",
+        "Ninguno",
+        "Todo"
+      ],
+      "img": "simple.jpg"
+    },
+    {
+      "id": "HAMB-D002",
+      "title": "Hamburguesa doble",
+      "price": 15,
+      "type": [
+        "Carne",
+        "Pollo",
+        "Vegetariana"
+      ],
+      "additional": [
+        "Huevo",
+        "Queso",
+        "Jamón",
+        "Ninguno",
+        "Ambos"
+      ],
+      "img": "doble.jpg"
+    }
+  ],
+  "sandwiches": [
+    {
+      "id": "SANDW-J001",
+      "title": "Sandwich de jamón y queso",
+      "price": 10,
+      "img": "sandwich1.jpg"
+    },
+    {
+      "id": "SANDW-P002",
+      "title": "Sandwich de pollo",
+      "price": 12,
+      "img": "sandwich2.jpg"
+    }
+  ],
+  "aperitivos": [
+    {
+      "id": "PF-A001",
+      "title": "Papas fritas",
+      "price": 5,
+      "img": "papasFritas.jpg"
+    },
+    {
+      "id": "AC-A002",
+      "title": "Aros de cebolla",
+      "price": 5,
+      "img": "arosDeCebolla.jpg"
+    },
+    {
+      "id": "NG-A003",
+      "title": "Nuggets",
+      "price": 8,
+      "img": "nuggets.jpg"
+    },
+    {
+      "id": "SA-A004",
+      "title": "Ensalada",
+      "price": 5,
+      "img": "ensalada.jpg"
+    }
+  ],
+  "bebidas": [
     {
       "id": "COFF-B001",
       "title": "Café americano",
@@ -133,6 +149,6 @@
       "title": "Gaseosa Coca Cola 750ml",
       "price": 10,
       "img": "cocaCola2.jpg"
-    }]
-  }
+    }
+  ]
 }
