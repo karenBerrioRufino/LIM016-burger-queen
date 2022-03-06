@@ -45,4 +45,5 @@ Thumbs.db
 .firebase
 *-debug.log
 .runtimeconfig.json
-.\src\assets\json\carta\key_service_account.json
+\src\assets\json
+\src\environments
