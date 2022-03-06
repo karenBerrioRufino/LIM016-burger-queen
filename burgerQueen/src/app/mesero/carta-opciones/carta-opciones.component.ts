@@ -19,7 +19,7 @@ export class CartaOpcionesComponent implements OnInit {
     this.titleHamburger = this.productService.disparador.getValue().title;
     this.priceHamburger = this.productService.disparador.getValue().price;
     this.typeHamburger = this.productService.disparador.getValue().type; //para jalar datos del json
-    this.aditionalHamburger = this.productService.disparador.getValue().extra;
+    this.aditionalHamburger = this.productService.disparador.getValue().additional;
     this.imgHamburger = this.productService.disparador.getValue().img;
     console.log(this.typeHamburger);
   }

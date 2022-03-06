@@ -1,6 +1,6 @@
 <div id="cartaView">
 
-    <!-- <app-navegador></app-navegador> -->
+    <app-navegador></app-navegador>
 
     <main>
         <div class="carta">
@@ -13,7 +13,7 @@
                     <div *ngFor="let hamburguesa of carta.hamburguesas">
                         <div class="item">
                             <div class="nameAndPrice">
-                                <h4 class="title"> {{ hamburguesa.title }} </h4>
+                                <h4 class="name"> {{ hamburguesa.name }} </h4>
                                 <h3>S/.{{ hamburguesa.price }} </h3>
                             </div>
                             <div class="picture">
@@ -21,15 +21,15 @@
                                 <img src="../../../assets/imagenes/img-carta/{{ hamburguesa.img }}">
                             </div>
                             <input type="button" value="Ver opciones" class="btn"
-                                (click)="getHamburgerData(hamburguesa)" [routerLink]="['/mesero/cartaOpciones']"
+                                (click)="getHamburgerData(hamburguesa)" routerLink="/cartaOpciones"
                                 routerLinkActive="activebutton">
                         </div>
                     </div>
 
-                    <div *ngFor="let sandwich of carta.sandwiches">
+                    <div *ngFor="let sandwich of carta.sandwichs">
                         <div class="item">
                             <div class="nameAndPrice">
-                                <h4> {{ sandwich.title }} </h4>
+                                <h4> {{ sandwich.name }} </h4>
                                 <h3>S/.{{ sandwich.price }} </h3>
                             </div>
                             <div class="picture">
@@ -37,7 +37,7 @@
                                 <img src="../../../assets/imagenes/img-carta/{{ sandwich.img }}">
                             </div>
                             <input type="button" value="Añadir" class="btn" (click)="getSandwichData(sandwich)"
-                                routerLink="/mesero/pedidosMesero" routerLinkActive="activebutton">
+                                routerLink="/pedidosMesero" routerLinkActive="activebutton">
                         </div>
                     </div>
                 </section>
@@ -50,14 +50,14 @@
                     <div *ngFor="let aperitivo of carta.aperitivos">
                         <div class="item">
                             <div class="nameAndPrice">
-                                <h4> {{ aperitivo.title }} </h4>
+                                <h4> {{ aperitivo.name }} </h4>
                                 <h3>S/.{{ aperitivo.price }} </h3>
                             </div>
                             <div class="picture">
                                 <i class="fa-solid fa-circle-check"></i>
                                 <img src="../../../assets/imagenes/img-carta/{{ aperitivo.img }}">
                             </div>
-                            <input type="button" value="Añadir" class="btn" routerLink="/mesero/pedidosMesero"
+                            <input type="button" value="Añadir" class="btn" routerLink="/pedidosMesero"
                                 routerLinkActive="activebutton">
                         </div>
                     </div>
@@ -73,13 +73,13 @@
                     <div *ngFor="let bebida of carta.bebidas">
                         <div class="item">
                             <div class="nameAndPrice">
-                                <h4> {{ bebida.title }} </h4>
+                                <h4> {{ bebida.name }} </h4>
                                 <h3>S/.{{ bebida.price }} </h3>
                             </div>
                             <div class="picture">
                                 <i class="fa-solid fa-circle-check"></i>
                                 <img src="../../../assets/imagenes/img-carta/{{ bebida.img }}"
-                                    routerLink="/mesero/pedidosMesero" routerLinkActive="activebutton">
+                                    routerLink="/pedidosMesero" routerLinkActive="activebutton">
                             </div>
                             <input type="button" value="Añadir" class="btn">
                         </div>

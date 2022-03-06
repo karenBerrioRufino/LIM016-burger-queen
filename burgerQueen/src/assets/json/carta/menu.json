@@ -1,0 +1,174 @@
+{
+  "hamburguesas": [
+    {
+      "id": "HAMB-S001",
+      "name": "Hamburguesa simple",
+      "price": 10,
+      "type": [
+        "Carne",
+        "Pollo",
+        "Vegetariana"
+      ],
+      "additional": [
+        "Huevo",
+        "Queso",
+        "Jamón",
+        "Ninguno",
+        "Todo"
+      ],
+      "img": "simple.jpg",
+      "category": "hamburguesas"
+    },
+    {
+      "id": "HAMB-D002",
+      "name": "Hamburguesa doble",
+      "price": 15,
+      "type": [
+        "Carne",
+        "Pollo",
+        "Vegetariana"
+      ],
+      "additional": [
+        "Huevo",
+        "Queso",
+        "Jamón",
+        "Ninguno",
+        "Ambos"
+      ],
+      "img": "doble.jpg",
+      "category": "hamburguesas"
+    }
+  ],
+  "sandwichs": [
+    {
+      "id": "SANDW-J001",
+      "name": "Sandwich de jamón y queso",
+      "price": 10,
+      "img": "sandwich1.jpg",
+      "category": "sandwichs"
+    },
+    {
+      "id": "SANDW-P002",
+      "name": "Sandwich de pollo",
+      "price": 12,
+      "img": "sandwich2.jpg",
+      "category": "sandwichs"
+    }
+  ],
+  "aperitivos": [
+    {
+      "id": "PF-A001",
+      "name": "Papas fritas",
+      "price": 5,
+      "img": "papasFritas.jpg",
+      "category": "aperitivos"
+    },
+    {
+      "id": "AC-A002",
+      "name": "Aros de cebolla",
+      "price": 5,
+      "img": "arosDeCebolla.jpg",
+      "category": "aperitivos"
+    },
+    {
+      "id": "NG-A003",
+      "name": "Nuggets",
+      "price": 8,
+      "img": "nuggets.jpg",
+      "category": "aperitivos"
+    },
+    {
+      "id": "SA-A004",
+      "name": "Ensalada",
+      "price": 5,
+      "img": "ensalada.jpg",
+      "category": "aperitivos"
+    }
+  ],
+  "bebidas": [
+    {
+      "id": "COFF-B001",
+      "name": "Café americano",
+      "price": 5,
+      "img": "cafeAmericano.jpg",
+      "category": "bebidas"
+    },
+    {
+      "id": "COFF-B002",
+      "name": "Café con leche",
+      "price": 7,
+      "img": "cafeConLeche.jpg",
+      "category": "bebidas"
+    },
+    {
+      "id": "CHOC-B003",
+      "name": "Chocolate caliente",
+      "price": 5,
+      "img": "chocolate.jpg",
+      "category": "bebidas"
+    },
+    {
+      "id": "JUGO-B004",
+      "name": "Jugo de fresa",
+      "price": 7,
+      "img": "jugoFresa.jpg",
+      "category": "bebidas"
+    },
+    {
+      "id": "JUGO-B005",
+      "name": "Jugo de naranja",
+      "price": 5,
+      "img": "jugoNaranja.jpg",
+      "category": "bebidas"
+    },
+    {
+      "id": "JUGO-B006",
+      "name": "Jugo de papaya",
+      "price": 7,
+      "img": "jugoPapaya.jpg",
+      "category": "bebidas"
+    },
+    {
+      "id": "AGUA-B007",
+      "name": "Agua mineral 500ml",
+      "price": 5,
+      "img": "agua1.jpg",
+      "category": "bebidas"
+    },
+    {
+      "id": "AGUA-B008",
+      "name": "Agua mineral 750ml",
+      "price": 7,
+      "img": "agua2.jpg",
+      "category": "bebidas"
+    },
+    {
+      "id": "INCA-B009",
+      "name": "Gaseosa Inca Kola 500ml",
+      "price": 7,
+      "img": "incaKola1.jpg",
+      "category": "bebidas"
+    },
+    {
+      "id": "INCA-B010",
+      "name": "Gaseosa Inca Kola 750ml",
+      "price": 10,
+      "img": "incaKola2.png",
+      "category": "bebidas"
+    },
+    {
+      "id": "COCA-B011",
+      "name": "Gaseosa Coca Cola 500ml",
+      "price": 7,
+      "img": "cocaCola1.jpg",
+      "category": "bebidas"
+    },
+    {
+      "id": "COCA-B012",
+      "name": "Gaseosa Coca Cola 750ml",
+      "price": 10,
+      "img": "cocaCola2.jpg",
+      "category": "bebidas"
+    }
+  ]
+}

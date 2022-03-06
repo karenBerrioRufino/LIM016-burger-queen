@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+
+import { AdministradorRoutingModule } from './administrador-routing.module';
+
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
+
 //para hacer formularios reactivos
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule} from '@angular/forms';
@@ -18,11 +23,18 @@ import { AdministradorComponent } from './administrador/administrador.component'
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    AdministradorRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
     AngularFirestoreModule,
+  ],
+  exports: [
+    GestionUsuariosComponent,
+    AdministradorComponent,
+
   ]
 })
 export class AdministradorModule { }
