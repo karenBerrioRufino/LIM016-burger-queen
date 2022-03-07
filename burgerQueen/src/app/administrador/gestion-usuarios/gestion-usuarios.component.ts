@@ -151,9 +151,6 @@ export class GestionUsuariosComponent implements OnInit {
           id:element.payload.doc.id,
           ...element.payload.doc.data()
         });
-        // console.log(element.payload.doc.id);
-        // console.log(element.payload.doc.data());
-        
       });
       console.log(this.listarUsuarios);
     })
@@ -169,36 +166,33 @@ export class GestionUsuariosComponent implements OnInit {
     })
     
     swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: '¿Está seguro que desea eliminarlo?',
+      text: "¡No podrás revertirlo!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel!',
+      confirmButtonText: 'Sí, eliminarlo',
+      cancelButtonText: 'No, cancelar',
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
         swalWithBootstrapButtons.fire(
-          'Deleted!',
-          'Your file has been deleted.',
+          '¡Elimiado!',
+          'Este usuario a sido eliminado',
           'success'
         )
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
+        this._userService.deleteUser(id).then((res)=>{
+          console.log('Registro eliminado con exito',res);
+        },error=>{
+          console.log(error);
+        })
+      } else if ( result.dismiss === Swal.DismissReason.cancel ) {
         swalWithBootstrapButtons.fire(
           'Cancelled',
           'Your imaginary file is safe :)',
           'error'
         )
       }
-    })
-    this._userService.deleteUser(id).then((res)=>{
-      console.log('Registro eliminado con exito',res);
-    },error=>{
-      console.log(error);
-    })
+    })  
   }
 
   editarUsuarioBtn(usuario:RegisterUsers){

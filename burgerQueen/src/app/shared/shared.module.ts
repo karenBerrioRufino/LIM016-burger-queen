@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavegadorComponent } from './navegador/navegador.component';
+import { SharedRoutingModule } from './shared-routing.module';
 import { DatosPedidoComponent } from './datos-pedido/datos-pedido.component';
-import { TotalPedidosComponent } from './total-pedidos/total-pedidos.component';
+import { NavegadorComponent } from './navegador/navegador.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
+import { TotalPedidosComponent } from './total-pedidos/total-pedidos.component';
 
 
 @NgModule({
@@ -12,10 +12,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NavegadorComponent,
     DatosPedidoComponent,
     TotalPedidosComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedRoutingModule,
   ],
   exports: [
     NavegadorComponent,
