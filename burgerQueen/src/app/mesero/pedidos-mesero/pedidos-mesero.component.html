@@ -1,32 +1,53 @@
-<div class = "containerPedido">
-<h2 class="pedidos">PEDIDOS</h2>
-<table class="listaPedidos">
-  <tr>
-    <td><button (click)="eliminar()">x</button></td>
-    <td><img src="../../../assets/imagenes/img-carta/{{img}}"></td>
-    <td><div class="p">
-      <p>{{title}}</p>
-      <P>{{'S/.' + priceHamburger}}</P>
-    </div></td>
-    <td>
-      <button (click)="restar()">-</button>
-      <input type="number">
-      <button (click)="sumar()">+</button>
-    </td>
-  </tr>
-</table>
+<div id="pedidosMeseroView">
 
-  <!--
-    <div class="listaPedidos">
-    <button>x</button>
-    <img src="../../../assets/imagenes/img-carta/{{img}}">
-    <div class="p">
-      <p>{{title}}</p>
-      <P>{{'S/.' + priceHamburger}}</P>
+  <app-navegador></app-navegador>
+
+  <main>
+
+    <div class="containerPedido">
+
+      <div class="subtitle">
+        <h2>PEDIDOS</h2>
+        <hr>
+      </div>
+
+      <table class="listaPedidos">
+        <tr>
+          <td><button (click)="eliminar()">x</button></td>
+          <td><img src="../../../assets/imagenes/img-carta/{{img}}"></td>
+          <td>
+            <div class="p">
+              <p>{{ title }}</p>
+              <P>{{'S/.' + priceHamburger}}</P>
+            </div>
+          </td>
+          <td>
+            <button (click)="restar()">-</button>
+            <input type="number">
+            <button (click)="sumar()">+</button>
+          </td>
+        </tr>
+      </table>
+
+      <!--
+        <div class="listaPedidos">
+        <button>x</button>
+        <img src="../../../assets/imagenes/img-carta/{{img}}">
+        <div class="p">
+          <p>{{title}}</p>
+          <P>{{'S/.' + priceHamburger}}</P>
+        </div>
+        <button (click)="restar()">-</button>
+        <input type="number">
+        <button (click)="sumar()">+</button>
+        </div>
+      -->
     </div>
-    <button (click)="restar()">-</button>
-    <input type="number">
-    <button (click)="sumar()">+</button>
-  </div>
-  -->
+
+    <app-datos-pedido></app-datos-pedido>
+    
+    <button class="btnEnviarOrden">Enviar Orden</button>
+
+  </main>
+
 </div>

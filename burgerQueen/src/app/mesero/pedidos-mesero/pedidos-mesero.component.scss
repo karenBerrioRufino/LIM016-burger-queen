@@ -1,14 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@1,200&display=swap');
 $color-melon: #f1d5bb;
 $color-marron: #3B2213;
-$color-blanco: #ffffff;
+$color-rosa: #FF8087;
+
+#pedidosMeseroView{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  main{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+  }
+}
+
 .containerPedido{
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   font-family: 'Mulish', sans-serif;
+  width: 49vw;
+  margin: 5vh 0vh;
+  align-self: flex-start;
 }
+
+/*---------------------*/
+
+/*SUBTITLE*/
+
+.subtitle{
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 2px 5px 2px;
+
+  h2 {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 24px;
+      font-weight: 100;
+  }
+  hr{
+      width: 160px;
+      margin: 2px;
+      height: 4px;
+      background-color: $color-melon;
+      border-style: none;
+  }
+}
+
+/*---------------------*/
+
+/*ORDER LIST TABLE*/
+
 .pedidos{
   color: black;
   margin-top: 2rem;
@@ -45,7 +88,8 @@ input[type=number] {
   align-items: center;
   background-color: $color-melon;
   align-self: flex-start;
-  margin-left: 19%;
+  margin-top: 1em;
+  width: 100%;
 }
 img{
   width: 50px;
@@ -57,4 +101,17 @@ img{
   margin: 5px;
   display: flex;
   flex-direction: column;
+}
+
+.btnEnviarOrden{
+  background-color: $color-marron;
+  color: whitesmoke;
+  border: none;
+  font-weight: 500;
+  mix-blend-mode: darken;
+  // box-shadow: 3px 3px 2px $color-grisligth;
+  padding: 0.75rem;
+}
+.btnEnviarOrden:hover{
+  background-color: $color-rosa;
 }
