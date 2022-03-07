@@ -5,7 +5,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdministradorComponent } from './administrador/administrador.component';
 import { GestionUsuariosComponent } from '../administrador/gestion-usuarios/gestion-usuarios.component';
-// import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { 
