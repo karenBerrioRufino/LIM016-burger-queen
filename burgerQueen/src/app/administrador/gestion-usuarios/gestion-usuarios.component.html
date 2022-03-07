@@ -1,12 +1,11 @@
 <div class="gestionUsuarios">
-  <h2 class="titulo">Gestión de Usuarios</h2>
+  <h2 class="titulo">TRABAJADORES</h2>
   <button onclick="document.getElementById('btnModal').style.display='block'" class="btnNuevoUsuario">
-    <h4>Nuevo usuario  </h4>
+    <h4>Agregar</h4>
     <i class="fa-solid fa-circle-plus"></i>
   </button>
   
   <div class="listarUsuario">
-    <h4 class="subtitulo">LISTAR USUARIOS</h4>
     <table [class]="'table'">
       <thead>
         <th>Nombres</th>
@@ -62,8 +61,8 @@
             <div [class]="['column2']">
               <label for="">Estado</label>
               <div class="estado">
-                <label for=""><input type="radio" name="estado" value="Activo" formControlName="estado"> Activo</label>
-                <label for=""><input type="radio" name="estado" value="Inactivo" formControlName="estado"> Inactivo</label>
+                <label><input type="radio" name="estado" value="Activo" formControlName="estado">Activo</label>
+                <label><input type="radio" name="estado" value="Inactivo" formControlName="estado">Inactivo</label>
               </div>
               <Label for="">Rol</Label>
               <div [class]="['rol']">
