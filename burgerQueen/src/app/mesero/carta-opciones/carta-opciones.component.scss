@@ -8,29 +8,35 @@ $color-blanco: #ffffff;
   flex-direction: row;
   justify-content: space-between;
 
-  .containerOptionsLetter{
+  main{
     display: flex;
-    // justify-content: center;
-    // align-items: center;
-    flex-direction: column;
-    margin: 5vh 0vh;
-    width: 85vw;
-    font-family: 'Tajawal', sans-serif;
-    // font-family: 'Mulish', sans-serif;
+    flex-direction: row;
   }
 }
 
-// h2{
-  //color: black;
-  // margin-top: 2rem;
-  // margin-bottom: 1rem;
-  // align-self: flex-start;
-  // margin-left: 19%;
-  // font-size: 35px;
-  // border-bottom: 5px solid $color-melon;
-  // padding-bottom: 5px;
-// }
+.btnIcon{
+  color: $color-marron;
+  font-size: 2em;
+  margin: 0.4em;
 
+  i{
+      position: relative;
+      top: 18px;
+  }
+}
+
+.containerOptionsLetter{
+  display: flex;
+  flex-direction: column;
+  margin: 5vh 0vh;
+  width: 78vw;
+  font-family: 'Tajawal', sans-serif;
+  // font-family: 'Mulish', sans-serif;
+}
+
+/*---------------------*/
+
+/*SUBTITLE*/
 .subtitle{
   width: auto;
   display: flex;
@@ -38,22 +44,24 @@ $color-blanco: #ffffff;
   margin: 10px 2px 5px 2px;
 
   h2 {
-      font-family: 'Tajawal', sans-serif;
-      font-size: 24px;
-      font-weight: 100;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 24px;
+    font-weight: 100;
   }
   hr{
-      width: 160px;
-      margin: 2px;
-      height: 4px;
-      background-color: $color-melon;
-      border-style: none;
+    width: 160px;
+    margin: 2px;
+    height: 4px;
+    background-color: $color-melon;
+    border-style: none;
   }
 }
 
+/*---------------------*/
+
+/*OPTIONS SECTION*/
 .containerOptions{
   padding: 1rem;
-  // border-style: 3px solid $color-melon;
   border: 2px solid $color-melon;
   display: flex;
   flex-direction: column !important;
@@ -84,6 +92,7 @@ $color-blanco: #ffffff;
     margin: 0.5em;
   }
 }
+
 
 .selects{
   display: flex;
@@ -119,6 +128,10 @@ $color-blanco: #ffffff;
   }
 }
 
+/*---------------------*/
+
+/*SUBTOTAL SECTION*/
+
 .containerSubTotal{
   background-color: #F1D5BB;
     display: flex;
@@ -140,7 +153,6 @@ $color-blanco: #ffffff;
   }
 
   .buttonAddOptions{
-    // border-radius: 10px;
     border-style: none;
     background-color: #3C2213;
     color: whitesmoke;
@@ -157,15 +169,38 @@ $color-blanco: #ffffff;
     display: flex;
     flex-direction: column-reverse;
 
-    .containerOptionsLetter{
-      flex-direction: column;
-      margin-right: auto;
-      margin-left: auto;
-      margin-bottom: 0%;
-      height: auto;
-    } 
+    main{
+      width: 98vw;
+      height: 90vh;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      z-index: 1;
+    }
   }
 
+  .btnIcon{
+    margin: 0.3em;
+    font-size: 2em;
+
+    i{
+        position: fixed !important;
+        top: 20px;
+        right: 15px;
+    }
+  }
+
+  .containerOptionsLetter{
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 0%;
+    height: auto;
+  } 
+
+  .containerOptions{
+    justify-content: center;
+    height: auto;
+  }
   .divOptions{
     flex-direction: column;
 
@@ -175,18 +210,12 @@ $color-blanco: #ffffff;
     }
   }
 
-  .containerOptions{
-    justify-content: center;
-    height: auto;
-  }
-
   .selects{
     width: 104%;
 
     div{
       margin-bottom: 0.5em;
     }
-
     select{
       width: 116px;
     }

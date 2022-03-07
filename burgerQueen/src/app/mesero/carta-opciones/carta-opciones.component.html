@@ -2,52 +2,53 @@
 
   <app-navegador></app-navegador>
 
-  <div class="containerOptionsLetter">
+  <main>
+    <div class="containerOptionsLetter">
 
-    <div class="subtitle">
-      <h2>OPCIONES</h2>
-      <hr>
-    </div>
+      <div class="subtitle">
+        <h2>OPCIONES</h2>
+        <hr>
+      </div>
 
-    <div class="containerOptions">
+      <section class="containerOptions">
+        <p class="hamburgerTitle">{{ titleHamburger }}</p>
+        <div class="divOptions">
 
-      <p class="hamburgerTitle">{{ titleHamburger }}</p>
+          <img src="../../../assets/imagenes/img-carta/{{ imgHamburger }}" alt="Hamburguesa" class="imgHamburger">
 
-      <div class="divOptions">
+          <div class="selects">
+            <div>
+              <p>Tipo</p>
+              <select name="type" class="type">
+                <option *ngFor="let type of typeHamburger"> {{ type }}</option>
+              </select>
+            </div>
 
-        <img src="../../../assets/imagenes/img-carta/{{ imgHamburger }}" alt="Hamburguesa" class="imgHamburger">
-
-        <div class="selects">
-
-          <div>
-          <p>Tipo</p>
-          <select name="type" class="type">
-            <option *ngFor="let type of typeHamburger"> {{ type }}</option>
-          </select>
-          </div>
-
-          <div>
-          <p>Adicional</p>
-          <select name="additional" class="additional">
-            <option *ngFor="let aditional of aditionalHamburger">{{ aditional }}</option>
-          </select>
+            <div>
+              <p>Adicional</p>
+              <select name="additional" class="additional">
+                <option *ngFor="let aditional of aditionalHamburger">{{ aditional }}</option>
+              </select>
+            </div>
           </div>
 
         </div>
+      </section>
 
-      </div>
-
+      <section class="containerSubTotal">
+        <div>
+          <p>Subtotal</p>
+          <p>S/.{{ priceHamburger }}</p>
+        </div>
+        <input type="submit" class="buttonAddOptions" id="buttonAddOptions" value="Añadir" routerLink="/pedidosMesero"
+          routerLinkActive="activebutton">
+      </section>
     </div>
 
-    <div class="containerSubTotal">
-      <div>
-      <p>Subtotal</p>
-      <p>S/.{{ priceHamburger }}</p>
-      </div>
-      <input type="submit" class="buttonAddOptions" id="buttonAddOptions" value="Añadir" routerLink="/pedidosMesero"
-        routerLinkActive="activebutton">
+    <div class="btnIcon">
+      <i class="fa-solid fa-circle-xmark" (click)="close()"></i>
     </div>
 
-  </div>
+  </main>
 
 </div>
