@@ -3,88 +3,151 @@ $color-melon: #f1d5bb;
 $color-marron: #3B2213;
 $color-blanco: #ffffff;
 
-.containerOptionsLetter{
+#cartaOpcionesView{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .containerOptionsLetter{
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
+    flex-direction: column;
+    margin: 5vh 0vh;
+    width: 85vw;
+    font-family: 'Tajawal', sans-serif;
+    // font-family: 'Mulish', sans-serif;
+  }
+}
+
+// h2{
+  //color: black;
+  // margin-top: 2rem;
+  // margin-bottom: 1rem;
+  // align-self: flex-start;
+  // margin-left: 19%;
+  // font-size: 35px;
+  // border-bottom: 5px solid $color-melon;
+  // padding-bottom: 5px;
+// }
+
+.subtitle{
+  width: auto;
+  display: flex;
   flex-direction: column;
-  font-family: 'Mulish', sans-serif;
+  margin: 10px 2px 5px 2px;
+
+  h2 {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 24px;
+      font-weight: 100;
+  }
+  hr{
+      width: 160px;
+      margin: 2px;
+      height: 4px;
+      background-color: $color-melon;
+      border-style: none;
+  }
 }
-h2{
-  color: black;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  align-self: flex-start;
-  margin-left: 19%;
-  font-size: 35px;
-  border-bottom: 5px solid $color-melon;
-  padding-bottom: 5px;
-}
+
 .containerOptions{
-  padding: 1.5rem;
-  border-style: 3px solid $color-melon;
+  padding: 1rem;
+  // border-style: 3px solid $color-melon;
+  border: 2px solid $color-melon;
   display: flex;
   flex-direction: column !important;
   align-items: center;
-  justify-content: center;
-  border: 2px solid $color-melon;
-  margin: 1rem;
-  width: 63%;
+  justify-content: space-evenly;
+  margin: 1em;
+  width: 92%;
+  height: 66%;
+
+  .hamburgerTitle{
+    font-size: 20px;
+    font-family: 'Tajawal', sans-serif;
+    align-self: flex-start;
+    padding: 5px;
+    // font-weight: bold;
+  }
 }
-.containerOptions p{
-  font-size: 20px;
-  font-weight: bold;
-  padding: 5px;
-  color: black;
-}
-.title{
-  font-size: 30px !important;
-  font-weight: bold;
-  padding: 5px;
-  color: black;
-}
-.containerOptions select{
-  border-radius: 5px;
-  height: 35px;
-  width: 220px;
-}
-.containerSubTotal{
-  background-color: #F1D5BB;
-  display: flex;
-  flex-direction: row;
-  width: 63%;
-  margin: 20px;
-  padding: 1rem;
-  justify-content: space-between;
-  align-items: center;
-}
-.containerSubTotal p{
-  font-size: 25px;
-  font-weight: bold;
-  padding: 5px;
-  color: black;
-}
-.buttonAddOptions{
-  border-radius: 10px;
-  background-color: #3C2213;
-  color: #ffff;
-  width: 40%;
-  padding: 5px;
-  margin: 10px 0px;
-  font-size: 20px;
-}
+
 .divOptions{
   display: flex;
   flex-direction: row;
   gap: 1rem;
   margin-top: 1rem;
+
+  .imgHamburger{
+    width: 186px;
+    height: 186px;
+    margin: 0.5em;
+  }
 }
+
 .selects{
   display: flex;
-  flex-direction: column;
-  padding: 10px;
+    flex-direction: column;
+    padding: 10px;
+    width: 17.5em;
+    height: 70%;
+    justify-content: space-evenly;
+    align-self: center;
+
+  p{
+    font-size: 16px;
+    // font-weight: bold;
+    padding: 5px;
+    font-family: 'Tajawal', sans-serif;
+  }
+
+  div{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  select{
+    font-family: 'Tajawal', sans-serif;
+    border-radius: 5px;
+    border-color: $color-melon;
+    height: 35px;
+    width: 142px;
+    padding: 7px;
+    font-size: 14px;
+    text-align: center;
+  }
 }
-.imgHamburger{
-  width: 200px;
-  height: 200px;
+
+.containerSubTotal{
+  background-color: #F1D5BB;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 12px auto;
+    padding: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+
+  div{
+    display: flex;
+    font-family: "Tajawal", sans-serif;
+    font-size: 18px;
+    // font-weight: bold;
+    width: 11.5em;
+    justify-content: space-between;
+    padding: 0em 1em;
+  }
+
+  .buttonAddOptions{
+    // border-radius: 10px;
+    border-style: none;
+    background-color: #3C2213;
+    color: whitesmoke;
+    width: 10.5em;
+    height: 40px;
+    padding: 1em 0em;
+    margin-right: 1em;
+    font-size: 13px;
+  }
 }
