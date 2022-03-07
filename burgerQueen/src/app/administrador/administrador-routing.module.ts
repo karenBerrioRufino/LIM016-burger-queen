@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+// No eliminar Component
+import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { Routes, RouterModule } from '@angular/router';
