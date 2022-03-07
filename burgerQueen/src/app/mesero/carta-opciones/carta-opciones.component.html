@@ -1,25 +1,53 @@
-<div class="containerOptionsLetter">
-  <h2>OPCIONES</h2>
-  <div class="containerOptions">
-    <p class="title">{{ titleHamburger }}</p>
-    <div class="divOptions">
-      <img src="../../../assets/imagenes/img-carta/{{ imgHamburger }}" alt="Hamburguesa" class="imgHamburger">
-      <div class="selects">
-          <p>Tipo</p>
-        <select name="type" class="type">
-          <option *ngFor="let type of typeHamburger"> {{ type }}</option>
-        </select>
-        <p>Adicional</p>
-        <select name="additional" class="additional">
-          <option *ngFor="let aditional of aditionalHamburger">{{ aditional }}</option>
-        </select>
-      </div>
+<div id="cartaOpcionesView">
+
+  <app-navegador></app-navegador>
+
+  <div class="containerOptionsLetter">
+
+    <div class="subtitle">
+      <h2>OPCIONES</h2>
+      <hr>
     </div>
+
+    <div class="containerOptions">
+
+      <p class="hamburgerTitle">{{ titleHamburger }}</p>
+
+      <div class="divOptions">
+
+        <img src="../../../assets/imagenes/img-carta/{{ imgHamburger }}" alt="Hamburguesa" class="imgHamburger">
+
+        <div class="selects">
+
+          <div>
+          <p>Tipo</p>
+          <select name="type" class="type">
+            <option *ngFor="let type of typeHamburger"> {{ type }}</option>
+          </select>
+          </div>
+
+          <div>
+          <p>Adicional</p>
+          <select name="additional" class="additional">
+            <option *ngFor="let aditional of aditionalHamburger">{{ aditional }}</option>
+          </select>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="containerSubTotal">
+      <div>
+      <p>Subtotal</p>
+      <p>S/.{{ priceHamburger }}</p>
+      </div>
+      <input type="submit" class="buttonAddOptions" id="buttonAddOptions" value="Añadir" routerLink="/pedidosMesero"
+        routerLinkActive="activebutton">
+    </div>
+
   </div>
-  <div class="containerSubTotal">
-    <p>Subtotal</p>
-    <p>S/.{{ priceHamburger }}</p>
-    <input type="submit" class="buttonAddOptions" id="buttonAddOptions" value="Añadir" 
-        routerLink="/pedidosMesero" routerLinkActive="activebutton">
-  </div>
+
 </div>

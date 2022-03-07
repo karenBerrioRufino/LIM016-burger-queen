@@ -13,7 +13,7 @@
                     <div *ngFor="let hamburguesa of carta.hamburguesas">
                         <div class="item">
                             <div class="nameAndPrice">
-                                <h4 class="title"> {{ hamburguesa.title }} </h4>
+                                <h4 class="name"> {{ hamburguesa.name }} </h4>
                                 <h3>S/.{{ hamburguesa.price }} </h3>
                             </div>
                             <div class="picture">
@@ -26,10 +26,10 @@
                         </div>
                     </div>
 
-                    <div *ngFor="let sandwich of carta.sandwiches">
+                    <div *ngFor="let sandwich of carta.sandwichs">
                         <div class="item">
                             <div class="nameAndPrice">
-                                <h4> {{ sandwich.title }} </h4>
+                                <h4> {{ sandwich.name }} </h4>
                                 <h3>S/.{{ sandwich.price }} </h3>
                             </div>
                             <div class="picture">
@@ -50,7 +50,7 @@
                     <div *ngFor="let aperitivo of carta.aperitivos">
                         <div class="item">
                             <div class="nameAndPrice">
-                                <h4> {{ aperitivo.title }} </h4>
+                                <h4> {{ aperitivo.name }} </h4>
                                 <h3>S/.{{ aperitivo.price }} </h3>
                             </div>
                             <div class="picture">
@@ -73,7 +73,7 @@
                     <div *ngFor="let bebida of carta.bebidas">
                         <div class="item">
                             <div class="nameAndPrice">
-                                <h4> {{ bebida.title }} </h4>
+                                <h4> {{ bebida.name }} </h4>
                                 <h3>S/.{{ bebida.price }} </h3>
                             </div>
                             <div class="picture">

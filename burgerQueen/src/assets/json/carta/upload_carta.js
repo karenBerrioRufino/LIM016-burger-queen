@@ -18,7 +18,7 @@ if (data && (typeof data === "object")) {
         });
     })
 
-    data.sandwiches.forEach(docKey => {
+    data.sandwichs.forEach(docKey => {
         firestore.collection(collectionKey).doc().set(docKey).then((res) => {
             console.log("Document " + docKey + " successfully written!", res);
         }).catch((error) => {
