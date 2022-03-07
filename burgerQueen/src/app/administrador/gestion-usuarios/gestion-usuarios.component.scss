@@ -2,15 +2,9 @@
 $color-melon: #f1d5bb;
 $color-marron: #3B2213;
 $color-blanco: #ffffff;
-$color-pink: #FF8087;
-$color-primary:#0080ff;
-$color-gris:#6c757d;
-$color-gris:#303438;
 $color-danger:#dc3545;
 $color-edit:#ffc107;
 $color-gris-ligth:#DDD;
-$color-naranja:#ff751a;
-$color-verde:#008080;
 
 .gestionUsuarios{
   display: flex;
@@ -49,7 +43,6 @@ $color-verde:#008080;
   align-self: flex-start;
   display: flex;
   flex-direction: column;
-  // align-items: flex-start;
   gap: 1rem;
   padding: 1rem;
 }
