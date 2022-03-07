@@ -1,0 +1,148 @@
+$color-melon: #f1d5bb;
+$color-marron: #3B2213;
+$color-blanco: #ffffff;
+$color-pink: #FF8087;
+$color-gris-ligth:#eee;
+$color-gris:#303438;
+$color-naranja:#FB7614;
+$color-green: #31C248;
+$color-primary: #64b6e6;
+
+.total-pedidos{
+  font-family: 'Mulish', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.titulo-lista-pedidos{
+  font-family: 'Mulish', sans-serif;
+  color: $color-marron;
+  justify-content:flex-start;
+}
+.subrayado{
+  border: 2px solid $color-melon;
+  width:11rem;
+  // background-color: $color-melon;
+  // height: 5px;
+}
+table{
+  border-collapse: collapse;
+  border: 1px solid $color-gris-ligth;
+  font-family: 'Mulish', sans-serif;
+  width: 60%;
+  margin: 1rem;
+}
+thead{
+  border:1px solid $color-gris-ligth;
+  background-color: $color-melon;
+}
+th{
+  padding: 0.5rem;
+  color: $color-marron;
+  font-weight: 500;
+}
+td {
+  padding: 0.5rem;
+  text-align: center;
+  border-bottom: 1px solid $color-gris-ligth;
+  width: auto;
+}
+.ordenado,.no-ordenado{
+  border-radius: 100%;
+  border: 2px solid $color-naranja;
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+.ordenado{
+  content: "\2713";
+  background-color: $color-naranja;
+  text-align: center;
+  color: $color-blanco;
+  font-weight:500;
+  
+}
+.no-ordenado{
+  content: " ";
+  background-color: $color-blanco;
+  color: $color-blanco;
+}
+.preparado, .no-preparado{
+  border-radius: 100%;
+  border: 2px solid $color-green;
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+.preparado{
+  content: "\2713";
+  background-color: $color-green;
+  text-align: center;
+  color: $color-blanco;
+  font-weight:500;
+  
+}
+.no-preparado{
+  content: " ";
+  background-color: $color-blanco;
+  color: $color-blanco;
+}
+
+.entregado{
+  content: "\2713";
+  border-radius: 100%;
+  border: 2px solid $color-primary;
+  padding: 5px;
+  text-align: center;
+  background-color: $color-blanco;
+  text-align: center;
+  color: $color-primary;
+  font-weight:500;
+  cursor: pointer;
+}
+.no-entregado{
+  border-radius: 100%;
+  border: 2px solid $color-primary;
+  padding: 5px;
+  background-color: $color-blanco;
+  text-align: center;
+  color: $color-blanco;
+  cursor: pointer;
+}
+
+.cancelar{
+  border:1px solid $color-pink;
+  border-radius:0.5rem;
+  background-color: $color-blanco;
+  padding: 5px;
+  color: $color-pink;
+  cursor:pointer;
+  font-weight: 500;
+}
+.cancelar:hover{
+   background-color: $color-pink;
+   color: $color-blanco;
+}
+.btnOpciones{
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.fa-eye{
+  color:$color-blanco;
+  font-weight: 500;
+}
+.fa-eye:hover{
+  color: $color-blanco;
+}
+.btn-ver-pedido{
+  display: inline;
+  text-align: center;
+  border:1px solid $color-marron;
+  border-radius:0.5rem;
+  color: $color-blanco;
+  background-color: $color-marron;
+  padding: 0.5rem;
+  cursor: pointer;
+}
