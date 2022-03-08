@@ -12,25 +12,24 @@ $color-primary: #64b6e6;
   font-family: 'Mulish', sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
+  margin: 1rem;
 }
 .titulo-lista-pedidos{
   font-family: 'Mulish', sans-serif;
   color: $color-marron;
-  justify-content:flex-start;
 }
 .subrayado{
   border: 2px solid $color-melon;
   width:11rem;
-  // background-color: $color-melon;
-  // height: 5px;
+  margin:0.5rem 0;
 }
 table{
+  align-self: flex-start;
   border-collapse: collapse;
   border: 1px solid $color-gris-ligth;
   font-family: 'Mulish', sans-serif;
-  width: 60%;
+  width: 50%;
   margin: 1rem;
 }
 thead{
@@ -47,6 +46,7 @@ td {
   text-align: center;
   border-bottom: 1px solid $color-gris-ligth;
   width: auto;
+  font-size: 12px;
 }
 .ordenado,.no-ordenado{
   border-radius: 100%;
@@ -145,4 +145,12 @@ td {
   background-color: $color-marron;
   padding: 0.5rem;
   cursor: pointer;
+}
+@media only screen and (min-width: 700px) and (max-width: 1500px){
+  table{
+    width: 90%;
+  }
+  td{
+    font-size: 14px;
+  }
 }
