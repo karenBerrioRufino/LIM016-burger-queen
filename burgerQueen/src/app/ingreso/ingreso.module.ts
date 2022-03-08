@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 import { FormsModule } from '@angular/forms';
-import { ViewModule } from '../view/view.module';
+// import { ViewModule } from '../view/view.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { ViewModule } from '../view/view.module';
   imports: [
     CommonModule,
     IngresoRoutingModule,
-    ViewModule,
+    // ViewModule,
     FormsModule
   ],
   exports:[

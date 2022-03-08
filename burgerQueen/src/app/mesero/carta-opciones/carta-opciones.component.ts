@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carta-opciones',
@@ -13,7 +14,8 @@ export class CartaOpcionesComponent implements OnInit {
   public typeHamburger: string[] = []; //el array donde se va a buscar los datos
   public aditionalHamburger: string[] = [];
   public imgHamburger: string = '';
-  constructor(public productService: ProductService) { }
+
+  constructor(public productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
     this.titleHamburger = this.productService.disparador.getValue().name;
@@ -21,5 +23,9 @@ export class CartaOpcionesComponent implements OnInit {
     this.typeHamburger = this.productService.disparador.getValue().type; //para jalar datos del json
     this.aditionalHamburger = this.productService.disparador.getValue().additional;
     this.imgHamburger = this.productService.disparador.getValue().img;
+  }
+
+  close(){
+    this.router.navigate(['./carta'])
   }
 }
