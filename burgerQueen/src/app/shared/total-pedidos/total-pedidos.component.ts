@@ -12,4 +12,19 @@ export class TotalPedidosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  enviado = false;
+  preparado = false;
+  entregado = false;
+
+  changeOrderShipped(){
+    this.enviado = !this.enviado;
+  }
+
+  changeReadyPreparation(){
+    this.preparado = !this.preparado;
+  }
+  changeOrderServed(){
+    this.entregado = !this.entregado;
+  }
+  
 }
