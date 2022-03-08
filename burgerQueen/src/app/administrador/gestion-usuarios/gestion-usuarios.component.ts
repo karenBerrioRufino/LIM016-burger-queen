@@ -176,7 +176,7 @@ export class GestionUsuariosComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         swalWithBootstrapButtons.fire(
-          '¡Elimiado!',
+          '¡Eliminado!',
           'Este usuario a sido eliminado',
           'success'
         )
@@ -187,8 +187,8 @@ export class GestionUsuariosComponent implements OnInit {
         })
       } else if ( result.dismiss === Swal.DismissReason.cancel ) {
         swalWithBootstrapButtons.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
+          'Cancelado',
+          'Tu archivo registro está a salvo :)',
           'error'
         )
       }

@@ -1,10 +1,10 @@
 $color-melon: #f1d5bb;
-$color-marron: #3B2213;
-$color-rosa: #FF8087;
+$color-marron: #3b2213;
+$color-rosa: #ff8087;
 // $color-grisligth:#6c757d;
 // $color-gris:#303438;
 
-.datosPedido{
+.datosPedido {
   display: flex;
   flex-direction: column;
   width: 33vw;
@@ -12,30 +12,32 @@ $color-rosa: #FF8087;
   // gap: 1rem;
 }
 
-.datos{
+.datos {
   border: 1px solid $color-melon;
   justify-content: center;
 
-  .fecha{
-    padding: 0.5rem; 
+  .fecha {
+    padding: 0.5rem;
     margin: 1rem 0;
     width: 100%;
     text-align: center;
-    font-family: 'Tajawal', sans-serif;
+    font-family: "Tajawal", sans-serif;
   }
-  
-  .seccionCliente, .seccionMesa{
+
+  .seccionCliente,
+  .seccionMesa {
     display: flex;
     margin: 1em;
     align-items: center;
     justify-content: space-between;
-  
-    p{
-      font-family: 'Tajawal', sans-serif;
+
+    p {
+      font-family: "Tajawal", sans-serif;
     }
   }
-  
-  .cliente, .mesa{
+
+  .cliente,
+  .mesa {
     padding: 0.5rem;
     width: 10rem;
     border: 1px solid $color-melon;
@@ -43,21 +45,33 @@ $color-rosa: #FF8087;
   }
 }
 
-.costoPedido{
+.costoPedido {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
   flex-direction: column;
   margin: 1rem 0;
   background-color: $color-melon;
-  
-  p{
-    font-family: 'Tajawal', sans-serif;
+
+  p {
+    font-family: "Tajawal", sans-serif;
     font-size: 18px;
   }
 
-  .precio{
+  .precio {
     align-self: center;
   }
 }
 
+.btnEnviarOrden {
+  background-color: $color-marron;
+  color: whitesmoke;
+  padding: 0.75rem;
+  border: none;
+  margin: 0em auto;
+  font-size: 13px;
+  width: 11.5em;
+  height: 40px;
+  // mix-blend-mode: darken;
+  // box-shadow: 3px 3px 2px $color-grisligth;
+}

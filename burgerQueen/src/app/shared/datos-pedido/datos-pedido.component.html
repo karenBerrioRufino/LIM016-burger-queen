@@ -1,14 +1,14 @@
-<section class="datosPedido">
+<form class="datosPedido">
 
   <div class="datos">
 
   <div class="fecha">
-    <p> 12/03/2022 - 04:12pm</p>
+    <p> {{ date }} - {{ hour }}</p>
   </div>
 
   <div class="seccionCliente">
     <p>Cliente: </p>
-    <input type="text" class="cliente">
+    <input type="text" class="cliente" [formControl]="clientName">
   </div>
 
   <div class="seccionMesa">
@@ -36,4 +36,6 @@
     <p class="precio">S/ 23.00</p>
   </div>
 
-</section>
+  <button class="btnEnviarOrden" (click)="sendName()">Enviar Orden</button>
+
+</form>
