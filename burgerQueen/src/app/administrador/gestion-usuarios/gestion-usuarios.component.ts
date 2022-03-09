@@ -188,7 +188,7 @@ export class GestionUsuariosComponent implements OnInit {
       } else if ( result.dismiss === Swal.DismissReason.cancel ) {
         swalWithBootstrapButtons.fire(
           'Cancelado',
-          'Tu archivo registro está a salvo :)',
+          'Tu registro está a salvo :)',
           'error'
         )
       }
