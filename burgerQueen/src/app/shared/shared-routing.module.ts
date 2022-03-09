@@ -16,7 +16,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
   ]
 })
 export class SharedRoutingModule { }
