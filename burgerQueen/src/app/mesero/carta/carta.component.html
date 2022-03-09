@@ -10,7 +10,7 @@
                     <hr>
                 </div>
                 <section class="itemsSection">
-                    <div *ngFor="let hamburguesa of carta.hamburguesas">
+                    <div *ngFor="let hamburguesa of hamburguesas">
                         <div class="item">
                             <div class="nameAndPrice">
                                 <h4 class="name"> {{ hamburguesa.name }} </h4>
@@ -18,7 +18,7 @@
                             </div>
                             <div class="picture">
                                 <i class="fa-solid fa-circle-check" [class.show]="booleanValue"></i>
-                                <img src="../../../assets/imagenes/img-carta/{{ hamburguesa.img }}">
+                                <img src="{{ hamburguesa.img }}">
                             </div>
                             <input type="button" value="Ver opciones" class="btn"
                                 (click)="getHamburgerData(hamburguesa)" routerLink="/cartaOpciones"
@@ -26,7 +26,7 @@
                         </div>
                     </div>
 
-                    <div *ngFor="let sandwich of carta.sandwichs">
+                    <div *ngFor="let sandwich of sandwichs">
                         <div class="item">
                             <div class="nameAndPrice">
                                 <h4> {{ sandwich.name }} </h4>
@@ -34,9 +34,9 @@
                             </div>
                             <div class="picture">
                                 <i class="fa-solid fa-circle-check"></i>
-                                <img src="../../../assets/imagenes/img-carta/{{ sandwich.img }}">
+                                <img src="{{ sandwich.img }}">
                             </div>
-                            <input type="button" value="Añadir" class="btn" (click)="getSandwichData(sandwich)"
+                            <input type="button" value="Añadir" class="btn" (click)="getItemData(sandwich)"
                                 routerLink="/pedidosMesero" routerLinkActive="activebutton">
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                     <hr>
                 </div>
                 <section class="itemsSection">
-                    <div *ngFor="let aperitivo of carta.aperitivos">
+                    <div *ngFor="let aperitivo of aperitivos">
                         <div class="item">
                             <div class="nameAndPrice">
                                 <h4> {{ aperitivo.name }} </h4>
@@ -55,10 +55,10 @@
                             </div>
                             <div class="picture">
                                 <i class="fa-solid fa-circle-check"></i>
-                                <img src="../../../assets/imagenes/img-carta/{{ aperitivo.img }}">
+                                <img src="{{ aperitivo.img }}">
                             </div>
-                            <input type="button" value="Añadir" class="btn" routerLink="/pedidosMesero"
-                                routerLinkActive="activebutton">
+                            <input type="button" value="Añadir" class="btn" (click)="getItemData(aperitivo)"
+                             routerLink="/pedidosMesero" routerLinkActive="activebutton">
                         </div>
                     </div>
                 </section>
@@ -70,7 +70,7 @@
                     <hr>
                 </div>
                 <section class="itemsSection">
-                    <div *ngFor="let bebida of carta.bebidas">
+                    <div *ngFor="let bebida of bebidas">
                         <div class="item">
                             <div class="nameAndPrice">
                                 <h4> {{ bebida.name }} </h4>
@@ -78,10 +78,11 @@
                             </div>
                             <div class="picture">
                                 <i class="fa-solid fa-circle-check"></i>
-                                <img src="../../../assets/imagenes/img-carta/{{ bebida.img }}"
+                                <img src="{{ bebida.img }}"
                                     routerLink="/pedidosMesero" routerLinkActive="activebutton">
                             </div>
-                            <input type="button" value="Añadir" class="btn">
+                            <input type="button" value="Añadir" class="btn" (click)="getItemData(bebida)"
+                            routerLink="/pedidosMesero" routerLinkActive="activebutton">
                         </div>
                     </div>
                 </section>
@@ -91,7 +92,7 @@
         <div class="btnIcon">
             <i class="fa-solid fa-circle-arrow-right" [class.rotate]="booleanValue" (click)="changeSection()"></i>
         </div>
-        
+
     </main>
 
 </div>

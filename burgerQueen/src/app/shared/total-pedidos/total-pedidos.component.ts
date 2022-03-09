@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-total-pedidos',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./total-pedidos.component.scss']
 })
 export class TotalPedidosComponent implements OnInit {
+  clientName = this.productService.disparador.getValue();
 
-  constructor() { }
+  constructor(public productService: ProductService) { }
 
   ngOnInit(): void {
+    console.log(this.clientName);
   }
 
   enviado = false;
@@ -26,5 +29,4 @@ export class TotalPedidosComponent implements OnInit {
   changeOrderServed(){
     this.entregado = !this.entregado;
   }
-  
 }
