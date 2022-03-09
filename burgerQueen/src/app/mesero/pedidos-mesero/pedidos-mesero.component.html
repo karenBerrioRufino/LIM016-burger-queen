@@ -14,7 +14,7 @@
       <table class="listaPedidos">
         <tr>
           <td><button (click)="eliminar()">x</button></td>
-          <td><img src="../../../assets/imagenes/img-carta/{{img}}"></td>
+          <td><img src="{{img}}"></td>
           <td>
             <div class="p">
               <p>{{ title }}</p>
@@ -44,10 +44,7 @@
       -->
     </div>
 
-    <div class="datos">
-      <app-datos-pedido></app-datos-pedido>
-      <button class="btnEnviarOrden">Enviar Orden</button>
-    </div>
+   <app-datos-pedido></app-datos-pedido>
 
   </main>
 
