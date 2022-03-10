@@ -10,8 +10,8 @@ export class PedidosMeseroComponent implements OnInit {
   public title:string = '';
   public priceHamburger: number = 0;
   public img: any;
-
   constructor(public productService: ProductService) { }
+
 
   ngOnInit(): void {
     this.title = this.productService.disparador.getValue().name;
