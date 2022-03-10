@@ -12,6 +12,7 @@
 
       <section class="containerOptions">
         <p class="hamburgerTitle">{{ titleHamburger }}</p>
+        <p [hidden]="aditionalSelectValue == 'Ninguno'">{{aditionalName}}</p>
         <div class="divOptions">
 
           <img src="{{ imgHamburger }}" alt="Hamburguesa" class="imgHamburger">
@@ -26,7 +27,8 @@
 
             <div>
               <p>Adicional</p>
-              <select name="additional" class="additional">
+              <select [(ngModel)]="aditionalSelectValue" (change)="getAditionalSelectValue()" name="additional" class="additional">
+                <option value="Ninguno">Ninguno</option>
                 <option *ngFor="let aditional of aditionalHamburger">{{ aditional }}</option>
               </select>
             </div>

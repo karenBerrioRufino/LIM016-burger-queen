@@ -15,6 +15,9 @@ export class CartaOpcionesComponent implements OnInit {
   public aditionalHamburger: string[] = [];
   public imgHamburger: string = '';
 
+  aditionalSelectValue: string = "Ninguno";
+  aditionalName: string = "";
+
   constructor(public productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
@@ -23,6 +26,10 @@ export class CartaOpcionesComponent implements OnInit {
     this.typeHamburger = this.productService.disparador.getValue().type; //para jalar datos del json
     this.aditionalHamburger = this.productService.disparador.getValue().additional;
     this.imgHamburger = this.productService.disparador.getValue().img;
+  }
+
+  getAditionalSelectValue() {
+    this.aditionalName = this.aditionalSelectValue;
   }
 
   close(){
