@@ -11,9 +11,11 @@
       </div>
 
       <section class="containerOptions">
-        <p class="hamburgerTitle">{{ titleHamburger }}</p>
-        <p [hidden]="aditionalTypeValue == 'Ninguno'">Tipo: {{aditionalTypeName}}</p>
-        <p [hidden]="aditionalSelectValue == 'Ninguno'">Adicional: {{aditionalName}}</p>    
+        <div class="hamburgerTitle">
+          <pre>{{ titleHamburger }}</pre>
+          <pre [hidden]="aditionalTypeValue == 'Ninguno'"> de tipo {{aditionalTypeName}}</pre>
+          <pre [hidden]="aditionalSelectValue == 'Ninguno'"> con {{aditionalName}}</pre>    
+        </div>
         <div class="divOptions">
 
           <img src="{{ imgHamburger }}" alt="Hamburguesa" class="imgHamburger">
