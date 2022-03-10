@@ -1,5 +1,6 @@
 import { Component, OnInit, /*EventEmitter, Output*/} from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-carta',
@@ -16,12 +17,20 @@ export class CartaComponent implements OnInit {
   sandwichs: any[] = [];
   aperitivos: any[] = [];
   bebidas: any[] = [];
+
+  orders: any[] = [];
   
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private storageService: StorageService) {
   }
 
   ngOnInit(): void {
     this.getCartaData();
+
+    let ordersList: any = this.storageService.get('ordersList');
+ 
+    if(ordersList){
+      this.orders = ordersList;       
+    }
   }
 
   changeSection(){
@@ -57,10 +66,15 @@ export class CartaComponent implements OnInit {
     this.productService.disparador.next(dataHamburguesa);
   }
 
-  sendItemData(productData: any){
+  setItemData(productData: any){
     // this.productService.disparador.next(productData);
-    this.productService.createOrder(productData)
+    // this.productService.createOrder(productData)
     // console.log(itemData);
+
+    if(this.orders.indexOf(productData) == -1){
+      this.orders.push(productData);
+      this.storageService.set('ordersList',productData);
+    }
   }
 
 }
