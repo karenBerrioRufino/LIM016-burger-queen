@@ -58,7 +58,7 @@ export class CartaComponent implements OnInit {
   }
   getItemData(dataSandwich: any){
     this.productService.disparador.next(dataSandwich);
-    console.log(dataSandwich);
+  
   }
 
 }
