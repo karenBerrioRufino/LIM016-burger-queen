@@ -11,6 +11,9 @@ import { CartaOpcionesComponent } from './carta-opciones/carta-opciones.componen
 import { TotalPedidosMeseroComponent } from './total-pedidos-mesero/total-pedidos-mesero.component';
 import { PedidosMeseroComponent } from './pedidos-mesero/pedidos-mesero.component';
 
+import { ProductService } from 'src/app/services/product.service';
+import {StorageService} from 'src/app/services/storage.service'
+
 @NgModule({
   declarations: [
     CartaComponent,
@@ -29,6 +32,10 @@ import { PedidosMeseroComponent } from './pedidos-mesero/pedidos-mesero.componen
     CartaOpcionesComponent,
     TotalPedidosMeseroComponent,
     PedidosMeseroComponent
+  ],
+  providers: [
+    ProductService,
+    StorageService
   ]
 })
 export class MeseroModule { }
