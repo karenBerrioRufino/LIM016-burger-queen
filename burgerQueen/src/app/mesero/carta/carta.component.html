@@ -36,8 +36,8 @@
                                 <i class="fa-solid fa-circle-check"></i>
                                 <img src="{{ sandwich.img }}">
                             </div>
-                            <input type="button" value="Añadir" class="btn" (click)="sendItemData(sandwich)"
-                                routerLink="/pedidosMesero" routerLinkActive="activebutton">
+                            <input type="button" value="Añadir" class="btn" (click)="setItemData(sandwich)"
+                               routerLink="/pedidosMesero" routerLinkActive="activebutton">
                         </div>
                     </div>
                 </section>
@@ -57,7 +57,7 @@
                                 <i class="fa-solid fa-circle-check"></i>
                                 <img src="{{ aperitivo.img }}">
                             </div>
-                            <input type="button" value="Añadir" class="btn" (click)="sendItemData(aperitivo)"
+                            <input type="button" value="Añadir" class="btn" (click)="setItemData(aperitivo)"
                              routerLink="/pedidosMesero" routerLinkActive="activebutton">
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                                 <img src="{{ bebida.img }}"
                                     routerLink="/pedidosMesero" routerLinkActive="activebutton">
                             </div>
-                            <input type="button" value="Añadir" class="btn" (click)="sendItemData(bebida)"
+                            <input type="button" value="Añadir" class="btn" (click)="setItemData(bebida)"
                             routerLink="/pedidosMesero" routerLinkActive="activebutton">
                         </div>
                     </div>

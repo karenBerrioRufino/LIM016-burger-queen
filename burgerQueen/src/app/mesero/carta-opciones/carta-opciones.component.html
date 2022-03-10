@@ -13,7 +13,7 @@
       <section class="containerOptions">
         <div class="hamburgerTitle">
           <pre>{{ titleHamburger }}</pre>
-          <pre [hidden]="aditionalTypeValue == 'Ninguno'"> de tipo {{aditionalTypeName}}</pre>
+          <pre [hidden]="typeSelectValue == 'Ninguno'"> de tipo {{typeName}}</pre>
           <pre [hidden]="aditionalSelectValue == 'Ninguno'"> con {{aditionalName}}</pre>    
         </div>
         <div class="divOptions">
@@ -23,7 +23,7 @@
           <div class="selects">
             <div>
               <p>Tipo</p>
-              <select [(ngModel)]="aditionalTypeValue" (change)="getTypeSelectValue()" name="type" class="type">
+              <select [(ngModel)]="typeSelectValue" (change)="getTypeSelectValue()" name="type" class="type">
                 <option value="Ninguno">Ninguno</option>
                 <option *ngFor="let type of typeHamburger"> {{ type }}</option>
               </select>
@@ -31,7 +31,7 @@
 
             <div>
               <p>Adicional</p>
-              <select [(ngModel)]="aditionalSelectValue" (change)="getAditionalSelectValue()" name="additional" class="additional">
+              <select [(ngModel)]="aditionalSelectValue" (change)="getAditionalSelectValue(calculateSubtotal)" name="additional" class="additional">
                 <option value="Ninguno">Ninguno</option>
                 <option *ngFor="let aditional of aditionalHamburger">{{ aditional }}</option>
               </select>
@@ -44,7 +44,8 @@
       <section class="containerSubTotal">
         <div>
           <p>Subtotal</p>
-          <p>S/.{{ priceHamburger }}</p>
+          <p class="subtotal" *ngIf="!booleanValue; else elseBlock">{{ priceHamburger }}</p>
+          <ng-template class="subtotal" #elseBlock >12</ng-template>
         </div>
         <input type="submit" class="buttonAddOptions" id="buttonAddOptions" value="Añadir" routerLink="/pedidosMesero"
           routerLinkActive="activebutton">
