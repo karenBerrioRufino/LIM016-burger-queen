@@ -29,11 +29,11 @@ export class CartaComponent implements OnInit {
     let ordersList: any = this.storageService.get('ordersList');
  
     if(ordersList){
-      this.orders = ordersList;       
+      this.orders = ordersList; 
     }
   }
 
-  changeSection(){
+  changeSectionOfCarta(){
     if (this.numberOfClicks > 0) {
       this.booleanValue = false;
       this.numberOfClicks = 0;
@@ -61,20 +61,16 @@ export class CartaComponent implements OnInit {
     })
   }
 
-  getHamburgerData(dataHamburguesa: any) {
+  sendHamburgerDataToOptionsView(dataHamburguesa: any) {
     //para enviar el dato a cartaOpciones
     this.productService.disparador.next(dataHamburguesa);
   }
 
-  setItemData(productData: any){
-    // this.productService.disparador.next(productData);
-    // this.productService.createOrder(productData)
-    // console.log(itemData);
-
+  sendItemDataToPedidosView(productData: any){
     if(this.orders.indexOf(productData) == -1){
       this.orders.push(productData);
-      this.storageService.set('ordersList',productData);
+      console.log(this.orders);
+      this.storageService.set('ordersList', this.orders);
     }
   }
-
 }
