@@ -9,7 +9,8 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 
 export class CartaComponent implements OnInit {
-  booleanValue: boolean = false;
+  changeSectionOption: boolean = false;
+  checkSelection: boolean = false;
   numberOfClicks: number = 0;
 
   carta: any[] = [];
@@ -34,12 +35,12 @@ export class CartaComponent implements OnInit {
     }
   }
 
-  changeSection(){
+  changeSectionOfCarta(){
     if (this.numberOfClicks > 0) {
-      this.booleanValue = false;
+      this.changeSectionOption = false;
       this.numberOfClicks = 0;
     } else {
-      this.booleanValue = true;
+      this.changeSectionOption = true;
       this.numberOfClicks += 1;
     }
   }
@@ -62,21 +63,17 @@ export class CartaComponent implements OnInit {
     })
   }
 
-  getHamburgerData(dataHamburguesa: any) {
+  sendHamburgerDataToOptionsView(dataHamburguesa: any) {
     //para enviar el dato a cartaOpciones
     this.productService.disparador.next(dataHamburguesa);
   }
 
-  setItemData(productData: any){
-    // this.productService.disparador.next(productData);
-    // this.productService.createOrder(productData)
-    // console.log(itemData);
-
+  sendItemDataToPedidosView(productData: any){
+    this.checkSelection = true;
     if(this.orders.indexOf(productData) == -1){
       this.orders.push(productData);
       //product data que es un array lo convierte a string
       this.storageService.set('ordersList', this.orders);
     }
   }
-
 }
