@@ -44,8 +44,7 @@
       <section class="containerSubTotal">
         <div>
           <p>Subtotal</p>
-          <p class="subtotal" *ngIf="!booleanValue; else elseBlock">{{ priceHamburger }}</p>
-          <ng-template class="subtotal" #elseBlock >12</ng-template>
+          <p class="subtotal">{{ priceHamburger }}</p>
         </div>
         <input type="submit" class="buttonAddOptions" id="buttonAddOptions" value="Añadir" routerLink="/pedidosMesero"
           routerLinkActive="activebutton">

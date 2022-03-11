@@ -13,11 +13,11 @@ export class StorageService {
 
   get(key: string){
   //Console.log("El método get en el almacenamiento se llama con éxito ");
-    return JSON.parse(localStorage.getItem(key));
+    return JSON.parse(localStorage.getItem(key)!);
   }
  
-/*   remove(key){
+  remove(key: string){
     localStorage.removeItem(key);
-  } */
+  }
 
 }
