@@ -71,11 +71,16 @@ $color-marron: #3B2213;
   height: 66%;
 
   .hamburgerTitle{
-    font-size: 20px;
-    font-family: 'Tajawal', sans-serif;
+    display: flex;
     align-self: flex-start;
-    padding: 5px;
-    // font-weight: bold;
+    flex-wrap: wrap;
+
+    pre{
+      font-size: 18px;
+      font-family: 'Tajawal', sans-serif;
+      // padding: 5px;
+      // font-weight: bold;
+    }
   }
 }
 
@@ -124,6 +129,7 @@ $color-marron: #3B2213;
     padding: 7px;
     font-size: 14px;
     text-align: center;
+    background-color: white;
   }
 }
 
@@ -175,6 +181,10 @@ $color-marron: #3B2213;
       overflow-x: hidden;
       z-index: 1;
     }
+  }
+
+  .hamburgerTitle{
+    align-self: center;
   }
 
   .btnIcon{

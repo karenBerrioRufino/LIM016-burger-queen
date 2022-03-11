@@ -9,11 +9,19 @@ import { Router } from '@angular/router';
 })
 
 export class CartaOpcionesComponent implements OnInit {
-  public titleHamburger: string = '';
-  public priceHamburger: number = 0;
-  public typeHamburger: string[] = []; //el array donde se va a buscar los datos
-  public aditionalHamburger: string[] = [];
-  public imgHamburger: string = '';
+  titleHamburger: string = '';
+  priceHamburger: number = 0;
+  typeHamburger: string[] = []; //el array donde se va a buscar los datos
+  aditionalHamburger: string[] = [];
+  imgHamburger: string = '';
+
+  aditionalSelectValue: string = "Ninguno";
+  aditionalName: string = "";
+
+  typeSelectValue: string = "Ninguno";
+  typeName: string = "";
+
+  booleanValue: boolean = false;
 
   constructor(public productService: ProductService, private router: Router) { }
 
@@ -25,6 +33,36 @@ export class CartaOpcionesComponent implements OnInit {
     this.imgHamburger = this.productService.disparador.getValue().img;
   }
 
+  // Obtener el valor de tipo de hamburguesa seleccionada
+  getTypeSelectValue(){
+    this.typeName = this.typeSelectValue;
+    return this.typeName;
+  }
+
+  // Obtener el valor del adicional seleccionado
+  getAditionalSelectValue(calculateCb: (selectValue: string) => any) {
+    this.aditionalName = this.aditionalSelectValue;
+    calculateCb(this.aditionalName)
+  }
+
+  // Calcular el monto del subtotal
+  calculateSubtotal(selectValue: string){
+    let price = parseInt(document.querySelector('.subtotal')!.innerHTML, 10);
+
+    if(selectValue == 'Huevo' || selectValue == 'Queso'){
+      price = price + 1;
+      this.priceHamburger = price;
+      return console.log(price);
+    } 
+
+    if(selectValue == 'Huevo y queso'){
+      price = price + 2;
+      this.priceHamburger = price;
+      return console.log(price);
+    } 
+  }
+
+  // Cerrar la vista de opciones y volver a la carta
   close(){
     this.router.navigate(['./carta'])
   }

@@ -11,7 +11,11 @@
       </div>
 
       <section class="containerOptions">
-        <p class="hamburgerTitle">{{ titleHamburger }}</p>
+        <div class="hamburgerTitle">
+          <pre>{{ titleHamburger }}</pre>
+          <pre [hidden]="typeSelectValue == 'Ninguno'"> de tipo {{typeName}}</pre>
+          <pre [hidden]="aditionalSelectValue == 'Ninguno'"> con {{aditionalName}}</pre>    
+        </div>
         <div class="divOptions">
 
           <img src="{{ imgHamburger }}" alt="Hamburguesa" class="imgHamburger">
@@ -19,14 +23,16 @@
           <div class="selects">
             <div>
               <p>Tipo</p>
-              <select name="type" class="type">
+              <select [(ngModel)]="typeSelectValue" (change)="getTypeSelectValue()" name="type" class="type">
+                <option value="Ninguno">Ninguno</option>
                 <option *ngFor="let type of typeHamburger"> {{ type }}</option>
               </select>
             </div>
 
             <div>
               <p>Adicional</p>
-              <select name="additional" class="additional">
+              <select [(ngModel)]="aditionalSelectValue" (change)="getAditionalSelectValue(calculateSubtotal)" name="additional" class="additional">
+                <option value="Ninguno">Ninguno</option>
                 <option *ngFor="let aditional of aditionalHamburger">{{ aditional }}</option>
               </select>
             </div>
@@ -38,7 +44,7 @@
       <section class="containerSubTotal">
         <div>
           <p>Subtotal</p>
-          <p>S/.{{ priceHamburger }}</p>
+          <p class="subtotal">{{ priceHamburger }}</p>
         </div>
         <input type="submit" class="buttonAddOptions" id="buttonAddOptions" value="Añadir" routerLink="/pedidosMesero"
           routerLinkActive="activebutton">

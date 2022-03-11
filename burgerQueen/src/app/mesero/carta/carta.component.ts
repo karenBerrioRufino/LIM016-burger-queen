@@ -1,5 +1,6 @@
 import { Component, OnInit, /*EventEmitter, Output*/} from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-carta',
@@ -8,7 +9,8 @@ import { ProductService } from 'src/app/services/product.service';
 })
 
 export class CartaComponent implements OnInit {
-  booleanValue: boolean = false;
+  changeSectionOption: boolean = false;
+  checkSelection: boolean = false;
   numberOfClicks: number = 0;
 
   carta: any[] = [];
@@ -16,20 +18,28 @@ export class CartaComponent implements OnInit {
   sandwichs: any[] = [];
   aperitivos: any[] = [];
   bebidas: any[] = [];
+
+  orders: any[] = [];
   
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private storageService: StorageService) {
   }
 
   ngOnInit(): void {
     this.getCartaData();
+
+    let ordersList: any = this.storageService.get('ordersList');
+ 
+    if(ordersList){
+      this.orders = ordersList; 
+    }
   }
 
-  changeSection(){
+  changeSectionOfCarta(){
     if (this.numberOfClicks > 0) {
-      this.booleanValue = false;
+      this.changeSectionOption = false;
       this.numberOfClicks = 0;
     } else {
-      this.booleanValue = true;
+      this.changeSectionOption = true;
       this.numberOfClicks += 1;
     }
   }
@@ -52,13 +62,16 @@ export class CartaComponent implements OnInit {
     })
   }
 
-  getHamburgerData(dataHamburguesa: any) {
+  sendHamburgerDataToOptionsView(dataHamburguesa: any) {
     //para enviar el dato a cartaOpciones
     this.productService.disparador.next(dataHamburguesa);
   }
-  getItemData(dataSandwich: any){
-    this.productService.disparador.next(dataSandwich);
-    console.log(dataSandwich);
-  }
 
+  sendItemDataToPedidosView(productData: any){
+    this.checkSelection = true;
+    if(this.orders.indexOf(productData) == -1){
+      this.orders.push(productData);
+      this.storageService.set('ordersList', this.orders);
+    }
+  }
 }
