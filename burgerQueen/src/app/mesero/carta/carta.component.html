@@ -4,7 +4,7 @@
 
     <main>
         <div class="carta">
-            <section id="cartaSection1" [class.hidden]="booleanValue">
+            <section id="cartaSection1" [class.hidden]="changeSectionOption">
                 <div class="subtitle">
                     <h2>PLATOS</h2>
                     <hr>
@@ -17,8 +17,8 @@
                                 <h3>S/.{{ hamburguesa.price }} </h3>
                             </div>
                             <div class="picture">
-                                <i class="fa-solid fa-circle-check" [class.show]="booleanValue"></i>
-                                <img src="{{ hamburguesa.img }}">
+                                <i class="checkIcon fa-solid fa-circle-check"></i>
+                                <img class="cartaImg" src="{{ hamburguesa.img }}">
                             </div>
                             <input type="button" value="Ver opciones" class="btn"
                                 (click)="sendHamburgerDataToOptionsView(hamburguesa)" routerLink="/cartaOpciones"
@@ -33,11 +33,11 @@
                                 <h3>S/.{{ sandwich.price }} </h3>
                             </div>
                             <div class="picture">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <img src="{{ sandwich.img }}">
+                                <i class="checkIcon fa-solid fa-circle-check"></i>
+                                <img class="cartaImg" src="{{ sandwich.img }}">
                             </div>
-                            <input type="button" value="Añadir" class="btn" (click)="sendItemDataToPedidosView(sandwich)"
-                               routerLink="/pedidosMesero" routerLinkActive="activebutton">
+                            <input type="button" value="Añadir" class="btn btnAñadir" (click)="sendItemDataToPedidosView(sandwich)"
+                                routerLinkActive="activebutton">
                         </div>
                     </div>
                 </section>
@@ -54,17 +54,17 @@
                                 <h3>S/.{{ aperitivo.price }} </h3>
                             </div>
                             <div class="picture">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <img src="{{ aperitivo.img }}">
+                                <i class="checkIcon fa-solid fa-circle-check"></i>
+                                <img class="cartaImg" src="{{ aperitivo.img }}">
                             </div>
-                            <input type="button" value="Añadir" class="btn" (click)="sendItemDataToPedidosView(aperitivo)"
-                             routerLink="/pedidosMesero" routerLinkActive="activebutton">
+                            <input type="button" value="Añadir" class="btn btnAñadir" (click)="sendItemDataToPedidosView(aperitivo)"
+                                routerLinkActive="activebutton">
                         </div>
                     </div>
                 </section>
             </section>
 
-            <section id="cartaSection2" [class.show]="booleanValue">
+            <section id="cartaSection2" [class.show]="changeSectionOption">
                 <div class="subtitle">
                     <h2>BEBIDAS</h2>
                     <hr>
@@ -77,12 +77,11 @@
                                 <h3>S/.{{ bebida.price }} </h3>
                             </div>
                             <div class="picture">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <img src="{{ bebida.img }}"
-                                    routerLink="/pedidosMesero" routerLinkActive="activebutton">
+                                <i class="checkIcon fa-solid fa-circle-check"></i>
+                                <img class="cartaImg" src="{{ bebida.img }}">
                             </div>
-                            <input type="button" value="Añadir" class="btn" (click)="sendItemDataToPedidosView(bebida)"
-                            routerLink="/pedidosMesero" routerLinkActive="activebutton">
+                            <input type="button" value="Añadir" class="btn btnAñadir" (click)="sendItemDataToPedidosView(bebida)"
+                                outerLinkActive="activebutton">
                         </div>
                     </div>
                 </section>
@@ -90,7 +89,7 @@
         </div>
 
         <div class="btnIcon">
-            <i class="fa-solid fa-circle-arrow-right" [class.rotate]="booleanValue" (click)="changeSectionOfCarta()"></i>
+            <i class="fa-solid fa-circle-arrow-right" [class.rotate]="changeSectionOption" (click)="changeSectionOfCarta()"></i>
         </div>
 
     </main>

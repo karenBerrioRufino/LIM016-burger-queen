@@ -21,8 +21,7 @@ export class CartaOpcionesComponent implements OnInit {
   typeSelectValue: string = "Ninguno";
   typeName: string = "";
 
-  newPriceHamburguer: number = 0;
-  booleanValue: boolean = true;
+  booleanValue: boolean = false;
 
   constructor(public productService: ProductService, private router: Router) { }
 
@@ -49,28 +48,22 @@ export class CartaOpcionesComponent implements OnInit {
   // Calcular el monto del subtotal
   calculateSubtotal(selectValue: string){
     let price = parseInt(document.querySelector('.subtotal')!.innerHTML, 10);
-    // console.log(price);
 
     if(selectValue == 'Huevo' || selectValue == 'Queso'){
       price = price + 1;
-      // this.newPriceHamburguer = price;
+      this.priceHamburger = price;
       return console.log(price);
     } 
 
     if(selectValue == 'Huevo y queso'){
       price = price + 2;
-      // this.newPriceHamburguer = price;
+      this.priceHamburger = price;
       return console.log(price);
     } 
-
   }
 
   // Cerrar la vista de opciones y volver a la carta
   close(){
     this.router.navigate(['./carta'])
-  }
-
-  console(){
-    console.log('fuera', this.priceHamburger);
   }
 }
