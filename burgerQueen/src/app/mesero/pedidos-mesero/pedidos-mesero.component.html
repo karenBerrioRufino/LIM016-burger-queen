@@ -13,7 +13,7 @@
 
       <table class="listaPedidos">
         <tr *ngFor="let pedido of pedidosMesero">
-          <td><button>x</button></td>
+          <td><button key=index; (click)="orderDelete(pedido)">x</button></td>
           <td><img src="{{pedido.img}}"></td>
           <td>
             <div class="p">

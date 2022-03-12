@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
+// import { NgModule, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
+// import localePt from '@angular/common/locales/pt';
+// import { registerLocaleData } from '@angular/common';
+
 import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 
 import { IngresoModule } from './ingreso/ingreso.module'
@@ -15,7 +20,9 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdministradorModule } from './administrador/administrador.module';
 
-// import { AdministradorModule } from './administrador/administrador.module';
+
+// Register the localization
+// registerLocaleData(localePt, 'pt-PE');
 
 @NgModule({
   declarations: [
@@ -41,7 +48,16 @@ import { AdministradorModule } from './administrador/administrador.module';
     
   ],
   
-  providers: [],
+  providers: [
+    // {
+    //   provide: LOCALE_ID,
+    //   useValue: 'pt-PE'
+    //  },
+    //  {
+    //    provide: DEFAULT_CURRENCY_CODE,
+    //    useValue: 'S/.'
+    //  },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

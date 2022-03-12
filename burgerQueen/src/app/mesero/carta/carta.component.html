@@ -14,7 +14,7 @@
                         <div class="item">
                             <div class="nameAndPrice">
                                 <h4 class="name"> {{ hamburguesa.name }} </h4>
-                                <h3>S/.{{ hamburguesa.price }} </h3>
+                                <h3>{{ hamburguesa.price | currency:'PEN':'S/' }} </h3>
                             </div>
                             <div class="picture">
                                 <i class="checkIcon fa-solid fa-circle-check"></i>
