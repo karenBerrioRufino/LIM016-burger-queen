@@ -12,19 +12,19 @@
       </div>
 
       <table class="listaPedidos">
-        <tr>
-          <td><button (click)="eliminar()">x</button></td>
-          <td><img src="{{img}}"></td>
+        <tr *ngFor="let pedido of pedidosMesero">
+          <td><button>x</button></td>
+          <td><img src="{{pedido.img}}"></td>
           <td>
             <div class="p">
-              <p>{{ title }}</p>
-              <P>{{'S/.' + priceHamburger}}</P>
+              <p>{{ pedido.name }}</p>
+              <P>{{'S/.' + pedido.price}}</P>
             </div>
           </td>
-          <td>
-            <button (click)="restar()">-</button>
+          <td class="divBtn">
+            <button>-</button>
             <input type="number">
-            <button (click)="sumar()">+</button>
+            <button>+</button>
           </td>
         </tr>
       </table>

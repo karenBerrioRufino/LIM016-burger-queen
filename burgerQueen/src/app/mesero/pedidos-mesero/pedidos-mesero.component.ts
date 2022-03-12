@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-pedidos-mesero',
@@ -7,29 +8,15 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./pedidos-mesero.component.scss']
 })
 export class PedidosMeseroComponent implements OnInit {
-  public title:string = '';
-  public priceHamburger: number = 0;
-  public img: any;
-  constructor(public productService: ProductService) { }
-
-
+  constructor(public productService: ProductService, private storageService: StorageService) { }
+  
+  pedidosMesero: any[] = [];
   ngOnInit(): void {
-    this.title = this.productService.disparador.getValue().name;
-    this.priceHamburger = this.productService.disparador.getValue().price;
-    this.img = this.productService.disparador.getValue().img;
-
+    
+    this.pedidosMesero = this.storageService.get('ordersList');
+  
     console.log(this.productService.disparador.getValue());
-  }
-
-  sumar(){
-    let suma: number = 0;
-    suma= suma + this.priceHamburger;
-  }
-  restar(){
-    let resta: number = 0;
-    resta = this.priceHamburger - 1;
-  }
-  eliminar(){
     
   }
+
 }
