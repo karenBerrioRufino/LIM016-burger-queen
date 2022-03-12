@@ -82,14 +82,16 @@ input[type=number] {
   border: 1px solid black;
 }
 .listaPedidos{
-  flex-direction: row;
+  flex-direction: column;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background-color: $color-melon;
-  align-self: flex-start;
   margin-top: 1em;
   width: 100%;
+}
+.divBtn{
+  align-self: flex-end !important;
 }
 img{
   width: 50px;
