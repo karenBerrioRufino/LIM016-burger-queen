@@ -19,4 +19,10 @@ export class PedidosMeseroComponent implements OnInit {
     
   }
 
+  orderDelete(key:any){
+    // this.storageService.remove('orderList');
+    this.pedidosMesero.splice(key,1);
+    this.storageService.set('ordersList',this.pedidosMesero);
+
+  }
 }
