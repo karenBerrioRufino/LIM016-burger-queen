@@ -28,7 +28,6 @@ export class CartaComponent implements OnInit {
     this.getCartaData();
     // ordersList son los datos que esta jalando del localStorage
     let ordersList: any = this.storageService.get('ordersList');
-    console.log(ordersList)
     if(ordersList){
       // iguala el array con los datos que jala del storage. Sobre el array que existe, irá agregando los objetos
       this.orders = ordersList;       

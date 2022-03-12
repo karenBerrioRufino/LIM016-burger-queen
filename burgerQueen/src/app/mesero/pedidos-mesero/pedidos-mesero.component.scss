@@ -35,16 +35,16 @@ $color-rosa: #FF8087;
   margin: 10px 2px 5px 2px;
 
   h2 {
-      font-family: 'Tajawal', sans-serif;
-      font-size: 24px;
-      font-weight: 100;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 24px;
+    font-weight: 100;
   }
   hr{
-      width: 160px;
-      margin: 2px;
-      height: 4px;
-      background-color: $color-melon;
-      border-style: none;
+    width: 105px;
+    margin: 2px;
+    height: 4px;
+    background-color: $color-melon;
+    border-style: none;
   }
 }
 
@@ -89,18 +89,24 @@ input[type=number] {
   background-color: $color-melon;
   margin-top: 1em;
   width: 100%;
+  gap: 0.5rem
 }
-.divBtn{
-  align-self: flex-end !important;
+
+tr{
+  display: flex;
+  justify-content: space-between;
 }
+
 img{
   width: 50px;
   height: 50px;
   margin: 10px 10px;
+  border-radius: 100%
 }
 .p{
   font-size: 15px;
   margin: 5px;
   display: flex;
   flex-direction: column;
+  width: 10rem;
 }
