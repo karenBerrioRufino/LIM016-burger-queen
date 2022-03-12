@@ -18,7 +18,7 @@ export class CartaComponent implements OnInit {
   sandwichs: any[] = [];
   aperitivos: any[] = [];
   bebidas: any[] = [];
-
+  // es el array donde se ira guardando temporalmente los objetos
   orders: any[] = [];
   
   constructor(private productService: ProductService, private storageService: StorageService) {
@@ -26,11 +26,11 @@ export class CartaComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCartaData();
-
+    // ordersList son los datos que esta jalando del localStorage
     let ordersList: any = this.storageService.get('ordersList');
- 
     if(ordersList){
-      this.orders = ordersList; 
+      // iguala el array con los datos que jala del storage. Sobre el array que existe, irá agregando los objetos
+      this.orders = ordersList;       
     }
   }
 
@@ -71,6 +71,7 @@ export class CartaComponent implements OnInit {
     this.checkSelection = true;
     if(this.orders.indexOf(productData) == -1){
       this.orders.push(productData);
+      //product data que es un array lo convierte a string
       this.storageService.set('ordersList', this.orders);
     }
   }
