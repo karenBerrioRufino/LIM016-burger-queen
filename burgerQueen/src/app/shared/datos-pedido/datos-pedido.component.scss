@@ -7,7 +7,7 @@ $color-rosa: #ff8087;
 .datosPedido {
   display: flex;
   flex-direction: column;
-  width: 33vw;
+  width: 30vw;
   margin: 1em;
   // gap: 1rem;
 }
@@ -27,12 +27,13 @@ $color-rosa: #ff8087;
   .seccionCliente,
   .seccionMesa {
     display: flex;
-    margin: 1em;
+    margin: 0.6em;
     align-items: center;
     justify-content: space-between;
 
     p {
       font-family: "Tajawal", sans-serif;
+      font-size: 14px;
     }
   }
 
