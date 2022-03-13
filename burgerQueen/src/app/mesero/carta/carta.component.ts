@@ -9,8 +9,8 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 
 export class CartaComponent implements OnInit {
-  changeSectionOption: boolean = false;
-  checkSelection: boolean = false;
+  isSectionchanged: boolean = false;
+  isSelectionChecked: boolean = false;
   numberOfClicks: number = 0;
 
   carta: any[] = [];
@@ -36,10 +36,10 @@ export class CartaComponent implements OnInit {
 
   changeSectionOfCarta(){
     if (this.numberOfClicks > 0) {
-      this.changeSectionOption = false;
+      this.isSectionchanged = false;
       this.numberOfClicks = 0;
     } else {
-      this.changeSectionOption = true;
+      this.isSectionchanged = true;
       this.numberOfClicks += 1;
     }
   }
@@ -68,7 +68,7 @@ export class CartaComponent implements OnInit {
   }
 
   sendItemDataToPedidosView(productData: any){
-    this.checkSelection = true;
+    this.isSelectionChecked = true;
     if(this.orders.indexOf(productData) == -1){
       this.orders.push({...productData, subtotal: productData.price});
       //product data que es un array lo convierte a string
