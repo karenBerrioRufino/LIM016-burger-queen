@@ -11,18 +11,37 @@ export class PedidosMeseroComponent implements OnInit {
   constructor(public productService: ProductService, private storageService: StorageService) { }
   
   pedidosMesero: any[] = [];
+
+  subtotal: number = 0;
+
   ngOnInit(): void {
-    
     this.pedidosMesero = this.storageService.get('ordersList');
-  
     console.log(this.productService.disparador.getValue());
     
   }
 
-  orderDelete(key:any){
+  sumar(originalPrice: number, quantity: number){
+    let inputSumaYResta = document.querySelector('#inputSumaYResta');
+    inputSumaYResta?.setAttribute('value', `${quantity}`);
+    console.log(inputSumaYResta);
+    if (quantity >= 1) {
+       quantity = quantity+1 ;
+       this.subtotal = originalPrice * quantity;   
+    }
+  }
+  restar(originalPrice: number, quantity: number){
+    if (quantity === 1) {
+      quantity;
+    }
+    else{
+      quantity = quantity-1;
+      this.subtotal = originalPrice * quantity;
+    }
+  }
+  
+  orderDelete(key:any ){
     // this.storageService.remove('orderList');
-    this.pedidosMesero.splice(key,1);
+    this.pedidosMesero.splice(this.pedidosMesero.indexOf(key),1);
     this.storageService.set('ordersList',this.pedidosMesero);
-
   }
 }

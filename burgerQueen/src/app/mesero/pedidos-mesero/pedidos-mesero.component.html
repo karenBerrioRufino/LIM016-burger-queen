@@ -18,13 +18,19 @@
           <td>
             <div class="p">
               <p>{{ pedido.name }}</p>
-              <P>{{'S/.' + pedido.price}}</P>
+              <P>{{pedido.price | currency:'PEN':'S/'}}</P>
             </div>
           </td>
-          <td class="divBtn">
-            <button>-</button>
-            <input type="number">
-            <button>+</button>
+          <td>
+            <button (click)="restar(pedido.price, pedido.quantity)">-</button>
+            <input type="number" id="inputSumaYResta" value="1">
+            <button  (click)="sumar(pedido.price, pedido.quantity)">+</button>
+          </td>
+          <td>
+            <p *ngIf=" subtotal === 0; else elseBlock"> 
+              {{pedido.price | currency:'PEN':'S/'}}
+            </p> <ng-template #elseBlock>{{pedido.subtotal | currency:'PEN':'S/'}}</ng-template>
+            
           </td>
         </tr>
       </table>
