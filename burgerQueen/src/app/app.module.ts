@@ -12,9 +12,6 @@ import { IngresoModule } from './ingreso/ingreso.module'
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 
-// import { SharedModule } from './shared/shared.module';
-// import { MeseroModule } from './mesero/mesero.module';
-// import { CocineroModule } from './cocinero/cocinero.module';
 import { ViewModule } from './view/view.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -36,16 +33,9 @@ import { AdministradorModule } from './administrador/administrador.module';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    
-    // SharedModule,
-    // MeseroModule,
-    // CocineroModule,
-    // AdministradorModule,
-    
+    AngularFireModule.initializeApp(environment.firebaseConfig),   
     AdministradorModule,
-    AppRoutingModule,
-    
+    AppRoutingModule, 
   ],
   
   providers: [
