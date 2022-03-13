@@ -70,7 +70,7 @@ export class CartaComponent implements OnInit {
   sendItemDataToPedidosView(productData: any){
     this.checkSelection = true;
     if(this.orders.indexOf(productData) == -1){
-      this.orders.push(productData);
+      this.orders.push({...productData, subtotal: productData.price});
       //product data que es un array lo convierte a string
       this.storageService.set('ordersList', this.orders);
     }
