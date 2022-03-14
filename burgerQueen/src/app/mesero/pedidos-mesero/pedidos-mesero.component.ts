@@ -7,41 +7,45 @@ import { StorageService } from 'src/app/services/storage.service';
   templateUrl: './pedidos-mesero.component.html',
   styleUrls: ['./pedidos-mesero.component.scss']
 })
+
 export class PedidosMeseroComponent implements OnInit {
   constructor(public productService: ProductService, private storageService: StorageService) { }
   
   pedidosMesero: any[] = [];
-
-  subtotal: number = 0;
-
+  
   ngOnInit(): void {
     this.pedidosMesero = this.storageService.get('ordersList');
-    console.log(this.productService.disparador.getValue());
-    
   }
 
-  sumar(originalPrice: number, quantity: number){
-    let inputSumaYResta = document.querySelector('#inputSumaYResta');
-    inputSumaYResta?.setAttribute('value', `${quantity}`);
-    console.log(inputSumaYResta);
-    if (quantity >= 1) {
-       quantity = quantity+1 ;
-       this.subtotal = originalPrice * quantity;   
-    }
-  }
-  restar(originalPrice: number, quantity: number){
-    if (quantity === 1) {
-      quantity;
-    }
-    else{
-      quantity = quantity-1;
-      this.subtotal = originalPrice * quantity;
-    }
-  }
-  
-  orderDelete(key:any ){
-    // this.storageService.remove('orderList');
-    this.pedidosMesero.splice(this.pedidosMesero.indexOf(key),1);
+  orderDelete(pedido: object){
+    const indexOfpedido = this.pedidosMesero.indexOf(pedido);
+    this.pedidosMesero.splice(indexOfpedido, 1);
     this.storageService.set('ordersList',this.pedidosMesero);
+  }
+
+  addQuantity(pedidoData: any){
+    console.log(Array.from(document.querySelectorAll('.subtotal')))
+
+    const quantityInput = document.querySelector(`input[id='${pedidoData.id}']`) as HTMLInputElement;
+    let quantityInputValue: any = quantityInput.getAttribute('value');
+
+    quantityInputValue++;
+    quantityInput.setAttribute('value', quantityInputValue.toString());
+
+    pedidoData.subtotal = quantityInputValue * pedidoData.price;
+  }
+
+  subtractQuantity(pedidoData: any){
+    const quantityInput = document.querySelector(`input[id='${pedidoData.id}']`) as HTMLInputElement;
+    let quantityInputValue: any = quantityInput.getAttribute('value');
+
+    if(quantityInputValue == 1){
+      quantityInputValue;
+      pedidoData.subtotal = quantityInputValue * pedidoData.price;
+    } else {
+      quantityInputValue--;
+      quantityInput.setAttribute('value', quantityInputValue.toString());
+      pedidoData.subtotal = quantityInputValue * pedidoData.price;
+    }
   }
 }
