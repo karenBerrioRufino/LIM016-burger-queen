@@ -4,7 +4,7 @@
 
     <main>
         <div class="carta">
-            <section id="cartaSection1" [class.hidden]="changeSectionOption">
+            <section id="cartaSection1" [class.hidden]="isSectionchanged">
                 <div class="subtitle">
                     <h2>PLATOS</h2>
                     <hr>
@@ -64,7 +64,7 @@
                 </section>
             </section>
 
-            <section id="cartaSection2" [class.show]="changeSectionOption">
+            <section id="cartaSection2" [class.show]="isSectionchanged">
                 <div class="subtitle">
                     <h2>BEBIDAS</h2>
                     <hr>
@@ -89,7 +89,7 @@
         </div>
 
         <div class="btnIcon">
-            <i class="fa-solid fa-circle-arrow-right" [class.rotate]="changeSectionOption" (click)="changeSectionOfCarta()"></i>
+            <i class="fa-solid fa-circle-arrow-right" [class.rotate]="isSectionchanged" (click)="changeSectionOfCarta()"></i>
         </div>
 
     </main>

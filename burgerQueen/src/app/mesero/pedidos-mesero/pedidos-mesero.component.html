@@ -22,32 +22,15 @@
             </div>
           </td>
           <td>
-            <button (click)="restar(pedido.price, pedido.quantity)">-</button>
-            <input type="number" id="inputSumaYResta" value="1">
-            <button  (click)="sumar(pedido.price, pedido.quantity)">+</button>
-          </td>
-          <td>
-            <p *ngIf=" subtotal === 0; else elseBlock"> 
-              {{pedido.price | currency:'PEN':'S/'}}
-            </p> <ng-template #elseBlock>{{pedido.subtotal | currency:'PEN':'S/'}}</ng-template>
-            
+            <div class="divBtn">
+              <button (click)="subtractQuantity(pedido)">-</button>
+              <input type="number" value="1" id="{{ pedido.id }}">
+              <button (click)="addQuantity(pedido)">+</button>
+            </div>
+            <h4 class="subtotal">{{ pedido.subtotal | currency:'PEN':'S/' }}</h4>
           </td>
         </tr>
       </table>
-
-      <!--
-        <div class="listaPedidos">
-        <button>x</button>
-        <img src="../../../assets/imagenes/img-carta/{{img}}">
-        <div class="p">
-          <p>{{title}}</p>
-          <P>{{'S/.' + priceHamburger}}</P>
-        </div>
-        <button (click)="restar()">-</button>
-        <input type="number">
-        <button (click)="sumar()">+</button>
-        </div>
-      -->
     </div>
 
    <app-datos-pedido></app-datos-pedido>

@@ -23,8 +23,6 @@ export class CartaOpcionesComponent implements OnInit {
   typeName?: string = "";
 
   originalPrice: number = 0;
-  booleanValue: boolean = false;
-
   orders: any[] = [];
 
   constructor(public productService: ProductService, private storageService: StorageService, private router: Router) { }
@@ -68,24 +66,62 @@ export class CartaOpcionesComponent implements OnInit {
     return this.priceHamburger;
   }
 
-  sendHamburgerOrder(){
-    let nameHamburger = ''    
-
-    if(this.aditionalName === ''){
-      nameHamburger = `${this.titleHamburger} de tipo ${this.typeName}`
+  changeHamburgerName(){
+    let hamburgerName = "";
+    if(this.aditionalName === ""){
+      hamburgerName = `${this.titleHamburger} de tipo ${this.typeName}`;
     } else {
-      nameHamburger = `${this.titleHamburger} de tipo ${this.typeName} con ${this.aditionalName}`
+      hamburgerName = `${this.titleHamburger} de tipo ${this.typeName} con ${this.aditionalName}`
+    }
+    return hamburgerName;
+  }
+
+  changeHamburgerId(){
+    let hamburgerId = this.productService.disparador.getValue().id;
+    switch(this.typeName){
+      case "Carne":
+        hamburgerId = hamburgerId + "-CAR";
+        break;
+      case "Pollo":
+        hamburgerId = hamburgerId + "-POLL";
+        break;
+      case "Vegetariana":
+        hamburgerId = hamburgerId + "-VEG";
+        break;
+      default:
+        hamburgerId;
+        break;
     }
 
+    switch(this.aditionalName){
+      case "Huevo":
+        hamburgerId = hamburgerId + "-HUE";
+        break;
+      case "Queso":
+        hamburgerId = hamburgerId + "-QUE";
+        break;
+      case "Huevo y queso":
+        hamburgerId = hamburgerId + "-H&Q";
+        break;
+      default:
+        hamburgerId;
+        break;
+    }
+
+    return hamburgerId;
+  }
+
+  sendHamburgerOrder(){
     const hamburger = {
-      name: nameHamburger,
+      name: this.changeHamburgerName(),
       img: this.imgHamburger,
       price: this.priceHamburger,
+      id: this.changeHamburgerId(),
+      subtotal: this.priceHamburger,
     };
 
     if(this.orders.indexOf(hamburger) == -1){
       this.orders.push(hamburger);
-      //product data que es un array lo convierte a string
       this.storageService.set('ordersList', this.orders);
     }
   }
