@@ -12,7 +12,7 @@ export class PedidosMeseroComponent implements OnInit {
   constructor(public productService: ProductService, private storageService: StorageService) { }
   
   pedidosMesero: any[] = [];
-
+  
   ngOnInit(): void {
     this.pedidosMesero = this.storageService.get('ordersList');
   }
