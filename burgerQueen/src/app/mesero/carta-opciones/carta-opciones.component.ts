@@ -120,7 +120,8 @@ export class CartaOpcionesComponent implements OnInit {
       subtotal: this.priceHamburger,
     };
 
-    if(this.orders.indexOf(hamburger) == -1){
+    const wasOrdered = this.orders.some(order => order.id === hamburger.id);
+    if(!wasOrdered){
       this.orders.push(hamburger);
       this.storageService.set('ordersList', this.orders);
     }
