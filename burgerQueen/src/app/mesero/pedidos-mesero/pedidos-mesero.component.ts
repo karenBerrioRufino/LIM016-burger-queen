@@ -24,7 +24,7 @@ export class PedidosMeseroComponent implements OnInit {
   }
 
   addQuantity(pedidoData: any){
-    console.log(Array.from(document.querySelectorAll('.subtotal')))
+    // console.log(Array.from(document.querySelectorAll('.subtotal')))
 
     const quantityInput = document.querySelector(`input[id='${pedidoData.id}']`) as HTMLInputElement;
     let quantityInputValue: any = quantityInput.getAttribute('value');

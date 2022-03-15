@@ -68,8 +68,9 @@ export class CartaComponent implements OnInit {
   }
 
   sendItemDataToPedidosView(productData: any){
+    let comparingBoolean: boolean = this.orders.some((order) => order.id === productData.id); //se entiende que es verdadero
     this.isSelectionChecked = true;
-    if(this.orders.indexOf(productData) == -1){
+    if(!comparingBoolean){ // tiene que ser falso
       this.orders.push({...productData, subtotal: productData.price});
       //product data que es un array lo convierte a string
       this.storageService.set('ordersList', this.orders);
