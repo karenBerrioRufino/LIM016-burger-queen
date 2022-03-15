@@ -33,7 +33,7 @@ export class PedidosMeseroComponent implements OnInit {
     this.calculateAndSendTotal();
   }
 
-  addQuantity(pedidoData: any){
+  upQuantity(pedidoData: any){
     // console.log(Array.from(document.querySelectorAll('.subtotal')))
 
 
@@ -74,10 +74,14 @@ export class PedidosMeseroComponent implements OnInit {
 
   calculateAndSendTotal(){
     let total = 0;
+    if(this.pedidosMesero !== null){
+      
     this.pedidosMesero.forEach( pedido => {
       total += pedido.subtotal;
     })
     this.total$.next(total);
+    
+    }
     return total;
   }
 }

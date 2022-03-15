@@ -13,6 +13,9 @@ export class DatosPedidoComponent implements OnInit {
   date = new Date().toLocaleDateString();
   hour = new Date().toLocaleTimeString();
   clientName = new FormControl('');
+  
+  numberOfTable: string = "Escoge una mesa";
+  selectTable?: string = "";
 
   pedidosMesero: any[] = [];
   orderTotal: number = 0;
@@ -28,6 +31,7 @@ export class DatosPedidoComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    // estamos jalando el array que contiene 'ordersList' que es lo que se guardó de pedidosMesero
     this.pedidosMesero = this.storageService.get('ordersList');
 
     // this.total = this.productService.disparador2.getValue();
@@ -35,8 +39,19 @@ export class DatosPedidoComponent implements OnInit {
     // this.calculateTotal();
   }
 
-  sendName(){
-    this.productService.disparador.next(this.clientName.value);
+  getNumberOfTable(){
+    this.selectTable = this.numberOfTable;
+    return console.log(this.selectTable) ;
+
+  }
+  sendClientData(){
+    // pasar la data a firestore
+    this.productService.createOrder({customer: this.clientName.value, orderTable: this.selectTable, 
+    date: this.date, hour: this.hour, orderWaiter: this.pedidosMesero, total: this.orderTotal});
+    
+    window.location.reload();
+    this.storageService.clear();
+      
     console.log(this.clientName.value);
   }
 

@@ -21,8 +21,8 @@ export class ProductService {
     return this.firestore.collection('carta', ref => ref.orderBy('name')).snapshotChanges();
   }
 
-  createOrder(product: object): Promise<any> {
-    return this.firestore.collection('pedidos').doc().collection('pedidoCliente').add(product);
+  createOrder(completeOrder: any): Promise<any> {
+    return this.firestore.collection('pedidos').doc().set(completeOrder);
   }
 
   getTotalOfOrder(): BehaviorSubject<number> {
