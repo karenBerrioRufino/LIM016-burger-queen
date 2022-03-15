@@ -44,7 +44,7 @@
       <section class="containerSubTotal">
         <div>
           <p>Subtotal</p>
-          <p class="subtotal">{{ priceHamburger }}</p>
+          <p class="subtotal">{{ priceHamburger | currency:'PEN':'S/' }}</p>
         </div>
         <input type="submit" class="buttonAddOptions" id="buttonAddOptions" value="Añadir" routerLink="/pedidosMesero"
           routerLinkActive="activebutton" (click)="sendHamburgerOrder()">
