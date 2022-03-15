@@ -69,8 +69,9 @@ export class CartaComponent implements OnInit {
 
   sendItemDataToPedidosView(productData: any){
     this.isSelectionChecked = true;
-    if(this.orders.indexOf(productData) == -1){
-      this.orders.push({...productData, subtotal: productData.price});
+    const wasOrdered = this.orders.some(order => order.id === productData.id);
+    if(!wasOrdered){
+      this.orders.push({...productData, quantity: 1, subtotal: productData.price});
       //product data que es un array lo convierte a string
       this.storageService.set('ordersList', this.orders);
     }
