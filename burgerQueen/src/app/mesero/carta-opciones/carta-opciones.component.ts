@@ -113,14 +113,17 @@ export class CartaOpcionesComponent implements OnInit {
 
   sendHamburgerOrder(){
     const hamburger = {
+      category: this.productService.disparador.getValue().category,
       name: this.changeHamburgerName(),
       img: this.imgHamburger,
       price: this.priceHamburger,
       id: this.changeHamburgerId(),
+      quantity: 1,
       subtotal: this.priceHamburger,
     };
 
-    if(this.orders.indexOf(hamburger) == -1){
+    const wasOrdered = this.orders.some(order => order.id === hamburger.id);
+    if(!wasOrdered){
       this.orders.push(hamburger);
       this.storageService.set('ordersList', this.orders);
     }

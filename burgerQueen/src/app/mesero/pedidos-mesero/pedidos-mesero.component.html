@@ -23,9 +23,9 @@
           </td>
           <td>
             <div class="divBtn">
-              <button (click)="subtractQuantity(pedido)">-</button>
-              <input type="number" value="1" id="{{ pedido.id }}">
-              <button (click)="addQuantity(pedido)">+</button>
+              <button (click)="downQuantity(pedido)">-</button>
+              <input type="number" value="{{ pedido.quantity }}" id="{{ pedido.id }}">
+              <button (click)="upQuantity(pedido)">+</button>
             </div>
             <h4 class="subtotal">{{ pedido.subtotal | currency:'PEN':'S/' }}</h4>
           </td>

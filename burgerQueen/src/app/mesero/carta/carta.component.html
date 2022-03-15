@@ -14,7 +14,7 @@
                         <div class="item">
                             <div class="nameAndPrice">
                                 <h4 class="name"> {{ hamburguesa.name }} </h4>
-                                <h3>{{ hamburguesa.price | currency:'PEN':'S/' }} </h3>
+                                <p>{{ hamburguesa.price | currency:'PEN':'S/' }} </p>
                             </div>
                             <div class="picture">
                                 <i class="checkIcon fa-solid fa-circle-check"></i>
@@ -30,7 +30,7 @@
                         <div class="item">
                             <div class="nameAndPrice">
                                 <h4> {{ sandwich.name }} </h4>
-                                <h3>S/.{{ sandwich.price }} </h3>
+                                <p>{{ sandwich.price | currency:'PEN':'S/' }} </p>
                             </div>
                             <div class="picture">
                                 <i class="checkIcon fa-solid fa-circle-check"></i>
@@ -51,7 +51,7 @@
                         <div class="item">
                             <div class="nameAndPrice">
                                 <h4> {{ aperitivo.name }} </h4>
-                                <h3>S/.{{ aperitivo.price }} </h3>
+                                <p>{{ aperitivo.price | currency:'PEN':'S/' }} </p>
                             </div>
                             <div class="picture">
                                 <i class="checkIcon fa-solid fa-circle-check"></i>
@@ -74,7 +74,7 @@
                         <div class="item">
                             <div class="nameAndPrice">
                                 <h4> {{ bebida.name }} </h4>
-                                <h3>S/.{{ bebida.price }} </h3>
+                                <p>{{ bebida.price | currency:'PEN':'S/' }} </p>
                             </div>
                             <div class="picture">
                                 <i class="checkIcon fa-solid fa-circle-check"></i>

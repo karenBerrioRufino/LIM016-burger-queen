@@ -33,7 +33,7 @@
 
   <div class="costoPedido">
     <p>Total</p>
-    <p class="precio">S/ 23.00</p>
+    <p class="precio">{{ orderTotal | currency:'PEN':'S/' }}</p>
   </div>
 
   <button class="btnEnviarOrden" (click)="sendName()">Enviar Orden</button>
