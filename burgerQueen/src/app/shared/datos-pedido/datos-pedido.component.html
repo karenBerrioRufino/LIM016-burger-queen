@@ -13,19 +13,20 @@
 
   <div class="seccionMesa">
     <p>Mesa: </p>
-    <select name="mesa" class="mesa">
-      <option value="m1">Mesa 1</option>
-      <option value="m2">Mesa 2</option>
-      <option value="m3">Mesa 3</option>
-      <option value="m4">Mesa 4</option>
-      <option value="m5">Mesa 5</option>
-      <option value="m6">Mesa 6</option>
-      <option value="m7">Mesa 7</option>
-      <option value="m8">Mesa 8</option>
-      <option value="m9">Mesa 9</option>
-      <option value="m10">Mesa 10</option>
-      <option value="m11">Mesa 11</option>
-      <option value="m12">Mesa 12</option>
+    <select name="mesa" class="mesa" [(ngModel)]="numberOfTable" (change)="getNumberOfTable()"> 
+      <option disabled >Escoge una mesa</option>
+      <option value="Mesa1">Mesa 1</option>
+      <option value="Mesa2">Mesa 2</option>
+      <option value="Mesa3">Mesa 3</option>
+      <option value="Mesa4">Mesa 4</option>
+      <option value="Mesa5">Mesa 5</option>
+      <option value="Mesa6">Mesa 6</option>
+      <option value="Mesa7">Mesa 7</option>
+      <option value="Mesa8">Mesa 8</option>
+      <option value="Mesa9">Mesa 9</option>
+      <option value="Mesa10">Mesa 10</option>
+      <option value="Mesa11">Mesa 11</option>
+      <option value="Mesa12">Mesa 12</option>
     </select>
   </div>
 
@@ -36,6 +37,7 @@
     <p class="precio">{{ orderTotal | currency:'PEN':'S/' }}</p>
   </div>
 
-  <button class="btnEnviarOrden" (click)="sendName()">Enviar Orden</button>
+  <button class="btnEnviarOrden" (click)="sendClientData()" routerLink="/totalPedidosMesero"
+  routerLinkActive="activebutton">Enviar Orden</button>
 
 </form>
