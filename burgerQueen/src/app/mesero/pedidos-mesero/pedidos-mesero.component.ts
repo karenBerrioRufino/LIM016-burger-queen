@@ -23,29 +23,37 @@ export class PedidosMeseroComponent implements OnInit {
     this.storageService.set('ordersList',this.pedidosMesero);
   }
 
-  addQuantity(pedidoData: any){
-    console.log(Array.from(document.querySelectorAll('.subtotal')))
-
+  upQuantity(pedidoData: any){
     const quantityInput = document.querySelector(`input[id='${pedidoData.id}']`) as HTMLInputElement;
-    let quantityInputValue: any = quantityInput.getAttribute('value');
+    // let quantityInputValue: any = quantityInput.getAttribute('value');
 
-    quantityInputValue++;
-    quantityInput.setAttribute('value', quantityInputValue.toString());
+    pedidoData.quantity++
+    // quantityInputValue++;
+    quantityInput.setAttribute('value', pedidoData.quantity.toString());
+    // quantityInput.setAttribute('value', quantityInputValue.toString());
+    pedidoData.subtotal = pedidoData.quantity * pedidoData.price;
+    // pedidoData.subtotal = quantityInputValue * pedidoData.price;
 
-    pedidoData.subtotal = quantityInputValue * pedidoData.price;
+    // const quantityObject = { quantity: quantityInputValue };
+    // pedidoData = Object.assign(pedidoData, quantityObject);
+    this.storageService.set('ordersList', this.pedidosMesero);
   }
 
-  subtractQuantity(pedidoData: any){
+  downQuantity(pedidoData: any){
     const quantityInput = document.querySelector(`input[id='${pedidoData.id}']`) as HTMLInputElement;
-    let quantityInputValue: any = quantityInput.getAttribute('value');
+    // let quantityInputValue: any = quantityInput.getAttribute('value');
 
-    if(quantityInputValue == 1){
-      quantityInputValue;
-      pedidoData.subtotal = quantityInputValue * pedidoData.price;
+    if(pedidoData.quantity == 1){
+      pedidoData.quantity;
+      pedidoData.subtotal = pedidoData.quantity * pedidoData.price;
     } else {
-      quantityInputValue--;
-      quantityInput.setAttribute('value', quantityInputValue.toString());
-      pedidoData.subtotal = quantityInputValue * pedidoData.price;
+      pedidoData.quantity--;
+      quantityInput.setAttribute('value', pedidoData.quantity.toString());
+      pedidoData.subtotal = pedidoData.quantity * pedidoData.price;
+
+      // const quantityObject = { quantity: pedidoData.quantity };
+      // pedidoData = Object.assign(pedidoData, quantityObject);
+      this.storageService.set('ordersList', this.pedidosMesero);
     }
   }
 }

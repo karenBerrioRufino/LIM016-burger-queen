@@ -113,10 +113,12 @@ export class CartaOpcionesComponent implements OnInit {
 
   sendHamburgerOrder(){
     const hamburger = {
+      category: this.productService.disparador.getValue().category,
       name: this.changeHamburgerName(),
       img: this.imgHamburger,
       price: this.priceHamburger,
       id: this.changeHamburgerId(),
+      quantity: 1,
       subtotal: this.priceHamburger,
     };
 
