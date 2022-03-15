@@ -71,7 +71,7 @@ export class CartaComponent implements OnInit {
     this.isSelectionChecked = true;
     const wasOrdered = this.orders.some(order => order.id === productData.id);
     if(!wasOrdered){
-      this.orders.push({...productData, subtotal: productData.price});
+      this.orders.push({...productData, quantity: 1, subtotal: productData.price});
       //product data que es un array lo convierte a string
       this.storageService.set('ordersList', this.orders);
     }
