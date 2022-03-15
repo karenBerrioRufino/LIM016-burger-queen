@@ -10,6 +10,9 @@ import { NavegadorComponent } from './navegador/navegador.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TotalPedidosComponent } from './total-pedidos/total-pedidos.component';
 
+import {StorageService} from 'src/app/services/storage.service'
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -21,13 +24,17 @@ import { TotalPedidosComponent } from './total-pedidos/total-pedidos.component';
   imports: [
     CommonModule,
     SharedRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     NavegadorComponent,
     DatosPedidoComponent,
     TotalPedidosComponent,
     PageNotFoundComponent
+  ],
+  providers: [
+    StorageService
   ]
 })
 export class SharedModule { }
