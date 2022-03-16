@@ -12,6 +12,7 @@ export class createUsersService {
   constructor(private firestore:AngularFirestore) { }
 
   saveUser(user: RegisterUsers, uid: any):Promise<any>{
+    // que en fistore agregue en la coleecion usuario un documento con el uid que tenga como contenido la info de user
     return this.firestore.collection('usuarios').doc(uid).set(user);
   }
 
@@ -33,5 +34,8 @@ export class createUsersService {
 
   getUserEdit():Observable<RegisterUsers>{
     return this.usuario$.asObservable();
+  }
+  getdocUser(uid : string): Observable<any> {
+   return this.firestore.collection('usuarios').doc(uid).snapshotChanges();
   }
 }
