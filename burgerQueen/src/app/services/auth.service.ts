@@ -19,6 +19,7 @@ export class AuthService {
       return null;
     }
   }
+  
   async login(email:string, password:string) {
     try {
       return await this.authWithAngularFirebase.signInWithEmailAndPassword(email,password);

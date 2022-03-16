@@ -11,7 +11,6 @@ export class ProductService {
 
   // el disparador toma como valor el BehaviorSubject
   @Output() disparador: BehaviorSubject<any> = new BehaviorSubject({});
-  // @Output() disparador2: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   private totalOfOrder: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
 
