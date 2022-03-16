@@ -7,8 +7,8 @@ export class RegisterUsers{
   telefono:number;
   estado:string;
   rol:string;
-  correo:string;
-  password:string;
+  correo:string = "";
+  password:string = "";
   fechaCreacion:Date;
   fechaActualizacion:Date;
   
