@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { RegisterUsers } from '../models/registerUsers';
 import { createUsersService } from '../../../app/services/create-users.service';
+import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -25,6 +26,7 @@ export class GestionUsuariosComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private _userService: createUsersService,
+    private authService:AuthService,
     firestore: AngularFirestore,
     ) {
     
@@ -41,12 +43,10 @@ export class GestionUsuariosComponent implements OnInit {
       correo:['', Validators.required],
       password:['',Validators.required],
     })
-    console.log(this.form);
-    
   }
 
   ngOnInit(): void {
-   
+
     this._userService.getUserEdit().subscribe(data=>{
       this.id =data.id;
       this.titulo="editar usuario";
@@ -62,7 +62,6 @@ export class GestionUsuariosComponent implements OnInit {
         password:data.password,
       })
     })
-    
     this.obtenerUsuarios();
   }
 
@@ -74,14 +73,20 @@ export class GestionUsuariosComponent implements OnInit {
   }
 
   guardarUsuario() {
+    console.log(this.form);
+    console.log(this.form.value.correo);
+    //para crear un usuario por pirmera vez
+    this.authService.register(this.form.value.correo, this.form.value.password).then(registered => {
+      console.log(registered);
+    });
     console.log('clic en boton guardar usuario');
     let modal:any = document.getElementById('btnModal');
     this.titulo="agregar usuario";
     if(this.id === undefined) {
       // Creamos una nuevo usuario
+
       this.agregarUsuario();
       modal.style.display='none';
-      
 
     } else {
       // Editamos un usuario
@@ -116,7 +121,6 @@ export class GestionUsuariosComponent implements OnInit {
   }
 
   agregarUsuario(){
-
     const USUARIO: RegisterUsers = {
       dni:this.form.value.dni,
       nombres: this.form.value.nombres,
@@ -132,10 +136,8 @@ export class GestionUsuariosComponent implements OnInit {
     }
     
     this._userService.saveUser(USUARIO).then(()=>{
-      
       console.log('Usuario registrado');
       this.form.reset();
-      
     },error => {
       console.log('Opps.. ocurrio un error',error);
     })

@@ -9,6 +9,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { FormsModule } from '@angular/forms';
 // import { ViewModule } from '../view/view.module';
 
+
 @NgModule({
   declarations: [
     LoginComponent,

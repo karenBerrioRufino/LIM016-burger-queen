@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { MeseroModule } from 'src/app/mesero/mesero.module';
-// import { Router } from '@angular/router';
-// import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +12,12 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
   // public rol: any;
   title:string="Los angeles de charlie";
-  // usuario: any ={
-  //   email:"",
-  //   password:""
-  // }
+  usuario ={
+    email:"",
+    password:""
+  }
 
-  constructor(
-    // private authService:AuthService,
-    // private router: Router
+  constructor( private authService:AuthService, private router: Router
     ) { 
     // this.rol = '';
    }
@@ -34,7 +32,33 @@ export class LoginComponent implements OnInit {
   } 
   
   ingresar(){
-    // console.log('este es login',this.usuario)
+ console.log('este es login',this.usuario)
+ // desestrucutrar una variable
+ const {email, password} = this.usuario;
+
+ this.authService.login(email, password).then(user =>{
+  console.log("Bienvenido ", user)
+    if(user && user.user?.emailVerified){
+      console.log('entras a una ventana');
+      console.log(user.user?.emailVerified);
+      return;
+    } 
+    else if(user){
+      console.log('modal para pedir que verifiquesu usuario');
+    } 
+    
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
+//  this.authService.register(email, password).then(registered => {
+//    console.log(registered);
+//  });
     // this.authService.login(email,password);
+  }
+  resetPass(){
+    const {email} = this.usuario;
+    this.authService.resetPassword(email);
   }
 }
