@@ -35,4 +35,7 @@ export class createUsersService {
   getUserEdit():Observable<RegisterUsers>{
     return this.usuario$.asObservable();
   }
+  getdocUser(uid : string): Observable<any> {
+   return this.firestore.collection('usuarios').doc(uid).snapshotChanges();
+  }
 }

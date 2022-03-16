@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 // import { MeseroModule } from 'src/app/mesero/mesero.module';
 import { Router } from '@angular/router';
+import { doc } from 'firebase/firestore';
 import { AuthService } from 'src/app/services/auth.service';
+import { createUsersService } from 'src/app/services/create-users.service';
 
 @Component({
   selector: 'app-login',
@@ -17,16 +19,35 @@ export class LoginComponent implements OnInit {
     password:""
   }
 
-  constructor( private authService:AuthService, private router: Router) { 
+  constructor( private authService:AuthService, private router:Router, private getUser : createUsersService) { 
     // this.rol = '';
   }
 
   ngOnInit(): void { }
   
-  multiple() {
+  multiple(uid : any) {
     //mesero
-    console.log('ENTRE AL LOGIN PARA MESERO');
-    // this.router.navigateByUrl("/carta");
+    this.getUser.getdocUser(uid).subscribe((doc) =>{
+      const rol = doc.payload.data().rol;
+        console.log(uid, doc.payload.data().rol);
+         if (doc.payload.exists) {
+          console.log("Document data:", doc);
+          switch(rol){
+            case 'Mesero': this.router.navigateByUrl("/carta")
+            break;
+            case 'Cocinero': this.router.navigateByUrl("/pedidosMesero")
+            break;
+            case 'Administrador': this.router.navigateByUrl("/gestionUsuarios")
+            break;
+            default: this.router.navigateByUrl("/")
+            break;
+          }
+      } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+      }
+    }) 
+    
     //cocinero
   } 
   
@@ -43,6 +64,8 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl("/carta");
         console.log(user.user?.emailVerified);
         console.log(user.user.uid);
+        const idUser = user.user.uid;
+        this.multiple(idUser);
         return;
       } 
       else if(user){
@@ -52,11 +75,6 @@ export class LoginComponent implements OnInit {
   }).catch(err => {
       console.log(err);
   });
-
-//  this.authService.register(email, password).then(registered => {
-//    console.log(registered);
-//  });
-    // this.authService.login(email,password);
   }
 
   resetPass(){
