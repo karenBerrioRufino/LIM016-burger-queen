@@ -11,8 +11,9 @@ export class createUsersService {
   
   constructor(private firestore:AngularFirestore) { }
 
-  saveUser(user: RegisterUsers):Promise<any>{
-    return this.firestore.collection('usuarios').add(user);
+  saveUser(user: RegisterUsers, uid: any):Promise<any>{
+    // que en fistore agregue en la coleecion usuario un documento con el uid que tenga como contenido la info de user
+    return this.firestore.collection('usuarios').doc(uid).set(user);
   }
 
   getUsers():Observable<any>{

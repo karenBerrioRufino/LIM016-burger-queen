@@ -75,10 +75,7 @@ export class GestionUsuariosComponent implements OnInit {
   guardarUsuario() {
     console.log(this.form);
     console.log(this.form.value.correo);
-    //para crear un usuario por pirmera vez
-    this.authService.register(this.form.value.correo, this.form.value.password).then(registered => {
-      console.log(registered);
-    });
+   
     console.log('clic en boton guardar usuario');
     let modal:any = document.getElementById('btnModal');
     this.titulo="agregar usuario";
@@ -135,12 +132,18 @@ export class GestionUsuariosComponent implements OnInit {
       fechaActualizacion: new Date(),
     }
     
-    this._userService.saveUser(USUARIO).then(()=>{
-      console.log('Usuario registrado');
-      this.form.reset();
-    },error => {
-      console.log('Opps.. ocurrio un error',error);
-    })
+     //para crear un usuario por pirmera vez
+     const {correo, password} = USUARIO;
+     this.authService.register(correo, password).then(registered => {
+      console.log(registered); // trae los datos de quien se registra por primera vez
+      // uid es el id de quien se registra por primera vez y aparece en el auth
+      this._userService.saveUser(USUARIO, registered?.user?.uid).then(()=>{
+        console.log('Usuario registrado');
+        this.form.reset();
+      },error => {
+        console.log('Opps.. ocurrio un error',error);
+      })
+      });
      
   }
 

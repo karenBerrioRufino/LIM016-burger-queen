@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   
   multiple() {
     //mesero
-    console.log('ENTRE AL LOGIN');
+    console.log('ENTRE AL LOGIN PARA MESERO');
     // this.router.navigateByUrl("/carta");
     //cocinero
   } 
@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
     // this.authService.login(email,password);
   }
   resetPass(){
+    console.log("SWEET ALERT PARA PEDIR QUE REVISE EL CORREO Y RESTABLEZCA SU CONTRASEÑA");
     const {email} = this.usuario;
     this.authService.resetPassword(email);
   }
