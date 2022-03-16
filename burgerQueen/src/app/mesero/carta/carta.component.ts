@@ -20,6 +20,7 @@ export class CartaComponent implements OnInit {
   bebidas: any[] = [];
   // es el array donde se ira guardando temporalmente los objetos
   orders: any[] = [];
+  ordersId: any[] = [];
   
   constructor(private productService: ProductService, private storageService: StorageService) {
   }
@@ -30,8 +31,9 @@ export class CartaComponent implements OnInit {
     let ordersList: any = this.storageService.get('ordersList');
     if(ordersList){
       // iguala el array con los datos que jala del storage. Sobre el array que existe, irá agregando los objetos
-      this.orders = ordersList;       
+      this.orders = ordersList;     
     }
+    window.addEventListener('load', this.changeProductStatus);
   }
 
   changeSectionOfCarta(){
@@ -68,14 +70,28 @@ export class CartaComponent implements OnInit {
   }
 
   sendItemDataToPedidosView(productData: any){
-    let comparingBoolean: boolean = this.orders.some((order) => order.id === productData.id); //se entiende que es verdadero
     this.isSelectionChecked = true;
-
-    const wasOrdered = this.orders.some(order => order.id === productData.id);
+    const wasOrdered = this.orders.some(order => order.id === productData.id); //se entiende que es verdadero
     if(!wasOrdered){ // tiene que ser falso
       this.orders.push({...productData, quantity: 1, subtotal: productData.price});
+      this.changeProductStatus();
       //product data que es un array lo convierte a string
       this.storageService.set('ordersList', this.orders);
+    }
+  }
+
+  changeProductStatus(){
+    console.log('INGRESA');
+    const iconCheckElements = Array.from(document.querySelectorAll('i')) as Array<any>;
+    console.log(iconCheckElements);
+    if(this.orders){
+      for(let i = 0; i < iconCheckElements.length; i++){
+        this.orders.map(order => {
+          if(order.id === iconCheckElements[i]?.id){
+            iconCheckElements[i]!.style.display="block";
+          }
+        })
+      }
     }
   }
 }

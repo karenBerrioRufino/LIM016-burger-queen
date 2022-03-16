@@ -1,7 +1,6 @@
 <div id="cartaView">
 
     <app-navegador></app-navegador>
-
     <main>
         <div class="carta">
             <section id="cartaSection1" [class.hidden]="isSectionchanged">
@@ -17,7 +16,6 @@
                                 <p>{{ hamburguesa.price | currency:'PEN':'S/' }} </p>
                             </div>
                             <div class="picture">
-                                <i class="checkIcon fa-solid fa-circle-check"></i>
                                 <img class="cartaImg" src="{{ hamburguesa.img }}">
                             </div>
                             <input type="button" value="Ver opciones" class="btn"
@@ -33,7 +31,7 @@
                                 <p>{{ sandwich.price | currency:'PEN':'S/' }} </p>
                             </div>
                             <div class="picture">
-                                <i class="checkIcon fa-solid fa-circle-check"></i>
+                                <i class="checkIcon fa-solid fa-circle-check" id="{{ sandwich.id }}"></i>
                                 <img class="cartaImg" src="{{ sandwich.img }}">
                             </div>
                             <input type="button" value="Añadir" class="btn btnAñadir" (click)="sendItemDataToPedidosView(sandwich)"
@@ -54,7 +52,7 @@
                                 <p>{{ aperitivo.price | currency:'PEN':'S/' }} </p>
                             </div>
                             <div class="picture">
-                                <i class="checkIcon fa-solid fa-circle-check"></i>
+                                <i class="checkIcon fa-solid fa-circle-check" id="{{ aperitivo.id }}"></i>
                                 <img class="cartaImg" src="{{ aperitivo.img }}">
                             </div>
                             <input type="button" value="Añadir" class="btn btnAñadir" (click)="sendItemDataToPedidosView(aperitivo)"
@@ -77,7 +75,7 @@
                                 <p>{{ bebida.price | currency:'PEN':'S/' }} </p>
                             </div>
                             <div class="picture">
-                                <i class="checkIcon fa-solid fa-circle-check"></i>
+                                <i class="checkIcon fa-solid fa-circle-check" id="{{ bebida.id }}"></i>
                                 <img class="cartaImg" src="{{ bebida.img }}">
                             </div>
                             <input type="button" value="Añadir" class="btn btnAñadir" (click)="sendItemDataToPedidosView(bebida)"
