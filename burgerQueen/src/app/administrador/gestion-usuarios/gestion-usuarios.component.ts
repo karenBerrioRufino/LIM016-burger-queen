@@ -75,7 +75,6 @@ export class GestionUsuariosComponent implements OnInit {
   guardarUsuario() {
     console.log(this.form);
     console.log(this.form.value.correo);
-   
     console.log('clic en boton guardar usuario');
     let modal:any = document.getElementById('btnModal');
     this.titulo="agregar usuario";
@@ -105,7 +104,6 @@ export class GestionUsuariosComponent implements OnInit {
       correo: this.form.value.correo,
       password: this.form.value.password,
       fechaActualizacion: new Date(),
-      
     }
     
     this._userService.editarUsuario(id, USUARIO).then(() =>{
@@ -131,7 +129,7 @@ export class GestionUsuariosComponent implements OnInit {
       fechaCreacion: new Date(),
       fechaActualizacion: new Date(),
     }
-    
+
      //para crear un usuario por pirmera vez
      const {correo, password} = USUARIO;
      this.authService.register(correo, password).then(registered => {
@@ -144,12 +142,10 @@ export class GestionUsuariosComponent implements OnInit {
         console.log('Opps.. ocurrio un error',error);
       })
       });
-     
   }
 
   obtenerUsuarios(){
     this._userService.getUsers().subscribe(doc=>{
-      
       this.listarUsuarios=[];
       doc.forEach((element: any) => {
         this.listarUsuarios.push({
@@ -205,7 +201,6 @@ export class GestionUsuariosComponent implements OnInit {
     let modal:any = document.getElementById('btnModal');
     modal.style.display='block';
     this._userService.addUserEdit(usuario);
-    
   }
  
 }

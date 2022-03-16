@@ -17,10 +17,9 @@ export class LoginComponent implements OnInit {
     password:""
   }
 
-  constructor( private authService:AuthService, private router: Router
-    ) { 
+  constructor( private authService:AuthService, private router: Router) { 
     // this.rol = '';
-   }
+  }
 
   ngOnInit(): void { }
   
@@ -32,24 +31,26 @@ export class LoginComponent implements OnInit {
   } 
   
   ingresar(){
- console.log('este es login',this.usuario)
- // desestrucutrar una variable
- const {email, password} = this.usuario;
+  console.log('este es login',this.usuario)
+  // desestrucutrar una variable
+  const {email, password} = this.usuario;
 
- this.authService.login(email, password).then(user =>{
-  console.log("Bienvenido ", user)
-    if(user && user.user?.emailVerified){
-      console.log('entras a una ventana');
-      console.log(user.user?.emailVerified);
-      return;
-    } 
-    else if(user){
-      console.log('modal para pedir que verifiquesu usuario');
-    } 
-    
-  })
-  .catch(err => {
-    console.log(err);
+  this.authService.login(email, password)
+  .then(user => {
+    console.log("Bienvenido ", user)
+      if(user && user.user?.emailVerified){
+        console.log('entras a una ventana');
+        this.router.navigateByUrl("/carta");
+        console.log(user.user?.emailVerified);
+        console.log(user.user.uid);
+        return;
+      } 
+      else if(user){
+        console.log('modal para pedir que verifiquesu usuario');
+      } 
+      
+  }).catch(err => {
+      console.log(err);
   });
 
 //  this.authService.register(email, password).then(registered => {
@@ -57,9 +58,11 @@ export class LoginComponent implements OnInit {
 //  });
     // this.authService.login(email,password);
   }
+
   resetPass(){
     console.log("SWEET ALERT PARA PEDIR QUE REVISE EL CORREO Y RESTABLEZCA SU CONTRASEÑA");
     const {email} = this.usuario;
     this.authService.resetPassword(email);
+    console.log('Email de reseteo enviado');
   }
 }

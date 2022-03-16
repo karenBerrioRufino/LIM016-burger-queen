@@ -49,8 +49,8 @@ export class DatosPedidoComponent implements OnInit {
     this.productService.createOrder({customer: this.clientName.value, orderTable: this.selectTable, 
     date: this.date, hour: this.hour, orderWaiter: this.pedidosMesero, total: this.orderTotal});
     
-    window.location.reload();
     this.storageService.clear();
+    window.location.reload();
       
     console.log(this.clientName.value);
   }
