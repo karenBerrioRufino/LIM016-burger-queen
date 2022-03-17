@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // import { MeseroModule } from 'src/app/mesero/mesero.module';
 import { Router } from '@angular/router';
 import { doc } from 'firebase/firestore';
+import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { createUsersService } from 'src/app/services/create-users.service';
 
@@ -12,22 +13,22 @@ import { createUsersService } from 'src/app/services/create-users.service';
 })
 
 export class LoginComponent implements OnInit {
-  // public rol: any;
+  getRolUser$: BehaviorSubject<string>;
   title:string="Los angeles de charlie";
   usuario ={
     email:"",
     password:""
   }
 
-  constructor( private authService:AuthService, private router:Router, private getUser : createUsersService) { 
-    // this.rol = '';
+  constructor( private authService:AuthService, private router:Router, private createUser : createUsersService) { 
+      this.getRolUser$ = this.createUser.getRol();
   }
 
   ngOnInit(): void { }
   
   multiple(uid : any) {
     //mesero
-    this.getUser.getdocUser(uid).subscribe((doc) =>{
+    this.createUser.getdocUser(uid).subscribe((doc) =>{
       const rol = doc.payload.data().rol;
         console.log(uid, doc.payload.data().rol);
          if (doc.payload.exists) {
@@ -46,6 +47,8 @@ export class LoginComponent implements OnInit {
           // doc.data() will be undefined in this case
           console.log("No such document!");
       }
+      this.getRolUser$.next(rol);
+    return rol;
     }) 
     
     //cocinero

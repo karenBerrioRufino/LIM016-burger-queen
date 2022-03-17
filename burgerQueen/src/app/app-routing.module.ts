@@ -16,6 +16,9 @@ const routes: Routes = [
     path: '', loadChildren: () => import('./cocinero/cocinero.module').then(m => m.CocineroModule)
   },
   {
+    path: '', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule)
+  },
+  {
     path: '', redirectTo: '', pathMatch: 'full'
   }
 ]

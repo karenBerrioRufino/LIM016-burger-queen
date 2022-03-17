@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 import { ViewModule } from './view/view.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AdministradorModule } from './administrador/administrador.module';
+// import { AdministradorModule } from './administrador/administrador.module';
 
 
 // Register the localization
@@ -34,7 +34,7 @@ import { AdministradorModule } from './administrador/administrador.module';
     ReactiveFormsModule,
     AngularFireModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),   
-    AdministradorModule,
+   // AdministradorModule,
     AppRoutingModule, 
   ],
   
