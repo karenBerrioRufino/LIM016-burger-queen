@@ -82,7 +82,7 @@ export class CartaComponent implements OnInit {
 
   changeProductStatus(){
     console.log('INGRESA');
-    const iconCheckElements = Array.from(document.querySelectorAll('i')) as Array<any>;
+    const iconCheckElements = Array.from(document.querySelectorAll('.checkIcon')) as Array<any>;
     console.log(iconCheckElements);
     if(this.orders){
       for(let i = 0; i < iconCheckElements.length; i++){
