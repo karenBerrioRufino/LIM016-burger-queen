@@ -33,32 +33,31 @@ export class DatosPedidoComponent implements OnInit {
   ngOnInit(): void {
     // estamos jalando el array que contiene 'ordersList' que es lo que se guardó de pedidosMesero
     this.pedidosMesero = this.storageService.get('ordersList');
-
-    // this.total = this.productService.disparador2.getValue();
-    // console.log(this.total);
-    // this.calculateTotal();
   }
 
   getNumberOfTable(){
     this.selectTable = this.numberOfTable;
     return console.log(this.selectTable) ;
-
   }
+
   sendClientData(){
     // pasar la data a firestore
-    this.productService.createOrder({customer: this.clientName.value, orderTable: this.selectTable, 
-    date: this.date, hour: this.hour, orderWaiter: this.pedidosMesero, total: this.orderTotal});
-    
-    this.storageService.clear();
-    window.location.reload();
-      
-    console.log(this.clientName.value);
-  }
+    const promise = new Promise((resolve) => {
+      resolve(
+      this.productService.createOrder({
+        customer: this.clientName.value, 
+        orderTable: this.selectTable, 
+        date: this.date,
+        hour: this.hour, 
+        orderWaiter: this.pedidosMesero, 
+        total: this.orderTotal,
+      }));
+    });
 
-/*   calculateTotal(){
-    this.pedidosMesero.forEach( pedido => {
-      this.total += pedido.subtotal;
-    })
-    return this.total;
-  } */
+    promise.then((res) => {
+      this.storageService.clear();
+      console.log('localStorage limpio y página recargada:', res);
+      window.location.reload();
+    });
+  }
 }

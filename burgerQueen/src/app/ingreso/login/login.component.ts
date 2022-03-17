@@ -24,7 +24,9 @@ export class LoginComponent implements OnInit {
       this.getRolUser$ = this.createUser.getRol();
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+   
+  }
   
   multiple(uid : any) {
     //mesero
