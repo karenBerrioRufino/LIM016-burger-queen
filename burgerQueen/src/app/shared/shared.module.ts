@@ -25,7 +25,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     SharedRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     NavegadorComponent,
