@@ -1,11 +1,13 @@
 <div class="navbar">
     <img src="../../../assets/imagenes/img-carta/logo2.svg">
-    <i class="fa-solid fa-user-large" routerLink="/totalPedidosMesero" routerLinkActive="active"
-    *ngIf="(rolUser == 'Administrador')"></i>
-    <i class="fa-solid fa-utensils" routerLink="/totalPedidosMesero" routerLinkActive="active" 
-    *ngIf="(rolUser == 'Mesero' || rolUser == 'Administrador')"></i>
-    <i class="fa-solid fa-receipt" routerLink="/totalMesero" routerLinkActive="active"></i>
-    <i class="fa-solid fa-clipboard-list" routerLink="" routerLinkActive="active"></i>
-    <i class="fa-solid fa-right-from-bracket" routerLink="/welcome" routerLinkActive="active"
-    (click)="logout()"></i>
+    <i class="fa-solid fa-user-large" (click)="usuariosRout()"></i>
+    <i class="fa-solid fa-utensils" (click)="cartaRout()"></i>
+    <i class="fa-solid fa-receipt" (click)="pedidoRout()"></i>
+    <i class="fa-solid fa-list-check" (click)="totalPedidosRout()"></i>
+    <i class="fa-solid fa-right-from-bracket" (click)="onLogout()"></i>
 </div>
+
+<!--
+    3 - *ngIf="(rolUser == 'Administrador')"
+    4 - *ngIf="(rolUser == 'Mesero' || rolUser == 'Administrador')"
+-->

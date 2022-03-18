@@ -7,6 +7,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProductService {
 
   // el disparador toma como valor el BehaviorSubject
