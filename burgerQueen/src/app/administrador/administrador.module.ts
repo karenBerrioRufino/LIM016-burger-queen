@@ -15,6 +15,7 @@ import { ReactiveFormsModule} from '@angular/forms';
 
 import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
 import { AdministradorComponent } from './administrador/administrador.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AdministradorComponent } from './administrador/administrador.component'
     AdministradorRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),

@@ -13,13 +13,11 @@ import { BehaviorSubject } from 'rxjs';
 export class PedidosMeseroComponent implements OnInit {
 
   total$: BehaviorSubject<number>;
+  pedidosMesero: any[] = [];
 
   constructor(public productService: ProductService, private storageService: StorageService) {
     this.total$ = this.productService.getTotalOfOrder();
   }
-  
-  pedidosMesero: any[] = [];
-  // total: number = 0;
   
   ngOnInit(): void {
     this.pedidosMesero = this.storageService.get('ordersList');
@@ -34,39 +32,24 @@ export class PedidosMeseroComponent implements OnInit {
   }
 
   upQuantity(pedidoData: any){
-    // console.log(Array.from(document.querySelectorAll('.subtotal')))
-
-
     const quantityInput = document.querySelector(`input[id='${pedidoData.id}']`) as HTMLInputElement;
-    // let quantityInputValue: any = quantityInput.getAttribute('value');
 
     pedidoData.quantity++
-    // quantityInputValue++;
     quantityInput.setAttribute('value', pedidoData.quantity.toString());
-    // quantityInput.setAttribute('value', quantityInputValue.toString());
     pedidoData.subtotal = pedidoData.quantity * pedidoData.price;
-    // pedidoData.subtotal = quantityInputValue * pedidoData.price;
-
-    // const quantityObject = { quantity: quantityInputValue };
-    // pedidoData = Object.assign(pedidoData, quantityObject);
     this.storageService.set('ordersList', this.pedidosMesero);
     this.calculateAndSendTotal();
   }
 
   downQuantity(pedidoData: any){
     const quantityInput = document.querySelector(`input[id='${pedidoData.id}']`) as HTMLInputElement;
-    // let quantityInputValue: any = quantityInput.getAttribute('value');
 
     if(pedidoData.quantity == 1){
       pedidoData.quantity;
-      // pedidoData.subtotal = pedidoData.quantity * pedidoData.price;
     } else {
       pedidoData.quantity--;
       quantityInput.setAttribute('value', pedidoData.quantity.toString());
       pedidoData.subtotal = pedidoData.quantity * pedidoData.price;
-
-      // const quantityObject = { quantity: pedidoData.quantity };
-      // pedidoData = Object.assign(pedidoData, quantityObject);
       this.storageService.set('ordersList', this.pedidosMesero);
       this.calculateAndSendTotal();
     }
@@ -75,12 +58,8 @@ export class PedidosMeseroComponent implements OnInit {
   calculateAndSendTotal(){
     let total = 0;
     if(this.pedidosMesero !== null){
-      
-    this.pedidosMesero.forEach( pedido => {
-      total += pedido.subtotal;
-    })
-    this.total$.next(total);
-    
+      this.pedidosMesero.forEach( pedido => total += pedido.subtotal);
+      this.total$.next(total);
     }
     return total;
   }
