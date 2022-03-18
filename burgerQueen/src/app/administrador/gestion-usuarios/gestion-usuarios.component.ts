@@ -28,8 +28,7 @@ export class GestionUsuariosComponent implements OnInit {
     private _userService: createUsersService,
     private authService:AuthService,
     firestore: AngularFirestore,
-    ) {
-    
+  ) {
     this.usuarios = firestore.collection('usuarios').valueChanges();
 
     this.form = this.fb.group ({
@@ -46,7 +45,6 @@ export class GestionUsuariosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this._userService.getUserEdit().subscribe(data=>{
       this.id =data.id;
       this.titulo="editar usuario";
@@ -80,10 +78,8 @@ export class GestionUsuariosComponent implements OnInit {
     this.titulo="agregar usuario";
     if(this.id === undefined) {
       // Creamos una nuevo usuario
-
       this.agregarUsuario();
       modal.style.display='none';
-
     } else {
       // Editamos un usuario
       this.editarUsuario(this.id);
@@ -131,8 +127,8 @@ export class GestionUsuariosComponent implements OnInit {
     }
 
      //para crear un usuario por pirmera vez
-     const {correo, password} = USUARIO;
-     this.authService.register(correo, password).then(registered => {
+    const {correo, password} = USUARIO;
+    this.authService.register(correo, password).then(registered => {
       console.log(registered); // trae los datos de quien se registra por primera vez
       // uid es el id de quien se registra por primera vez y aparece en el auth
       this._userService.saveUser(USUARIO, registered?.user?.uid).then(()=>{
@@ -141,7 +137,7 @@ export class GestionUsuariosComponent implements OnInit {
       },error => {
         console.log('Opps.. ocurrio un error',error);
       })
-      });
+    });
   }
 
   obtenerUsuarios(){
@@ -202,6 +198,5 @@ export class GestionUsuariosComponent implements OnInit {
     modal.style.display='block';
     this._userService.addUserEdit(usuario);
   }
- 
 }
 

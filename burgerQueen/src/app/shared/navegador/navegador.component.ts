@@ -13,7 +13,7 @@ export class NavegadorComponent implements OnInit {
   getRolUser$: BehaviorSubject<string>;
   rolUser: string = '';
 
-  constructor(private authService:AuthService, private router: Router, private createUser: createUsersService) { 
+  constructor(private authService: AuthService, private router: Router, private createUser: createUsersService) {
     this.getRolUser$ = this.createUser.getRol();
 
     this.getRolUser$.subscribe(value => {
@@ -25,7 +25,39 @@ export class NavegadorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-    logout(){
-      this.authService.logout();
+  usuariosRout() {
+    console.log('click');
+    this.router.navigateByUrl("/gestionUsuarios")
+  }
+
+  cartaRout() {
+    console.log('click');
+    this.router.navigateByUrl("/carta");
+  }
+
+  pedidoRout() {
+    if (this.rolUser === "Mesero" || this.rolUser === "Administrador") {
+      console.log('click');
+      this.router.navigateByUrl("/pedidosMesero");
     }
+    if (this.rolUser === "Cocinero") {
+      console.log('click');
+      this.router.navigateByUrl("/pedidosCocinero");
+    }
+  }
+
+  totalPedidosRout() {
+    console.log('click');
+    this.router.navigateByUrl("/totalPedidosMesero");
+  }
+
+  async onLogout() {
+    console.log('logout');
+    try {
+      await this.authService.logout();
+      this.router.navigate(['/']);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

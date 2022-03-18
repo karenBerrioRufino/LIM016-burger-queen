@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   constructor( private authService:AuthService, private router:Router, private createUser : createUsersService) { 
-      this.getRolUser$ = this.createUser.getRol();
+    this.getRolUser$ = this.createUser.getRol();
   }
 
   ngOnInit(): void { 
@@ -29,12 +29,10 @@ export class LoginComponent implements OnInit {
   }
   
   multiple(uid : any) {
-    //mesero
     this.createUser.getdocUser(uid).subscribe((doc) =>{
       const rol = doc.payload.data().rol;
-        console.log(uid, doc.payload.data().rol);
          if (doc.payload.exists) {
-          console.log("Document data:", doc);
+          console.log("Document data:", doc.payload.data());
           switch(rol){
             case 'Mesero': this.router.navigateByUrl("/carta")
             break;
@@ -52,34 +50,29 @@ export class LoginComponent implements OnInit {
       this.getRolUser$.next(rol);
     return rol;
     }) 
-    
-    //cocinero
   } 
   
   ingresar(){
-  console.log('este es login',this.usuario)
-  // desestrucutrar una variable
-  const {email, password} = this.usuario;
+    console.log('este es login',this.usuario)
+    // desestrucutrar una variable
+    const {email, password} = this.usuario;
 
-  this.authService.login(email, password)
-  .then(user => {
-    console.log("Bienvenido ", user)
-      if(user && user.user?.emailVerified){
-        console.log('entras a una ventana');
-        this.router.navigateByUrl("/carta");
-        console.log(user.user?.emailVerified);
-        console.log(user.user.uid);
-        const idUser = user.user.uid;
-        this.multiple(idUser);
-        return;
-      } 
-      else if(user){
-        console.log('modal para pedir que verifiquesu usuario');
-      } 
-      
-  }).catch(err => {
-      console.log(err);
-  });
+    this.authService.login(email, password)
+      .then(user => {
+        console.log("Bienvenido ", user?.user)
+          if(user && user.user?.emailVerified){
+            console.log(user.user?.emailVerified);
+            console.log(user.user.uid);
+            const idUser = user.user.uid;
+            this.multiple(idUser);
+            return;
+          } 
+          else if(user){
+            console.log('modal para pedir que verifiquesu usuario');
+          } 
+      }).catch(err => {
+          console.log(err);
+      });
   }
 
   resetPass(){

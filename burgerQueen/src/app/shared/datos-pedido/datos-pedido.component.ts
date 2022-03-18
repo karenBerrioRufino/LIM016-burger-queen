@@ -9,6 +9,7 @@ import { BehaviorSubject } from 'rxjs';
   templateUrl: './datos-pedido.component.html',
   styleUrls: ['./datos-pedido.component.scss']
 })
+
 export class DatosPedidoComponent implements OnInit {
   date = new Date().toLocaleDateString();
   hour = new Date().toLocaleTimeString();

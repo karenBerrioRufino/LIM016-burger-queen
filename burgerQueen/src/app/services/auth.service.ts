@@ -41,8 +41,12 @@ export class AuthService {
     return this.authWithAngularFirebase.sendPasswordResetEmail(email);
   }
 
-  logout() {
-    this.authWithAngularFirebase.signOut();
+  async logout(): Promise<void> {
+    try {
+      console.log(this.authWithAngularFirebase.authState);
+      await this.authWithAngularFirebase.signOut();
+    } catch (error) {
+      console.log(error);
+    }
   }
-
 }
