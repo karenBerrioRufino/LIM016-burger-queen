@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, ObjectUnsubscribedError, Subscription } from 'rxjs';
 import { createUsersService } from 'src/app/services/create-users.service';
 
 @Component({
@@ -9,17 +9,22 @@ import { createUsersService } from 'src/app/services/create-users.service';
   templateUrl: './navegador.component.html',
   styleUrls: ['./navegador.component.scss']
 })
-export class NavegadorComponent implements OnInit {
+export class NavegadorComponent implements OnInit, OnDestroy {
   getRolUser$: BehaviorSubject<string>;
   rolUser: string = '';
+  private suscription: Subscription;
 
   constructor(private authService: AuthService, private router: Router, private createUser: createUsersService) {
     this.getRolUser$ = this.createUser.getRol();
 
-    this.getRolUser$.subscribe(value => {
+    this.suscription = this.getRolUser$.subscribe(value => {
       this.rolUser = value;
       console.log(this.rolUser);
     });
+  }
+  
+  ngOnDestroy(): void {
+    this.suscription.unsubscribe;
   }
 
   ngOnInit(): void {
@@ -52,7 +57,6 @@ export class NavegadorComponent implements OnInit {
   }
 
   async onLogout() {
-    console.log('logout');
     try {
       await this.authService.logout();
       this.router.navigate(['/']);

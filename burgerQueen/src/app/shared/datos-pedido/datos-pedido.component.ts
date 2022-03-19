@@ -46,8 +46,8 @@ export class DatosPedidoComponent implements OnInit {
     const promise = new Promise((resolve) => {
       resolve(
       this.productService.createOrder({
-        customer: this.clientName.value, 
-        orderTable: this.selectTable, 
+        clientName: this.clientName.value, 
+        tableNumber: this.selectTable, 
         date: this.date,
         hour: this.hour, 
         orderWaiter: this.pedidosMesero, 

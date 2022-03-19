@@ -8,46 +8,103 @@ $color-naranja:#FB7614;
 $color-green: #31C248;
 $color-primary: #64b6e6;
 
+#totalPedidosView{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  main{
+    display: flex;
+    flex-direction: row;
+  }
+}
+
 .total-pedidos{
-  font-family: 'Mulish', sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin: 1rem;
-}
-.titulo-lista-pedidos{
   font-family: 'Mulish', sans-serif;
-  color: $color-marron;
+  width: 85.9vw;
+  margin: 5vh 0vh;
+  align-self: flex-start;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-.subrayado{
-  border: 2px solid $color-melon;
-  width:11rem;
-  margin:0.5rem 0;
+
+/*---------------------*/
+
+/*SUBTITLE*/
+
+.subtitle{
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 2px 5px 2px;
+
+  h2 {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 24px;
+    font-weight: 100;
+  }
+  hr{
+    width: 105px;
+    margin: 2px;
+    height: 4px;
+    background-color: $color-melon;
+    border-style: none;
+  }
 }
+
+/*---------------------*/
+
+/*TABLE*/
+
 table{
   align-self: flex-start;
   border-collapse: collapse;
   border: 1px solid $color-gris-ligth;
   font-family: 'Mulish', sans-serif;
-  width: 50%;
-  margin: 1rem;
+  width: 95%;
+  margin: 1rem 0.5rem;
 }
+
 thead{
-  border:1px solid $color-gris-ligth;
+  border: none;
   background-color: $color-melon;
+
+  th{
+    padding: 0.5rem;
+    color: $color-marron;
+    font-weight: 500;
+  
+    p{
+      font-size: 13px;
+    }
+  }
 }
-th{
-  padding: 0.5rem;
-  color: $color-marron;
-  font-weight: 500;
-}
+
 td {
   padding: 0.5rem;
   text-align: center;
   border-bottom: 1px solid $color-gris-ligth;
   width: auto;
-  font-size: 12px;
+  font-size: 13px;
 }
+
+i{
+  padding: 3px;
+  width: 1rem;
+}
+
+/*---------------------*/
+
+/*CIRCLE BTNS*/
+
+.circleBtn{
+  width: 28px;
+  height: 28px;
+  padding: 1px;
+}
+
 .ordenado,.no-ordenado{
   border-radius: 100%;
   border: 2px solid $color-naranja;
@@ -68,6 +125,7 @@ td {
   background-color: $color-blanco;
   color: $color-blanco;
 }
+
 .preparado, .no-preparado{
   border-radius: 100%;
   border: 2px solid $color-green;
@@ -81,7 +139,6 @@ td {
   text-align: center;
   color: $color-blanco;
   font-weight:500;
-  
 }
 .no-preparado{
   content: " ";
@@ -111,46 +168,41 @@ td {
   cursor: pointer;
 }
 
-.cancelar{
+/*---------------------*/
+
+/*OPTIONS BTNS*/
+
+.btnOpciones{
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+
+  input{
+    font-size: 13px;
+    width: 6em;
+    border-radius: 0.5rem;
+    padding: 8px;
+  }
+}
+
+input[value="Cancelar"]{
   border:1px solid $color-pink;
   border-radius:0.5rem;
   background-color: $color-blanco;
   padding: 5px;
   color: $color-pink;
-  cursor:pointer;
-  font-weight: 500;
+  cursor: pointer;
 }
-.cancelar:hover{
+input[value="Cancelar"]:hover{
    background-color: $color-pink;
    color: $color-blanco;
 }
-.btnOpciones{
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-}
-.fa-eye{
-  color:$color-blanco;
-  font-weight: 500;
-}
-.fa-eye:hover{
-  color: $color-blanco;
-}
-.btn-ver-pedido{
-  display: inline;
-  text-align: center;
-  border:1px solid $color-marron;
+
+input[value="Ver pedido"]{
+  border: none;
   border-radius:0.5rem;
   color: $color-blanco;
   background-color: $color-marron;
   padding: 0.5rem;
   cursor: pointer;
-}
-@media only screen and (min-width: 700px) and (max-width: 1500px){
-  table{
-    width: 90%;
-  }
-  td{
-    font-size: 14px;
-  }
 }

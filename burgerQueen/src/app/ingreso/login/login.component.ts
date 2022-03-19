@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.createUser.getdocUser(uid).subscribe((doc) =>{
       const rol = doc.payload.data().rol;
          if (doc.payload.exists) {
-          console.log("Document data:", doc.payload.data());
+          // console.log("Document data:", doc.payload.data());
           switch(rol){
             case 'Mesero': this.router.navigateByUrl("/carta")
             break;
@@ -59,10 +59,9 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(email, password)
       .then(user => {
-        console.log("Bienvenido ", user?.user)
+        console.log(user?.operationType)
+        // console.log("Bienvenido ", user?.user)
           if(user && user.user?.emailVerified){
-            console.log(user.user?.emailVerified);
-            console.log(user.user.uid);
             const idUser = user.user.uid;
             this.multiple(idUser);
             return;

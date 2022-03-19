@@ -12,12 +12,14 @@ export class TotalPedidosComponent implements OnInit {
   constructor(public productService: ProductService) { }
 
   ngOnInit(): void {
-    console.log(this.clientName);
+    this.getAllWaiterOrders()
   }
 
   enviado = false;
   preparado = false;
   entregado = false;
+
+  orders: any | object [] = [];
 
   changeOrderShipped(){
     this.enviado = !this.enviado;
@@ -26,7 +28,23 @@ export class TotalPedidosComponent implements OnInit {
   changeReadyPreparation(){
     this.preparado = !this.preparado;
   }
+
   changeOrderServed(){
     this.entregado = !this.entregado;
+  }
+
+  getAllWaiterOrders(){
+    this.productService.getAllWaiterOrders().subscribe( collection => { 
+      this.orders = [];
+
+      if(collection.length > 0){
+        collection.forEach((element: any) => {
+          this.orders.push(element.payload.doc.data());
+        });
+        console.log(this.orders)
+      } else {
+        console.log('No hay pedidos');
+      }
+    })
   }
 }
