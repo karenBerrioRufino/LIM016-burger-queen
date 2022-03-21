@@ -87,12 +87,14 @@
               <label for="">Email</label>
               <input [class.valido]="this.form.get('correo')?.valid" [class.invalido]="this.form.get('correo')?.invalid && this.form.get('correo')?.touched" type="email" id="" formControlName="correo" placeholder="paquita@gmail.com">
 
-              <label for="">Password</label>
-              <input [class.valido]="this.form.get('password')?.valid" [class.invalido]="this.form.get('password')?.invalid && this.form.get('password')?.touched" type="password" id="" formControlName="password" placeholder=" betinaB06$">
+              <label>Password</label>
+              <div class="eye">
+                <span class='iconEye' (click)="seePass()"><i class="fas fa-eye-slash"></i></span>
+                <input [class.valido]="this.form.get('password')?.valid" [class.invalido]="this.form.get('password')?.invalid && this.form.get('password')?.touched" type="password" id="passLogin" formControlName="password" placeholder=" betinaB06$">
+              </div>          
               <button type="submit" [disabled]="form.invalid" [class]="['btnCreate']"> <i class="fas fa-database"></i> &nbsp;Aceptar</button>
             </div>
-          </div>
-          
+          </div>        
         </form>
       </div>
     </div>
