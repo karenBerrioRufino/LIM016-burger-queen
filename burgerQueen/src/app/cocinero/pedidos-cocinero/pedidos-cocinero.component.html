@@ -1,1 +1,31 @@
-<p>pedidos-cocinero works!</p>
+<div class="pedidosCocineroView">
+  <app-navegador></app-navegador>
+  <main>
+    <div class="containerPedido">
+      <div class="subtitle">
+        <h2>PEDIDOS</h2>
+        <hr>
+      </div>
+      <table class="listaPedidos">
+        <tr *ngFor="let pedido of pedidosCocinero">
+          <td><p class="">{{ pedido.quantity }}</p></td>
+          <td><img src="{{pedido.img}}"></td>
+          <td>
+            <div class="p">
+              <p>{{ pedido.name }}</p>
+              <P>{{pedido.price | currency:'PEN':'S/'}}</P>
+            </div>
+          </td>
+          <td>
+            <span><i class="fa-solid fa-clock"></i></span>
+          </td>
+        </tr>
+      </table>
+      <p>
+        <i class="fa-solid fa-stopwatch"></i>
+        CRONÓMETRO
+      </p>
+    </div>
+   <app-datos-pedido></app-datos-pedido>
+  </main>
+</div>

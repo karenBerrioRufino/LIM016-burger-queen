@@ -29,4 +29,7 @@ export class ProductService {
     return this.totalOfOrder;
   }
 
+  getProductsCocinero(): Observable<any>{
+    return this.firestore.collection('pedidos').snapshotChanges();
+  }
 }
