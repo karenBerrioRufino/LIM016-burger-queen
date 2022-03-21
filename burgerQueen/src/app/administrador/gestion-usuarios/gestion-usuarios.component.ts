@@ -163,7 +163,7 @@ export class GestionUsuariosComponent implements OnInit {
           ...element.payload.doc.data()
         });
       });
-      // console.log(this.listarUsuarios);
+      console.log(this.listarUsuarios);
     })
   }
 
