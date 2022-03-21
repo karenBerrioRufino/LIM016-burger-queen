@@ -41,6 +41,43 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void { 
    
   }
+  seePass(){
+    const passLogin = document.querySelector('#passLogin') as HTMLInputElement
+    const icon = document.querySelector('i') as HTMLElement
+    if (passLogin.type === 'password') {
+      passLogin.type = 'text';
+      icon.classList.remove('fa-eye-slash');
+      icon.classList.add('fa-eye');
+    }
+    else {
+      passLogin.type = 'password';
+      icon.classList.add('fa-eye-slash');
+      icon.classList.remove('fa-eye');
+    }
+  }
+  multiple(uid : any) {
+    this.createUser.getdocUser(uid).subscribe((doc) =>{
+      const rol = doc.payload.data().rol;
+         if (doc.payload.exists) {
+          // console.log("Document data:", doc.payload.data());
+          switch(rol){
+            case 'Mesero': this.router.navigateByUrl("/carta")
+            break;
+            case 'Cocinero': this.router.navigateByUrl("/pedidosMesero")
+            break;
+            case 'Administrador': this.router.navigateByUrl("/gestionUsuarios")
+            break;
+            default: this.router.navigateByUrl("/")
+            break;
+          }
+      } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+      }
+      this.getRolUser$.next(rol);
+    return rol;
+    }) 
+  } 
   
   ingresar(){
     console.log('este es login',this.usuario)
@@ -69,32 +106,6 @@ export class LoginComponent implements OnInit {
           console.log(err);
       });
   }
-
-   multiple(uid : any) {
-    this.createUser.getdocUser(uid).subscribe((doc) =>{
-      const rol = doc.payload.data().rol;
-      this.getRolUser$.next(rol);
-      switch(rol){
-        case 'Mesero': this.router.navigateByUrl("/carta")
-        break;
-        case 'Cocinero': this.router.navigateByUrl("/pedidosMesero")
-        break;
-        case 'Administrador': this.router.navigateByUrl("/gestionUsuarios")
-        break;
-        default: this.router.navigateByUrl("/")
-        break;
-          
-      }
-      if (doc.payload.exists) {
-      console.log("Document data:", doc.payload.data());
-      
-      } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-      }
-    return rol;
-    }) 
-  } 
 
   resetPass(){
   

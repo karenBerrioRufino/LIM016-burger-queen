@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { BehaviorSubject } from 'rxjs';
@@ -9,7 +9,8 @@ import { createUsersService } from 'src/app/services/create-users.service';
   templateUrl: './navegador.component.html',
   styleUrls: ['./navegador.component.scss']
 })
-export class NavegadorComponent implements OnInit {
+
+export class NavegadorComponent implements OnInit{
   getRolUser$: BehaviorSubject<string>;
   rolUser: string = '';
 
@@ -52,7 +53,6 @@ export class NavegadorComponent implements OnInit {
   }
 
   async onLogout() {
-    console.log('logout');
     try {
       await this.authService.logout();
       this.router.navigate(['/']);

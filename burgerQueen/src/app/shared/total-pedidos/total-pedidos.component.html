@@ -1,49 +1,73 @@
-<div class="total-pedidos">
-  <h3 class="titulo-lista-pedidos">LISTA DE PEDIDOS</h3>
-  <hr class="subrayado">
-  <table>
-    <thead>
-      <th><h5>Mesa</h5></th>
-      <th><h5>Cliente</h5></th>
-      <th><h5>Total</h5></th>
-      <th >
-        <i class="fa-solid fa-list"></i>
-        <h5>Enviado</h5>
-      </th>
-      <th>
-        <img src="../../../assets/imagenes/img-carta/iconococinero.png" [ngStyle]="{'width':'1.5rem'}">
-        <h5>Preparado</h5>
-      </th>
-      <th>
-        <i [ngStyle]="{'border-radius':'100%', 'border':'1px solid #3B2213', 'padding':'3px'}" class="fa-solid fa-check"></i>
-        <h5>Entregado</h5>
-      </th>
-      <th><h5>Opciones</h5></th>
-    </thead>
-    <tbody>
-      <tr>
-        <td>10</td>
-        <td>Margarita</td>
-        <td>S/. 51.00</td>
-        <td>
-          <button [ngClass]="{'ordenado':enviado ,'no-ordenado':!enviado}" (click)="changeOrderShipped()">&#10003;
-          </button>
-        </td>
-        <td><button [ngClass]="{'preparado':preparado ,'no-preparado':!preparado}" (click)="changeReadyPreparation()">&#10003;</button></td>
-        <td><button [ngClass]="{'entregado':entregado ,'no-entregado':!entregado}" (click)="changeOrderServed()">&#10003;</button></td>
-        
-        <td class="btnOpciones">
-          <button class="cancelar">
-            <label for="">Cancelar</label>
-          </button>
-          <button class="btn-ver-pedido">
-            <label> Ver pedido</label>
-          </button>
+<div id="totalPedidosView">
+
+  <app-navegador></app-navegador>
+
+  <main>
+
+    <div class="total-pedidos">
+
+      <div class="subtitle">
+        <h2>LISTA DE PEDIDOS</h2>
+        <hr>
+      </div>
+
+      <section class="tableContainer">
+        <table>
+          <thead>
+            <th>
+              <p>Mesa</p>
+            </th>
+            <th>
+              <p>Cliente</p>
+            </th>
+            <th>
+              <p>Total</p>
+            </th>
+            <th>
+              <i class="fa-solid fa-receipt"></i>
+              <p>Enviado</p>
+            </th>
+            <th>
+              <i class="fa-solid fa-kitchen-set"></i>
+              <p>Preparado</p>
+            </th>
+            <th>
+              <i class="fa-solid fa-circle-check"></i>
+              <p>Entregado</p>
+            </th>
+            <th>
+              <p>Opciones</p>
+            </th>
+          </thead>
           
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <tbody>
+            <tr *ngFor="let order of orders">
+              <td>{{ order.tableNumber }}</td>
+              <td>{{ order.clientName }}</td>
+              <td>{{ order.total | currency:'PEN':'S/'}}</td>
+              <td>
+                <button class="circleBtn"
+                  [ngClass]="{'ordenado':order.shipped,'no-ordenado': !order.shipped}">&#10003;</button>
+              </td>
+              <td>
+                <button class="circleBtn" [ngClass]="{'preparado':order.prepared ,'no-preparado':!order.prepared}"
+                  (click)="changeOrderPrepared(order)">&#10003;</button>
+              </td>
+              <td>
+                <button class="circleBtn" [ngClass]="{'entregado':order.served,'no-entregado':!order.served}"
+                  (click)="changeOrderServed(order)">&#10003;</button>
+              </td>
+              <td class="btnOpciones">
+                <input type="button" class="cancelarBtn button" value="Cancelar">
+                <input type="button" class="verPedidoBtn button" value="Ver pedido" (click)="sendOrderData(order)">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </div>
+
+  </main>
 
 </div>
-

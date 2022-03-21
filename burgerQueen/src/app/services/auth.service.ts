@@ -88,7 +88,7 @@ export class AuthService {
 
   async logout(): Promise<void> {
     try {
-      console.log(this.authWithAngularFirebase.authState);
+      // console.log(this.authWithAngularFirebase.authState);
       await this.authWithAngularFirebase.signOut();
     } catch (error) {
       console.log(error);
