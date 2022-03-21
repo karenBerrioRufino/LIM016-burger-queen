@@ -56,7 +56,9 @@ h3{
   box-shadow: 3px 3px 3px gray;
 }
 .buttonLogin{
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-content: center;
   border: none;
   border-radius: 0.5rem;
   width: 15rem;
@@ -68,6 +70,7 @@ h3{
   background-color: $color-marron;
   padding: 0.5rem;
   cursor: pointer;
+  
 }
   
 
