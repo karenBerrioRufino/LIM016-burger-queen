@@ -14,7 +14,6 @@ export class ProductService {
   @Output() disparador: BehaviorSubject<any> = new BehaviorSubject({});
   private totalOfOrder: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
-
   constructor(private firestore: AngularFirestore) { }
   
   getProducts(): Observable<any> {
@@ -29,7 +28,19 @@ export class ProductService {
     return this.totalOfOrder;
   }
 
-  getProductsCocinero(): Observable<any>{
-    return this.firestore.collection('pedidos').snapshotChanges();
+  getAllWaiterOrders(){
+    return this.firestore.collection('pedidos', ref => ref.orderBy('date')).snapshotChanges();
   }
+
+  getOneWaiterOrder(docId: string){
+    return this.firestore.collection('pedidos').doc(docId).snapshotChanges();
+
+  }
+  updateWaiterOrder(docId: string, newOrder: any | object){
+    return this.firestore.collection('pedidos').doc(docId).update(newOrder);
+  }
+
+/*   getProductsCocinero(): Observable<any>{
+    return this.firestore.collection('pedidos').snapshotChanges();
+  } */
 }

@@ -9,23 +9,21 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./pedidos-cocinero.component.scss']
 })
 export class PedidosCocineroComponent implements OnInit {
+
   pedidosCocinero: any[] = [];
+  //  listOfProductosCocinero: any = this.productService.getProductsCocinero();
 
-
-  listOfProductosCocinero: any = this.productService.getProductsCocinero();
   constructor(private productService: ProductService,){}
     // private behaviorSubject: BehaviorSubject) {
 
   ngOnInit(): void {
-    this.getListOfOrders();
+    // this.getListOfOrders();
   }
 
-  getListOfOrders(){
+/*   getListOfOrders(){
     this.productService.getProductsCocinero().subscribe( documento => {
       console.log(documento);
     }
-
     );
-  }
-
+  } */
 }

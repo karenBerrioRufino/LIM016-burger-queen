@@ -1,4 +1,4 @@
-import { Component, OnInit, /*EventEmitter, Output*/} from '@angular/core';
+import { AfterViewInit, Component, OnInit, /*EventEmitter, Output*/} from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { StorageService } from 'src/app/services/storage.service';
 
@@ -8,7 +8,7 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./carta.component.scss']
 })
 
-export class CartaComponent implements OnInit {
+export class CartaComponent implements OnInit, AfterViewInit {
   isSectionchanged: boolean = false;
   isSelectionChecked: boolean = false;
   numberOfClicks: number = 0;
@@ -33,6 +33,9 @@ export class CartaComponent implements OnInit {
       // iguala el array con los datos que jala del storage. Sobre el array que existe, irá agregando los objetos
       this.orders = ordersList;     
     }
+  }
+
+  ngAfterViewInit(){
     window.addEventListener('load', this.changeProductStatus);
   }
 
