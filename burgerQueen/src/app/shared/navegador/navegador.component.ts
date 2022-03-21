@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { BehaviorSubject, ObjectUnsubscribedError, Subscription } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { createUsersService } from 'src/app/services/create-users.service';
 
 @Component({
@@ -9,22 +9,18 @@ import { createUsersService } from 'src/app/services/create-users.service';
   templateUrl: './navegador.component.html',
   styleUrls: ['./navegador.component.scss']
 })
-export class NavegadorComponent implements OnInit, OnDestroy {
+
+export class NavegadorComponent implements OnInit{
   getRolUser$: BehaviorSubject<string>;
   rolUser: string = '';
-  private suscription: Subscription;
 
   constructor(private authService: AuthService, private router: Router, private createUser: createUsersService) {
     this.getRolUser$ = this.createUser.getRol();
 
-    this.suscription = this.getRolUser$.subscribe(value => {
+    this.getRolUser$.subscribe(value => {
       this.rolUser = value;
       console.log(this.rolUser);
     });
-  }
-  
-  ngOnDestroy(): void {
-    this.suscription.unsubscribe;
   }
 
   ngOnInit(): void {

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import { MeseroModule } from 'src/app/mesero/mesero.module';
 import { Router } from '@angular/router';
-import { doc } from 'firebase/firestore';
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { createUsersService } from 'src/app/services/create-users.service';

@@ -50,7 +50,10 @@ export class DatosPedidoComponent implements OnInit {
         tableNumber: this.selectTable, 
         date: this.date,
         hour: this.hour, 
-        orderWaiter: this.pedidosMesero, 
+        orderWaiter: this.pedidosMesero,
+        shipped: true,
+        prepared: false,
+        served: false,
         total: this.orderTotal,
       }));
     });

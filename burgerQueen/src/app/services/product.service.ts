@@ -31,4 +31,12 @@ export class ProductService {
   getAllWaiterOrders(){
     return this.firestore.collection('pedidos', ref => ref.orderBy('date')).snapshotChanges();
   }
+
+  getOneWaiterOrder(docId: string){
+    return this.firestore.collection('pedidos').doc(docId).snapshotChanges();
+
+  }
+  updateWaiterOrder(docId: string, newOrder: any | object){
+    return this.firestore.collection('pedidos').doc(docId).update(newOrder);
+  }
 }

@@ -58,13 +58,19 @@ $color-primary: #64b6e6;
 
 /*TABLE*/
 
+.tableContainer{
+  margin: 0.6em;
+  height: 76vh;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
 table{
   align-self: flex-start;
   border-collapse: collapse;
   border: 1px solid $color-gris-ligth;
   font-family: 'Mulish', sans-serif;
   width: 95%;
-  margin: 1rem 0.5rem;
 }
 
 thead{
