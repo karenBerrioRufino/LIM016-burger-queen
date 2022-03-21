@@ -1,4 +1,5 @@
-// variables 
+
+// variables
 $color-melon: #f1d5bb;
 $color-marron: #3B2213;
 $color-blanco: #ffffff;
@@ -6,6 +7,7 @@ $color-pink: #FF8087;
 $color-grisligth:#6c757d;
 $color-gris:#303438;
 $color-danger:#dc3545;
+
 
 .divLogin{
   display: flex;
@@ -20,7 +22,7 @@ $color-danger:#dc3545;
   font-family: 'Mulish', sans-serif;
   width: 20rem;
   height: 17rem;
-  }
+}
 
 .containerLogin{
   display: flex;
@@ -37,7 +39,7 @@ $color-danger:#dc3545;
   background-size: cover;
 }
 
-h2{
+h3{
   color: $color-marron;
   font-weight: 400;
 }
@@ -65,13 +67,16 @@ h2{
   color: $color-blanco;
   background-color: $color-marron;
   padding: 0.5rem;
+  cursor: pointer;
 }
+  
 
 .forgetPassword{
   display:block;
   color: $color-marron;
   align-self:end;
   font-size: 0.8rem;
+  cursor: pointer;
 }
 .eye{
   display: flex;
@@ -90,7 +95,9 @@ h2{
 .emailLogin{
   background-image: url(../../../assets/imagenes/img-login-welcome/icon-email.png);
   background-position: 13rem;
-  background-size: 1.5rem;
+  background-size: 20px;
   background-repeat: no-repeat;
   margin-bottom: 0.8rem;
+  color: $color-marron;
 }
+
