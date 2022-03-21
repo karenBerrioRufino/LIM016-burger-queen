@@ -1,16 +1,11 @@
 <div id="pedidosMeseroView">
-
   <app-navegador></app-navegador>
-
   <main>
-
     <div class="containerPedido">
-
       <div class="subtitle">
         <h2>PEDIDOS</h2>
         <hr>
       </div>
-
       <table class="listaPedidos">
         <tr *ngFor="let pedido of pedidosMesero">
           <td><button key=index; (click)="orderDelete(pedido)">x</button></td>
@@ -32,9 +27,6 @@
         </tr>
       </table>
     </div>
-
    <app-datos-pedido></app-datos-pedido>
-
   </main>
-
 </div>

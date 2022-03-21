@@ -26,7 +26,20 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void { 
    
   }
-  
+  seePass(){
+    const passLogin = document.querySelector('#passLogin') as HTMLInputElement
+    const icon = document.querySelector('i') as HTMLElement
+    if (passLogin.type === 'password') {
+      passLogin.type = 'text';
+      icon.classList.remove('fa-eye-slash');
+      icon.classList.add('fa-eye');
+    }
+    else {
+      passLogin.type = 'password';
+      icon.classList.add('fa-eye-slash');
+      icon.classList.remove('fa-eye');
+    }
+  }
   multiple(uid : any) {
     this.createUser.getdocUser(uid).subscribe((doc) =>{
       const rol = doc.payload.data().rol;

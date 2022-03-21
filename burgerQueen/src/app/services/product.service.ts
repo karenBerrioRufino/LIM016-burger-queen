@@ -39,4 +39,8 @@ export class ProductService {
   updateWaiterOrder(docId: string, newOrder: any | object){
     return this.firestore.collection('pedidos').doc(docId).update(newOrder);
   }
+
+/*   getProductsCocinero(): Observable<any>{
+    return this.firestore.collection('pedidos').snapshotChanges();
+  } */
 }

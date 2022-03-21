@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-pedidos-cocinero',
@@ -7,10 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PedidosCocineroComponent implements OnInit {
 
-  constructor() {
-  }
+  pedidosCocinero: any[] = [];
+  //  listOfProductosCocinero: any = this.productService.getProductsCocinero();
+
+  constructor(private productService: ProductService,){}
+    // private behaviorSubject: BehaviorSubject) {
 
   ngOnInit(): void {
+    // this.getListOfOrders();
   }
 
+/*   getListOfOrders(){
+    this.productService.getProductsCocinero().subscribe( documento => {
+      console.log(documento);
+    }
+    );
+  } */
 }
