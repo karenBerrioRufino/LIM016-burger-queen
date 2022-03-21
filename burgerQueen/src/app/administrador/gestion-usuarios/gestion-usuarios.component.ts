@@ -60,7 +60,7 @@ export class GestionUsuariosComponent implements OnInit {
         password:data.password,
       })
     })
-    // this.obtenerUsuarios();
+    this.obtenerUsuarios();
   }
 
   btnCerrar(){
@@ -154,7 +154,7 @@ export class GestionUsuariosComponent implements OnInit {
     });
   }
 
-/*   obtenerUsuarios(){
+  obtenerUsuarios(){
     this._userService.getUsers().subscribe(doc=>{
       this.listarUsuarios=[];
       doc.forEach((element: any) => {
@@ -165,7 +165,7 @@ export class GestionUsuariosComponent implements OnInit {
       });
       // console.log(this.listarUsuarios);
     })
-  } */
+  }
 
   eliminarUsuario(id: any){
     const swalWithBootstrapButtons = Swal.mixin({

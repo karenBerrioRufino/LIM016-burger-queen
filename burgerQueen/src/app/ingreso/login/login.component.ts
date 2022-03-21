@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
       icon.classList.remove('fa-eye');
     }
   }
-  multiple(uid : any) {
+  multiple(user: any, uid : any) {
+    console.log(user)
     this.createUser.getdocUser(uid).subscribe((doc) =>{
       const rol = doc.payload.data().rol;
          if (doc.payload.exists) {
@@ -75,13 +76,14 @@ export class LoginComponent implements OnInit {
         // console.log("Bienvenido ", user?.user)
           if(user && user.user?.emailVerified){
             const idUser = user.user.uid;
-            this.multiple(idUser);
+            this.multiple(user, idUser);
             return;
           } 
           else if(user){
             console.log('modal para pedir que verifiquesu usuario');
           } 
       }).catch(err => {
+          console.log('Ingresa acá');
           console.log(err);
       });
   }
