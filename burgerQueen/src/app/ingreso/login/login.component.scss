@@ -39,9 +39,11 @@ $color-danger:#dc3545;
   background-size: cover;
 }
 
-h3{
+h4{
+
   color: $color-marron;
   font-weight: 400;
+  margin-bottom: 12px !important;
 }
 .emailLogin,
 .passLogin
@@ -54,6 +56,7 @@ h3{
   padding: 0.75rem;
   color: $color-gris;
   box-shadow: 3px 3px 3px gray;
+  margin-bottom: 0px !important;
 }
 .buttonLogin{
   display: flex;
@@ -69,8 +72,8 @@ h3{
   color: $color-blanco;
   background-color: $color-marron;
   padding: 0.5rem;
+  font-size: 13px;
   cursor: pointer;
-  
 }
   
 
@@ -95,6 +98,7 @@ h3{
   cursor: pointer;
   margin-top: 8px;
 }
+
 .emailLogin{
   background-image: url(../../../assets/imagenes/img-login-welcome/icon-email.png);
   background-position: 13rem;

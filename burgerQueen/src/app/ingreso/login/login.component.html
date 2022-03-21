@@ -1,15 +1,14 @@
 <div class="containerLogin" id="containerLogin">
   <div class="divLogin" id="divLogin">
-    <h3>Inicia Sesión</h3>
+
+    <h4>Inicia Sesión</h4>
     <input type="text" placeholder="Correo Electrónico" id="emailLogin" class="emailLogin" [(ngModel)]="usuario.email">
     <div class="eye">
       <span class='iconEye' (click)="seePass()"><i class="fas fa-eye-slash"></i></span>
-      <input type="password" placeholder="Password" id="passLogin" class="passLogin" 
-      [(ngModel)]="usuario.password">
-    
+      <input type="password" placeholder="Contraseña" id="passLogin" class="passLogin" [(ngModel)]="usuario.password">
     </div>
+
     <a class="forgetPassword" (click)="resetPass()">Olvide mi contraseña</a>
-    <input type="submit"  routerLinkActive="activebutton"  value="Ingresar" class="buttonLogin"
-    (click)="ingresar()">
+    <input type="submit"  routerLinkActive="activebutton"  value="Ingresar" class="buttonLogin" (click)="ingresar()">
   </div>
 </div> 

@@ -39,7 +39,6 @@ export class createUsersService {
   }
   getdocUser(uid : string): Observable<any> {
    return this.firestore.collection('usuarios').doc(uid).snapshotChanges();
-   
   }
   getRol(): BehaviorSubject<string> {
     return this.getRolUser;
