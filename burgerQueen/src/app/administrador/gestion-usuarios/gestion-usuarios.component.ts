@@ -60,7 +60,7 @@ export class GestionUsuariosComponent implements OnInit {
         password:data.password,
       })
     })
-    this.obtenerUsuarios();
+    // this.obtenerUsuarios();
   }
 
   btnCerrar(){
@@ -69,7 +69,21 @@ export class GestionUsuariosComponent implements OnInit {
     this.form.reset();
     this.titulo="agregar usuario";
   }
-
+  seePass(){
+    const passLogin = document.querySelector('#passLogin') as HTMLInputElement
+    const icon = document.querySelector('i') as HTMLElement
+    if (passLogin.type === 'password') {
+      passLogin.type = 'text';
+      icon.classList.remove('fa-eye-slash');
+      icon.classList.add('fa-eye');
+    }
+    else {
+      console.log('holaaaa')
+      passLogin.type = 'password';
+      icon.classList.add('fa-eye-slash');
+      icon.classList.remove('fa-eye');
+    }
+  }
   guardarUsuario() {
     console.log(this.form);
     console.log(this.form.value.correo);
@@ -140,7 +154,7 @@ export class GestionUsuariosComponent implements OnInit {
     });
   }
 
-  obtenerUsuarios(){
+/*   obtenerUsuarios(){
     this._userService.getUsers().subscribe(doc=>{
       this.listarUsuarios=[];
       doc.forEach((element: any) => {
@@ -149,9 +163,9 @@ export class GestionUsuariosComponent implements OnInit {
           ...element.payload.doc.data()
         });
       });
-      console.log(this.listarUsuarios);
+      // console.log(this.listarUsuarios);
     })
-  }
+  } */
 
   eliminarUsuario(id: any){
     const swalWithBootstrapButtons = Swal.mixin({
