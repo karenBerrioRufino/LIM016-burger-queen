@@ -38,7 +38,7 @@ export class NavegadorComponent implements OnInit{
 
   pedidoRout() {
     if (this.rolUser === "Mesero" || this.rolUser === "Administrador") {
-      console.log('click');
+      console.log('click al mesero');
       this.router.navigateByUrl("/pedidosMesero");
     }
     if (this.rolUser === "Cocinero") {
@@ -55,6 +55,7 @@ export class NavegadorComponent implements OnInit{
   async onLogout() {
     try {
       await this.authService.logout();
+      console.log('logout');
       this.router.navigate(['/']);
     } catch (error) {
       console.log(error);

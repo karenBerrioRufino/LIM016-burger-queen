@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     this.createUser.getdocUser(uid).subscribe((doc) =>{
       const rol = doc.payload.data().rol;
          if (doc.payload.exists) {
-          // console.log("Document data:", doc.payload.data());
+          console.log('función múltiple: ', doc.payload.data());
           switch(rol){
             case 'Mesero': this.router.navigateByUrl("/carta")
             break;
