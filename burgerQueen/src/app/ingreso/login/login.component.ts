@@ -1,8 +1,7 @@
-import { SelectorMatcher } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 // import { MeseroModule } from 'src/app/mesero/mesero.module';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { createUsersService } from 'src/app/services/create-users.service';
 import Swal from 'sweetalert2';
@@ -13,8 +12,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   getRolUser$: BehaviorSubject<string>;
+  subscribe: Subscription | any;
   
   usuario ={
     email:"",
@@ -35,12 +35,11 @@ export class LoginComponent implements OnInit {
 
   constructor( private authService:AuthService, private router:Router, private createUser : createUsersService) { 
     this.getRolUser$ = this.createUser.getRol();
-    
   }
 
   ngOnInit(): void { 
-   
   }
+
   seePass(){
     const passLogin = document.querySelector('#passLogin') as HTMLInputElement
     const icon = document.querySelector('i') as HTMLElement
@@ -55,8 +54,11 @@ export class LoginComponent implements OnInit {
       icon.classList.remove('fa-eye');
     }
   }
+
   multiple(user: any, uid : any) {
     console.log(user)
+
+    this.subscribe = 
     this.createUser.getdocUser(uid).subscribe((doc) =>{
       const rol = doc.payload.data().rol;
          if (doc.payload.exists) {
@@ -80,6 +82,10 @@ export class LoginComponent implements OnInit {
     }) 
   } 
   
+  ngOnDestroy() {
+    this.subscribe.unsubscribe();
+  }
+
   ingresar(){
     console.log('este es login',this.usuario)
     // desestrucutrar una variable
