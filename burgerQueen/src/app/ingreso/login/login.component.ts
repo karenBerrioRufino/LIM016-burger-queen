@@ -1,8 +1,7 @@
-import { SelectorMatcher } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 // import { MeseroModule } from 'src/app/mesero/mesero.module';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { createUsersService } from 'src/app/services/create-users.service';
 import Swal from 'sweetalert2';
@@ -13,8 +12,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   getRolUser$: BehaviorSubject<string>;
+  subscribe: Subscription | any;
   
   usuario ={
     email:"",
@@ -35,12 +35,11 @@ export class LoginComponent implements OnInit {
 
   constructor( private authService:AuthService, private router:Router, private createUser : createUsersService) { 
     this.getRolUser$ = this.createUser.getRol();
-    
   }
 
   ngOnInit(): void { 
-   
   }
+
   seePass(){
     const passLogin = document.querySelector('#passLogin') as HTMLInputElement
     const icon = document.querySelector('i') as HTMLElement
@@ -55,7 +54,11 @@ export class LoginComponent implements OnInit {
       icon.classList.remove('fa-eye');
     }
   }
-  multiple(uid : any) {
+
+  multiple(user: any, uid : any) {
+    console.log(user)
+
+    this.subscribe = 
     this.createUser.getdocUser(uid).subscribe((doc) =>{
       const rol = doc.payload.data().rol;
          if (doc.payload.exists) {
@@ -79,6 +82,10 @@ export class LoginComponent implements OnInit {
     }) 
   } 
   
+  ngOnDestroy() {
+    this.subscribe.unsubscribe();
+  }
+
   ingresar(){
     console.log('este es login',this.usuario)
     // desestrucutrar una variable
@@ -87,22 +94,22 @@ export class LoginComponent implements OnInit {
     // this.authService.errorsOcurredLogin(email,password)
     this.authService.login(email, password)
       .then(user => {
-        console.log("Bienvenido ", user?.user)
-        if(user && user.user?.emailVerified){
-          console.log(user.user?.emailVerified);
-          console.log(user.user.uid);
-          const idUser = user.user.uid;
-          this.multiple(idUser);
-          return;
-        } 
-        else if(user){
-          console.log('modal para pedir que verifiquesu usuario');
-          this.Toast.fire({
+        console.log(user?.operationType)
+        // console.log("Bienvenido ", user?.user)
+          if(user && user.user?.emailVerified){
+            const idUser = user.user.uid;
+            this.multiple(user, idUser);
+            return;
+          } 
+          else if(user){
+            console.log('modal para pedir que verifiquesu usuario');
+            this.Toast.fire({
             icon: 'info',
             title: 'Verifique su correo electrónico y haga click en el link.'
           })
-        } 
+          } 
       }).catch(err => {
+          console.log('Ingresa acá');
           console.log(err);
       });
   }

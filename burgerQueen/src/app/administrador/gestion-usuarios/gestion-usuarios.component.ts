@@ -165,7 +165,7 @@ export class GestionUsuariosComponent implements OnInit {
       });
       console.log(this.listarUsuarios);
     })
-  } 
+  }
 
   eliminarUsuario(id: any){
     const swalWithBootstrapButtons = Swal.mixin({
