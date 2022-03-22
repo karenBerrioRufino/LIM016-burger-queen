@@ -3,7 +3,10 @@
   <div class="datos">
 
   <div class="fecha">
-    <p> {{ date }} - {{ hour }}</p>
+    <p *ngIf="rolUser !== 'Cocinero'; else fixTime"> {{ date }} - {{ hour }}</p>
+    <ng-template #fixTime >
+      <p>{{ order.date }} - {{ order.hour }}</p>
+    </ng-template>
   </div>
 
   <div class="seccionCliente">
