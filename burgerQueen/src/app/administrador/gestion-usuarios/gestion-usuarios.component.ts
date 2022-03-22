@@ -22,6 +22,18 @@ export class GestionUsuariosComponent implements OnInit {
 
   usuarios: Observable<any[]>;
   listarUsuarios: RegisterUsers[]=[];
+
+  Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3500,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
   
   constructor(
     private fb: FormBuilder,
@@ -119,6 +131,10 @@ export class GestionUsuariosComponent implements OnInit {
     this._userService.editarUsuario(id, USUARIO).then(() =>{
       this.id = undefined;
       console.log('El usuario fue actualizada con exito!', 'Registro Actualizado');
+      this.Toast.fire({
+        icon: 'success',
+        title: 'Usuario editado.',
+      })
       this.form.reset();
     }, error => {
       console.log(error);
@@ -147,9 +163,17 @@ export class GestionUsuariosComponent implements OnInit {
       // uid es el id de quien se registra por primera vez y aparece en el auth
       this._userService.saveUser(USUARIO, registered?.user?.uid).then(()=>{
         console.log('Usuario registrado');
+        this.Toast.fire({
+          icon: 'success',
+          title: 'Usuario regitrado.',
+        })
         this.form.reset();
       },error => {
         console.log('Opps.. ocurrio un error',error);
+        this.Toast.fire({
+          icon: 'error',
+          title: 'Opps.. ocurrio un error.',
+        })
       })
     });
   }

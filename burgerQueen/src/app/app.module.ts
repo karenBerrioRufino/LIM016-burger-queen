@@ -12,7 +12,6 @@ import { IngresoModule } from './ingreso/ingreso.module'
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 
-import { ViewModule } from './view/view.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { AdministradorModule } from './administrador/administrador.module';
@@ -29,12 +28,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     IngresoModule,
-    ViewModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),   
-   // AdministradorModule,
     AppRoutingModule, 
   ],
   

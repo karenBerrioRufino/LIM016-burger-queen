@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-datos-pedido',
@@ -22,8 +24,20 @@ export class DatosPedidoComponent implements OnInit {
   orderTotal: number = 0;
 
   total$: BehaviorSubject<number>;
+
+  Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3500,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
   
-  constructor(public productService: ProductService, private storageService: StorageService) {
+  constructor(public productService: ProductService, private storageService: StorageService, private router: Router) {
     this.total$ = this.productService.getTotalOfOrder();
 
     this.total$.subscribe(value => {
@@ -56,12 +70,16 @@ export class DatosPedidoComponent implements OnInit {
         served: false,
         total: this.orderTotal,
       }));
+
+      this.Toast.fire({
+        icon: 'success',
+        title: 'Pedido enviado.'
+      })
     });
 
     promise.then((res) => {
       this.storageService.clear();
-      console.log('localStorage limpio y página recargada:', res);
-      window.location.reload();
+      this.router.navigate(['/carta']);
     });
   }
 }
