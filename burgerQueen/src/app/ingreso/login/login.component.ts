@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { createUsersService } from 'src/app/services/create-users.service';
+import { StorageService } from 'src/app/services/storage.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 
 export class LoginComponent implements OnInit, OnDestroy {
-  getRolUser$: BehaviorSubject<string>;
+  // getRolUser$: BehaviorSubject<string>;
   subscribe: Subscription | any;
   
   usuario ={
@@ -34,8 +35,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   })
 
-  constructor( private authService:AuthService, private router:Router, private createUser : createUsersService) { 
-    this.getRolUser$ = this.createUser.getRol();
+  constructor( private authService:AuthService, private router:Router, private createUser : createUsersService, private storageService: StorageService) { 
+    // this.getRolUser$ = this.createUser.getRol();
   }
 
   ngOnInit(): void { 
@@ -56,13 +57,15 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  multiple(user: any, uid : any) {
-    console.log(user)
+  multiple(uid : any) {
     this.subscribe = 
+    // obtener documento del usuarios de Firestore
     this.createUser.getdocUser(uid).subscribe((doc) =>{
       const rol = doc.payload.data().rol;
          if (doc.payload.exists) {
-          console.log('función múltiple: ', doc.payload.data());
+
+          // sube data del documento del usuario a sessionStorage
+          this.storageService.setCurrentUser({...doc.payload.data()});
           switch(rol){
             case 'Mesero': this.router.navigateByUrl("/carta")
             break;
@@ -79,7 +82,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           title: 'Usuario no encontrado.',
         })
       }
-      this.getRolUser$.next(rol);
+      // this.getRolUser$.next(rol);
     return rol;
     }) 
   } 
@@ -94,7 +97,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       .then(user => {
           if(user && user.user?.emailVerified){
             const idUser = user.user.uid;
-            this.multiple(user, idUser);
+            this.multiple(idUser);
+
             this.Toast.fire({
               icon: 'success',
               title: 'Inició sesión correctamente.'

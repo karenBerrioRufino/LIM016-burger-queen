@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { RegisterUsers } from '../administrador/models/registerUsers';
 
 @Injectable({
@@ -9,7 +9,6 @@ import { RegisterUsers } from '../administrador/models/registerUsers';
 export class createUsersService {
 
   private usuario$ = new Subject<any>();
-  private getRolUser: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   constructor(private firestore:AngularFirestore) { }
 
@@ -37,10 +36,8 @@ export class createUsersService {
   getUserEdit():Observable<RegisterUsers>{
     return this.usuario$.asObservable();
   }
+
   getdocUser(uid : string): Observable<any> {
    return this.firestore.collection('usuarios').doc(uid).snapshotChanges();
-  }
-  getRol(): BehaviorSubject<string> {
-    return this.getRolUser;
   }
 }
