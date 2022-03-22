@@ -14,13 +14,11 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule} from '@angular/forms';
 
 import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
-import { AdministradorComponent } from './administrador/administrador.component';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     GestionUsuariosComponent,
-    AdministradorComponent,
   ],
   imports: [
     CommonModule,
@@ -35,7 +33,6 @@ import { SharedModule } from '../shared/shared.module';
   ],
   exports: [
     GestionUsuariosComponent,
-    AdministradorComponent,
   ]
 })
 export class AdministradorModule { }

@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 3200,
+    timer: 3500,
     timerProgressBar: true,
     didOpen: (toast) => {
       toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           switch(rol){
             case 'Mesero': this.router.navigateByUrl("/carta")
             break;
-            case 'Cocinero': this.router.navigateByUrl("/pedidosMesero")
+            case 'Cocinero': this.router.navigateByUrl("/totalPedidosMesero")
             break;
             case 'Administrador': this.router.navigateByUrl("/gestionUsuarios")
             break;
@@ -74,8 +74,10 @@ export class LoginComponent implements OnInit, OnDestroy {
             break;
           }
       } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
+        this.Toast.fire({
+          icon: 'warning',
+          title: 'Usuario no encontrado.',
+        })
       }
       this.getRolUser$.next(rol);
     return rol;
@@ -87,47 +89,39 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ingresar(){
-    console.log('este es login',this.usuario)
-    // desestrucutrar una variable
     const {email, password} = this.usuario;
-    this.loginValidator();
-    // this.authService.errorsOcurredLogin(email,password)
     this.authService.login(email, password)
       .then(user => {
-        console.log(user?.operationType)
-        // console.log("Bienvenido ", user?.user)
           if(user && user.user?.emailVerified){
             const idUser = user.user.uid;
             this.multiple(user, idUser);
+            this.Toast.fire({
+              icon: 'success',
+              title: 'Inició sesión correctamente.'
+            })
             return;
           } 
           else if(user){
-            console.log('modal para pedir que verifiquesu usuario');
             this.Toast.fire({
-            icon: 'info',
-            title: 'Verifique su correo electrónico y haga click en el link.'
-          })
+              icon: 'info',
+              title: 'Verifique su correo electrónico y haga click en el link.'
+            })
           } 
       }).catch(err => {
-          console.log('Ingresa acá');
-          console.log(err);
+          this.loginValidator(err);
       });
   }
 
   resetPass(){
-  
-    console.log("SWEET ALERT PARA PEDIR QUE REVISE EL CORREO Y RESTABLEZCA SU CONTRASEÑA");
     const {email} = this.usuario;
     this.authService.resetPassword(email);
     this.Toast.fire({
         icon: 'info',
         title: 'Revise su correo electrónico y restablezca su contraseña.'
     })
-    console.log('Email de reseteo enviado');
   }
 
-  loginValidator(){
-    
+  loginValidator(err: object | any){
     if((this.usuario.email === '') || (this.usuario.password === '')){
       console.log('Debes completar todos los campos');
       this.Toast.fire({
@@ -141,10 +135,25 @@ export class LoginComponent implements OnInit, OnDestroy {
           icon: 'error',
           title: 'El password debe contener minimo 6 caracteres.'
         })
-      }  
-      
+      } else if (err.code === 'auth/wrong-password') {
+        this.Toast.fire({
+          icon: 'error',
+          title: 'Contraseña incorrecta',
+        })
+      }
+      if (err.code === 'auth/invalid-email') {
+        this.Toast.fire({
+          icon: 'error',
+          title: 'Correo inválido (Ejm.: correo@ejemplo.com).',
+        })
+      }
+      if (err.code === 'auth/user-not-found') {
+        this.Toast.fire({
+          icon: 'error',
+          title: 'Usuario no encontrado.',
+        })
+      }
     }
   
   }
-  
 }
