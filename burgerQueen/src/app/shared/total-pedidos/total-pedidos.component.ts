@@ -22,12 +22,14 @@ export class TotalPedidosComponent implements OnInit {
 
   constructor(public productService: ProductService, private createUser: createUsersService, private router: Router) {
     this.getRolUser$ = this.createUser.getRol();
-
     this.getRolUser$.subscribe(value => {
       this.rolUser = value;
       console.log(this.rolUser);
     });
+
+    this.order$ = this.productService.getWaiterOrder();
   }
+
 
   ngOnInit(): void {
     this.getAllWaiterOrders()
@@ -74,5 +76,6 @@ export class TotalPedidosComponent implements OnInit {
 
   sendOrderData(order: any | object) {
     this.router.navigate(['/pedidosCocinero']);
+    this.getRolUser$.next(order);
   }
 }
