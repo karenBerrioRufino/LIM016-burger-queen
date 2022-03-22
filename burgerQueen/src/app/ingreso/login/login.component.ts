@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { MeseroModule } from 'src/app/mesero/mesero.module';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { createUsersService } from 'src/app/services/create-users.service';
 
@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
     email:"",
     password:""
   }
+  suscribe: Subscription | any;
 
   constructor( private authService:AuthService, private router:Router, private createUser : createUsersService) { 
     this.getRolUser$ = this.createUser.getRol();
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
     }
   }
   multiple(uid : any) {
-    this.createUser.getdocUser(uid).subscribe((doc) =>{
+    this.suscribe = this.createUser.getdocUser(uid).subscribe((doc) =>{
       const rol = doc.payload.data().rol;
          if (doc.payload.exists) {
           // console.log("Document data:", doc.payload.data());
@@ -68,7 +69,7 @@ export class LoginComponent implements OnInit {
     console.log('este es login',this.usuario)
     // desestrucutrar una variable
     const {email, password} = this.usuario;
-
+    localStorage.setItem('usuarioActivo', this.usuario.email);
     this.authService.login(email, password)
       .then(user => {
         console.log(user?.operationType)

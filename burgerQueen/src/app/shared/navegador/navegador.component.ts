@@ -17,10 +17,10 @@ export class NavegadorComponent implements OnInit{
   constructor(private authService: AuthService, private router: Router, private createUser: createUsersService) {
     this.getRolUser$ = this.createUser.getRol();
 
-    this.getRolUser$.subscribe(value => {
-      this.rolUser = value;
-      console.log(this.rolUser);
-    });
+    // this.getRolUser$.subscribe(value => {
+    //   this.rolUser = value;
+    //   console.log(this.rolUser);
+    // });
   }
 
   ngOnInit(): void {
@@ -52,12 +52,9 @@ export class NavegadorComponent implements OnInit{
     this.router.navigateByUrl("/totalPedidosMesero");
   }
 
-  async onLogout() {
-    try {
-      await this.authService.logout();
+  onLogout() {
+   this.authService.logout();
       this.router.navigate(['/']);
-    } catch (error) {
-      console.log(error);
-    }
+      console.log('si cerré sesión');
   }
 }

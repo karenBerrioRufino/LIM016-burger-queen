@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SharedRoutingModule } from './shared-routing.module';
-
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { DatosPedidoComponent } from './datos-pedido/datos-pedido.component';
@@ -23,7 +21,6 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    SharedRoutingModule,
     ReactiveFormsModule,
     FormsModule,
   ],

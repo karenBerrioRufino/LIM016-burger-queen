@@ -41,12 +41,14 @@ export class AuthService {
     return this.authWithAngularFirebase.sendPasswordResetEmail(email);
   }
 
-  async logout(): Promise<void> {
-    try {
+  logout() {
+   // try {
       // console.log(this.authWithAngularFirebase.authState);
-      await this.authWithAngularFirebase.signOut();
-    } catch (error) {
-      console.log(error);
-    }
+       this.authWithAngularFirebase.signOut();
+       localStorage.removeItem("usuarioActivo");
+
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 }
