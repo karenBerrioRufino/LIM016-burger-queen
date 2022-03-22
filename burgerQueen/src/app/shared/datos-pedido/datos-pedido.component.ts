@@ -21,9 +21,12 @@ export class DatosPedidoComponent implements OnInit {
   selectTable?: string = "";
 
   pedidosMesero: any[] = [];
-  orderTotal: number = 0;
+  order: object | any = {};
 
   total$: BehaviorSubject<number>;
+  orderTotal: number = 0;
+
+  rolUser: string = '';
 
   Toast = Swal.mixin({
     toast: true,
@@ -39,7 +42,6 @@ export class DatosPedidoComponent implements OnInit {
   
   constructor(public productService: ProductService, private storageService: StorageService, private router: Router) {
     this.total$ = this.productService.getTotalOfOrder();
-
     this.total$.subscribe(value => {
       this.orderTotal = value;
     });
@@ -47,12 +49,15 @@ export class DatosPedidoComponent implements OnInit {
 
   ngOnInit(): void {
     // estamos jalando el array que contiene 'ordersList' que es lo que se guardó de pedidosMesero
+    this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
     this.pedidosMesero = this.storageService.get('ordersList');
+
+    this.order = this.productService.waiterOrder.getValue();
   }
 
   getNumberOfTable(){
     this.selectTable = this.numberOfTable;
-    return console.log(this.selectTable) ;
+    return this.selectTable;
   }
 
   sendClientData(){
