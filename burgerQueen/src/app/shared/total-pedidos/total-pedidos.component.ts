@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-import { BehaviorSubject } from 'rxjs';
-import { createUsersService } from 'src/app/services/create-users.service';
+import { StorageService } from 'src/app/services/storage.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,27 +11,16 @@ import { Router } from '@angular/router';
 
 export class TotalPedidosComponent implements OnInit {
 
-  getRolUser$: BehaviorSubject<string>;
   rolUser: string = '';
   orders: any | object[] = [];
   subscribe: any;
-  order$: BehaviorSubject<any>;
 
-  // clientName = this.productService.disparador.getValue();
-
-  constructor(public productService: ProductService, private createUser: createUsersService, private router: Router) {
-    this.getRolUser$ = this.createUser.getRol();
-    this.getRolUser$.subscribe(value => {
-      this.rolUser = value;
-      console.log(this.rolUser);
-    });
-
-    this.order$ = this.productService.getWaiterOrder();
+  constructor(public productService: ProductService, private router: Router, private storageService: StorageService) {
   }
 
-
   ngOnInit(): void {
-    this.getAllWaiterOrders()
+    this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
+    this.getAllWaiterOrders();
   }
 
   changeOrderPrepared(order: any | object) {
@@ -67,7 +55,6 @@ export class TotalPedidosComponent implements OnInit {
             ...resp.payload.doc.data(),
           });
         });
-        console.log(this.orders)
       } else {
         console.log('No hay pedidos');
       }
@@ -76,6 +63,6 @@ export class TotalPedidosComponent implements OnInit {
 
   sendOrderData(order: any | object) {
     this.router.navigate(['/pedidosCocinero']);
-    this.getRolUser$.next(order);
+    this.productService.waiterOrder.next(order);
   }
 }

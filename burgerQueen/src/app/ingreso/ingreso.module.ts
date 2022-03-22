@@ -22,7 +22,6 @@ import { FormsModule } from '@angular/forms';
   exports:[
     LoginComponent,
     WelcomeComponent,
-   
   ]
 })
 

@@ -12,6 +12,7 @@ import { TotalPedidosComponent } from './total-pedidos/total-pedidos.component';
 
 import {StorageService} from 'src/app/services/storage.service'
 import { FormsModule } from '@angular/forms';
+import { ProductService } from '../services/product.service';
 
 
 @NgModule({
@@ -32,9 +33,6 @@ import { FormsModule } from '@angular/forms';
     DatosPedidoComponent,
     TotalPedidosComponent,
     PageNotFoundComponent
-  ],
-  providers: [
-    StorageService
   ]
 })
 export class SharedModule { }

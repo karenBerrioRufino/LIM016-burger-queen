@@ -8,12 +8,16 @@
 
   <div class="seccionCliente">
     <p>Cliente: </p>
-    <input type="text" class="cliente" [formControl]="clientName">
+
+    <input type="text" class="cliente" [formControl]="clientName" *ngIf="rolUser !== 'Cocinero'; else fixClientName">
+    <ng-template #fixClientName >
+      <input type="text" class="cliente" value="{{ order.clientName }}">
+    </ng-template>
   </div>
 
   <div class="seccionMesa">
     <p>Mesa: </p>
-    <select name="mesa" class="mesa" [(ngModel)]="numberOfTable" (change)="getNumberOfTable()"> 
+    <select name="mesa" class="mesa" [(ngModel)]="numberOfTable" (change)="getNumberOfTable()" *ngIf="rolUser !== 'Cocinero'; else fixTableNumber"> 
       <option disabled >Escoge una mesa</option>
       <option value="Mesa 1">Mesa 1</option>
       <option value="Mesa 2">Mesa 2</option>
@@ -28,16 +32,27 @@
       <option value="Mesa 11">Mesa 11</option>
       <option value="Mesa 12">Mesa 12</option>
     </select>
+
+    <ng-template #fixTableNumber >
+      <input type="text" class="cliente" value="{{ order.tableNumber }}">
+    </ng-template>
   </div>
 
   </div>
 
   <div class="costoPedido">
     <p>Total</p>
-    <p class="precio">{{ orderTotal | currency:'PEN':'S/' }}</p>
+    <p class="precio" *ngIf="rolUser !== 'Cocinero'; else fixTotal">{{ orderTotal | currency:'PEN':'S/' }}</p>
+    <ng-template #fixTotal >
+      <p class="precio">{{ order.total | currency:'PEN':'S/' }}</p>
+    </ng-template>
   </div>
 
-  <button class="btnEnviarOrden" (click)="sendClientData()" routerLink="/totalPedidosMesero"
-  routerLinkActive="activebutton">Enviar Orden</button>
+  <button class="btnEnviarOrden" (click)="sendClientData()" routerLink="/totalPedidosMesero" *ngIf="rolUser !== 'Cocinero'; else otherBtn"
+routerLinkActive="activebutton">Enviar Orden</button>
+
+  <ng-template #otherBtn>
+    <button class="btnEnviarOrden" routerLink="/totalPedidosMesero" routerLinkActive="activebutton">Orden Lista</button>
+  </ng-template>
 
 </form>

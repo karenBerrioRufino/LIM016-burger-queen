@@ -8,7 +8,7 @@
       </div>
       <table class="listaPedidos">
         <tr *ngFor="let pedido of pedidosCocinero">
-          <td><p class="">{{ pedido.quantity }}</p></td>
+          <td><p class="quantity">{{ pedido.quantity }}</p></td>
           <td><img src="{{pedido.img}}"></td>
           <td>
             <div class="p">
@@ -17,7 +17,7 @@
             </div>
           </td>
           <td>
-            <span><i class="fa-solid fa-clock"></i></span>
+            <span><i class="fa-solid fa-clock clockIcon"></i></span>
           </td>
         </tr>
       </table>

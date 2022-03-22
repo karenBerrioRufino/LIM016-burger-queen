@@ -14,5 +14,7 @@ export class PedidosCocineroComponent implements OnInit {
   constructor(private productService: ProductService,){}
 
   ngOnInit(): void {
+    this.pedidosCocinero = this.productService.waiterOrder.getValue().orderWaiter;
+    console.log(this.pedidosCocinero);
   }
 }
