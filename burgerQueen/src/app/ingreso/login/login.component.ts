@@ -58,9 +58,12 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   multiple(uid : any) {
     this.subscribe = 
+    // obtener documento del usuarios de Firestore
     this.createUser.getdocUser(uid).subscribe((doc) =>{
       const rol = doc.payload.data().rol;
          if (doc.payload.exists) {
+
+          // sube data del documento del usuario a sessionStorage
           this.storageService.setCurrentUser({...doc.payload.data()});
           switch(rol){
             case 'Mesero': this.router.navigateByUrl("/carta")

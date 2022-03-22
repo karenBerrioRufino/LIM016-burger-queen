@@ -84,7 +84,6 @@ export class CartaComponent implements OnInit, AfterViewInit {
   }
 
   changeProductStatus(){
-    console.log('INGRESA');
     const iconCheckElements = Array.from(document.querySelectorAll('.checkIcon')) as Array<any>;
     console.log(iconCheckElements);
     if(this.orders){
