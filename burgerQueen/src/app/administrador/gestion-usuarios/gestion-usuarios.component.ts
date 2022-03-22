@@ -72,11 +72,7 @@ export class GestionUsuariosComponent implements OnInit {
         password:data.password,
       })
     })
-<<<<<<< HEAD
-     this.obtenerUsuarios();
-=======
     this.obtenerUsuarios();
->>>>>>> 49a242bcd8bec25def256b79899aaae6a82e0e80
   }
 
   btnCerrar(){
@@ -193,11 +189,7 @@ export class GestionUsuariosComponent implements OnInit {
       });
       console.log(this.listarUsuarios);
     })
-<<<<<<< HEAD
-  } 
-=======
   }
->>>>>>> 49a242bcd8bec25def256b79899aaae6a82e0e80
 
   eliminarUsuario(id: any){
     const swalWithBootstrapButtons = Swal.mixin({
