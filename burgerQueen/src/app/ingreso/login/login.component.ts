@@ -1,8 +1,7 @@
-import { SelectorMatcher } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 // import { MeseroModule } from 'src/app/mesero/mesero.module';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { createUsersService } from 'src/app/services/create-users.service';
 import Swal from 'sweetalert2';
@@ -13,8 +12,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   getRolUser$: BehaviorSubject<string>;
+  subscribe: Subscription | any;
   
   usuario ={
     email:"",
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 3200,
+    timer: 3500,
     timerProgressBar: true,
     didOpen: (toast) => {
       toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -35,12 +35,11 @@ export class LoginComponent implements OnInit {
 
   constructor( private authService:AuthService, private router:Router, private createUser : createUsersService) { 
     this.getRolUser$ = this.createUser.getRol();
-    
   }
 
   ngOnInit(): void { 
-   
   }
+
   seePass(){
     const passLogin = document.querySelector('#passLogin') as HTMLInputElement
     const icon = document.querySelector('i') as HTMLElement
@@ -55,7 +54,11 @@ export class LoginComponent implements OnInit {
       icon.classList.remove('fa-eye');
     }
   }
-  multiple(uid : any) {
+
+  multiple(user: any, uid : any) {
+    console.log(user)
+
+    this.subscribe = 
     this.createUser.getdocUser(uid).subscribe((doc) =>{
       const rol = doc.payload.data().rol;
          if (doc.payload.exists) {
@@ -63,7 +66,7 @@ export class LoginComponent implements OnInit {
           switch(rol){
             case 'Mesero': this.router.navigateByUrl("/carta")
             break;
-            case 'Cocinero': this.router.navigateByUrl("/pedidosMesero")
+            case 'Cocinero': this.router.navigateByUrl("/totalPedidosMesero")
             break;
             case 'Administrador': this.router.navigateByUrl("/gestionUsuarios")
             break;
@@ -71,56 +74,54 @@ export class LoginComponent implements OnInit {
             break;
           }
       } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
+        this.Toast.fire({
+          icon: 'warning',
+          title: 'Usuario no encontrado.',
+        })
       }
       this.getRolUser$.next(rol);
     return rol;
     }) 
   } 
   
+  ngOnDestroy() {
+    this.subscribe.unsubscribe();
+  }
+
   ingresar(){
-    console.log('este es login',this.usuario)
-    // desestrucutrar una variable
     const {email, password} = this.usuario;
-    this.loginValidator();
-    // this.authService.errorsOcurredLogin(email,password)
     this.authService.login(email, password)
       .then(user => {
-        console.log("Bienvenido ", user?.user)
-        if(user && user.user?.emailVerified){
-          console.log(user.user?.emailVerified);
-          console.log(user.user.uid);
-          const idUser = user.user.uid;
-          this.multiple(idUser);
-          return;
-        } 
-        else if(user){
-          console.log('modal para pedir que verifiquesu usuario');
-          this.Toast.fire({
-            icon: 'info',
-            title: 'Verifique su correo electrónico y haga click en el link.'
-          })
-        } 
+          if(user && user.user?.emailVerified){
+            const idUser = user.user.uid;
+            this.multiple(user, idUser);
+            this.Toast.fire({
+              icon: 'success',
+              title: 'Inició sesión correctamente.'
+            })
+            return;
+          } 
+          else if(user){
+            this.Toast.fire({
+              icon: 'info',
+              title: 'Verifique su correo electrónico y haga click en el link.'
+            })
+          } 
       }).catch(err => {
-          console.log(err);
+          this.loginValidator(err);
       });
   }
 
   resetPass(){
-  
-    console.log("SWEET ALERT PARA PEDIR QUE REVISE EL CORREO Y RESTABLEZCA SU CONTRASEÑA");
     const {email} = this.usuario;
     this.authService.resetPassword(email);
     this.Toast.fire({
         icon: 'info',
         title: 'Revise su correo electrónico y restablezca su contraseña.'
     })
-    console.log('Email de reseteo enviado');
   }
 
-  loginValidator(){
-    
+  loginValidator(err: object | any){
     if((this.usuario.email === '') || (this.usuario.password === '')){
       console.log('Debes completar todos los campos');
       this.Toast.fire({
@@ -134,10 +135,25 @@ export class LoginComponent implements OnInit {
           icon: 'error',
           title: 'El password debe contener minimo 6 caracteres.'
         })
-      }  
-      
+      } else if (err.code === 'auth/wrong-password') {
+        this.Toast.fire({
+          icon: 'error',
+          title: 'Contraseña incorrecta',
+        })
+      }
+      if (err.code === 'auth/invalid-email') {
+        this.Toast.fire({
+          icon: 'error',
+          title: 'Correo inválido (Ejm.: correo@ejemplo.com).',
+        })
+      }
+      if (err.code === 'auth/user-not-found') {
+        this.Toast.fire({
+          icon: 'error',
+          title: 'Usuario no encontrado.',
+        })
+      }
     }
   
   }
-  
 }

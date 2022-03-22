@@ -28,9 +28,9 @@ export class AuthService {
   }
   
   async login(email:string, password:string) {
-    try {
+    // try {
       return await this.authWithAngularFirebase.signInWithEmailAndPassword(email,password);
-    } catch (error) {
+    // } catch (error) {
 
       // const Toast = Swal.mixin({
       //   toast: true,
@@ -70,8 +70,8 @@ export class AuthService {
         
       // }
 
-      return null;
-    }
+      // return error;
+    // }
   }
 
   async emailVerification(): Promise<void> {
