@@ -11,9 +11,9 @@ export class StorageService {
   set(key: string, value: object){
     localStorage.setItem(key,JSON.stringify(value));
   }
+  
   // función de consulta (memoria / persistencia)
   get(key: string){
-  //Console.log("El método get en el almacenamiento se llama con éxito ");
     return JSON.parse(localStorage.getItem(key)!);
   }
  
@@ -21,4 +21,15 @@ export class StorageService {
     localStorage.clear();
   }
 
+  setCurrentUser(userData: any | object){
+    return sessionStorage.setItem('currentUser', JSON.stringify(userData));
+  }
+
+  getCurrentUser(userName: string){
+    return JSON.parse(sessionStorage.getItem(userName)!);
+  }
+
+  removeCurrentUser(){
+    sessionStorage.removeItem('currentUser');
+  }
 }

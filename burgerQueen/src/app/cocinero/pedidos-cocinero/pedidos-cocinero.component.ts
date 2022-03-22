@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-import { BehaviorSubject } from 'rxjs';
-
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-pedidos-cocinero',
@@ -11,19 +10,28 @@ import { BehaviorSubject } from 'rxjs';
 export class PedidosCocineroComponent implements OnInit {
 
   pedidosCocinero: any[] = [];
-  //  listOfProductosCocinero: any = this.productService.getProductsCocinero();
+  order: any = {};
 
-  constructor(private productService: ProductService,){}
-    // private behaviorSubject: BehaviorSubject) {
+  constructor(private productService: ProductService, private storageService: StorageService){}
 
   ngOnInit(): void {
-    // this.getListOfOrders();
+    this.order = this.productService.waiterOrder.getValue();
+    // console.log(this.order);
+
+    this.pedidosCocinero = this.productService.waiterOrder.getValue().orderWaiter;
+    this.storageService.set('orders', {...this.pedidosCocinero})
   }
 
-/*   getListOfOrders(){
-    this.productService.getProductsCocinero().subscribe( documento => {
-      console.log(documento);
+  changeToPrepared(order: any | object){
+    const index = this.pedidosCocinero.indexOf(order);
+    if(this.pedidosCocinero[index].prepared !== true) {
+      this.pedidosCocinero[index].prepared = true; 
+      console.log(this.pedidosCocinero)
+      this.storageService.set('orders', {...this.pedidosCocinero})
+    } else {
+      this.pedidosCocinero[index].prepared = false;
+      console.log(this.pedidosCocinero)
+      this.storageService.set('orders', {...this.pedidosCocinero})
     }
-    );
-  } */
+  }
 }

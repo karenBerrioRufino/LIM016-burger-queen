@@ -14,7 +14,9 @@ import { environment } from 'src/environments/environment';
 
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { AdministradorModule } from './administrador/administrador.module';
+import { createUsersService } from './services/create-users.service';
+import { StorageService } from './services/storage.service';
+import { ProductService } from './services/product.service';
 
 
 // Register the localization
@@ -34,8 +36,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebaseConfig),   
     AppRoutingModule, 
   ],
-  
   providers: [
+    ProductService,
+    StorageService,
+    createUsersService,
+  ],
+  // providers: [
     // {
     //   provide: LOCALE_ID,
     //   useValue: 'pt-PE'
@@ -44,7 +50,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     //    provide: DEFAULT_CURRENCY_CODE,
     //    useValue: 'S/.'
     //  },
-  ],
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
