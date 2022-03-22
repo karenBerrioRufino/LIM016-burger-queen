@@ -16,6 +16,7 @@ export class TotalPedidosComponent implements OnInit {
   rolUser: string = '';
   orders: any | object[] = [];
   subscribe: any;
+  order$: BehaviorSubject<any>;
 
   // clientName = this.productService.disparador.getValue();
 
