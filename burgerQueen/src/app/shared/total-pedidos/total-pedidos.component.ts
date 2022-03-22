@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { BehaviorSubject } from 'rxjs';
 import { createUsersService } from 'src/app/services/create-users.service';
