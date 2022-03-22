@@ -1,91 +1,91 @@
-<app-navegador></app-navegador>
-
-<div class="gestionUsuarios">
-  <h2 class="titulo">TRABAJADORES</h2>
-  <button onclick="document.getElementById('btnModal').style.display='block'" class="btnNuevoUsuario">
-    <h4>Agregar</h4>
-    <i class="fa-solid fa-circle-plus"></i>
-  </button>
+<div class="containerGestionUsuarios">
+  <app-navegador></app-navegador>
+  <div class="gestionUsuarios">
+    <h2 class="titulo">TRABAJADORES</h2>
+    <button onclick="document.getElementById('btnModal').style.display='block'" class="btnNuevoUsuario">
+      <h5>Agregar</h5>
+      <i class="fa-solid fa-circle-plus"></i>
+    </button>
   
-  <div class="listarUsuario">
-    <table [class]="'table'">
-      <thead>
-        <th >Nombres</th>
-        <th>Apellido Paterno</th>
-        <th>Apellido Materno</th>
-        <th>DNI</th>
-        <th>Telefono</th>
-        <th>Estado</th>
-        <th>Rol</th>
-        <th>Email</th>
-        <th>Opciones</th>
-      </thead>
-      <tbody >
-        <tr *ngFor="let usuario of listarUsuarios">
-          <td>{{usuario.nombres}}</td>
-          <td>{{usuario.apellidoPaterno}}</td>
-          <td>{{usuario.apellidoMaterno}}</td>
-          <td>{{usuario.dni}}</td>
-          <td>{{usuario.telefono}}</td>
-          <td>{{usuario.estado}}</td>
-          <td>{{usuario.rol}}</td>
-          <td>{{usuario.correo}}</td>
-          <td class="btnOpciones">
-            <i class="fa-solid fa-pen-to-square"(click)="editarUsuarioBtn(usuario)"></i>
-            <i class="fa-solid fa-trash-can" (click)="eliminarUsuario(usuario.id)"></i>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="listarUsuario">
+      <table [class]="'table'">
+        <thead>
+          <th >Nombres</th>
+          <th>Apellido Paterno</th>
+          <th>Apellido Materno</th>
+          <th>DNI</th>
+          <th>Telefono</th>
+          <th>Estado</th>
+          <th>Rol</th>
+          <th>Email</th>
+          <th>Opciones</th>
+        </thead>
+        <tbody >
+          <tr *ngFor="let usuario of listarUsuarios">
+            <td>{{usuario.nombres}}</td>
+            <td>{{usuario.apellidoPaterno}}</td>
+            <td>{{usuario.apellidoMaterno}}</td>
+            <td>{{usuario.dni}}</td>
+            <td>{{usuario.telefono}}</td>
+            <td>{{usuario.estado}}</td>
+            <td>{{usuario.rol}}</td>
+            <td>{{usuario.correo}}</td>
+            <td class="btnOpciones">
+              <i class="fa-solid fa-pen-to-square"(click)="editarUsuarioBtn(usuario)"></i>
+              <i class="fa-solid fa-trash-can" (click)="eliminarUsuario(usuario.id)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   
-  <div class="modal" id="btnModal">
-    <div class="modal-content">
-      <header class="header-container">
-        {{ titulo  | uppercase }}
-        <span [class]="['btn','display-topright']" (click)="btnCerrar()">&times;</span>
-      </header>
-      <div class="modal-contenido">
-        <form [formGroup]="form" (ngSubmit)="guardarUsuario()" >
-          <div class="column">
-            <div [class]="['column1']">
-              <label for="">Nombres</label>
-              <input [class.valido]="this.form.get('nombres')?.valid" [class.invalido]="this.form.get('nombres')?.invalid && this.form.get('nombres')?.touched" type="text" name="" formControlName="nombres" placeholder="Pedro Julian"> 
-              
-              <label for="">Apellido Paterno</label>
-              <input [class.valido]="this.form.get('apellidoPaterno')?.valid" [class.invalido]="this.form.get('apellidoPaterno')?.invalid && this.form.get('apellidoPaterno')?.touched" type="text" formControlName="apellidoPaterno" placeholder="Flores">
+    <div class="modal" id="btnModal">
+      <div class="modal-content">
+        <header class="header-container">
+          {{ titulo  | uppercase }}
+          <span [class]="['btn','display-topright']" (click)="btnCerrar()">&times;</span>
+        </header>
+        <div class="modal-contenido">
+          <form [formGroup]="form" (ngSubmit)="guardarUsuario()" >
+            <div class="column">
+              <div [class]="['column1']">
+                <label for="">Nombres</label>
+                <input [class.valido]="this.form.get('nombres')?.valid" [class.invalido]="this.form.get('nombres')?.invalid && this.form.get('nombres')?.touched" type="text" name="" formControlName="nombres" placeholder="Pedro Julian"> 
+                
+                <label for="">Apellido Paterno</label>
+                <input [class.valido]="this.form.get('apellidoPaterno')?.valid" [class.invalido]="this.form.get('apellidoPaterno')?.invalid && this.form.get('apellidoPaterno')?.touched" type="text" formControlName="apellidoPaterno" placeholder="Flores">
 
-              <label for="">Apellido Materno</label>
-              <input [class.valido]="this.form.get('apellidoMaterno')?.valid" [class.invalido]="this.form.get('apellidoMaterno')?.invalid && this.form.get('apellidoMaterno')?.touched" type="text" formControlName="apellidoMaterno" placeholder="Ricse">
+                <label for="">Apellido Materno</label>
+                <input [class.valido]="this.form.get('apellidoMaterno')?.valid" [class.invalido]="this.form.get('apellidoMaterno')?.invalid && this.form.get('apellidoMaterno')?.touched" type="text" formControlName="apellidoMaterno" placeholder="Ricse">
 
-              <label for="">Documento Nacional de Identidad</label>
-              <input [class.valido]="this.form.get('dni')?.valid" [class.invalido]="this.form.get('dni')?.invalid && this.form.get('dni')?.touched" type="number" formControlName="dni" placeholder="82898766" minlength="8" maxlength="8">
+                <label for="">Documento Nacional de Identidad</label>
+                <input [class.valido]="this.form.get('dni')?.valid" [class.invalido]="this.form.get('dni')?.invalid && this.form.get('dni')?.touched" type="number" formControlName="dni" placeholder="82898766" minlength="8" maxlength="8">
 
-              <label for="">Telefono</label>
-              <input [class.valido]="this.form.get('telefono')?.valid" [class.invalido]="this.form.get('telefono')?.invalid && this.form.get('telefono')?.touched" type="tel" formControlName="telefono" placeholder="994427826" minlength="9" maxlength="9">
-            </div>
-
-            <div [class]="['column2']">
-              <label [class.valido-estado]="this.form.get('estado')?.valid" [class.invalido-estado]="this.form.get('estado')?.invalid && this.form.get('estado')?.touched">Estado</label>
-              <div class="estado" >
-                <label><input  type="radio" name="estado" value="Activo" formControlName="estado">
-                Activo</label>
-                <label><input type="radio" name="estado" value="Inactivo" formControlName="estado">
-                  Inactivo</label>
+                <label for="">Telefono</label>
+                <input [class.valido]="this.form.get('telefono')?.valid" [class.invalido]="this.form.get('telefono')?.invalid && this.form.get('telefono')?.touched" type="tel" formControlName="telefono" placeholder="994427826" minlength="9" maxlength="9">
               </div>
 
-              <Label for="">Rol</Label>
-              <div [class]="['rol']">
-                <label><input [class.valido]="this.form.get('rol')?.valid" [class.invalido]="this.form.get('rol')?.invalid && this.form.get('rol')?.touched" type="radio" name="rol" formControlName="rol" value="Administrador">
-                Administrador</label>
-                <label><input [class.valido]="this.form.get('rol')?.valid" [class.invalido]="this.form.get('rol')?.invalid && this.form.get('rol')?.touched" type="radio" name="rol" formControlName="rol" value="Cocinero">
-                Cocinero</label>   
-                <label><input [class.valido]="this.form.get('rol')?.valid" [class.invalido]="this.form.get('rol')?.invalid && this.form.get('rol')?.touched" type="radio" name="rol" formControlName="rol" value="Mesero">
-                Mesero</label> 
-              </div>
+              <div [class]="['column2']">
+                <label [class.valido-estado]="this.form.get('estado')?.valid" [class.invalido-estado]="this.form.get('estado')?.invalid && this.form.get('estado')?.touched">Estado</label>
+                <div class="estado" >
+                  <label><input  type="radio" name="estado" value="Activo" formControlName="estado">
+                  Activo</label>
+                  <label><input type="radio" name="estado" value="Inactivo" formControlName="estado">
+                    Inactivo</label>
+                </div>
 
-              <label for="">Email</label>
-              <input [class.valido]="this.form.get('correo')?.valid" [class.invalido]="this.form.get('correo')?.invalid && this.form.get('correo')?.touched" type="email" id="" formControlName="correo" placeholder="paquita@gmail.com">
+                <Label for="">Rol</Label>
+                <div [class]="['rol']">
+                  <label><input [class.valido]="this.form.get('rol')?.valid" [class.invalido]="this.form.get('rol')?.invalid && this.form.get('rol')?.touched" type="radio" name="rol" formControlName="rol" value="Administrador">
+                  Administrador</label>
+                  <label><input [class.valido]="this.form.get('rol')?.valid" [class.invalido]="this.form.get('rol')?.invalid && this.form.get('rol')?.touched" type="radio" name="rol" formControlName="rol" value="Cocinero">
+                  Cocinero</label>   
+                  <label><input [class.valido]="this.form.get('rol')?.valid" [class.invalido]="this.form.get('rol')?.invalid && this.form.get('rol')?.touched" type="radio" name="rol" formControlName="rol" value="Mesero">
+                  Mesero</label> 
+                </div>
+
+                <label for="">Email</label>
+                <input [class.valido]="this.form.get('correo')?.valid" [class.invalido]="this.form.get('correo')?.invalid && this.form.get('correo')?.touched" type="email" id="" formControlName="correo" placeholder="paquita@gmail.com">
 
               <label>Password</label>
               <div class="eye">
@@ -100,3 +100,5 @@
     </div>
   </div>
 </div>
+
+

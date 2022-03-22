@@ -1,4 +1,5 @@
-// variables 
+
+// variables
 $color-melon: #f1d5bb;
 $color-marron: #3B2213;
 $color-blanco: #ffffff;
@@ -6,6 +7,7 @@ $color-pink: #FF8087;
 $color-grisligth:#6c757d;
 $color-gris:#303438;
 $color-danger:#dc3545;
+
 
 .divLogin{
   display: flex;
@@ -20,7 +22,7 @@ $color-danger:#dc3545;
   font-family: 'Mulish', sans-serif;
   width: 20rem;
   height: 17rem;
-  }
+}
 
 .containerLogin{
   display: flex;
@@ -37,9 +39,11 @@ $color-danger:#dc3545;
   background-size: cover;
 }
 
-h2{
+h4{
+
   color: $color-marron;
   font-weight: 400;
+  margin-bottom: 12px !important;
 }
 .emailLogin,
 .passLogin
@@ -52,9 +56,12 @@ h2{
   padding: 0.75rem;
   color: $color-gris;
   box-shadow: 3px 3px 3px gray;
+  margin-bottom: 0px !important;
 }
 .buttonLogin{
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-content: center;
   border: none;
   border-radius: 0.5rem;
   width: 15rem;
@@ -65,13 +72,17 @@ h2{
   color: $color-blanco;
   background-color: $color-marron;
   padding: 0.5rem;
+  font-size: 13px;
+  cursor: pointer;
 }
+  
 
 .forgetPassword{
   display:block;
   color: $color-marron;
   align-self:end;
   font-size: 0.8rem;
+  cursor: pointer;
 }
 .eye{
   display: flex;
@@ -87,10 +98,13 @@ h2{
   cursor: pointer;
   margin-top: 8px;
 }
+
 .emailLogin{
   background-image: url(../../../assets/imagenes/img-login-welcome/icon-email.png);
   background-position: 13rem;
-  background-size: 1.5rem;
+  background-size: 20px;
   background-repeat: no-repeat;
   margin-bottom: 0.8rem;
+  color: $color-marron;
 }
+
