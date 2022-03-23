@@ -8,24 +8,28 @@ import { CartaComponent } from './carta/carta.component';
 import { CartaOpcionesComponent } from './carta-opciones/carta-opciones.component';
 import { PedidosMeseroComponent } from './pedidos-mesero/pedidos-mesero.component';
 import { TotalPedidosMeseroComponent } from './total-pedidos-mesero/total-pedidos-mesero.component';
-
+import { AuthGuard } from '../shared/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'carta',
-    component: CartaComponent
+    component: CartaComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'cartaOpciones',
-    component: CartaOpcionesComponent
+    component: CartaOpcionesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'pedidosMesero',
-    component: PedidosMeseroComponent
+    component: PedidosMeseroComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'totalPedidosMesero',
-    component: TotalPedidosMeseroComponent
+    component: TotalPedidosMeseroComponent,
+    canActivate: [AuthGuard]
   }
 ]
 

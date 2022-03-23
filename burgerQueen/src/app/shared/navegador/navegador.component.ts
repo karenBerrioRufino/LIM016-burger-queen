@@ -33,6 +33,7 @@ export class NavegadorComponent implements OnInit{
 
   ngOnInit(): void {
     this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
+    console.log(this.rolUser, 'hola');
   }
 
   usuariosRout() {

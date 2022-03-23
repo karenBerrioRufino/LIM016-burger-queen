@@ -6,16 +6,18 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
-
+import { AuthGuard } from '../shared/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: WelcomeComponent
+    component: WelcomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [AuthGuard]
   }
 ]
 
