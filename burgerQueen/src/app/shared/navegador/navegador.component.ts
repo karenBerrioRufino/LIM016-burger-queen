@@ -59,7 +59,7 @@ export class NavegadorComponent implements OnInit{
 
   totalPedidosRout() {
     console.log('click');
-    this.router.navigateByUrl("/totalPedidosMesero");
+    this.router.navigateByUrl("/totalPedidos");
   }
 
   async onLogout() {
