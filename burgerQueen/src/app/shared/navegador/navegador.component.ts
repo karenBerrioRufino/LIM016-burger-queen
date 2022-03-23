@@ -70,8 +70,10 @@ export class NavegadorComponent implements OnInit{
         title: 'Cerraste sesión :)'
       })
       this.router.navigate(['/']);
-    } catch (error) {
-      console.log(error);
-    }
+      console.log('si cerré sesión');
   }
+  catch(error: any){
+    console.log(error);
+  }
+}
 }

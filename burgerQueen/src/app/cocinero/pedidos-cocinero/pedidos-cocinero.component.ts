@@ -10,14 +10,16 @@ import { StorageService } from 'src/app/services/storage.service';
 export class PedidosCocineroComponent implements OnInit {
 
   pedidosCocinero: any[] = [];
+  // order es el objeto que se manda de totalPedidos
   order: any = {};
 
   constructor(private productService: ProductService, private storageService: StorageService){}
 
   ngOnInit(): void {
+    // order jala todo el documento(pedido completo). Esto es para pintar cada campo que se escoja
     this.order = this.productService.waiterOrder.getValue();
     // console.log(this.order);
-
+    //se llama a orderWaiter que es un campo en el documento de firestore que se jala. Este pinta la lista completa
     this.pedidosCocinero = this.productService.waiterOrder.getValue().orderWaiter;
     // this.storageService.set('orders', {...this.pedidosCocinero})
   }
