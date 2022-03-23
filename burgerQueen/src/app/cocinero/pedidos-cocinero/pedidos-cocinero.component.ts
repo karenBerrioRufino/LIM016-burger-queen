@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-pedidos-cocinero',
@@ -13,27 +12,25 @@ export class PedidosCocineroComponent implements OnInit {
   // order es el objeto que se manda de totalPedidos
   order: any = {};
 
-  constructor(private productService: ProductService, private storageService: StorageService){}
+  constructor(private productService: ProductService){}
 
   ngOnInit(): void {
     // order jala todo el documento(pedido completo). Esto es para pintar cada campo que se escoja
     this.order = this.productService.waiterOrder.getValue();
-    // console.log(this.order);
     //se llama a orderWaiter que es un campo en el documento de firestore que se jala. Este pinta la lista completa
     this.pedidosCocinero = this.productService.waiterOrder.getValue().orderWaiter;
-    // this.storageService.set('orders', {...this.pedidosCocinero})
   }
 
   changeToPrepared(order: any | object){
     const index = this.pedidosCocinero.indexOf(order);
-    if(this.pedidosCocinero[index].prepared !== true) {
-      this.pedidosCocinero[index].prepared = true; 
+
+    if(this.pedidosCocinero[index].onePrepared !== true) {
+      this.pedidosCocinero[index].onePrepared = true; 
       console.log(this.pedidosCocinero)
-      // this.storageService.set('orders', {...this.pedidosCocinero})
+      // this.productService.updateWaiterOrder()
     } else {
-      this.pedidosCocinero[index].prepared = false;
+      this.pedidosCocinero[index].onePrepared = false;
       console.log(this.pedidosCocinero)
-      // this.storageService.set('orders', {...this.pedidosCocinero})
     }
   }
 }

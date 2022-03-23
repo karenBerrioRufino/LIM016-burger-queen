@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, /*EventEmitter, Output*/} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { StorageService } from 'src/app/services/storage.service';
 
@@ -8,9 +8,8 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./carta.component.scss']
 })
 
-export class CartaComponent implements OnInit, AfterViewInit {
+export class CartaComponent implements OnInit {
   isSectionchanged: boolean = false;
-  isSelectionChecked: boolean = false;
   numberOfClicks: number = 0;
 
   carta: any[] = [];
@@ -26,17 +25,13 @@ export class CartaComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.getCartaData();
     // ordersList son los datos que esta jalando del localStorage
     let ordersList: any = this.storageService.get('ordersList');
     if(ordersList){
       // iguala el array con los datos que jala del storage. Sobre el array que existe, irá agregando los objetos
-      this.orders = ordersList;     
+      this.orders = ordersList;
     }
-  }
-
-  ngAfterViewInit(){
-    window.addEventListener('load', this.changeProductStatus);
+    this.getCartaData();
   }
 
   changeSectionOfCarta(){
@@ -73,19 +68,17 @@ export class CartaComponent implements OnInit, AfterViewInit {
   }
 
   sendItemDataToPedidosView(productData: any){
-    this.isSelectionChecked = true;
     const wasOrdered = this.orders.some(order => order.id === productData.id); //se entiende que es verdadero
     if(!wasOrdered){ // tiene que ser falso
       this.orders.push({...productData, quantity: 1, subtotal: productData.price});
-      this.changeProductStatus();
       //product data que es un array lo convierte a string
       this.storageService.set('ordersList', this.orders);
     }
   }
 
-  changeProductStatus(){
+/*   changeProductStatus(){
     const iconCheckElements = Array.from(document.querySelectorAll('.checkIcon')) as Array<any>;
-    console.log(iconCheckElements);
+    // console.log(iconCheckElements);
     if(this.orders){
       for(let i = 0; i < iconCheckElements.length; i++){
         this.orders.map(order => {
@@ -95,5 +88,9 @@ export class CartaComponent implements OnInit, AfterViewInit {
         })
       }
     }
+  } */
+
+  wasSelected(itemId: any){
+    return this.orders.some(order => order.id === itemId) ? 'block' : 'none';
   }
 }
