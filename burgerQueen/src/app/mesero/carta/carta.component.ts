@@ -76,21 +76,7 @@ export class CartaComponent implements OnInit {
     }
   }
 
-/*   changeProductStatus(){
-    const iconCheckElements = Array.from(document.querySelectorAll('.checkIcon')) as Array<any>;
-    // console.log(iconCheckElements);
-    if(this.orders){
-      for(let i = 0; i < iconCheckElements.length; i++){
-        this.orders.map(order => {
-          if(order.id === iconCheckElements[i]?.id){
-            iconCheckElements[i]!.style.display="block";
-          }
-        })
-      }
-    }
-  } */
-
-  wasSelected(itemId: any){
+  wasSelected(itemId: string){
     return this.orders.some(order => order.id === itemId) ? 'block' : 'none';
   }
 }
