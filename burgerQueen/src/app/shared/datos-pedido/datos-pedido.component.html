@@ -14,7 +14,7 @@
 
     <input type="text" class="cliente" [formControl]="clientName" *ngIf="rolUser !== 'Cocinero'; else fixClientName">
     <ng-template #fixClientName >
-      <input type="text" class="cliente" value="{{ order.clientName }}">
+      <input type="text" class="cliente" value="{{ order.clientName }}" disabled>
     </ng-template>
   </div>
 
@@ -37,7 +37,7 @@
     </select>
 
     <ng-template #fixTableNumber >
-      <input type="text" class="cliente" value="{{ order.tableNumber }}">
+      <input type="text" class="cliente" value="{{ order.tableNumber }}" disabled>
     </ng-template>
   </div>
 
@@ -55,7 +55,7 @@
   *ngIf="rolUser !== 'Cocinero'; else otherBtn" routerLinkActive="activebutton" >Enviar Orden</button>
 
   <ng-template #otherBtn>
-    <button class="btnEnviarOrden" routerLink="/totalPedidos" routerLinkActive="activebutton">Orden Lista</button>
+    <button class="btnEnviarOrden" (click)="markAsPrepared(order)">Orden Lista</button>
   </ng-template>
 
 </form>
