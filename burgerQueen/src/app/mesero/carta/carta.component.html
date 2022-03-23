@@ -31,11 +31,11 @@
                                 <p>{{ sandwich.price | currency:'PEN':'S/' }} </p>
                             </div>
                             <div class="picture">
-                                <i class="checkIcon fa-solid fa-circle-check" id="{{ sandwich.id }}"></i>
+                                <i class="checkIcon fa-solid fa-circle-check" id="{{ sandwich.id }}" 
+                                [style.display]="wasSelected(sandwich.id)"></i>
                                 <img class="cartaImg" src="{{ sandwich.img }}">
                             </div>
                             <input type="button" value="Añadir" class="btn btnAñadir" (click)="sendItemDataToPedidosView(sandwich)" routerLinkActive="activebutton">
-                            <!-- <input type="button" value="Añadir" [ngClass]="{}" (click)="sendItemDataToPedidosView(sandwich)" routerLinkActive="activebutton"> -->
                         </div>
                     </div>
                 </section>
@@ -52,7 +52,8 @@
                                 <p>{{ aperitivo.price | currency:'PEN':'S/' }} </p>
                             </div>
                             <div class="picture">
-                                <i class="checkIcon fa-solid fa-circle-check" id="{{ aperitivo.id }}"></i>
+                                <i class="checkIcon fa-solid fa-circle-check" id="{{ aperitivo.id }}"
+                                [style.display]="wasSelected(aperitivo.id)"></i>
                                 <img class="cartaImg" src="{{ aperitivo.img }}">
                             </div>
                             <input type="button" value="Añadir" class="btn btnAñadir" (click)="sendItemDataToPedidosView(aperitivo)"
@@ -75,7 +76,8 @@
                                 <p>{{ bebida.price | currency:'PEN':'S/' }} </p>
                             </div>
                             <div class="picture">
-                                <i class="checkIcon fa-solid fa-circle-check" id="{{ bebida.id }}"></i>
+                                <i class="checkIcon fa-solid fa-circle-check" id="{{ bebida.id }}"
+                                [style.display]="wasSelected(bebida.id)"></i>
                                 <img class="cartaImg" src="{{ bebida.img }}">
                             </div>
                             <input type="button" value="Añadir" class="btn btnAñadir" (click)="sendItemDataToPedidosView(bebida)"
