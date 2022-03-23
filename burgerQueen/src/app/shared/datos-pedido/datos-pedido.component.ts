@@ -50,7 +50,7 @@ export class DatosPedidoComponent implements OnInit {
   ngOnInit(): void {
     // estamos jalando el array que contiene 'ordersList' que es lo que se guardó de pedidosMesero
     this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
-    this.pedidosMesero = this.storageService.get('ordersList');
+    
 
     this.order = this.productService.waiterOrder.getValue();
   }
@@ -63,6 +63,7 @@ export class DatosPedidoComponent implements OnInit {
   sendClientData(){
     // pasar la data a firestore
     const promise = new Promise((resolve) => {
+    this.pedidosMesero = this.storageService.get('ordersList');
       resolve(
       this.productService.createOrder({
         clientName: this.clientName.value, 

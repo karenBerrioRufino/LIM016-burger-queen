@@ -38,6 +38,7 @@ export class PedidosMeseroComponent implements OnInit {
     quantityInput.setAttribute('value', pedidoData.quantity.toString());
     pedidoData.subtotal = pedidoData.quantity * pedidoData.price;
     this.storageService.set('ordersList', this.pedidosMesero);
+    
     this.calculateAndSendTotal();
   }
 
