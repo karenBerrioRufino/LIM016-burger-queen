@@ -1,8 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { BehaviorSubject } from 'rxjs';
-import { createUsersService } from 'src/app/services/create-users.service';
+import { StorageService } from 'src/app/services/storage.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navegador',
@@ -11,19 +11,28 @@ import { createUsersService } from 'src/app/services/create-users.service';
 })
 
 export class NavegadorComponent implements OnInit{
-  getRolUser$: BehaviorSubject<string>;
   rolUser: string = '';
 
-  constructor(private authService: AuthService, private router: Router, private createUser: createUsersService) {
-    this.getRolUser$ = this.createUser.getRol();
+  Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3500,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
-    this.getRolUser$.subscribe(value => {
-      this.rolUser = value;
-      console.log(this.rolUser);
-    });
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private storageService: StorageService) {
   }
 
   ngOnInit(): void {
+    this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
   }
 
   usuariosRout() {
@@ -55,7 +64,11 @@ export class NavegadorComponent implements OnInit{
   async onLogout() {
     try {
       await this.authService.logout();
-      console.log('logout');
+      this.storageService.removeCurrentUser();
+      this.Toast.fire({
+        icon: 'success',
+        title: 'Cerraste sesión :)'
+      })
       this.router.navigate(['/']);
     } catch (error) {
       console.log(error);

@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-datos-pedido',
@@ -19,13 +21,27 @@ export class DatosPedidoComponent implements OnInit {
   selectTable?: string = "";
 
   pedidosMesero: any[] = [];
-  orderTotal: number = 0;
+  order: object | any = {};
 
   total$: BehaviorSubject<number>;
-  
-  constructor(public productService: ProductService, private storageService: StorageService) {
-    this.total$ = this.productService.getTotalOfOrder();
+  orderTotal: number = 0;
 
+  rolUser: string = '';
+
+  Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3500,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+  
+  constructor(public productService: ProductService, private storageService: StorageService, private router: Router) {
+    this.total$ = this.productService.getTotalOfOrder();
     this.total$.subscribe(value => {
       this.orderTotal = value;
     });
@@ -33,12 +49,13 @@ export class DatosPedidoComponent implements OnInit {
 
   ngOnInit(): void {
     // estamos jalando el array que contiene 'ordersList' que es lo que se guardó de pedidosMesero
-   
+    this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
+    this.order = this.productService.waiterOrder.getValue();
   }
 
   getNumberOfTable(){
     this.selectTable = this.numberOfTable;
-    return console.log(this.selectTable) ;
+    return this.selectTable;
   }
 
   sendClientData(){
@@ -57,12 +74,16 @@ export class DatosPedidoComponent implements OnInit {
         served: false,
         total: this.orderTotal,
       }));
+
+      this.Toast.fire({
+        icon: 'success',
+        title: 'Pedido enviado.'
+      })
     });
 
     promise.then((res) => {
       this.storageService.clear();
-      console.log('localStorage limpio y página recargada:', res);
-      window.location.reload();
+      this.router.navigate(['/carta']);
     });
   }
 }

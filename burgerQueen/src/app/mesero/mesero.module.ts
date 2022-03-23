@@ -32,10 +32,6 @@ import {StorageService} from 'src/app/services/storage.service'
     CartaOpcionesComponent,
     TotalPedidosMeseroComponent,
     PedidosMeseroComponent
-  ],
-  providers: [
-    ProductService,
-    StorageService
   ]
 })
 export class MeseroModule { }
