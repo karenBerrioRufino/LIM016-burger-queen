@@ -14,6 +14,7 @@ export class ProductService {
   @Output() disparador: BehaviorSubject<any> = new BehaviorSubject({});
   private totalOfOrder: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   @Output() waiterOrder: BehaviorSubject<any> = new BehaviorSubject<any>({});
+  @Output() showOrder: BehaviorSubject<any> = new BehaviorSubject<any>({});
 
   constructor(private firestore: AngularFirestore) { }
   
