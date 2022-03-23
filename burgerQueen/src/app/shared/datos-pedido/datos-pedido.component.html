@@ -51,11 +51,11 @@
     </ng-template>
   </div>
 
-  <button class="btnEnviarOrden" (click)="sendClientData()" routerLink="/totalPedidosMesero" *ngIf="rolUser !== 'Cocinero'; else otherBtn"
+  <button class="btnEnviarOrden" (click)="sendClientData()" routerLink="/totalPedidos" *ngIf="rolUser !== 'Cocinero'; else otherBtn"
 routerLinkActive="activebutton">Enviar Orden</button>
 
   <ng-template #otherBtn>
-    <button class="btnEnviarOrden" routerLink="/totalPedidosMesero" routerLinkActive="activebutton">Orden Lista</button>
+    <button class="btnEnviarOrden" routerLink="/totalPedidos" routerLinkActive="activebutton">Orden Lista</button>
   </ng-template>
 
 </form>

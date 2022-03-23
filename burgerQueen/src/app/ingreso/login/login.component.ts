@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           switch(rol){
             case 'Mesero': this.router.navigateByUrl("/carta")
             break;
-            case 'Cocinero': this.router.navigateByUrl("/totalPedidosMesero")
+            case 'Cocinero': this.router.navigateByUrl("/totalPedidos")
             break;
             case 'Administrador': this.router.navigateByUrl("/gestionUsuarios")
             break;
