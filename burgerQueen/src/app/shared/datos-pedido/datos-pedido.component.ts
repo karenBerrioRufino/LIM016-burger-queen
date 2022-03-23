@@ -33,7 +33,7 @@ export class DatosPedidoComponent implements OnInit {
 
   ngOnInit(): void {
     // estamos jalando el array que contiene 'ordersList' que es lo que se guardó de pedidosMesero
-    this.pedidosMesero = this.storageService.get('ordersList');
+   
   }
 
   getNumberOfTable(){
@@ -44,6 +44,7 @@ export class DatosPedidoComponent implements OnInit {
   sendClientData(){
     // pasar la data a firestore
     const promise = new Promise((resolve) => {
+      this.pedidosMesero = this.storageService.get('ordersList');
       resolve(
       this.productService.createOrder({
         clientName: this.clientName.value, 
