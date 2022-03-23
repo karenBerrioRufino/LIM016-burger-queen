@@ -6,7 +6,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TotalPedidosComponent } from './total-pedidos/total-pedidos.component';
 import { ViewOrderComponent } from './view-order/view-order.component';
-
 const routes: Routes = [
   {
     path: 'pageNotFound', component: PageNotFoundComponent

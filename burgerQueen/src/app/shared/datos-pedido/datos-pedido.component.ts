@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 import { StorageService } from 'src/app/services/storage.service';
@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./datos-pedido.component.scss']
 })
 
-export class DatosPedidoComponent implements OnInit {
+export class DatosPedidoComponent implements OnInit, AfterViewInit {
   date = new Date().toLocaleDateString();
   hour = new Date().toLocaleTimeString();
   clientName = new FormControl('');
@@ -50,9 +50,12 @@ export class DatosPedidoComponent implements OnInit {
   ngOnInit(): void {
     // estamos jalando el array que contiene 'ordersList' que es lo que se guardó de pedidosMesero
     this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
-    
-
     this.order = this.productService.waiterOrder.getValue();
+  }
+
+  ngAfterViewInit(): void {
+    this.pedidosMesero = this.storageService.get('ordersList');
+    console.log(this.pedidosMesero);
   }
 
   getNumberOfTable(){
@@ -63,29 +66,29 @@ export class DatosPedidoComponent implements OnInit {
   sendClientData(){
     // pasar la data a firestore
     const promise = new Promise((resolve) => {
-    this.pedidosMesero = this.storageService.get('ordersList');
+      this.pedidosMesero = this.storageService.get('ordersList');
       resolve(
-      this.productService.createOrder({
-        clientName: this.clientName.value, 
-        tableNumber: this.selectTable, 
-        date: this.date,
-        hour: this.hour, 
-        orderWaiter: this.pedidosMesero,
-        shipped: true,
-        prepared: false,
-        served: false,
-        total: this.orderTotal,
-      }));
-
-      this.Toast.fire({
-        icon: 'success',
-        title: 'Pedido enviado.'
-      })
+        this.productService.createOrder({
+          clientName: this.clientName.value, 
+          tableNumber: this.selectTable, 
+          date: this.date,
+          hour: this.hour, 
+          orderWaiter: this.pedidosMesero,
+          shipped: true,
+          prepared: false,
+          served: false,
+          total: this.orderTotal,
+        })
+      );
+       this.Toast.fire({
+         icon: 'success',
+         title: 'Pedido enviado.'
+       })
     });
 
     promise.then((res) => {
-      this.storageService.clear();
-      this.router.navigate(['/carta']);
+       this.storageService.clear();
+       this.router.navigate(['/carta']);
     });
   }
 }

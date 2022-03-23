@@ -21,7 +21,7 @@ export class PedidosCocineroComponent implements OnInit {
     // console.log(this.order);
     //se llama a orderWaiter que es un campo en el documento de firestore que se jala. Este pinta la lista completa
     this.pedidosCocinero = this.productService.waiterOrder.getValue().orderWaiter;
-    this.storageService.set('orders', {...this.pedidosCocinero})
+    // this.storageService.set('orders', {...this.pedidosCocinero})
   }
 
   changeToPrepared(order: any | object){
@@ -29,11 +29,11 @@ export class PedidosCocineroComponent implements OnInit {
     if(this.pedidosCocinero[index].prepared !== true) {
       this.pedidosCocinero[index].prepared = true; 
       console.log(this.pedidosCocinero)
-      this.storageService.set('orders', {...this.pedidosCocinero})
+      // this.storageService.set('orders', {...this.pedidosCocinero})
     } else {
       this.pedidosCocinero[index].prepared = false;
       console.log(this.pedidosCocinero)
-      this.storageService.set('orders', {...this.pedidosCocinero})
+      // this.storageService.set('orders', {...this.pedidosCocinero})
     }
   }
 }
