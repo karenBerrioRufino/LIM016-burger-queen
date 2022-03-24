@@ -25,7 +25,7 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
   segundos!: string;
   // date y hour se guardan
   date = new Date().toLocaleDateString();
-  inputHour = new Date().toLocaleTimeString();
+  hour = new Date().toLocaleTimeString();
 
   clientName = new FormControl('');
   
@@ -89,7 +89,7 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
     this.selectTable = this.numberOfTable;
     return this.selectTable;
   }
-
+  // estos datos los envía el mesero
   sendClientData(){
     // pasar la data a firestore
     const promise = new Promise((resolve) => {
@@ -99,7 +99,7 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
           clientName: this.clientName.value, 
           tableNumber: this.selectTable, 
           date: this.date,
-          inputHour: this.inputHour, 
+          inputHour: this.hour, 
           orderWaiter: this.pedidosMesero,
           shipped: true,
           prepared: false,
@@ -119,9 +119,10 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
        this.router.navigate(['/carta']);
     });
   }
-
+  // estos datos los envía el cocinero
   markAsPrepared(order: any | object){
     if(order.prepared){
+      this.productService.updateWaiterOrder(order.docId, {...order,outputHour: this.hour});
       this.Toast.fire({
         icon: 'success',
         title: 'Orden actualizada.'

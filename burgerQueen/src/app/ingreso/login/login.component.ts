@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 3500,
+    timer: 2000,
     timerProgressBar: true,
     didOpen: (toast) => {
       toast.addEventListener('mouseenter', Swal.stopTimer)
