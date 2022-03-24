@@ -44,7 +44,7 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 3500,
+    timer: 1500,
     timerProgressBar: true,
     didOpen: (toast) => {
       toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -118,5 +118,20 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
        this.storageService.clear();
        this.router.navigate(['/carta']);
     });
+  }
+
+  markAsPrepared(order: any | object){
+    if(order.prepared){
+      this.Toast.fire({
+        icon: 'success',
+        title: 'Orden actualizada.'
+      })
+      this.router.navigate(['/totalPedidos']);
+    } else {
+      this.Toast.fire({
+        icon: 'error',
+        title: '¡La orden no está completa!'
+      })
+    }
   }
 }

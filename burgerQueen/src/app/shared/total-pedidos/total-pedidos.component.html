@@ -50,8 +50,8 @@
                   [ngClass]="{'ordenado':order.shipped,'no-ordenado': !order.shipped}">&#10003;</button>
               </td>
               <td>
-                <button class="circleBtn" [ngClass]="{'preparado':order.prepared ,'no-preparado':!order.prepared}"
-                  (click)="changeOrderPrepared(order)">&#10003;</button>
+                <button class="circleBtn" 
+                [ngClass]="{'preparado':order.prepared ,'no-preparado':!order.prepared}">&#10003;</button>
               </td>
               <td>
                 <button class="circleBtn" [ngClass]="{'entregado':order.served,'no-entregado':!order.served}"

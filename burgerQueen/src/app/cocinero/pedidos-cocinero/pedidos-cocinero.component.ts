@@ -26,11 +26,23 @@ export class PedidosCocineroComponent implements OnInit {
 
     if(this.pedidosCocinero[index].onePrepared !== true) {
       this.pedidosCocinero[index].onePrepared = true; 
-      console.log(this.pedidosCocinero)
-      // this.productService.updateWaiterOrder()
+      this.productService.updateWaiterOrder(this.order.docId, this.order);
     } else {
-      this.pedidosCocinero[index].onePrepared = false;
-      console.log(this.pedidosCocinero)
+      this.pedidosCocinero[index].onePrepared = false; 
+      this.productService.updateWaiterOrder(this.order.docId, this.order);
+    }
+    this.verifyCompleteOrderStatus();
+  }
+
+  verifyCompleteOrderStatus(){
+    const isAllCompleted = this.order.orderWaiter.every((e: any | object) => e.onePrepared == true);
+
+    if(isAllCompleted){
+      this.order.prepared = true;
+      this.productService.updateWaiterOrder(this.order.docId, this.order);
+    } else {
+      this.order.prepared = false;
+      this.productService.updateWaiterOrder(this.order.docId, this.order);
     }
   }
 }
