@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 3500,
+    timer: 2000,
     timerProgressBar: true,
     didOpen: (toast) => {
       toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           switch(rol){
             case 'Mesero': this.router.navigateByUrl("/carta")
             break;
-            case 'Cocinero': this.router.navigateByUrl("/totalPedidosMesero")
+            case 'Cocinero': this.router.navigateByUrl("/totalPedidos")
             break;
             case 'Administrador': this.router.navigateByUrl("/gestionUsuarios")
             break;

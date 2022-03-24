@@ -7,7 +7,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 
-
 const routes: Routes = [
   {
     path: '',

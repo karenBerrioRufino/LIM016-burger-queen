@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Observable } from 'rxjs';
 // import Swal from 'sweetalert2';
 
 
@@ -13,8 +14,8 @@ export class AuthService {
   
   // private user = new BehaviorSubject<RegisterUsers | null>(null)
   // user$ =this.user.asObservable();
-
-  constructor(private authWithAngularFirebase: AngularFireAuth) { }
+   public userData$ = this.authWithAngularFirebase.authState;
+  constructor(private authWithAngularFirebase: AngularFireAuth) {}
 
   async register(email:string, password:string) {
     try {

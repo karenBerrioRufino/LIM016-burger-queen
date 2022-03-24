@@ -7,6 +7,7 @@ $color-gris:#303438;
 $color-naranja:#FB7614;
 $color-green: #31C248;
 $color-primary: #64b6e6;
+$color-darkred: #8B0000;
 
 #totalPedidosView{
   display: flex;
@@ -125,7 +126,6 @@ i{
   text-align: center;
   color: $color-blanco;
   font-weight:500;
-  
 }
 .no-ordenado{
   content: " ";
@@ -191,20 +191,31 @@ i{
     padding: 8px;
   }
 }
-
-input[value="Cancelar"]{
-  border:1px solid $color-pink;
-  border-radius:0.5rem;
-  background-color: $color-blanco;
-  padding: 5px;
-  color: $color-pink;
-  cursor: pointer;
-}
-input[value="Cancelar"]:hover{
+input[value="Pagar"]:hover{
    background-color: $color-pink;
    color: $color-blanco;
 }
 
+.cancelado{
+  border:1px solid $color-pink;
+  border-radius:0.5rem;
+  padding: 5px;
+  cursor: not-allowed;
+  background-color: $color-darkred;
+  pointer-events: none;
+  color: #eee;
+
+ 
+}
+.no-cancelado{
+  border:1px solid $color-pink;
+  border-radius:0.5rem;
+  padding: 5px;
+  color: $color-pink;
+  cursor: pointer;
+  background-color: $color-blanco;
+  color: $color-pink;
+}
 input[value="Ver pedido"]{
   border: none;
   border-radius:0.5rem;

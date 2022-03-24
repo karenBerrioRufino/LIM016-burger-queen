@@ -74,4 +74,15 @@ export class TotalPedidosComponent implements OnInit {
     }
     console.log('rolUser', this.rolUser);
   }
+  
+  cancelOrder(order: any | object) {
+    if (this.rolUser === 'Mesero') {
+      if(order.orderCanceled == false) order.orderCanceled = true;
+      else order.orderCanceled = false;
+      
+      this.productService.updateWaiterOrder(order.docId, order);
+      this.subscribe.unsubscribe();
+    }
+
+  }
 }
