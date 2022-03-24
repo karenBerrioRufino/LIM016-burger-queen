@@ -142,7 +142,7 @@ export class GestionUsuariosComponent implements OnInit {
   }
 
   agregarUsuario(){
-    const USUARIO: RegisterUsers = {
+    const USUARIO: RegisterUsers | any= {
       dni:this.form.value.dni,
       nombres: this.form.value.nombres,
       apellidoPaterno: this.form.value.apellidoPaterno,
@@ -159,7 +159,9 @@ export class GestionUsuariosComponent implements OnInit {
      //para crear un usuario por pirmera vez
     const {correo, password} = USUARIO;
     this.authService.register(correo, password).then(registered => {
-      console.log(registered); // trae los datos de quien se registra por primera vez
+      delete USUARIO.password;
+      console.log(registered); 
+      // trae los datos de quien se registra por primera vez
       // uid es el id de quien se registra por primera vez y aparece en el auth
       this._userService.saveUser(USUARIO, registered?.user?.uid).then(()=>{
         console.log('Usuario registrado');
