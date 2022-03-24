@@ -32,7 +32,7 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 1300,
+    timer: 1500,
     timerProgressBar: true,
     didOpen: (toast) => {
       toast.addEventListener('mouseenter', Swal.stopTimer)
