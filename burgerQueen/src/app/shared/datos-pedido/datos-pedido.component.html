@@ -1,11 +1,20 @@
 <form class="datosPedido">
 
   <div class="datos">
-
-  <div class="fecha">
-    <p *ngIf="rolUser !== 'Cocinero'; else fixTime"> {{ date }} - {{ hour }}</p>
+  
+  <div class="fecha" >
+    <div class="clock" *ngIf="rolUser !== 'Cocinero'; else fixTime">
+      <span> {{dia}} - {{fecha}}</span>     
+      <div class="hours">
+          <div class="horas">
+              <span class="mishoras">{{hora}}:{{minutos}}:{{segundos}}</span>
+              <span class="ampm">{{ampm}}</span>
+          </div>
+      </div>
+  </div>
     <ng-template #fixTime >
-      <p>{{ order.date }} - {{ order.hour }}</p>
+      <!--Estos datos se guardan en firestore (para capturar la hora exacta)-->
+      <p>Datos del cliente</p>
     </ng-template>
   </div>
 

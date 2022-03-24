@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { createUsersService } from './services/create-users.service';
 import { StorageService } from './services/storage.service';
 import { ProductService } from './services/product.service';
+import { ClockService } from './services/clock.service';
 
 
 // Register the localization
@@ -40,6 +41,7 @@ import { ProductService } from './services/product.service';
     ProductService,
     StorageService,
     createUsersService,
+    ClockService
   ],
   // providers: [
     // {
