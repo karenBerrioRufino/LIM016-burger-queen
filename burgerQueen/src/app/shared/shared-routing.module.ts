@@ -6,15 +6,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TotalPedidosComponent } from './total-pedidos/total-pedidos.component';
 import { ViewOrderComponent } from './view-order/view-order.component';
+import { AuthGuard } from './guards/auth.guard';
+
 const routes: Routes = [
   {
-    path: 'pageNotFound', component: PageNotFoundComponent
+    path: 'pageNotFound', component: PageNotFoundComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'totalPedidos', component: TotalPedidosComponent
+    path: 'totalPedidos', component: TotalPedidosComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'viewOrder', component: ViewOrderComponent
+    path: 'viewOrder', component: ViewOrderComponent, canActivate: [AuthGuard]
   }
 ]
 
