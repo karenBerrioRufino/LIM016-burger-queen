@@ -5,6 +5,8 @@ import { StorageService } from 'src/app/services/storage.service';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Observable } from 'rxjs';
+import { ClockService, valorReloj } from 'src/app/services/clock.service';
 
 @Component({
   selector: 'app-datos-pedido',
@@ -13,8 +15,18 @@ import Swal from 'sweetalert2';
 })
 
 export class DatosPedidoComponent implements OnInit, AfterViewInit {
+  // estos datos son solo para mostrarlos en el componente
+  datos$!: Observable<valorReloj>;
+  hora!: number;
+  minutos!: string;
+  dia!: string;
+  fecha!: string;
+  ampm!: string;
+  segundos!: string;
+  // date y hour se guardan
   date = new Date().toLocaleDateString();
   hour = new Date().toLocaleTimeString();
+
   clientName = new FormControl('');
   
   numberOfTable: string = "Escoge una mesa";
@@ -40,7 +52,12 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
     }
   })
   
-  constructor(public productService: ProductService, private storageService: StorageService, private router: Router) {
+  constructor(
+    public productService: ProductService, 
+    private storageService: StorageService, 
+    private router: Router,
+    private clock: ClockService,
+    ) {
     this.total$ = this.productService.getTotalOfOrder();
     this.total$.subscribe(value => {
       this.orderTotal = value;
@@ -51,6 +68,16 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
     // estamos jalando el array que contiene 'ordersList' que es lo que se guardó de pedidosMesero
     this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
     this.order = this.productService.waiterOrder.getValue();
+
+    this.datos$=this.clock.getInfoReloj();
+    this.datos$.subscribe(x => {
+      this.hora = x.hora;
+      this.minutos = x.minutos;
+      this.dia = x.diadesemana;
+      this.fecha = x.diaymes;
+      this.ampm = x.ampm;
+      this.segundos = x.segundo
+    });
   }
 
   ngAfterViewInit(): void {
@@ -62,7 +89,7 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
     this.selectTable = this.numberOfTable;
     return this.selectTable;
   }
-
+  // estos datos los envía el mesero
   sendClientData(){
     // pasar la data a firestore
     const promise = new Promise((resolve) => {
@@ -72,12 +99,13 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
           clientName: this.clientName.value, 
           tableNumber: this.selectTable, 
           date: this.date,
-          hour: this.hour, 
+          inputHour: this.hour, 
           orderWaiter: this.pedidosMesero,
           shipped: true,
           prepared: false,
           served: false,
           total: this.orderTotal,
+          orderCanceled: false,
         })
       );
        this.Toast.fire({
@@ -91,9 +119,10 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
        this.router.navigate(['/carta']);
     });
   }
-
+  // estos datos los envía el cocinero
   markAsPrepared(order: any | object){
     if(order.prepared){
+      this.productService.updateWaiterOrder(order.docId, {...order,outputHour: this.hour});
       this.Toast.fire({
         icon: 'success',
         title: 'Orden actualizada.'

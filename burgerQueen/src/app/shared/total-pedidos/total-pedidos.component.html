@@ -58,7 +58,9 @@
                   (click)="changeOrderServed(order)">&#10003;</button>
               </td>
               <td class="btnOpciones">
-                <input type="button" class="cancelarBtn button" value="Cancelar">
+                <input type="button" class="circleBtn" value="Pagar" 
+                [ngClass]="{'cancelado': order.orderCanceled, 'no-cancelado': !order.orderCanceled}" 
+                (click)="cancelOrder(order)">
                 <input type="button" class="verPedidoBtn button" value="Ver pedido" (click)="sendOrderData(order)">
               
               </td>
