@@ -12,11 +12,35 @@ $color-rosa: #ff8087;
   // gap: 1rem;
 }
 
+.preparationTime{
+  width: 100%;
+  // background-color: $color-marron;
+  margin: 16px 0px;
+  height: 3em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-melon;
+
+  i{
+    color: $color-marron;
+    font-size: 24px;
+    margin: auto 10px;
+  }
+  p{
+    // color: white;
+    color: black;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+
 .datos {
   border: 1px solid $color-melon;
   justify-content: center;
 
-  .fecha {
+  .fechaYhora {
     padding: 0.5rem;
     margin: 1rem 0;
     width: 100%;

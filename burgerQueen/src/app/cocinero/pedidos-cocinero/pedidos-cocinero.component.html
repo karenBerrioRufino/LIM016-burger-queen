@@ -17,8 +17,12 @@
             </div>
           </td>
           <td>
-            <span><i class="fa-solid fa-clock clockIcon" [ngClass]="{'preparado':pedido.onePrepared ,'no-preparado':!pedido.onePrepared}" 
-              (click)="changeToPrepared(pedido)"></i></span>  
+            <div *ngIf="pedido.onePrepared; else noPrepared">
+              <span><i class="fa-solid fa-circle-check clockIcon preparado" (click)="changeToPrepared(pedido)"></i></span>
+            </div>
+            <ng-template #noPrepared>
+              <span><i class="fa-solid fa-clock clockIcon no-preparado" (click)="changeToPrepared(pedido)"></i></span>
+            </ng-template>
           </td>
         </tr>
       </table>

@@ -25,8 +25,8 @@ export class TotalPedidosComponent implements OnInit {
 
   changeOrderPrepared(order: any | object) {
     if (this.rolUser === 'Cocinero' || this.rolUser === 'Administrador') {
-      if(order.prepared == false) order.prepared = true;
-      else order.prepared = false;
+      if(order.fulltPrepared == false) order.fullyPrepared = true;
+      else order.fullypPrepared = false;
 
       this.productService.updateWaiterOrder(order.docId, order);
       this.subscribe.unsubscribe();

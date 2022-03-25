@@ -1,10 +1,15 @@
 <form class="datosPedido">
 
+  <div *ngIf="rolUser == 'Cocinero'" class="preparationTime">
+    <i class="fa-solid fa-stopwatch"></i>
+    <p>{{ preparationTime || order.preparationTime}}</p>
+  </div>
+
   <div class="datos">
-  
-  <div class="fecha" >
+
+  <div class="fechaYhora" >
     <div class="clock" *ngIf="rolUser !== 'Cocinero'; else fixTime">
-      <span> {{dia}} - {{fecha}}</span>     
+      <span> {{fecha}}, {{dia}} </span>     
       <div class="hours">
           <div class="horas">
               <span class="mishoras">{{hora}}:{{minutos}}:{{segundos}}</span>
@@ -14,7 +19,7 @@
   </div>
     <ng-template #fixTime >
       <!--Estos datos se guardan en firestore (para capturar la hora exacta)-->
-      <p>Datos del cliente</p>
+      <p>{{ order.inputHour }} - {{ order.date }}</p>
     </ng-template>
   </div>
 
@@ -64,7 +69,7 @@
   *ngIf="rolUser !== 'Cocinero'; else otherBtn" routerLinkActive="activebutton" >Enviar Orden</button>
 
   <ng-template #otherBtn>
-    <button class="btnEnviarOrden" (click)="markAsPrepared(order)">Orden Lista</button>
+    <button class="btnEnviarOrden" (click)="markAsPrepared(order)" [hidden]="order.preparationTime">Orden Lista</button>
   </ng-template>
 
 </form>

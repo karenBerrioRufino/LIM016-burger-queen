@@ -17,21 +17,23 @@ export class PedidosCocineroComponent implements OnInit {
   ngOnInit(): void {
     // order jala todo el documento(pedido completo). Esto es para pintar cada campo que se escoja
     this.order = this.productService.waiterOrder.getValue();
+    console.log(this.order);
     //se llama a orderWaiter que es un campo en el documento de firestore que se jala. Este pinta la lista completa
     this.pedidosCocinero = this.productService.waiterOrder.getValue().orderWaiter;
   }
 
-  changeToPrepared(order: any | object){
-    const index = this.pedidosCocinero.indexOf(order);
-
-    if(this.pedidosCocinero[index].onePrepared !== true) {
-      this.pedidosCocinero[index].onePrepared = true; 
-      this.productService.updateWaiterOrder(this.order.docId, this.order);
-    } else {
-      this.pedidosCocinero[index].onePrepared = false; 
-      this.productService.updateWaiterOrder(this.order.docId, this.order);
+  changeToPrepared(oneOrder: any | object){
+    if(!this.order.preparationTime){
+      const index = this.pedidosCocinero.indexOf(oneOrder);
+        if(this.pedidosCocinero[index].onePrepared !== true) {
+          this.pedidosCocinero[index].onePrepared = true; 
+          this.productService.updateWaiterOrder(this.order.docId, this.order);
+        } else {
+          this.pedidosCocinero[index].onePrepared = false; 
+          this.productService.updateWaiterOrder(this.order.docId, this.order);
+        }
+        this.verifyCompleteOrderStatus();
     }
-    this.verifyCompleteOrderStatus();
   }
 
   verifyCompleteOrderStatus(){
