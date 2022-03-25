@@ -8,43 +8,44 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class PedidosCocineroComponent implements OnInit {
 
-  pedidosCocinero: any[] = [];
-  // order es el objeto que se manda de totalPedidos
-  order: any = {};
+  orderList: any[] = [];
+
+  // completeOrder es el objeto con datos del pedido que se manda de TotalPedidos
+  completeOrder: any = {};
 
   constructor(private productService: ProductService){}
 
   ngOnInit(): void {
-    // order jala todo el documento(pedido completo). Esto es para pintar cada campo que se escoja
-    this.order = this.productService.waiterOrder.getValue();
-    console.log(this.order);
+    // completeOrder jala todo el documento(pedido completo). Esto es para pintar cada campo que se escoja
+    this.completeOrder = this.productService.waiterOrder.getValue();
+
     //se llama a orderWaiter que es un campo en el documento de firestore que se jala. Este pinta la lista completa
-    this.pedidosCocinero = this.productService.waiterOrder.getValue().orderWaiter;
+    this.orderList = this.productService.waiterOrder.getValue().orderWaiter;
   }
 
   changeToPrepared(oneOrder: any | object){
-    if(!this.order.preparationTime){
-      const index = this.pedidosCocinero.indexOf(oneOrder);
-        if(this.pedidosCocinero[index].onePrepared !== true) {
-          this.pedidosCocinero[index].onePrepared = true; 
-          this.productService.updateWaiterOrder(this.order.docId, this.order);
+    if(!this.completeOrder.preparationTime){
+      const index = this.orderList.indexOf(oneOrder);
+        if(this.orderList[index].onePrepared !== true) {
+          this.orderList[index].onePrepared = true; 
+          this.productService.updateWaiterOrder(this.completeOrder.docId, this.completeOrder);
         } else {
-          this.pedidosCocinero[index].onePrepared = false; 
-          this.productService.updateWaiterOrder(this.order.docId, this.order);
+          this.orderList[index].onePrepared = false; 
+          this.productService.updateWaiterOrder(this.completeOrder.docId, this.completeOrder);
         }
-        this.verifyCompleteOrderStatus();
+        this.verifyOrdersArePrepared();
     }
   }
 
-  verifyCompleteOrderStatus(){
-    const isAllCompleted = this.order.orderWaiter.every((e: any | object) => e.onePrepared == true);
+  verifyOrdersArePrepared(){
+    const isAllPrepared = this.completeOrder.orderWaiter.every((oneOrder: any | object) => oneOrder.onePrepared == true);
 
-    if(isAllCompleted){
-      this.order.prepared = true;
-      this.productService.updateWaiterOrder(this.order.docId, this.order);
+    if(isAllPrepared){
+      this.completeOrder.prepared = true;
+      this.productService.updateWaiterOrder(this.completeOrder.docId, this.completeOrder);
     } else {
-      this.order.prepared = false;
-      this.productService.updateWaiterOrder(this.order.docId, this.order);
+      this.completeOrder.prepared = false;
+      this.productService.updateWaiterOrder(this.completeOrder.docId, this.completeOrder);
     }
   }
 }

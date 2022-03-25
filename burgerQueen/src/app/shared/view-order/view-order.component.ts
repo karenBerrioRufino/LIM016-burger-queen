@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
-import { StorageService } from 'src/app/services/storage.service';
 
 
 @Component({
@@ -11,8 +9,8 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./view-order.component.scss']
 })
 export class ViewOrderComponent implements OnInit {
-  listOfOrder: any[] = [];
-  order: any = {};
+  orderList: any[] = [];
+  completeOrder: any = {};
 
   total$: BehaviorSubject<number>;
   constructor(private productService: ProductService) { 
@@ -20,16 +18,16 @@ export class ViewOrderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // order jala todo el documento. Esto es para pintar cada campo que se escoja
-    this.order = this.productService.showOrder.getValue();
+    // completeOrder jala todo el documento. Esto es para pintar cada campo que se escoja
+    this.completeOrder = this.productService.showOrder.getValue();
     //se llama a orderWaiter que es un campo en el documento de firestore que se jala. Este pinta la lista completa
     //Para jalar datos del firestore
-    this.listOfOrder = this.productService.showOrder.getValue().orderWaiter;
+    this.orderList = this.productService.showOrder.getValue().orderWaiter;
   }
 
   orderDelete(list: object){
-    const indexOfpedido = this.listOfOrder.indexOf(list);
-    this.listOfOrder.splice(indexOfpedido, 1);
+    const indexOfpedido = this.orderList.indexOf(list);
+    this.orderList.splice(indexOfpedido, 1);
     this.calculateAndSendTotal();
   }
   downQuantity(list: any){
@@ -56,8 +54,8 @@ export class ViewOrderComponent implements OnInit {
 
   calculateAndSendTotal(){
     let total = 0;
-    if(this.listOfOrder !== null){
-      this.listOfOrder.forEach( (list) => total += list.subtotal);
+    if(this.orderList !== null){
+      this.orderList.forEach( (list) => total += list.subtotal);
       this.total$.next(total);
     }
     return total;

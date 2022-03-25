@@ -7,22 +7,22 @@
         <hr>
       </div>
       <table class="listaPedidos">
-        <tr *ngFor="let list of listOfOrder">
-          <td><button key=index; (click)="orderDelete(list)">x</button></td>
-          <td><img src="{{list.img}}"></td>
+        <tr *ngFor="let oneOrder of orderList">
+          <td><button key=index; (click)="orderDelete(oneOrder)">x</button></td>
+          <td><img src="{{oneOrder.img}}"></td>
           <td>
             <div class="p">
-              <p>{{ list.name }}</p>
-              <P>{{list.price | currency:'PEN':'S/'}}</P>
+              <p>{{ oneOrder.name }}</p>
+              <P>{{oneOrder.price | currency:'PEN':'S/'}}</P>
             </div>
           </td>
           <td>
             <div class="divBtn">
-              <button (click)="downQuantity(list)">-</button>
-              <input type="number" value="{{ list.quantity }}" id="{{ list.id }}">
-              <button (click)="upQuantity(list)">+</button>
+              <button (click)="downQuantity(oneOrder)">-</button>
+              <input type="number" value="{{ oneOrder.quantity }}" id="{{ oneOrder.id }}">
+              <button (click)="upQuantity(oneOrder)">+</button>
             </div>
-            <h4 class="subtotal">{{ list.subtotal | currency:'PEN':'S/' }}</h4>
+            <h4 class="subtotal">{{ oneOrder.subtotal | currency:'PEN':'S/' }}</h4>
           </td>
         </tr>
       </table>

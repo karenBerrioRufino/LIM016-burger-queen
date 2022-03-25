@@ -2,7 +2,7 @@
 
   <div *ngIf="rolUser == 'Cocinero'" class="preparationTime">
     <i class="fa-solid fa-stopwatch"></i>
-    <p>{{ preparationTime || order.preparationTime}}</p>
+    <p>{{ preparationTime || completeOrder.preparationTime}}</p>
   </div>
 
   <div class="datos">
@@ -19,7 +19,7 @@
   </div>
     <ng-template #fixTime >
       <!--Estos datos se guardan en firestore (para capturar la hora exacta)-->
-      <p>{{ order.inputHour }} - {{ order.date }}</p>
+      <p>{{ completeOrder.inputHour }} - {{ completeOrder.date }}</p>
     </ng-template>
   </div>
 
@@ -28,7 +28,7 @@
 
     <input type="text" class="cliente" [formControl]="clientName" *ngIf="rolUser !== 'Cocinero'; else fixClientName">
     <ng-template #fixClientName >
-      <input type="text" class="cliente" value="{{ order.clientName }}" disabled>
+      <input type="text" class="cliente" value="{{ completeOrder.clientName }}" disabled>
     </ng-template>
   </div>
 
@@ -51,7 +51,7 @@
     </select>
 
     <ng-template #fixTableNumber >
-      <input type="text" class="cliente" value="{{ order.tableNumber }}" disabled>
+      <input type="text" class="cliente" value="{{ completeOrder.tableNumber }}" disabled>
     </ng-template>
   </div>
 
@@ -61,7 +61,7 @@
     <p>Total</p>
     <p class="precio" *ngIf="rolUser !== 'Cocinero'; else fixTotal">{{ orderTotal | currency:'PEN':'S/' }}</p>
     <ng-template #fixTotal >
-      <p class="precio">{{ order.total | currency:'PEN':'S/' }}</p>
+      <p class="precio">{{ completeOrder.total | currency:'PEN':'S/' }}</p>
     </ng-template>
   </div>
 
@@ -69,7 +69,7 @@
   *ngIf="rolUser !== 'Cocinero'; else otherBtn" routerLinkActive="activebutton" >Enviar Orden</button>
 
   <ng-template #otherBtn>
-    <button class="btnEnviarOrden" (click)="markAsPrepared(order)" [hidden]="order.preparationTime">Orden Lista</button>
+    <button class="btnEnviarOrden" (click)="markAsPrepared(completeOrder)" [hidden]="completeOrder.preparationTime">Orden Lista</button>
   </ng-template>
 
 </form>

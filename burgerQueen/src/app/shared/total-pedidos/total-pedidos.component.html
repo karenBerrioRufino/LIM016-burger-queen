@@ -41,7 +41,7 @@
           </thead>
           
           <tbody>
-            <tr *ngFor="let order of orders">
+            <tr *ngFor="let order of completeOrderList">
               <td>{{ order.tableNumber }}</td>
               <td>{{ order.clientName }}</td>
               <td>{{ order.total | currency:'PEN':'S/'}}</td>

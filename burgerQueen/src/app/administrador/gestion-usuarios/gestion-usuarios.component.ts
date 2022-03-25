@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { RegisterUsers } from '../models/registerUsers';
+
 import { createUsersService } from '../../../app/services/create-users.service';
 import { AuthService } from 'src/app/services/auth.service';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,14 +17,14 @@ import Swal from 'sweetalert2';
 })
 
 export class GestionUsuariosComponent implements OnInit {
-  
+
   form: FormGroup;
   titulo = "Agregar usuario";
-  
+
   id: string | undefined;
 
   usuarios: Observable<any[]>;
-  listarUsuarios: RegisterUsers[]=[];
+  listarUsuarios: RegisterUsers[] = [];
 
   Toast = Swal.mixin({
     toast: true,
@@ -34,54 +37,55 @@ export class GestionUsuariosComponent implements OnInit {
       toast.addEventListener('mouseleave', Swal.resumeTimer)
     }
   })
-  
+
   constructor(
     private fb: FormBuilder,
     private _userService: createUsersService,
-    private authService:AuthService,
+    private authService: AuthService,
     firestore: AngularFirestore,
   ) {
     this.usuarios = firestore.collection('usuarios').valueChanges();
 
-    this.form = this.fb.group ({
-      nombres:['',Validators.required],
-      apellidoPaterno:['',Validators.required],
-      apellidoMaterno:['',Validators.required],
-      dni:['',[Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
-      telefono:['',[Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
-      estado:['',Validators.required],
-      rol:['',Validators.required],
-      correo:['', Validators.required],
-      password:['',Validators.required],
+    this.form = this.fb.group({
+      nombres: ['', Validators.required],
+      apellidoPaterno: ['', Validators.required],
+      apellidoMaterno: ['', Validators.required],
+      dni: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
+      telefono: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+      estado: ['', Validators.required],
+      rol: ['', Validators.required],
+      correo: ['', Validators.required],
+      password: ['', Validators.required],
     })
   }
 
   ngOnInit(): void {
-    this._userService.getUserEdit().subscribe(data=>{
-      this.id =data.id;
-      this.titulo="editar usuario";
+    this._userService.getUserEdit().subscribe(data => {
+      this.id = data.id;
+      this.titulo = "editar usuario";
       this.form.patchValue({
-        nombres:data.nombres,
-        apellidoPaterno:data.apellidoPaterno,
-        apellidoMaterno:data.apellidoMaterno,
-        dni:data.dni,
-        telefono:data.telefono,
-        estado:data.estado,
-        rol:data.rol,
-        correo:data.correo,
-        password:data.password,
+        nombres: data.nombres,
+        apellidoPaterno: data.apellidoPaterno,
+        apellidoMaterno: data.apellidoMaterno,
+        dni: data.dni,
+        telefono: data.telefono,
+        estado: data.estado,
+        rol: data.rol,
+        correo: data.correo,
+        password: data.password,
       })
     })
-    this.obtenerUsuarios();
+    this.getUserList();
   }
 
-  btnCerrar(){
-    let modal:any = document.getElementById('btnModal');
-    modal.style.display='none';
+  btnClose() {
+    let modal: any = document.getElementById('btnModal');
+    modal.style.display = 'none';
     this.form.reset();
-    this.titulo="agregar usuario";
+    this.titulo = "agregar usuario";
   }
-  seePass(){
+
+  seePassword() {
     const passLogin = document.querySelector('#passLogin') as HTMLInputElement
     const icon = document.querySelector('i') as HTMLElement
     if (passLogin.type === 'password') {
@@ -96,39 +100,46 @@ export class GestionUsuariosComponent implements OnInit {
       icon.classList.remove('fa-eye');
     }
   }
-  guardarUsuario() {
+
+  saveOrEditUser() {
     console.log(this.form);
     console.log(this.form.value.correo);
     console.log('clic en boton guardar usuario');
-    let modal:any = document.getElementById('btnModal');
-    this.titulo="agregar usuario";
-    if(this.id === undefined) {
+    let modal: any = document.getElementById('btnModal');
+    this.titulo = "agregar usuario";
+    if (this.id === undefined) {
       // Creamos una nuevo usuario
-      this.agregarUsuario();
-      modal.style.display='none';
+      this.saveUser();
+      modal.style.display = 'none';
     } else {
       // Editamos un usuario
-      this.editarUsuario(this.id);
-      modal.style.display='none';
+      this.editUser(this.id);
+      modal.style.display = 'none';
       this.form.reset();
     }
   }
 
-  editarUsuario(id: string) {
+  editUserBtn(usuario: RegisterUsers) {
+    let modal: any = document.getElementById('btnModal');
+    modal.style.display = 'block';
+    this._userService.addUserEdit(usuario);
+  }
+
+  editUser(id: string) {
     const USUARIO: any = {
       nombres: this.form.value.nombres,
       apellidoPaterno: this.form.value.apellidoPaterno,
       apellidoMaterno: this.form.value.apellidoMaterno,
-      dni:this.form.value.dni,
-      telefono:this.form.value.telefono,
-      estado:this.form.value.estado,
-      rol:this.form.value.rol,
+      dni: this.form.value.dni,
+      telefono: this.form.value.telefono,
+      estado: this.form.value.estado,
+      rol: this.form.value.rol,
       correo: this.form.value.correo,
       password: this.form.value.password,
       fechaActualizacion: new Date(),
     }
-    
-    this._userService.editarUsuario(id, USUARIO).then(() =>{
+
+    this._userService.editarUsuario(id, USUARIO).then(() => {
       this.id = undefined;
       console.log('El usuario fue actualizada con exito!', 'Registro Actualizado');
       this.Toast.fire({
@@ -141,14 +152,14 @@ export class GestionUsuariosComponent implements OnInit {
     })
   }
 
-  agregarUsuario(){
-    const USUARIO: RegisterUsers | any= {
-      dni:this.form.value.dni,
+  saveUser() {
+    const USUARIO: RegisterUsers | any = {
+      dni: this.form.value.dni,
       nombres: this.form.value.nombres,
       apellidoPaterno: this.form.value.apellidoPaterno,
       apellidoMaterno: this.form.value.apellidoMaterno,
       telefono: this.form.value.telefono,
-      estado:this.form.value.estado,
+      estado: this.form.value.estado,
       rol: this.form.value.rol,
       correo: this.form.value.correo,
       password: this.form.value.password,
@@ -156,22 +167,22 @@ export class GestionUsuariosComponent implements OnInit {
       fechaActualizacion: new Date(),
     }
 
-     //para crear un usuario por pirmera vez
-    const {correo, password} = USUARIO;
+    //para crear un usuario por pirmera vez
+    const { correo, password } = USUARIO;
     this.authService.register(correo, password).then(registered => {
       delete USUARIO.password;
-      console.log(registered); 
+      console.log(registered);
       // trae los datos de quien se registra por primera vez
       // uid es el id de quien se registra por primera vez y aparece en el auth
-      this._userService.saveUser(USUARIO, registered?.user?.uid).then(()=>{
+      this._userService.saveUser(USUARIO, registered?.user?.uid).then(() => {
         console.log('Usuario registrado');
         this.Toast.fire({
           icon: 'success',
           title: 'Usuario regitrado.',
         })
         this.form.reset();
-      },error => {
-        console.log('Opps.. ocurrio un error',error);
+      }, error => {
+        console.log('Opps.. ocurrio un error', error);
         this.Toast.fire({
           icon: 'error',
           title: 'Opps.. ocurrio un error.',
@@ -180,12 +191,12 @@ export class GestionUsuariosComponent implements OnInit {
     });
   }
 
-  obtenerUsuarios(){
-    this._userService.getUsers().subscribe(doc=>{
-      this.listarUsuarios=[];
+  getUserList() {
+    this._userService.getUsers().subscribe(doc => {
+      this.listarUsuarios = [];
       doc.forEach((element: any) => {
         this.listarUsuarios.push({
-          id:element.payload.doc.id,
+          id: element.payload.doc.id,
           ...element.payload.doc.data()
         });
       });
@@ -193,7 +204,7 @@ export class GestionUsuariosComponent implements OnInit {
     })
   }
 
-  eliminarUsuario(id: any){
+  deleteUser(id: any) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -201,7 +212,7 @@ export class GestionUsuariosComponent implements OnInit {
       },
       buttonsStyling: false
     })
-    
+
     swalWithBootstrapButtons.fire({
       title: '¿Está seguro que desea eliminarlo?',
       text: "¡No podrás revertirlo!",
@@ -217,26 +228,19 @@ export class GestionUsuariosComponent implements OnInit {
           'Este usuario a sido eliminado',
           'success'
         )
-        this._userService.deleteUser(id).then((res)=>{
-          console.log('Registro eliminado con exito',res);
-        },error=>{
+        this._userService.deleteUser(id).then((res) => {
+          console.log('Registro eliminado con exito', res);
+        }, error => {
           console.log(error);
         })
-      } else if ( result.dismiss === Swal.DismissReason.cancel ) {
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
         swalWithBootstrapButtons.fire(
           'Cancelado',
           'Tu registro está a salvo :)',
           'error'
         )
       }
-    })  
-  }
-
-  editarUsuarioBtn(usuario:RegisterUsers){
-    console.log('Clic en el boton editar para editar');
-    let modal:any = document.getElementById('btnModal');
-    modal.style.display='block';
-    this._userService.addUserEdit(usuario);
+    })
   }
 }
 

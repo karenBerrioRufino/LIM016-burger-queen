@@ -41,8 +41,4 @@ export class ProductService {
   updateWaiterOrder(docId: string, newOrder: any | object){
     return this.firestore.collection('pedidos').doc(docId).update(newOrder);
   }
-
-/*   getWaiterOrder(): BehaviorSubject<any> {
-    return this.waiterOrder;
-  } */
 }
