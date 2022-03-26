@@ -2,7 +2,7 @@
 
   <div *ngIf="rolUser == 'Cocinero'" class="preparationTime">
     <i class="fa-solid fa-stopwatch"></i>
-    <p>{{ preparationTime || completeOrder.preparationTime}}</p>
+    <p>{{ preparationTime || completeOrderToShow.preparationTime}}</p>
   </div>
 
   <div class="datos">
@@ -19,17 +19,19 @@
       </div>
       <ng-template #fixTime>
         <!--Estos datos se guardan en firestore (para capturar la hora exacta)-->
-        <p>{{ completeOrder.inputHour }} - {{ completeOrder.date }}</p>
+        <p>{{ completeOrderToShow.inputHour }} - {{ completeOrderToShow.date }}</p>
       </ng-template>
     </div>
 
     <div class="seccionCliente">
       <p>Cliente: </p>
 
-      <input type="text" class="cliente" [formControl]="clientName" *ngIf="rolUser !== 'Cocinero'; else fixClientName">
-      <ng-template #fixClientName>
-        <input type="text" class="cliente" value="{{ completeOrder.clientName }}" disabled>
-      </ng-template>
+       <!--crear pedido-->
+      <input type="text" class="cliente" *ngIf="rolUser !== 'Cocinero' && !isEditable$" [formControl]="clientName">
+      <!--actualizar pedido-->
+      <input type="text" class="cliente" *ngIf="rolUser !== 'Cocinero' && isEditable$" [formControl]="clientName" value="{{ completeOrderToEdit.clientName }}">
+      <!--preparar pedido-->
+      <input type="text" class="cliente" *ngIf="rolUser == 'Cocinero'" value="{{ completeOrderToShow.clientName }}" disabled>
     </div>
 
     <div class="seccionMesa">
@@ -52,7 +54,7 @@
       </select>
 
       <ng-template #fixTableNumber>
-        <input type="text" class="cliente" value="{{ completeOrder.tableNumber }}" disabled>
+        <input type="text" class="cliente" value="{{ completeOrderToShow.tableNumber }}" disabled>
       </ng-template>
     </div>
 
@@ -60,18 +62,14 @@
 
   <div class="costoPedido">
     <p>Total</p>
-    <p class="precio" *ngIf="rolUser !== 'Cocinero'; else fixTotal">{{ orderTotal | currency:'PEN':'S/' }}</p>
-    <ng-template #fixTotal>
-      <p class="precio">{{ completeOrder.total | currency:'PEN':'S/' }}</p>
-    </ng-template>
+
+    <p class="precio" *ngIf="rolUser !== 'Cocinero' && !isEditable$">{{ orderTotal | currency:'PEN':'S/' }}</p>
+    <p class="precio" *ngIf="rolUser !== 'Cocinero' && isEditable$">{{ orderTotalToEdit | currency:'PEN':'S/' }}</p>
+    <p class="precio" *ngIf="rolUser == 'Cocinero'">{{ completeOrderToShow.total | currency:'PEN':'S/' }}</p>
   </div>
 
-  <button type="button" class="btnEnviarOrden" (click)="sendClientData()" routerLink="/totalPedidosMesero"
-    *ngIf="rolUser !== 'Cocinero'; else otherBtn" routerLinkActive="activebutton">Enviar Orden</button>
-
-  <ng-template #otherBtn>
-    <button class="btnEnviarOrden" (click)="markAsPrepared(completeOrder)"
-      [hidden]="completeOrder.preparationTime">Orden Lista</button>
-  </ng-template>
+  <button type="button" class="btnEnviarOrden" *ngIf="rolUser !== 'Cocinero' && !isEditable$" (click)="sendClientData()" routerLink="/totalPedidos">Enviar Orden</button>
+  <button type="button" class="btnEnviarOrden"  *ngIf="rolUser !== 'Cocinero' && isEditable$" (click)="updateEditedOrder()" routerLink="/totalPedidos">Actualizar Orden</button>
+  <button class="btnEnviarOrden" *ngIf="rolUser == 'Cocinero'" (click)="markAsPrepared(completeOrderToShow)"[hidden]="completeOrderToShow.preparationTime">Orden Lista</button>
 
 </form>

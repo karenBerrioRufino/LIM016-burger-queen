@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 export class PedidosMeseroComponent implements OnInit {
 
   total$: BehaviorSubject<number>;
-  pedidosMesero: any[] = [];
+  orderList: any[] = [];
 
   constructor(
     public productService: ProductService,
@@ -23,7 +23,9 @@ export class PedidosMeseroComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pedidosMesero = this.storageService.get('orderList');
+    this.productService.isEditable.next(false);
+
+    this.orderList = this.storageService.get('orderList');
     this.calculateAndSendTotal();
   }
 
@@ -52,9 +54,9 @@ export class PedidosMeseroComponent implements OnInit {
             'Este pedido a sido eliminado',
             'success'
           )
-          const indexOfpedido = this.pedidosMesero.indexOf(pedido);
-          this.pedidosMesero.splice(indexOfpedido, 1);
-          this.storageService.set('orderList', this.pedidosMesero);
+          const indexOfpedido = this.orderList.indexOf(pedido);
+          this.orderList.splice(indexOfpedido, 1);
+          this.storageService.set('orderList', this.orderList);
           this.calculateAndSendTotal();
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
@@ -72,7 +74,7 @@ export class PedidosMeseroComponent implements OnInit {
     pedidoData.quantity++
     quantityInput.setAttribute('value', pedidoData.quantity.toString());
     pedidoData.subtotal = pedidoData.quantity * pedidoData.price;
-    this.storageService.set('orderList', this.pedidosMesero);
+    this.storageService.set('orderList', this.orderList);
 
     this.calculateAndSendTotal();
   }
@@ -86,15 +88,15 @@ export class PedidosMeseroComponent implements OnInit {
       pedidoData.quantity--;
       quantityInput.setAttribute('value', pedidoData.quantity.toString());
       pedidoData.subtotal = pedidoData.quantity * pedidoData.price;
-      this.storageService.set('orderList', this.pedidosMesero);
+      this.storageService.set('orderList', this.orderList);
       this.calculateAndSendTotal();
     }
   }
 
   calculateAndSendTotal() {
     let total = 0;
-    if (this.pedidosMesero !== null) {
-      this.pedidosMesero.forEach(pedido => total += pedido.subtotal);
+    if (this.orderList !== null) {
+      this.orderList.forEach(pedido => total += pedido.subtotal);
       this.total$.next(total);
     }
     return total;

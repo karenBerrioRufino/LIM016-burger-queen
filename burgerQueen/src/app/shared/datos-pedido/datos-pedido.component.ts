@@ -34,16 +34,23 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
 
   preparationTime: string = '';
 
-  clientName = new FormControl('');
+  clientName: any = new FormControl('');
 
-  numberOfTable: string = "Escoge una mesa";
+  numberOfTable: string = "";
   selectTable?: string = "";
 
   orderList: any[] = [];
-  completeOrder: object | any = {};
+  completeOrderToShow: object | any = {};
+  completeOrderToEdit: object | any = {};
 
   total$: BehaviorSubject<number>;
   orderTotal: number = 0;
+
+  totalToEdit$: BehaviorSubject<number>;
+  orderTotalToEdit: number = 0;
+
+  isEditable$: boolean = false;
+  editedOrder$: any | object = {};
 
   rolUser: string = '';
 
@@ -70,14 +77,24 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
     this.total$.subscribe(value => {
       this.orderTotal = value;
     });
+
+    this.totalToEdit$ = this.productService.getTotalOfOrderToEdit();
+    this.totalToEdit$.subscribe(value => {
+      this.orderTotalToEdit = value;
+    });
   }
 
   ngOnInit(): void {
     // rol del usuario actual
     this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
+    
+    // obteniendo datos del pedido a editar por el mesero
+    this.isEditable$ = this.productService.isEditable.getValue();
+    console.log(this.isEditable$);
+    this.completeOrderToEdit = this.productService.showOrder.getValue();
 
     // obteniendo los datos completos de la orden(enviados desde TotalPedidos) que el cocinero quiere ver
-    this.completeOrder = this.productService.waiterOrder.getValue();
+    this.completeOrderToShow = this.productService.waiterOrder.getValue();
 
     // reloj para mesero
     this.datos$ = this.clock.getInfoReloj();
@@ -91,15 +108,28 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
     });
 
     // mensaje del contador de tiempo del cocinero
-    if(!this.completeOrder.preparationTime){
+    if(!this.completeOrderToShow.preparationTime){
       this.preparationTime = 'Contando...';
+    }
+
+    // definiendo mensaje por default(crear orden) o número de mesa(editar orden) para mesero
+    if(this.rolUser !== "Cocinero" && !this.isEditable$){
+      this.numberOfTable = "Escoge una mesa";
+    } else if (this.rolUser !== "Cocinero" && this.isEditable$) {
+      this.numberOfTable = this.completeOrderToEdit.tableNumber;
+    }
+
+    // definiendo mensaje por default(crear orden) o nombre del cliente(editar orden) para mesero
+    if(this.rolUser !== "Cocinero" && !this.isEditable$){
+      this.clientName.value = "";
+    } else if (this.rolUser !== "Cocinero" && this.isEditable$) {
+      this.clientName.value = this.completeOrderToEdit.clientName;
     }
   }
 
   // obteniendo el array pedidos hechos en localStorage('orderList') para enviarlos a Firebase
   ngAfterViewInit(): void {
     this.orderList = this.storageService.get('orderList');
-    console.log(this.orderList);
   }
 
   getNumberOfTable() {
@@ -137,6 +167,20 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
     });
   }
 
+  updateEditedOrder(){
+    this.editedOrder$ = this.productService.editedOrder.getValue();
+    this.editedOrder$.clientName = this.clientName.value;
+    let editedTableNumber;
+    if(this.selectTable === ""){
+      editedTableNumber = this.completeOrderToEdit.tableNumber;
+    } else {
+      editedTableNumber = this.selectTable;
+    }
+    this.editedOrder$.tableNumber = editedTableNumber;
+    this.editedOrder$.total = this.orderTotalToEdit;
+    this.productService.updateWaiterOrder(this.editedOrder$.docId, {...this.editedOrder$, editDate: this.date, editInputHour: this.hour})
+    this.productService.isEditable.next(false);
+  }
 
   // actualizaciones de estado del pedido que hace el cocinero
   markAsPrepared(order: any | object) {

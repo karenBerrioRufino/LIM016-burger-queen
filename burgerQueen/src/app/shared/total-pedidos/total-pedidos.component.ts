@@ -70,8 +70,9 @@ export class TotalPedidosComponent implements OnInit {
   sendOrderData(order: any | object) {
     if (this.rolUser !== 'Cocinero') {
       // para la vista de mesero y administrador
-      this.router.navigate(['/viewOrder']);
       this.productService.showOrder.next(order);
+      this.productService.isEditable.next(true);
+      this.router.navigate(['/viewOrder']);
     }
     else {
       // para la vista de cocinero
