@@ -23,7 +23,7 @@ export class CartaOpcionesComponent implements OnInit {
   typeName?: string = "";
 
   originalPrice: number = 0;
-  orders: any[] = [];
+  orderList: any[] = [];
 
   constructor(public productService: ProductService, private storageService: StorageService, private router: Router) { }
 
@@ -36,29 +36,29 @@ export class CartaOpcionesComponent implements OnInit {
 
     this.originalPrice = this.productService.disparador.getValue().price;
 
-    let ordersList: any = this.storageService.get('ordersList');
-    if(ordersList){
-      // iguala el array con los datos que jala del storage. Sobre el array que existe, irá agregando los objetos
-      this.orders = ordersList;       
+    let orderListStorage: any = this.storageService.get('orderList');
+    // iguala el array con los datos que jala del storage. Sobre el array que existe, irá agregando los objetos
+    if (orderListStorage) {
+      this.orderList = orderListStorage;
     }
   }
 
   // Obtener el valor de tipo de hamburguesa seleccionada
-  getTypeSelectValue(){
+  getTypeSelectValue() {
     this.typeName = this.typeSelectValue;
     return this.typeName;
   }
 
   // Calcular el monto del subtotal
-  calculateSubtotal(){
+  calculateSubtotal() {
     this.aditionalName = this.aditionalSelectValue;
 
-    if(this.aditionalName === 'Huevo' || this.aditionalName === 'Queso'){
+    if (this.aditionalName === 'Huevo' || this.aditionalName === 'Queso') {
       this.priceHamburger = this.originalPrice;
       this.priceHamburger = this.priceHamburger + 1;
-    } 
+    }
 
-    if(this.aditionalName == 'Huevo y queso'){
+    if (this.aditionalName == 'Huevo y queso') {
       this.priceHamburger = this.originalPrice;
       this.priceHamburger = this.priceHamburger + 2;
     }
@@ -66,9 +66,9 @@ export class CartaOpcionesComponent implements OnInit {
     return this.priceHamburger;
   }
 
-  changeHamburgerName(){
+  changeHamburgerName() {
     let hamburgerName = "";
-    if(this.aditionalName === ""){
+    if (this.aditionalName === "") {
       hamburgerName = `${this.titleHamburger} de tipo ${this.typeName}`;
     } else {
       hamburgerName = `${this.titleHamburger} de tipo ${this.typeName} con ${this.aditionalName}`
@@ -76,9 +76,9 @@ export class CartaOpcionesComponent implements OnInit {
     return hamburgerName;
   }
 
-  changeHamburgerId(){
+  changeHamburgerId() {
     let hamburgerId = this.productService.disparador.getValue().id;
-    switch(this.typeName){
+    switch (this.typeName) {
       case "Carne":
         hamburgerId = hamburgerId + "-CAR";
         break;
@@ -93,7 +93,7 @@ export class CartaOpcionesComponent implements OnInit {
         break;
     }
 
-    switch(this.aditionalName){
+    switch (this.aditionalName) {
       case "Huevo":
         hamburgerId = hamburgerId + "-HUE";
         break;
@@ -111,7 +111,7 @@ export class CartaOpcionesComponent implements OnInit {
     return hamburgerId;
   }
 
-  sendHamburgerOrder(){
+  sendHamburgerOrder() {
     const hamburger = {
       category: this.productService.disparador.getValue().category,
       name: this.changeHamburgerName(),
@@ -122,15 +122,15 @@ export class CartaOpcionesComponent implements OnInit {
       subtotal: this.priceHamburger,
     };
 
-    const wasOrdered = this.orders.some(order => order.id === hamburger.id);
-    if(!wasOrdered){
-      this.orders.push(hamburger);
-      this.storageService.set('ordersList', this.orders);
+    const wasOrdered = this.orderList.some(order => order.id === hamburger.id);
+    if (!wasOrdered) {
+      this.orderList.push(hamburger);
+      this.storageService.set('orderList', this.orderList);
     }
   }
 
   // Cerrar la vista de opciones y volver a la carta
-  close(){
+  close() {
     this.router.navigate(['./carta'])
   }
 }

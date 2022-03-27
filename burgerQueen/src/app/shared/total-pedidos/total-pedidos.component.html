@@ -41,7 +41,7 @@
           </thead>
           
           <tbody>
-            <tr *ngFor="let order of orders">
+            <tr *ngFor="let order of completeOrderList">
               <td>{{ order.tableNumber }}</td>
               <td>{{ order.clientName }}</td>
               <td>{{ order.total | currency:'PEN':'S/'}}</td>
@@ -51,18 +51,17 @@
               </td>
               <td>
                 <button class="circleBtn" 
-                [ngClass]="{'preparado':order.prepared ,'no-preparado':!order.prepared}">&#10003;</button>
+                [ngClass]="{'preparado':order.preparationTime ,'no-preparado':!order.preparationTime}">&#10003;</button>
               </td>
               <td>
                 <button class="circleBtn" [ngClass]="{'entregado':order.served,'no-entregado':!order.served}"
                   (click)="changeOrderServed(order)">&#10003;</button>
               </td>
               <td class="btnOpciones">
-                <input type="button" class="circleBtn" value="Pagar" 
+                <input type="button" class="button" value="Pagar" 
                 [ngClass]="{'cancelado': order.orderCanceled, 'no-cancelado': !order.orderCanceled}" 
                 (click)="cancelOrder(order)">
                 <input type="button" class="verPedidoBtn button" value="Ver pedido" (click)="sendOrderData(order)">
-              
               </td>
             </tr>
           </tbody>
