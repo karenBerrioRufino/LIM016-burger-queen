@@ -4,16 +4,18 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { DatosPedidoComponent } from './datos-pedido/datos-pedido.component';
-import { TotalPedidosMeseroComponent } from '../mesero/total-pedidos-mesero/total-pedidos-mesero.component';
-
+import { TotalPedidosComponent } from './total-pedidos/total-pedidos.component';
+import { ViewOrderComponent } from './view-order/view-order.component';
 
 const routes: Routes = [
   {
     path: 'pageNotFound', component: PageNotFoundComponent
   },
   {
-    path: 'totalMesero', component: TotalPedidosMeseroComponent
+    path: 'totalPedidos', component: TotalPedidosComponent
+  },
+  {
+    path: 'viewOrder', component: ViewOrderComponent
   }
 ]
 
@@ -21,6 +23,12 @@ const routes: Routes = [
   declarations: [],
   imports: [
     CommonModule,
+    RouterModule.forChild( routes )
+  ],
+  exports: [
+    RouterModule
   ]
 })
+
 export class SharedRoutingModule { }
+

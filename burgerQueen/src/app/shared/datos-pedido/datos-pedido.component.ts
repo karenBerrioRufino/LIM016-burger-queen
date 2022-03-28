@@ -62,6 +62,7 @@ export class DatosPedidoComponent implements OnInit {
     // pasar la data a firestore
     const promise = new Promise((resolve) => {
       this.pedidosMesero = this.storageService.get('ordersList');
+    
       resolve(
       this.productService.createOrder({
         clientName: this.clientName.value, 

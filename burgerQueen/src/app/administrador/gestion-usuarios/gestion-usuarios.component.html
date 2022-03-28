@@ -6,7 +6,7 @@
       <h5>Agregar</h5>
       <i class="fa-solid fa-circle-plus"></i>
     </button>
-  
+    <!-- Listando usuarios -->
     <div class="listarUsuario">
       <table [class]="'table'">
         <thead>
@@ -38,7 +38,7 @@
         </tbody>
       </table>
     </div>
-  
+    <!-- Modal para la creación de usuarios -->
     <div class="modal" id="btnModal">
       <div class="modal-content">
         <header class="header-container">
@@ -50,19 +50,41 @@
             <div class="column">
               <div [class]="['column1']">
                 <label for="">Nombres</label>
-                <input [class.valido]="this.form.get('nombres')?.valid" [class.invalido]="this.form.get('nombres')?.invalid && this.form.get('nombres')?.touched" type="text" name="" formControlName="nombres" placeholder="Pedro Julian"> 
+                <input [class.valido]="this.form.get('nombres')?.valid" [class.invalido]="this.form.get('nombres')?.invalid && this.form.get('nombres')?.touched" type="text" formControlName="nombres" placeholder="Pedro Julian"> 
+                <p>
+                  <span class="error" *ngIf="this.form.get('nombres')?.errors?.['required']">El campo es requerido</span>
+                  <span class="error" *ngIf="this.form.get('nombres')?.errors?.['minlength']"> Debe tener como mínimo 3 caracteres.</span>
+                </p>
                 
                 <label for="">Apellido Paterno</label>
                 <input [class.valido]="this.form.get('apellidoPaterno')?.valid" [class.invalido]="this.form.get('apellidoPaterno')?.invalid && this.form.get('apellidoPaterno')?.touched" type="text" formControlName="apellidoPaterno" placeholder="Flores">
+                <p>
+                  <span class="error" *ngIf="this.form.get('apellidoPaterno')?.errors?.['required']">El campo es requerido.</span>
+                  <span class="error" *ngIf="this.form.get('apellidoPaterno')?.errors?.['minlength']"> Debe tener como mínimo 3 caracteres.</span>
+                </p>
 
                 <label for="">Apellido Materno</label>
                 <input [class.valido]="this.form.get('apellidoMaterno')?.valid" [class.invalido]="this.form.get('apellidoMaterno')?.invalid && this.form.get('apellidoMaterno')?.touched" type="text" formControlName="apellidoMaterno" placeholder="Ricse">
+                <p>
+                  <span class="error" *ngIf="this.form.get('apellidoMaterno')?.errors?.['required']">El campo es requerido.</span>
+                  <span class="error" *ngIf="this.form.get('apellidoMaterno')?.errors?.['minlength']"> Debe tener como mínimo 3 caracteres.</span>
+                </p>
 
-                <label for="">Documento Nacional de Identidad</label>
-                <input [class.valido]="this.form.get('dni')?.valid" [class.invalido]="this.form.get('dni')?.invalid && this.form.get('dni')?.touched" type="number" formControlName="dni" placeholder="82898766" minlength="8" maxlength="8">
+                <label for="">DNI</label>
+                <input [class.valido]="this.form.get('dni')?.valid" [class.invalido]="this.form.get('dni')?.invalid && this.form.get('dni')?.touched" type="text" formControlName="dni" placeholder="82898766" minlength="8" maxlength="8">
+                <p>
+                  <span class="error" *ngIf="this.form.get('dni')?.errors?.['required']">El campo es requerido.</span>
+                  <span class="error" *ngIf="this.form.get('dni')?.errors?.['pattern']"> Debe ser numérico. </span>
+                  <span class="error" *ngIf="this.form.get('dni')?.errors?.['minlength']">Debe tener un minimo de 8 dígitos.</span>
+                </p>
 
                 <label for="">Telefono</label>
                 <input [class.valido]="this.form.get('telefono')?.valid" [class.invalido]="this.form.get('telefono')?.invalid && this.form.get('telefono')?.touched" type="tel" formControlName="telefono" placeholder="994427826" minlength="9" maxlength="9">
+                <p>
+                  <span class="error" *ngIf="this.form.get('telefono')?.errors?.['required']">El campo es requerido.</span>
+                  <span class="error" *ngIf="this.form.get('telefono')?.errors?.['minlength']">Debe tener un minimo de 9 digitos.</span>
+                </p>
+
               </div>
 
               <div [class]="['column2']">
@@ -72,6 +94,9 @@
                   Activo</label>
                   <label><input type="radio" name="estado" value="Inactivo" formControlName="estado">
                     Inactivo</label>
+                  <p>
+                    <span class="error" *ngIf="this.form.get('estado')?.errors?.['required']">El campo es requerido.</span>
+                  </p>
                 </div>
 
                 <Label for="">Rol</Label>
@@ -82,22 +107,34 @@
                   Cocinero</label>   
                   <label><input [class.valido]="this.form.get('rol')?.valid" [class.invalido]="this.form.get('rol')?.invalid && this.form.get('rol')?.touched" type="radio" name="rol" formControlName="rol" value="Mesero">
                   Mesero</label> 
+                  <p>
+                    <span class="error" *ngIf="this.form.get('rol')?.errors?.['required']">El campo es requerido.</span>
+                  </p>
                 </div>
 
                 <label for="">Email</label>
                 <input [class.valido]="this.form.get('correo')?.valid" [class.invalido]="this.form.get('correo')?.invalid && this.form.get('correo')?.touched" type="email" id="" formControlName="correo" placeholder="paquita@gmail.com">
+                <p>
+                  <span class="error" *ngIf="this.form.get('correo')?.errors?.['required']">El campo es requerido.</span>
+                  <span class="error" *ngIf="this.form.get('correo')?.errors?.['email']">El email no es válido.</span>
+                </p>
 
               <label>Password</label>
               <div class="eye">
                 <span class='iconEye' (click)="seePass()"><i class="fas fa-eye-slash"></i></span>
                 <input [class.valido]="this.form.get('password')?.valid" [class.invalido]="this.form.get('password')?.invalid && this.form.get('password')?.touched" type="password" id="passLogin" formControlName="password" placeholder=" betinaB06$">
-              </div>          
+              </div>
+              <p>
+                <span class="error" *ngIf="this.form.get('password')?.errors?.['required']">El campo es requerido.</span>
+                <span class="error" *ngIf="this.form.get('password')?.errors?.['minlength']">Debe contener mínimo 6 caracteres</span>
+              </p>
               <button type="submit" [disabled]="form.invalid" [class]="['btnCreate']"> <i class="fas fa-database"></i> &nbsp;Aceptar</button>
             </div>
           </div>        
         </form>
       </div>
     </div>
+  </div>
   </div>
 </div>
 

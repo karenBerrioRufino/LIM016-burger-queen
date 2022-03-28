@@ -60,9 +60,18 @@ export class TotalPedidosComponent implements OnInit {
       }
     })
   }
-
+ 
   sendOrderData(order: any | object) {
+    if (this.rolUser !== 'Cocinero') {
+      // para la vista de mesero y administrador
+      this.router.navigate(['/viewOrder']);
+      this.productService.showOrder.next(order);
+    }
+    else{
+      // para la vista de cocinero
     this.router.navigate(['/pedidosCocinero']);
     this.productService.waiterOrder.next(order);
+    }
+    console.log('rolUser', this.rolUser);
   }
 }

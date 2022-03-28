@@ -1,0 +1,32 @@
+<div id="pedidosMeseroView">
+  <app-navegador></app-navegador>
+  <main>
+    <div class="containerPedido">
+      <div class="subtitle">
+        <h2>PEDIDOS</h2>
+        <hr>
+      </div>
+      <table class="listaPedidos">
+        <tr *ngFor="let list of listOfOrder">
+          <td><button key=index; (click)="orderDelete(list)">x</button></td>
+          <td><img src="{{list.img}}"></td>
+          <td>
+            <div class="p">
+              <p>{{ list.name }}</p>
+              <P>{{list.price | currency:'PEN':'S/'}}</P>
+            </div>
+          </td>
+          <td>
+            <div class="divBtn">
+              <button (click)="downQuantity(list)">-</button>
+              <input type="number" value="{{ list.quantity }}" id="{{ list.id }}">
+              <button (click)="upQuantity(list)">+</button>
+            </div>
+            <h4 class="subtotal">{{ list.subtotal | currency:'PEN':'S/' }}</h4>
+          </td>
+        </tr>
+      </table>
+    </div>
+   <app-datos-pedido></app-datos-pedido>
+  </main>
+</div>
