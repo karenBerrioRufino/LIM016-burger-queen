@@ -24,7 +24,7 @@ const routes: Routes = [
     path: 'pedidosMesero',
     component: PedidosMeseroComponent,
     canActivate: [AuthGuard]
-  },
+  }
 ]
 
 @NgModule({

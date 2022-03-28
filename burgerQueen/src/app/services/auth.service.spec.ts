@@ -4,18 +4,18 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 
+
 describe('AuthService', () => {
   let service: AuthService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations:[
-        AngularFireModule.initializeApp(environment.firebaseConfig)
-
+      imports: [
+        AngularFireModule.initializeApp(environment.firebaseConfig),
       ],
-      providers:[
-        AngularFireAuth
-      ]
+      providers: [
+        AngularFireAuth,
+      ],
     });
     service = TestBed.inject(AuthService);
   });
