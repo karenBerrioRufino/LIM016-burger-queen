@@ -28,7 +28,7 @@ export class GestionUsuariosComponent implements OnInit {
   usuarios: Observable<any[]>;
   listarUsuarios: RegisterUsers[] = [];
 
-  fb: FormBuilder = new FormBuilder;
+  // fb: FormBuilder = new FormBuilder;
 
   rolUser: string = '';
 
@@ -45,7 +45,7 @@ export class GestionUsuariosComponent implements OnInit {
   })
 
   constructor(
-    // private fb: FormBuilder,
+    private fb: FormBuilder,
     private storageService: StorageService,
     private _userService: createUsersService,
     private authService: AuthService,
