@@ -5,6 +5,8 @@ import { GestionUsuariosComponent } from './gestion-usuarios.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 
 
 describe('AppComponent', () => {
@@ -18,6 +20,7 @@ describe('AppComponent', () => {
       providers: [
         AngularFireAuth,
         FormBuilder,
+        AngularFirestore
       ],
       declarations: [
         GestionUsuariosComponent
