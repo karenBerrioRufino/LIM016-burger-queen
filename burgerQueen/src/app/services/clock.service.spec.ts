@@ -6,7 +6,11 @@ describe('ClockService', () => {
   let service: ClockService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [
+        ClockService
+      ], 
+    });
     service = TestBed.inject(ClockService);
   });
 

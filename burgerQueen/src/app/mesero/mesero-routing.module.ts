@@ -7,7 +7,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { CartaComponent } from './carta/carta.component';
 import { CartaOpcionesComponent } from './carta-opciones/carta-opciones.component';
 import { PedidosMeseroComponent } from './pedidos-mesero/pedidos-mesero.component';
-import { TotalPedidosMeseroComponent } from './total-pedidos-mesero/total-pedidos-mesero.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
 
 const routes: Routes = [
@@ -24,11 +23,6 @@ const routes: Routes = [
   {
     path: 'pedidosMesero',
     component: PedidosMeseroComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'totalPedidosMesero',
-    component: TotalPedidosMeseroComponent,
     canActivate: [AuthGuard]
   }
 ]

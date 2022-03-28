@@ -8,6 +8,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 
 import { FormsModule } from '@angular/forms';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     IngresoRoutingModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   exports:[
     LoginComponent,
