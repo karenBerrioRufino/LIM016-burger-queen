@@ -5,12 +5,10 @@ import { CocineroRoutingModule } from './cocinero-routing.module';
 
 import { SharedModule } from '../shared/shared.module';
 import { PedidosCocineroComponent } from './pedidos-cocinero/pedidos-cocinero.component';
-import { TotalPedidosCocineroComponent } from './total-pedidos-cocinero/total-pedidos-cocinero.component';
 
 @NgModule({
   declarations: [
     PedidosCocineroComponent,
-    TotalPedidosCocineroComponent,
   ],
   imports: [
     CommonModule,
@@ -19,7 +17,6 @@ import { TotalPedidosCocineroComponent } from './total-pedidos-cocinero/total-pe
   ],
   exports: [
     PedidosCocineroComponent,
-    TotalPedidosCocineroComponent,
   ]
 })
 export class CocineroModule { }

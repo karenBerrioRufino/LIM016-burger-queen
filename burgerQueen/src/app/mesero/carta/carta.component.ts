@@ -17,24 +17,29 @@ export class CartaComponent implements OnInit {
   sandwichs: any[] = [];
   aperitivos: any[] = [];
   bebidas: any[] = [];
+
   // es el array donde se ira guardando temporalmente los objetos
-  orders: any[] = [];
-  ordersId: any[] = [];
-  
-  constructor(private productService: ProductService, private storageService: StorageService) {
+  orderList: any[] = [];
+
+  constructor(
+    private productService: ProductService,
+    private storageService: StorageService
+  ) {
   }
 
   ngOnInit(): void {
-    // ordersList son los datos que esta jalando del localStorage
-    let ordersList: any = this.storageService.get('ordersList');
-    if(ordersList){
-      // iguala el array con los datos que jala del storage. Sobre el array que existe, irá agregando los objetos
-      this.orders = ordersList;
+    // orderList son los datos que esta jalando del localStorage
+    let orderListStorage: any = this.storageService.get('orderList');
+
+    // iguala el array con los datos que jala del storage. Sobre el array que existe, irá agregando los objetos
+    if (orderListStorage) {
+      this.orderList = orderListStorage;
     }
+
     this.getCartaData();
   }
 
-  changeSectionOfCarta(){
+  changeSectionOfCarta() {
     if (this.numberOfClicks > 0) {
       this.isSectionchanged = false;
       this.numberOfClicks = 0;
@@ -44,8 +49,8 @@ export class CartaComponent implements OnInit {
     }
   }
 
-  getCartaData(){
-    this.productService.getProducts().subscribe( doc => { 
+  getCartaData() {
+    this.productService.getProducts().subscribe(doc => {
       this.carta = [];
 
       doc.forEach((element: any) => {
@@ -62,21 +67,21 @@ export class CartaComponent implements OnInit {
     })
   }
 
+  //para enviar el dato a cartaOpciones
   sendHamburgerDataToOptionsView(dataHamburguesa: any) {
-    //para enviar el dato a cartaOpciones
     this.productService.disparador.next(dataHamburguesa);
   }
 
-  sendItemDataToPedidosView(productData: any){
-    const wasOrdered = this.orders.some(order => order.id === productData.id); //se entiende que es verdadero
-    if(!wasOrdered){ // tiene que ser falso
-      this.orders.push({...productData, quantity: 1, subtotal: productData.price});
+  sendItemDataToPedidosView(productData: any) {
+    const wasOrdered = this.orderList.some(order => order.id === productData.id); //se entiende que es verdadero
+    if (!wasOrdered) { // tiene que ser falso
+      this.orderList.push({ ...productData, quantity: 1, subtotal: productData.price });
       //product data que es un array lo convierte a string
-      this.storageService.set('ordersList', this.orders);
+      this.storageService.set('orderList', this.orderList);
     }
   }
 
-  wasSelected(itemId: string){
-    return this.orders.some(order => order.id === itemId) ? 'block' : 'none';
+  wasSelected(itemId: string) {
+    return this.orderList.some(oneOrder => oneOrder.id === itemId) ? 'block' : 'none';
   }
 }

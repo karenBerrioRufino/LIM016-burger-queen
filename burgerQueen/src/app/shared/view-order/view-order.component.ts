@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
-import { StorageService } from 'src/app/services/storage.service';
 
 
 @Component({
@@ -11,55 +9,66 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./view-order.component.scss']
 })
 export class ViewOrderComponent implements OnInit {
-  listOfOrder: any[] = [];
-  order: any = {};
+  orderList: any[] = [];
+  completeOrder: any = {};
 
-  total$: BehaviorSubject<number>;
-  constructor(private productService: ProductService) { 
-    this.total$ = this.productService.getTotalOfOrder();
+  totalToEdit$: BehaviorSubject<number>;
+
+  constructor(
+    private productService: ProductService
+  ) { 
+    this.totalToEdit$ = this.productService.getTotalOfOrderToEdit();
   }
 
   ngOnInit(): void {
-    // order jala todo el documento. Esto es para pintar cada campo que se escoja
-    this.order = this.productService.showOrder.getValue();
+    // completeOrder jala todo el documento. Esto es para pintar cada campo que se escoja
+    this.completeOrder = this.productService.showOrder.getValue();
+
     //se llama a orderWaiter que es un campo en el documento de firestore que se jala. Este pinta la lista completa
     //Para jalar datos del firestore
-    this.listOfOrder = this.productService.showOrder.getValue().orderWaiter;
-  }
-
-  orderDelete(list: object){
-    const indexOfpedido = this.listOfOrder.indexOf(list);
-    this.listOfOrder.splice(indexOfpedido, 1);
+    this.orderList = this.productService.showOrder.getValue().orderWaiter;
     this.calculateAndSendTotal();
   }
-  downQuantity(list: any){
-    const quantityInput = document.querySelector(`input[id='${list.id}']`) as HTMLInputElement;
 
-    if(list.quantity == 1){
-      list.quantity;
+  orderDelete(oneOrder: object){
+    const indexOfpedido = this.orderList.indexOf(oneOrder);
+    this.orderList.splice(indexOfpedido, 1);
+    this.calculateAndSendTotal();
+    this.productService.editedOrder.next(this.completeOrder);
+  }
+
+  downQuantity(oneOrder: any){
+    const quantityInput = document.querySelector(`input[id='${oneOrder.id}']`) as HTMLInputElement;
+
+    if(oneOrder.quantity == 1){
+      oneOrder.quantity;
     } else {
-      list.quantity--;
-      quantityInput.setAttribute('value', list.quantity.toString());
-      list.subtotal = list.quantity * list.price;
+      oneOrder.quantity--;
+      quantityInput.setAttribute('value', oneOrder.quantity.toString());
+      oneOrder.subtotal = oneOrder.quantity * oneOrder.price;
       this.calculateAndSendTotal();
+      this.productService.editedOrder.next(this.completeOrder);
     }
   }
 
-  upQuantity(list: any){
-    const quantityInput = document.querySelector(`input[id='${list.id}']`) as HTMLInputElement;
+  upQuantity(oneOrder: any){
+    const quantityInput = document.querySelector(`input[id='${oneOrder.id}']`) as HTMLInputElement;
 
-    list.quantity++
-    quantityInput.setAttribute('value', list.quantity.toString());
-    list.subtotal = list.quantity * list.price;
+    oneOrder.quantity++
+    quantityInput.setAttribute('value', oneOrder.quantity.toString());
+    oneOrder.subtotal = oneOrder.quantity * oneOrder.price;
     this.calculateAndSendTotal();
+    this.productService.editedOrder.next(this.completeOrder);
   }
 
   calculateAndSendTotal(){
     let total = 0;
-    if(this.listOfOrder !== null){
-      this.listOfOrder.forEach( (list) => total += list.subtotal);
-      this.total$.next(total);
+    if(this.orderList !== null){
+      this.orderList.forEach( (oneOrder) => total += oneOrder.subtotal);
+      console.log('total - viewOrder', total);
+      this.totalToEdit$.next(total);
     }
+    // console.log('calculate', this.orderList);
     return total;
   }
 }

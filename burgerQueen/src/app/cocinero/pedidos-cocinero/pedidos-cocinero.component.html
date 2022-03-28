@@ -7,18 +7,22 @@
         <hr>
       </div>
       <table class="listaPedidos">
-        <tr *ngFor="let pedido of pedidosCocinero">
-          <td><p class="quantity">{{ pedido.quantity }}</p></td>
-          <td><img src="{{pedido.img}}"></td>
+        <tr *ngFor="let oneOrder of orderList">
+          <td><p class="quantity">{{ oneOrder.quantity }}</p></td>
+          <td><img src="{{oneOrder.img}}"></td>
           <td>
             <div class="p">
-              <p>{{ pedido.name }}</p>
-              <P>{{pedido.price | currency:'PEN':'S/'}}</P>
+              <p>{{ oneOrder.name }}</p>
+              <P>{{oneOrder.price | currency:'PEN':'S/'}}</P>
             </div>
           </td>
           <td>
-            <span><i class="fa-solid fa-clock clockIcon" [ngClass]="{'preparado':pedido.onePrepared ,'no-preparado':!pedido.onePrepared}" 
-              (click)="changeToPrepared(pedido)"></i></span>  
+            <div *ngIf="oneOrder.onePrepared; else noPrepared">
+              <span><i class="fa-solid fa-circle-check clockIcon preparado" (click)="changeToPrepared(oneOrder)"></i></span>
+            </div>
+            <ng-template #noPrepared>
+              <span><i class="fa-solid fa-clock clockIcon no-preparado" (click)="changeToPrepared(oneOrder)"></i></span>
+            </ng-template>
           </td>
         </tr>
       </table>
