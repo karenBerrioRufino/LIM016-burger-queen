@@ -26,7 +26,13 @@ export class ViewOrderComponent implements OnInit {
 
     //se llama a orderWaiter que es un campo en el documento de firestore que se jala. Este pinta la lista completa
     //Para jalar datos del firestore
-    this.orderList = this.productService.showOrder.getValue().orderWaiter;
+    // showOrder es una propiedad del servicio
+    //orderWaiter es la propiedad
+    const orderListStorage = this.productService.showOrder.getValue().orderWaiter;
+    if(orderListStorage){
+      this.orderList = orderListStorage;
+    }
+    
     this.calculateAndSendTotal();
   }
 
