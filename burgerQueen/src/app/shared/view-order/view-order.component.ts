@@ -8,6 +8,7 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './view-order.component.html',
   styleUrls: ['./view-order.component.scss']
 })
+
 export class ViewOrderComponent implements OnInit {
   orderList: any[] = [];
   completeOrder: any = {};

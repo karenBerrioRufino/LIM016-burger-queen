@@ -8,7 +8,7 @@
       </div>
       <table class="listaPedidos">
         <tr *ngFor="let oneOrder of orderList">
-          <td><button key=index; (click)="orderDelete(oneOrder)">x</button></td>
+          <td><button key=index; (click)="orderDelete(oneOrder)" [disabled]="completeOrder.prepared">x</button></td>
           <td><img src="{{oneOrder.img}}"></td>
           <td>
             <div class="p">
@@ -18,9 +18,9 @@
           </td>
           <td>
             <div class="divBtn">
-              <button (click)="downQuantity(oneOrder)">-</button>
-              <input type="number" value="{{ oneOrder.quantity }}" id="{{ oneOrder.id }}">
-              <button (click)="upQuantity(oneOrder)">+</button>
+              <button (click)="downQuantity(oneOrder)" [disabled]="completeOrder.prepared">-</button>
+              <input type="number" value="{{ oneOrder.quantity }}" id="{{ oneOrder.id }}" [disabled]="completeOrder.prepared">
+              <button (click)="upQuantity(oneOrder)" [disabled]="completeOrder.prepared">+</button>
             </div>
             <h4 class="subtotal">{{ oneOrder.subtotal | currency:'PEN':'S/' }}</h4>
           </td>

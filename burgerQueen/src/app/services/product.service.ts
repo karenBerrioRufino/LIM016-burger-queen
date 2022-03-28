@@ -15,7 +15,7 @@ export class ProductService {
   @Output() waiterOrder: BehaviorSubject<any> = new BehaviorSubject<any>({});
   @Output() showOrder: BehaviorSubject<any> = new BehaviorSubject<any>({});
   @Output() isEditable: BehaviorSubject<any> = new BehaviorSubject<any>(false);
-  @Output() editedOrder: BehaviorSubject<any> = new BehaviorSubject<any>(false);
+  @Output() editedOrder: BehaviorSubject<any> = new BehaviorSubject<any>({});
   private totalOfOrder: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   private totalOfOrderToEdit: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   
