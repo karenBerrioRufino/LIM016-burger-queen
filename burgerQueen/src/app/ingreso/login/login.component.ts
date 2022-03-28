@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     email: "",
     password: ""
   }
-  suscribe: Subscription | any;
 
   Toast = Swal.mixin({
     toast: true,
@@ -87,7 +86,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscribe.unsubscribe();
+    if(this.subscribe){
+      this.subscribe.unsubscribe();
+    }
   }
 
   login() {
