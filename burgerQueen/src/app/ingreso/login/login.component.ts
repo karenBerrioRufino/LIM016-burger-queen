@@ -15,13 +15,13 @@ import Swal from 'sweetalert2';
 
 export class LoginComponent implements OnInit, OnDestroy {
   // getRolUser$: BehaviorSubject<string>;
+  
   subscribe: Subscription | any;
-
+  
   usuario = {
     email: "",
     password: ""
   }
-  suscribe: Subscription | any;
 
   Toast = Swal.mixin({
     toast: true,
@@ -35,7 +35,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   })
 
-  constructor(private authService: AuthService, private router: Router, private createUser: createUsersService, private storageService: StorageService) {
+  constructor(private authService: AuthService, 
+    private router: Router, 
+    private createUser: createUsersService, 
+    private storageService: StorageService) {
     // this.getRolUser$ = this.createUser.getRol();
   }
 
@@ -87,7 +90,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscribe.unsubscribe();
+    if(this.subscribe){
+      this.subscribe.unsubscribe();
+    }
+    
   }
 
   login() {

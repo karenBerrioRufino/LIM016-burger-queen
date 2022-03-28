@@ -9,6 +9,8 @@ import { createUsersService } from '../../../app/services/create-users.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 import Swal from 'sweetalert2';
+import { StorageService } from 'src/app/services/storage.service';
+
 
 @Component({
   selector: 'app-gestion-usuarios',
@@ -25,6 +27,10 @@ export class GestionUsuariosComponent implements OnInit {
   usuarios: Observable<any[]>;
   listarUsuarios: RegisterUsers[] = [];
 
+  // fb: FormBuilder = new FormBuilder;
+
+  rolUser: string = '';
+
   Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -39,6 +45,7 @@ export class GestionUsuariosComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private storageService: StorageService,
     private _userService: createUsersService,
     private authService: AuthService,
     firestore: AngularFirestore,
@@ -60,11 +67,17 @@ export class GestionUsuariosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Función para obtener datos del formulario para luego editarlos
-    this._userService.getUserEdit().subscribe(data=>{
-      // Obteniendo valores del formulario segun el id del usuario
-      this.id =data.id;
-      this.titulo="editar usuario";
+    try{
+      // rol del usuario actual
+    this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
+    }
+    catch(error: any){
+      console.log(error);
+    }
+
+    this._userService.getUserEdit().subscribe(data => {
+      this.id = data.id;
+      this.titulo = "editar usuario";
       this.form.patchValue({
         nombres: data.nombres,
         apellidoPaterno: data.apellidoPaterno,
