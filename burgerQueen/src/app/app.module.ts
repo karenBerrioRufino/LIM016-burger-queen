@@ -33,7 +33,6 @@ import { ClockService } from './services/clock.service';
     IngresoModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),   
     AppRoutingModule, 
   ],

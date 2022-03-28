@@ -25,7 +25,7 @@ import { SharedRoutingModule } from './shared-routing.module';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedRoutingModule
+    SharedRoutingModule,
   ],
   exports: [
     NavegadorComponent,

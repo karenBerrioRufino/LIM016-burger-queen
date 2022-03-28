@@ -13,7 +13,7 @@ import { PedidosCocineroComponent } from './pedidos-cocinero/pedidos-cocinero.co
   imports: [
     CommonModule,
     SharedModule,
-    CocineroRoutingModule
+    CocineroRoutingModule,
   ],
   exports: [
     PedidosCocineroComponent,

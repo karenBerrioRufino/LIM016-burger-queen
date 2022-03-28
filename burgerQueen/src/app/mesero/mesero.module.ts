@@ -24,7 +24,7 @@ import { PedidosMeseroComponent } from './pedidos-mesero/pedidos-mesero.componen
   ],
   exports: [
     CartaComponent,
-    CartaOpcionesComponent,
+    CartaOpcionesComponent,    
     PedidosMeseroComponent
   ]
 })

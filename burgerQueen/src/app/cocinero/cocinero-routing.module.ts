@@ -12,7 +12,7 @@ const routes: Routes = [
     path: 'pedidosCocinero',
     component: PedidosCocineroComponent,
     canActivate: [AuthGuard]
-  },
+  }
 ]
 
 @NgModule({
