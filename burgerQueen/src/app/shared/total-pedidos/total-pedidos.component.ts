@@ -25,7 +25,11 @@ export class TotalPedidosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
+    try{
+      this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
+    } catch (err){
+      console.log(err)
+    }
     this.getAllWaiterOrders();
   }
 

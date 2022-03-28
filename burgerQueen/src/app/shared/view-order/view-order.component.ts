@@ -26,7 +26,10 @@ export class ViewOrderComponent implements OnInit {
 
     //se llama a orderWaiter que es un campo en el documento de firestore que se jala. Este pinta la lista completa
     //Para jalar datos del firestore
-    this.orderList = this.productService.showOrder.getValue().orderWaiter;
+    const orderListStorage = this.productService.showOrder.getValue().orderWaiter;
+    if(orderListStorage){
+      this.orderList = orderListStorage;
+    }
     this.calculateAndSendTotal();
   }
 
@@ -63,12 +66,11 @@ export class ViewOrderComponent implements OnInit {
 
   calculateAndSendTotal(){
     let total = 0;
-    if(this.orderList !== null){
+    if(this.orderList !== null || this.orderList !== undefined){
       this.orderList.forEach( (oneOrder) => total += oneOrder.subtotal);
       console.log('total - viewOrder', total);
       this.totalToEdit$.next(total);
     }
-    // console.log('calculate', this.orderList);
     return total;
   }
 }

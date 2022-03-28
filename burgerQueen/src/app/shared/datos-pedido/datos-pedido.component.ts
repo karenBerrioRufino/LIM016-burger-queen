@@ -86,7 +86,11 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     // rol del usuario actual
-    this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
+    try{
+      this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
+    } catch (err){
+      console.log(err)
+    }
     
     // obteniendo datos del pedido a editar por el mesero
     this.isEditable$ = this.productService.isEditable.getValue();
