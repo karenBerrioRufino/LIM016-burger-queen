@@ -1,46 +1,42 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { GestionUsuariosComponent } from './gestion-usuarios.component';
-
 import { AngularFireModule } from '@angular/fire/compat';
+// import { AngularFireAuth } from '@angular/fire/compat/auth';
+// import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+// import { createUsersService } from 'src/app/services/create-users.service';
 import { environment } from 'src/environments/environment';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
-describe('AppComponent', () => {
-  beforeEach((() => {
-    TestBed.configureTestingModule({
-      imports: [
-        AngularFireModule.initializeApp(environment.firebaseConfig),
-        ReactiveFormsModule,
-        FormsModule,
-      ],
-      providers: [
-        AngularFireAuth,
-        FormBuilder,
-      ],
-      declarations: [
-        GestionUsuariosComponent
-      ],
-    }).compileComponents();
-  }));
-})
+import { GestionUsuariosComponent } from './gestion-usuarios.component';
 describe('GestionUsuariosComponent', () => {
+
   let component: GestionUsuariosComponent;
   let fixture: ComponentFixture<GestionUsuariosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
+      declarations: [ 
+        GestionUsuariosComponent,
+      ],
+      imports:[
         AngularFireModule.initializeApp(environment.firebaseConfig),
+        // AngularFirestoreModule,
       ],
-      providers: [
-        AngularFireAuth,
-      ],
-      declarations: [ GestionUsuariosComponent ]
+      providers:[
+        // AngularFirestore,
+        // AngularFireAuth,
+        FormBuilder,
+        ReactiveFormsModule,
+        // createUsersService,
+        AuthService,
+      ]
     })
     .compileComponents();
+
   });
+
+  
+
 
   beforeEach(() => {
     fixture = TestBed.createComponent(GestionUsuariosComponent);
