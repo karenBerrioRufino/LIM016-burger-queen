@@ -17,7 +17,7 @@ export class NavegadorComponent implements OnInit{
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 3500,
+    timer: 1500,
     timerProgressBar: true,
     didOpen: (toast) => {
       toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -33,6 +33,7 @@ export class NavegadorComponent implements OnInit{
 
   ngOnInit(): void {
     this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
+    console.log(this.rolUser, 'hola');
   }
 
   usuariosRout() {
@@ -58,22 +59,58 @@ export class NavegadorComponent implements OnInit{
 
   totalPedidosRout() {
     console.log('click');
-    this.router.navigateByUrl("/totalPedidosMesero");
+    this.router.navigateByUrl("/totalPedidos");
+  }
+
+  confirmLogout(){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: '¿Está seguro que desea cerrar sesión?',
+      // text: "¡No podrás revertirlo!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.onLogout();
+        this.Toast.fire({
+          icon: 'success',
+          title: 'Cerraste sesión :)'
+        })
+      }
+      // } else if ( result.dismiss === Swal.DismissReason.cancel ) {
+      //   this.Toast.fire({
+      //     icon: 'success',
+      //     title: 'Sigues dentro ;)'
+      //   })
+      // }
+    })  
   }
 
   async onLogout() {
     try {
       await this.authService.logout();
       this.storageService.removeCurrentUser();
-      this.Toast.fire({
-        icon: 'success',
-        title: 'Cerraste sesión :)'
-      })
+      this.storageService.clear();
+
+      // this.Toast.fire({
+      //   icon: 'success',
+      //   title: 'Cerraste sesión :)'
+      // })
+
       this.router.navigate(['/']);
-      console.log('si cerré sesión');
+    }
+    catch(error: any){
+      console.log(error);
+    }
   }
-  catch(error: any){
-    console.log(error);
-  }
-}
 }

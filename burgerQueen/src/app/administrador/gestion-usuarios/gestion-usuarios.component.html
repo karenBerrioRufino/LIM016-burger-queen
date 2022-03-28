@@ -31,8 +31,8 @@
             <td>{{usuario.rol}}</td>
             <td>{{usuario.correo}}</td>
             <td class="btnOpciones">
-              <i class="fa-solid fa-pen-to-square"(click)="editarUsuarioBtn(usuario)"></i>
-              <i class="fa-solid fa-trash-can" (click)="eliminarUsuario(usuario.id)"></i>
+              <i class="fa-solid fa-pen-to-square"(click)="editUserBtn(usuario)"></i>
+              <i class="fa-solid fa-trash-can" (click)="deleteUser(usuario.id)"></i>
             </td>
           </tr>
         </tbody>
@@ -43,10 +43,10 @@
       <div class="modal-content">
         <header class="header-container">
           {{ titulo  | uppercase }}
-          <span [class]="['btn','display-topright']" (click)="btnCerrar()">&times;</span>
+          <span [class]="['btn','display-topright']" (click)="btnClose()">&times;</span>
         </header>
         <div class="modal-contenido">
-          <form [formGroup]="form" (ngSubmit)="guardarUsuario()" >
+          <form [formGroup]="form" (ngSubmit)="saveOrEditUser()" >
             <div class="column">
               <div [class]="['column1']">
                 <label for="">Nombres</label>
@@ -121,7 +121,7 @@
 
               <label>Password</label>
               <div class="eye">
-                <span class='iconEye' (click)="seePass()"><i class="fas fa-eye-slash"></i></span>
+                <span class='iconEye' (click)="seePassword()"><i class="fas fa-eye-slash"></i></span>
                 <input [class.valido]="this.form.get('password')?.valid" [class.invalido]="this.form.get('password')?.invalid && this.form.get('password')?.touched" type="password" id="passLogin" formControlName="password" placeholder=" betinaB06$">
               </div>
               <p>
