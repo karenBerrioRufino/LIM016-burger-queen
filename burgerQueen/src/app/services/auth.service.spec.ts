@@ -12,6 +12,7 @@ describe('AuthService', () => {
     TestBed.configureTestingModule({
       imports: [
         AngularFireModule.initializeApp(environment.firebaseConfig),
+        
       ],
       providers: [
         AngularFireAuth,
