@@ -22,7 +22,6 @@ export class GestionUsuariosComponent implements OnInit {
 
   form: FormGroup;
   titulo = "Agregar usuario";
-
   id: string | undefined;
 
   usuarios: Observable<any[]>;
@@ -36,7 +35,7 @@ export class GestionUsuariosComponent implements OnInit {
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 3500,
+    timer: 3000,
     timerProgressBar: true,
     didOpen: (toast) => {
       toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -53,16 +52,17 @@ export class GestionUsuariosComponent implements OnInit {
   ) {
     this.usuarios = firestore.collection('usuarios').valueChanges();
 
-    this.form = this.fb.group({
-      nombres: ['', Validators.required],
-      apellidoPaterno: ['', Validators.required],
-      apellidoMaterno: ['', Validators.required],
-      dni: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
-      telefono: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
-      estado: ['', Validators.required],
-      rol: ['', Validators.required],
-      correo: ['', Validators.required],
-      password: ['', Validators.required],
+    // Validaciones del formulario
+    this.form = this.fb.group ({
+      nombres:['',[Validators.required, Validators.minLength(3)]],
+      apellidoPaterno:['',[Validators.required, Validators.minLength(3)]],
+      apellidoMaterno:['',[Validators.required, Validators.minLength(3)]],
+      dni:['',[Validators.required,Validators.minLength(8),Validators.maxLength(8),Validators.pattern('[0-9]*')]],
+      telefono:['',[Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+      estado:['',Validators.required],
+      rol:['',Validators.required],
+      correo:['', [Validators.required,Validators.email]],
+      password:['',[Validators.required, Validators.minLength(6)]],
     })
   }
 
@@ -90,17 +90,21 @@ export class GestionUsuariosComponent implements OnInit {
         password: data.password,
       })
     })
-    this.getUserList();
+    // LLamando a la función para obtener datos de los usuarios de firestore
+    this. getUserList();
   }
 
+ 
+  // Cerrando el modal
   btnClose() {
     let modal: any = document.getElementById('btnModal');
     modal.style.display = 'none';
+
     this.form.reset();
     this.titulo = "agregar usuario";
   }
 
-  seePassword() {
+  seePassword(){
     const passLogin = document.querySelector('#passLogin') as HTMLInputElement
     const icon = document.querySelector('i') as HTMLElement
     if (passLogin.type === 'password') {
@@ -116,6 +120,9 @@ export class GestionUsuariosComponent implements OnInit {
     }
   }
 
+ // Guardando un usuario en firestore 
+  // si el id del usuario no existe entonces agrega un usuario
+  // si el id del usuario existe entonces modifica los datos del usuario
   saveOrEditUser() {
     console.log(this.form);
     console.log(this.form.value.correo);
@@ -139,7 +146,8 @@ export class GestionUsuariosComponent implements OnInit {
     modal.style.display = 'block';
     this._userService.addUserEdit(usuario);
   }
-
+  
+  // Se edita los datos del usuario dentro del formulario
   editUser(id: string) {
     const USUARIO: any = {
       nombres: this.form.value.nombres,
@@ -164,6 +172,10 @@ export class GestionUsuariosComponent implements OnInit {
       this.form.reset();
     }, error => {
       console.log(error);
+      this.Toast.fire({
+        icon: 'error',
+        title: 'Usuario no se pudo actualizar.',
+      })
     })
   }
 
@@ -182,8 +194,8 @@ export class GestionUsuariosComponent implements OnInit {
       fechaActualizacion: new Date(),
     }
 
-    //para crear un usuario por pirmera vez
-    const { correo, password } = USUARIO;
+     //para crear un usuario por primera vez
+    const {correo, password} = USUARIO;
     this.authService.register(correo, password).then(registered => {
       delete USUARIO.password;
       console.log(registered);
@@ -206,9 +218,12 @@ export class GestionUsuariosComponent implements OnInit {
     });
   }
 
+
+  // Obtiene datos del usuario de coleccion users de firestore y lo guarda en un array listarusuarios
   getUserList() {
     this._userService.getUsers().subscribe(doc => {
       this.listarUsuarios = [];
+
       doc.forEach((element: any) => {
         this.listarUsuarios.push({
           id: element.payload.doc.id,
@@ -258,4 +273,3 @@ export class GestionUsuariosComponent implements OnInit {
     })
   }
 }
-
