@@ -41,10 +41,10 @@ export class PedidosCocineroComponent implements OnInit {
     const isAllPrepared = this.completeOrder.orderWaiter.every((oneOrder: any | object) => oneOrder.onePrepared == true);
 
     if(isAllPrepared){
-      this.completeOrder.prepared = true;
+      this.completeOrder.fullyPrepared = true;
       this.productService.updateWaiterOrder(this.completeOrder.docId, this.completeOrder);
     } else {
-      this.completeOrder.prepared = false;
+      this.completeOrder.fullyPrepared = false;
       this.productService.updateWaiterOrder(this.completeOrder.docId, this.completeOrder);
     }
   }

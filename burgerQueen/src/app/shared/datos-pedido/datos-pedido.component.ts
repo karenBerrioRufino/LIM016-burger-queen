@@ -85,18 +85,18 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    // rol del usuario actual
     try{
-      // rol del usuario actual
-    this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
-    }
-    catch(error: any){
-      console.log(error);
+      this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
+    } catch (err){
+      console.log(err)
     }
     
     // obteniendo datos del pedido a editar por el mesero
     this.isEditable$ = this.productService.isEditable.getValue();
     console.log(this.isEditable$);
     this.completeOrderToEdit = this.productService.showOrder.getValue();
+    console.log(this.completeOrderToEdit);
 
     // obteniendo los datos completos de la orden(enviados desde TotalPedidos) que el cocinero quiere ver
     this.completeOrderToShow = this.productService.waiterOrder.getValue();
@@ -157,7 +157,7 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
           fullyPrepared: false,
           served: false,
           total: this.orderTotal,
-          orderCanceled: false,
+          paidOrder: false,
         })
       );
       this.Toast.fire({
@@ -174,16 +174,30 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
 
   updateEditedOrder(){
     this.editedOrder$ = this.productService.editedOrder.getValue();
-    this.editedOrder$.clientName = this.clientName.value;
+
     let editedTableNumber;
     if(this.selectTable === ""){
       editedTableNumber = this.completeOrderToEdit.tableNumber;
     } else {
       editedTableNumber = this.selectTable;
     }
-    this.editedOrder$.tableNumber = editedTableNumber;
-    this.editedOrder$.total = this.orderTotalToEdit;
-    this.productService.updateWaiterOrder(this.editedOrder$.docId, {...this.editedOrder$, editDate: this.date, editInputHour: this.hour})
+    
+    this.productService.updateWaiterOrder(this.completeOrderToEdit.docId, 
+      {
+        // editedOrder$ jala los datos actualizados de ViewOrder y completeOrderToEdit de TotalPedidos
+        clientName: this.clientName.value,
+        tableNumber: editedTableNumber,
+        date: this.completeOrderToEdit.date,
+        inputHour: this.completeOrderToEdit.inputHour,
+        orderWaiter: this.editedOrder$.orderWaiter ? this.editedOrder$.orderWaiter : this.completeOrderToEdit.orderWaiter,
+        shipped: this.completeOrderToEdit.shipped,
+        fullyPrepared: this.completeOrderToEdit.fullyPrepared,
+        served: this.completeOrderToEdit.served,
+        total: this.editedOrder$.total ? this.editedOrder$.total : this.completeOrderToEdit.total,
+        paidOrder: this.completeOrderToEdit.paidOrder,
+        editDate: this.date, 
+        editInputHour: this.hour
+      })
     this.productService.isEditable.next(false);
   }
 
@@ -197,9 +211,12 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
       buttonsStyling: false
     })
 
+    const completeOrderMessage = 'El estado no podrá ser actualizado.';
+    const incompleteOrderMenssage = '¡La orden no está completa!';
+
     swalWithBootstrapButtons.fire({
-      title: '¿Marcar como terminada?',
-      text: "¡La orden no está completa!",
+      title: '¿Marcar orden como terminada?',
+      text: order.fullyPrepared ? completeOrderMessage : incompleteOrderMenssage,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Aceptar',
@@ -207,7 +224,7 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) { 
-        order.fullyPrepared = true;   
+        order.prepared = true;   
         this.productService.updateWaiterOrder(order.docId, order);
         
         this.calculateTime(order);

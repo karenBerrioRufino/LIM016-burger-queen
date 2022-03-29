@@ -8,6 +8,7 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './view-order.component.html',
   styleUrls: ['./view-order.component.scss']
 })
+
 export class ViewOrderComponent implements OnInit {
   orderList: any[] = [];
   completeOrder: any = {};
@@ -32,7 +33,6 @@ export class ViewOrderComponent implements OnInit {
     if(orderListStorage){
       this.orderList = orderListStorage;
     }
-    
     this.calculateAndSendTotal();
   }
 
@@ -69,12 +69,11 @@ export class ViewOrderComponent implements OnInit {
 
   calculateAndSendTotal(){
     let total = 0;
-    if(this.orderList !== null){
+    if(this.orderList !== null || this.orderList !== undefined){
       this.orderList.forEach( (oneOrder) => total += oneOrder.subtotal);
       console.log('total - viewOrder', total);
       this.totalToEdit$.next(total);
     }
-    // console.log('calculate', this.orderList);
     return total;
   }
 }
