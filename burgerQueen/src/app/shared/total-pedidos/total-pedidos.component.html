@@ -59,7 +59,7 @@
               </td>
               <td class="btnOpciones">
                 <input type="button" class="button" value="Pagar" 
-                [ngClass]="{'cancelado': order.orderCanceled, 'no-cancelado': !order.orderCanceled}" 
+                [ngClass]="{'cancelado': order.paidOrder, 'no-cancelado': !order.paidOrder}" 
                 (click)="cancelOrder(order)">
                 <input type="button" class="verPedidoBtn button" value="Ver pedido" (click)="sendOrderData(order)">
               </td>

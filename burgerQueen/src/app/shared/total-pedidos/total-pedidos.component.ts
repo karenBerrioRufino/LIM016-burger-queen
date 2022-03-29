@@ -26,11 +26,10 @@ export class TotalPedidosComponent implements OnInit {
 
   ngOnInit(): void {
     try{
-      // rol del usuario actual
-    this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
-    }
-    catch(error: any){
-      console.log(error);
+      // rol de usuario actual
+      this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
+    } catch (err){
+      console.log(err)
     }
     this.getAllWaiterOrders();
   }
@@ -90,8 +89,8 @@ export class TotalPedidosComponent implements OnInit {
 
   cancelOrder(order: any | object) {
     if (this.rolUser === 'Mesero') {
-      if (order.orderCanceled == false) order.orderCanceled = true;
-      else order.orderCanceled = false;
+      if (order.paidOrder == false) order.paidOrder = true;
+      else order.paidOrder = false;
 
       this.productService.updateWaiterOrder(order.docId, order);
       this.subscribe.unsubscribe();
