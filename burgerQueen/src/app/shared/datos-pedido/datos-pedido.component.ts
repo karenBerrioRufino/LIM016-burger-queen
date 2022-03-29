@@ -157,7 +157,7 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
           fullyPrepared: false,
           served: false,
           total: this.orderTotal,
-          orderCanceled: false,
+          paidOrder: false,
         })
       );
       this.Toast.fire({
@@ -194,7 +194,7 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
         fullyPrepared: this.completeOrderToEdit.fullyPrepared,
         served: this.completeOrderToEdit.served,
         total: this.editedOrder$.total ? this.editedOrder$.total : this.completeOrderToEdit.total,
-        orderCanceled: this.completeOrderToEdit.orderCanceled,
+        paidOrder: this.completeOrderToEdit.paidOrder,
         editDate: this.date, 
         editInputHour: this.hour
       })

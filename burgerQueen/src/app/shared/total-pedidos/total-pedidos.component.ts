@@ -88,8 +88,8 @@ export class TotalPedidosComponent implements OnInit {
 
   cancelOrder(order: any | object) {
     if (this.rolUser === 'Mesero') {
-      if (order.orderCanceled == false) order.orderCanceled = true;
-      else order.orderCanceled = false;
+      if (order.paidOrder == false) order.paidOrder = true;
+      else order.paidOrder = false;
 
       this.productService.updateWaiterOrder(order.docId, order);
       this.subscribe.unsubscribe();
