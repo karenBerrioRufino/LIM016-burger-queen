@@ -161,7 +161,8 @@ i{
   text-align: center;
   color: white;
   font-weight:500;
-  cursor: pointer;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 .no-entregado{
   border-radius: 100%;
