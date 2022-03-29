@@ -15,8 +15,9 @@ import Swal from 'sweetalert2';
 
 export class LoginComponent implements OnInit, OnDestroy {
   // getRolUser$: BehaviorSubject<string>;
+  
   subscribe: Subscription | any;
-
+  
   usuario = {
     email: "",
     password: ""
@@ -34,7 +35,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   })
 
-  constructor(private authService: AuthService, private router: Router, private createUser: createUsersService, private storageService: StorageService) {
+  constructor(private authService: AuthService, 
+    private router: Router, 
+    private createUser: createUsersService, 
+    private storageService: StorageService) {
     // this.getRolUser$ = this.createUser.getRol();
   }
 

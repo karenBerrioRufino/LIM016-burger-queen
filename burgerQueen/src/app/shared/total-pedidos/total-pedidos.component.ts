@@ -26,6 +26,7 @@ export class TotalPedidosComponent implements OnInit {
 
   ngOnInit(): void {
     try{
+      // rol de usuario actual
       this.rolUser = this.storageService.getCurrentUser('currentUser').rol;
     } catch (err){
       console.log(err)
