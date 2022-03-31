@@ -26,7 +26,6 @@ $color-gris-ligth:#DDD;
   color: black;
   margin: 2rem 0 1rem 1rem;
   align-self: flex-start;
-  // font-size: 35px;
   border-bottom: 5px solid $color-melon;
   padding: 5px;
 }
@@ -41,7 +40,6 @@ $color-gris-ligth:#DDD;
   border: none;
   border-radius: 5px;
   padding: 0.5rem;
-  cursor: pointer;
 }
 .fa-circle-plus{
   margin: 0 0.5rem;
@@ -81,9 +79,12 @@ $color-gris-ligth:#DDD;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 0.5rem;
+  p{
+    margin-bottom: 0.5rem;
+  }
   
 }
+
 .column1>label, .column2>label{
   color: $color-marron;
   font-size: 0.8rem;
@@ -93,6 +94,8 @@ input{
   border: 1px solid $color-melon;
   border-radius: 0.5rem;
   padding: 0.5rem;
+  margin-bottom: 0;
+  
 }
 .btnCreate{
   display: block;
@@ -106,7 +109,6 @@ input{
   box-shadow: 3px 3px 3px gray;
   padding: 0.5rem;
   margin-top: 0.5rem;
-  cursor: pointer;
 }
 
 // modal
@@ -114,7 +116,7 @@ input{
   font-family: 'Mulish', sans-serif;
   z-index:3;
   display:none;
-  padding-top:100px;
+  padding-top: 1rem;;
   position:fixed;
   left:0;
   top:0;
@@ -189,7 +191,6 @@ tr:hover {
 
 .btnOpciones>i{
   margin-left: 0.5rem;
-  cursor: pointer;
 }
 .fa-pen-to-square{
   border:1px solid $color-edit;
@@ -212,22 +213,9 @@ tr:hover {
   background-color: $color-danger;
   color: $color-blanco;
 }
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
-}
-
-input[type=number] { 
-  -moz-appearance:textfield;
-  width: 15rem; 
-  
-}
-
-
 // estilos de validaciones
 .valido{
-  border: 1px solid teal;
+  border: 2px solid teal;
 }
 .invalido{
   border: 2px solid $color-danger;
@@ -239,12 +227,11 @@ input[type=number] {
   color: $color-danger;
 }
 
-@media only screen and (min-width: 700px) {
-  .table{
-    width:80%;
-    font-size:12px;
-  }
+.error {
+  color:$color-danger;
+  font-size:12px;
 }
+
 .eye{
   display: flex;
   align-items:center;
@@ -258,4 +245,10 @@ input[type=number] {
   margin: 5px;
   cursor: pointer;
   margin-top: 8px;
+}
+@media only screen and (min-width: 700px) {
+  .table{
+    width:80%;
+    font-size:12px;
+  }
 }

@@ -24,4 +24,29 @@ describe('AuthService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('Probar la función register que debe crear una cuenta', (done: DoneFn) => { 
+    service.register("karen@gmail.com", "12345678").then(value =>{
+      expect(value).toEqual(value);
+      done();
+    });    
+});
+
+  it('Probar la función login que debe ingresar a la cuenta creada', (done: DoneFn) => { 
+    service.login("karen@gmail.com", "12345678").then(value =>{
+      expect(value).toEqual(value);
+      done();
+    });    
+  });
+
+  it('Probar la función emailVerification', (done: DoneFn) => { 
+    service.emailVerification().then(value =>{
+      expect(value).toEqual(value);
+      done();
+    });    
+  });
+
+  it('Probar la función logOut', () => { 
+      expect(service.logout()).toBe();
+    });
 });
