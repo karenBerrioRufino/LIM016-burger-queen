@@ -6,28 +6,25 @@ $color-rosa: #FF8087;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
     main{
         display: flex;
         flex-direction: row;
     }
 }
-
 .btnIcon{
     color: $color-marron;
     font-size: 2em;
     margin: 0.4em;
+    cursor: pointer;
 
     i{
         position: relative;
         top: 18px;
     }
 }
-
 .rotate{
     transform: rotate(180deg);
 }
-
 .carta{ 
     display: flex;
     flex-direction: column;
@@ -51,7 +48,6 @@ $color-rosa: #FF8087;
         margin: auto;
     }
 }
-
 .show{
     display: block !important;
 }
@@ -59,10 +55,7 @@ $color-rosa: #FF8087;
     display: none !important;
 }
 
-/*---------------------*/
-
 /*SUBTITLE*/
-
 .subtitle{
     width: auto;
     display: flex;
@@ -83,17 +76,13 @@ $color-rosa: #FF8087;
     }
 }
 
-/*---------------------*/
-
 /*DISHES AND DRINKS*/
-
 .item{
     display: flex;
     flex-direction: column;
     width: 120px;
     margin: 5px 5px 0px 5px;
 }
-
 .nameAndPrice{
     display: flex;
     flex-direction: column !important;
@@ -121,8 +110,6 @@ $color-rosa: #FF8087;
     }
 }
 
-/*---------------------*/
-
 .picture{
     display: flex;
     width: 100%;
@@ -131,7 +118,6 @@ $color-rosa: #FF8087;
     justify-content: flex-start;
     flex-direction: column;
     position: relative;
-
     i{
         position: absolute;
         font-size: 1.3em;
@@ -146,8 +132,6 @@ $color-rosa: #FF8087;
         z-index: 1;
     }
 }
-
-/*---------------------*/
 
 .btn{
     width: 100%;

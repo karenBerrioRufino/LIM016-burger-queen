@@ -41,10 +41,17 @@ describe('AuthService', () => {
 
   it('Probar la función emailVerification', (done: DoneFn) => { 
     service.emailVerification().then(value =>{
-      expect(value).toEqual(value);
-      done();
-    });    
+        expect(value).toBe();
+        done();
+    })
+    
   });
+
+  it('Probando el error', (done: DoneFn) => { 
+    expect(service.emailVerification()).toThrowError();
+    done();
+  });
+  
 
   it('Probar la función logOut', () => { 
       expect(service.logout()).toBe();

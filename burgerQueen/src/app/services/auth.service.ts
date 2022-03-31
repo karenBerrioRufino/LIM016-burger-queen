@@ -34,8 +34,8 @@ export class AuthService {
   async emailVerification(): Promise<void> {
     try {
       return (await this.authWithAngularFirebase.currentUser)?.sendEmailVerification();
-    } catch (error) {
-      console.log("error de login",error);
+    } catch (error: any) {
+      return error;
     }
   }
 
