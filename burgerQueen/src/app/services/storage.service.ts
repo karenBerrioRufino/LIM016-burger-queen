@@ -10,7 +10,7 @@ export class StorageService {
   //Función de almacenamiento
   set(key: string, value: object){
     localStorage.setItem(key,JSON.stringify(value));
-  }
+  } 
   
   // función de consulta (memoria / persistencia)
   get(key: string){
@@ -21,12 +21,12 @@ export class StorageService {
     localStorage.clear();
   }
 
-  setCurrentUser(userData: any | object){
-    return sessionStorage.setItem('currentUser', JSON.stringify(userData));
+  setCurrentUser(key: string, userData: any | object){
+    return sessionStorage.setItem(key, JSON.stringify(userData));
   }
 
-  getCurrentUser(userName: string){
-    return JSON.parse(sessionStorage.getItem(userName)!);
+  getCurrentUser(key: string){
+    return JSON.parse(sessionStorage.getItem(key)!);
   }
 
   removeCurrentUser(){

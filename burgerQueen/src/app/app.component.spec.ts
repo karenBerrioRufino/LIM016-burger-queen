@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
@@ -14,6 +15,10 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers:[
+        FormBuilder,
+
+      ]
     }).compileComponents();
   });
 

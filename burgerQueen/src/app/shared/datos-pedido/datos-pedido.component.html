@@ -68,7 +68,7 @@
     <p class="precio" *ngIf="rolUser == 'Cocinero'">{{ completeOrderToShow.total | currency:'PEN':'S/' }}</p>
   </div>
 
-  <button type="button" class="btnEnviarOrden" *ngIf="rolUser !== 'Cocinero' && !isEditable$" (click)="sendClientData()" routerLink="/totalPedidos">Enviar Orden</button>
+  <button type="button" class="btnEnviarOrden" *ngIf="rolUser !== 'Cocinero' && !isEditable$" (click)="sendClientData()">Enviar Orden</button>
   <button type="button" class="btnEnviarOrden"  *ngIf="rolUser !== 'Cocinero' && isEditable$" (click)="updateEditedOrder()" routerLink="/totalPedidos">Actualizar Orden</button>
   <button class="btnEnviarOrden" *ngIf="rolUser == 'Cocinero'" (click)="markAsPrepared(completeOrderToShow)"[hidden]="completeOrderToShow.preparationTime">Orden Lista</button>
 

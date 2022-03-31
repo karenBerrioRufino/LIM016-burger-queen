@@ -168,7 +168,7 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
 
     promise.then((res) => {
       this.storageService.clear();
-      this.router.navigate(['/carta']);
+      this.router.navigate(['/totalPedidos']);
     });
   }
 
@@ -181,6 +181,8 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
     } else {
       editedTableNumber = this.selectTable;
     }
+
+    console.log(this.editedOrder$.total, 'TotalEditado');
     
     this.productService.updateWaiterOrder(this.completeOrderToEdit.docId, 
       {
@@ -193,7 +195,7 @@ export class DatosPedidoComponent implements OnInit, AfterViewInit {
         shipped: this.completeOrderToEdit.shipped,
         fullyPrepared: this.completeOrderToEdit.fullyPrepared,
         served: this.completeOrderToEdit.served,
-        total: this.editedOrder$.total ? this.editedOrder$.total : this.completeOrderToEdit.total,
+        total: this.editedOrder$ ? this.orderTotalToEdit : this.completeOrderToEdit.total,
         paidOrder: this.completeOrderToEdit.paidOrder,
         editDate: this.date, 
         editInputHour: this.hour
