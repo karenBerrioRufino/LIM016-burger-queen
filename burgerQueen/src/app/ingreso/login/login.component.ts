@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         if (doc.payload.exists) {
 
           // sube data del documento del usuario a sessionStorage
-          this.storageService.setCurrentUser({ ...doc.payload.data() });
+          this.storageService.setCurrentUser('currentUser', { ...doc.payload.data() });
           switch (rol) {
             case 'Mesero': this.router.navigateByUrl("/carta")
               break;
