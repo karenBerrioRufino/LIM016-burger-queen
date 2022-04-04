@@ -4,11 +4,10 @@
 
 * [1. DEFINICIÓN DEL PRODUCTO](#1-DEFINICIÓN-DEL-PRODUCTO)
 * [2. HISTORIAS DE USUARIO](#2-HISTORIAS-DE-USUARIO)
-* [3. PROTOTIPO DE BAJA FIDELIDAD](#3-PROTOTIPO-DE-BAJA-FIDELIDAD)
-* [4. PROTOTIPO DE ALTA FIDELIDAD](#4-PROTOTIPO-DE-ALTA-FIDELIDAD)
-* [5. HERRAMIENTAS](#5-HERRAMIENTAS)
-* [6. CHECKLIST](#6-CHECKLIST)
-* [7. AUTORAS](#7-AUTORAS)
+* [3. PROTOTIPO DE ALTA FIDELIDAD](#3-PROTOTIPO-DE-ALTA-FIDELIDAD)
+* [4. HERRAMIENTAS](#4-HERRAMIENTAS)
+* [5. CHECKLIST](#5-CHECKLIST)
+* [6. AUTORAS](#6-AUTORAS)
 
 
 ## 1. DEFINICIÓN DE PRODUCTO 📝
@@ -17,45 +16,49 @@
 
 ## 2. HISTORIAS DE USUARIO 📚
 
-
-
-## 3. PROTOTIPO DE BAJA FIDELIDAD ⬇️
-
-  ## 📓 TABLET
   
   
- ## 4. PROTOTIPO DE ALTA FIDELIDAD ⬆️
+## 3. PROTOTIPO DE ALTA FIDELIDAD ⬆️
  
    ## 📓 TABLET
    
    
-  ## 5. HERRAMIENTAS 🛠️
+   
+## 4. HERRAMIENTAS 🛠️
 
   📌 GitBash
   
   📌 GitHub
   
-  ## 6. CHECKLIST ☑️	
+  📌 Firebase
+  
+  📌 Figma
+  
+  📌 TypeScript
+  
+  📌 Saas
+  
+  📌 Angular
+  
+  📌 Karma
+  
+  📌 Jasmine
+  
+  📌 Netlify
+  
+  ## 5. CHECKLIST ☑️	
   
   ✔️ La aplicación es una Single Page Application (SPA)
   
-  ✔️ Pasa linter (`npm run pretest`)
-  
-  ✔️ Pasa tests (`npm test`)
-  
-  ✔️ Pruebas unitarias cubren un mínimo del 70% de statements, functions, lines y branches.
-  
   ✔️ Incluye _Definición del producto_ clara e informativa.
-  
-  ✔️ Incluye _sketch_ de la solución (prototipo de baja fidelidad).
   
   ✔️ Incluye _Diseño de la Interfaz de Usuario_ (prototipo de alta fidelidad).
   
   ✔️ Alterar y persistir datos usando firestore.
   
-  ✔️ Sign in y Sign up con firebase
+  ✔️ Sign in y Sign up con firebase.
   
-  ✔️ Autenticación con cuenta de correo y contraseña, y también con una cuenta de Google, Facebook y GitHub.
+  ✔️ Autenticación con cuenta de correo y contraseña.
   
   ✔️ Solamente se permite el acceso a usuarios con cuentas válidas.
   
@@ -65,15 +68,17 @@
   
   ✔️ Se puede recuperar la contraseña
   
-  ✔️ Se puede publicar un post y solo se hacen publicaciones si hay contenido. se puede dar likes.
+  ✔️ La app interactúa constantemente con el usuario a través de mensajes.
   
-  ✔️ Se puede dar likes y hacer un conteo de estos.
+  ✔️ El usuario con el rol de mesero puede escoger los productos de la carta para luego visualizarlos y poder aumentar la cantidad e incluso eliminarlos para que después el cocinero lo pueda ver y comience con la preparación de la orden. 
   
-  ✔️ Se puede eliminar y editar tus propios posts.
+  ✔️ El usuario con el rol de cocinero puede ver la orden que manda el mesero y revisar el pedido para prepararlo. Finalmente, avisa a traves de una ventana conmpartida con el cocinero que ya puede entregar el pedido al cliente.
   
-  ✔️ Se hicieron sesiones de testing de usabilidad con el app.
+  ✔️ El mesero entrega el pedido y recibe el pago del cliente.
   
-  ## 7. AUTORAS ♀️
+  ✔️ El usuario con el rol de administrador puede ver todas las ventanas y la información con las que interactúan el mesero y el cocinero.
+  
+  ## 6. AUTORAS ♀️
 
   📌 Andrea Henostroza
   
