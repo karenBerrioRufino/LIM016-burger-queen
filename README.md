@@ -12,7 +12,13 @@
 
 ## 1. DEFINICIÓN DE PRODUCTO 📝
 
+El proyecto consiste en la creación de una app para el manejo de las órdenes en un restaurante. Esta idea surge de la necesidad de mejorar la atención a los clientes.
 
+El app tiene un login que identifica el tipo de rol del usuario que son tres: el mesero, el cocinero y el administrador. Cada uno con diferentes accesos.
+
+El mesero puede seleccionar los pedidos de una carta para luego visualizarlos en una siguiente vista donde podrá eliminar algún pedido, aumentar la cantidad por pedido, poner el nombre del cliente, y seleccionar la mesa. Además, se puede ver datos como la fecha y la hora, el subtotal por pedido y el total de todo. Una vez que se envía la orden, se muestra en una ventana compartida un boton verde que le va a indicar al cocinero que puede comenzar a preparar la orden.
+
+El cocinero 
 
 ## 2. HISTORIAS DE USUARIO 📚
 
