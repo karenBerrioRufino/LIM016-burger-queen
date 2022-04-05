@@ -48,7 +48,13 @@ El mesero recoge la orden, la entrega y recibe el pago.
  
    ##  📓 TABLET
    
-   
+   ![image](https://user-images.githubusercontent.com/91863929/161681843-d8476d62-0872-4170-847b-2817b4ca8a91.png)
+   ![image](https://user-images.githubusercontent.com/91863929/161681878-eefcf0fc-053f-4489-88ea-e7bf5367e2db.png)
+   ![image](https://user-images.githubusercontent.com/91863929/161682193-d585de5e-c4bf-431a-ab73-8a95ca83581c.png)
+   ![image](https://user-images.githubusercontent.com/91863929/161682334-031ec9a2-a0a6-4e12-9e2c-f0ed1039d3aa.png)
+   ![image](https://user-images.githubusercontent.com/91863929/161682417-3c20c22f-d2ec-4033-a86a-213290af3bfe.png)
+   ![image](https://user-images.githubusercontent.com/91863929/161682562-130f86a2-6723-4b50-9942-6011a2941b09.png)
+   ![image](https://user-images.githubusercontent.com/91863929/161682615-be8a0ee6-94ea-44fd-9610-39114ed5f32b.png)
    
 ## 4. HERRAMIENTAS 🛠️
 
