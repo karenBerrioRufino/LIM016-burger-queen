@@ -18,15 +18,35 @@ El app tiene un login que identifica el tipo de rol del usuario que son tres: el
 
 El mesero puede seleccionar los pedidos de una carta para luego visualizarlos en una siguiente vista donde podrá eliminar algún pedido, aumentar la cantidad por pedido, poner el nombre del cliente, y seleccionar la mesa. Además, se puede ver datos como la fecha y la hora, el subtotal por pedido y el total de todo. Una vez que se envía la orden, se muestra en una ventana compartida un boton verde que le va a indicar al cocinero que puede comenzar a preparar la orden.
 
-El cocinero 
+Cuando el cocinero vea el boton verde podrá ver la orden donde cada pedido tendrá un círculo anaranjado que se irá cambiando a verde cada vez que el cocinero lo termine de preparar. Además, habrá un cronómetro que al enviar la orden completa va a mostrar el tiempo que el cocinero se demoró cocinando y en la ventana compartida el mesero podrá ver que la orden lista para ser recogida.
+
+El mesero recoge la orden, la entrega y recibe el pago. 
 
 ## 2. HISTORIAS DE USUARIO 📚
 
-  
+¿Quiénes son los principales usuarios de producto?
+
+- Mesero
+- Cocinero
+- Administrador
+
+¿Cuáles son los objetivos de estos usuarios en relación con el producto?
+
+- Tomar la orden completa sin perder información.
+- Preparar cada pedido de la orden.
+- Contar el tiempo de preparación de la orden.
+- Interactuar con el usuario.
+- Tener un historial.
+
+¿Cuáles son los datos más relevantes que quieren ver en la interfaz y por qué?
+
+- Que nuestro usuario pueda tomar la orden de los clientes de forma rápida y sin perder información.
+- Que la app les muestre al mesero y al cocinero lo que está pasando en tiempo real para que su trabajo no tenga tiempos de pérdida.
+
   
 ## 3. PROTOTIPO DE ALTA FIDELIDAD ⬆️
  
-   ## 📓 TABLET
+   ##  📓 TABLET
    
    
    
